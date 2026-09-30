@@ -16,6 +16,7 @@ from .contenido import elegir_variante
 from .historial import Historial
 from .planificador import grupos_de, proxima_ocurrencia, tareas_del_momento
 from .publicaciones import cargar_publicaciones
+from .sincronizacion import ErrorSincronizacion, conectado, sincronizar
 from .validador import validar_todas
 
 log = logging.getLogger("agente")
@@ -192,7 +193,26 @@ def _una_pasada(config_inicial: Config, args) -> None:
                        esperar=(lambda s: None) if args.sin_demora else time.sleep)
 
 
+def _sincronizar(config: Config) -> bool:
+    if not conectado(config.raiz):
+        return False
+    try:
+        log.info("GitHub: %s", sincronizar(config.raiz))
+        return True
+    except ErrorSincronizacion as e:
+        log.warning("GitHub: no se pudo sincronizar. %s", e)
+        return False
+
+
+def cmd_sincronizar(config, args) -> int:
+    if not conectado(config.raiz):
+        print("La carpeta no está conectada a GitHub. Ejecutá conectar_github.bat")
+        return 1
+    return 0 if _sincronizar(config) else 1
+
+
 def cmd_publicar_pendientes(config, args) -> int:
+    _sincronizar(config)
     _una_pasada(config, args)
     return 0
 
@@ -200,8 +220,12 @@ def cmd_publicar_pendientes(config, args) -> int:
 def cmd_ejecutar(config, args) -> int:
     log.info("Agente en marcha (modo %s). Revisa el calendario cada ~%d minutos. Ctrl+C para salir.",
              config.modo, args.intervalo)
+    ultima_sincronizacion = 0.0
     while True:
         try:
+            if args.sincronizar_cada and time.time() - ultima_sincronizacion >= args.sincronizar_cada * 60:
+                _sincronizar(config)
+                ultima_sincronizacion = time.time()
             _una_pasada(config, args)
         except KeyboardInterrupt:
             raise
@@ -236,6 +260,9 @@ def construir_parser() -> argparse.ArgumentParser:
     p = sub.add_parser("ejecutar", help="deja el agente corriendo y publica según el calendario")
     p.add_argument("--intervalo", type=int, default=5, help="minutos entre revisiones (por defecto 5)")
     p.add_argument("--sin-demora", action="store_true")
+    p.add_argument("--sincronizar-cada", type=int, default=30,
+                   help="minutos entre sincronizaciones con GitHub (0 = nunca; por defecto 30)")
+    sub.add_parser("sincronizar", help="sube tus fotos/ideas y baja lo nuevo desde GitHub")
     sub.add_parser("reanudar", help="quita la pausa de emergencia")
     return parser
 
@@ -244,7 +271,7 @@ COMANDOS = {
     "iniciar-sesion": cmd_iniciar_sesion, "verificar-sesion": cmd_verificar_sesion,
     "validar": cmd_validar, "vista-previa": cmd_vista_previa, "estado": cmd_estado,
     "simular": cmd_simular, "publicar-pendientes": cmd_publicar_pendientes,
-    "ejecutar": cmd_ejecutar, "reanudar": cmd_reanudar,
+    "ejecutar": cmd_ejecutar, "sincronizar": cmd_sincronizar, "reanudar": cmd_reanudar,
 }
 
 

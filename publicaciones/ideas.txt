@@ -1,0 +1,14 @@
+BUZÓN PARA CLAUDE
+=================
+Escribí acá lo que quieras que tenga en cuenta para las próximas publicaciones.
+Cada domingo Claude lee este archivo y las fotos nuevas de la carpeta "imagenes",
+y prepara las publicaciones de la semana. Ejemplos:
+
+- Esta semana tengo promo de limpieza a $15.000
+- Usá la foto local-frente.jpg, es de mi local
+- No publiquen el miércoles que no voy a estar
+- Quiero hacer una publicación sobre el cambio de pantallas de notebook
+
+Escribí tus ideas debajo de esta línea (Claude marca con [HECHO] lo que ya usó):
+-------------------------------------------------------------------------------
+

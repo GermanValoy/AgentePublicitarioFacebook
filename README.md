@@ -140,6 +140,28 @@ listo, y te pregunta en la ventana negra si lo publicaste.
 
 ---
 
+## 5b. Conexión con GitHub (Claude te prepara publicaciones cada semana)
+
+Si conectás la carpeta con GitHub, el agente **sube** lo que dejás en la PC y **baja** lo que
+prepara Claude, solo, cada 30 minutos mientras está andando:
+
+| Vos dejás en la PC | Claude deja en GitHub |
+|---|---|
+| Fotos nuevas en `publicaciones/imagenes/` | Publicaciones de la semana en `programadas.yaml` |
+| Ideas y pedidos en `publicaciones/ideas.txt` | Imágenes nuevas con tus datos |
+| | Mejoras del agente |
+
+Cómo conectarla (una sola vez):
+1. Instalá [Git para Windows](https://git-scm.com/download/win) (todo "Siguiente").
+2. Poné `conectar_github.bat` en la carpeta del agente y abrilo. La primera vez se abre una
+   ventana para iniciar sesión en GitHub: aceptá.
+3. Listo. Para sincronizar a mano en cualquier momento: `sincronizar.bat`.
+
+La carpeta `datos/` (tu sesión de Facebook) **nunca** se sube.
+Las imágenes se generan con `python -m herramientas.imagenes` (ver `herramientas/imagenes.py`).
+
+---
+
 ## 6. Pruebas antes de publicar
 
 Hay **tres niveles** de prueba. Hacelos en este orden cada vez que cambies algo:
@@ -175,6 +197,7 @@ Además:
 | `estado` | Resumen de límites, pendientes y movimientos |
 | `publicar-pendientes` | Una pasada (publica como máximo 1) — para cron |
 | `ejecutar` | Deja el agente trabajando según el calendario |
+| `sincronizar` | Sube tus fotos/ideas y baja lo nuevo desde GitHub |
 | `reanudar` | Quita la pausa de emergencia |
 
 Todos se usan como `python -m agente <comando>` (con el entorno `.venv` activado).
