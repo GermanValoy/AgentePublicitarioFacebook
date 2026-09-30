@@ -157,6 +157,43 @@ def cmd_verificar_sesion(config, args) -> int:
     return 0 if ok else 1
 
 
+def cmd_publicar_ahora(config, args) -> int:
+    """Publica una publicación del calendario ya mismo en un grupo, respetando las reglas anti-baneo."""
+    publicaciones = {p.id: p for p in cargar_publicaciones(config.archivo_programadas)}
+    pub = publicaciones.get(args.id)
+    if pub is None:
+        print(f"No existe la publicación '{args.id}'. Las que hay: {', '.join(publicaciones) or 'ninguna'}")
+        return 1
+    ahora = config.ahora()
+    r = validar_todas([pub], config, ahora)[pub.id]
+    if not r.ok:
+        print("La publicación no pasa las pruebas:\n  - " + "\n  - ".join(r.errores))
+        return 1
+    grupos = grupos_de(pub, config)
+    grupo = args.grupo or (grupos[0] if grupos else None)
+    if grupo not in config.grupos:
+        print("Indicá un grupo válido con --grupo \"Nombre del grupo\"")
+        return 1
+    historial = _historial(config)
+    decision = antiban.evaluar(ahora, grupo, config, historial)
+    if not decision.permitido:
+        print(f"Ahora no se puede publicar en '{grupo}': {decision.motivo}")
+        return 1
+    texto, _ = elegir_variante(pub.texto, historial.textos_publicados(grupo) + historial.textos_publicados(limite=5))
+    print(f"Publicando '{pub.id}' en '{grupo}' (modo {config.modo})...")
+    with _bloqueo(config), _publicador(config, oculto=args.oculto) as navegador:
+        res = navegador.publicar(config.grupos[grupo].url, texto, [config.carpeta_imagenes / n for n in pub.imagenes])
+    historial.agregar(f"{pub.id}|{grupo}|manual-{ahora:%Y-%m-%dT%H:%M}", pub.id, grupo, res.estado,
+                      config.ahora(), texto, res.detalle + (f" | captura: {res.captura}" if res.captura else ""))
+    print(f"Resultado: {res.estado}. {res.detalle}")
+    if res.captura:
+        print(f"Captura: {res.captura}")
+    if res.estado == "bloqueada":
+        antiban.pausar(config, res.detalle)
+        print("¡Facebook mostró una advertencia! El agente quedó pausado.")
+    return 0 if res.estado in ("publicada", "simulada") else 1
+
+
 def cmd_simular(config, args) -> int:
     """Prueba de punta a punta en Facebook, sin publicar: escribe, adjunta, captura y descarta."""
     publicaciones = {p.id: p for p in cargar_publicaciones(config.archivo_programadas)}
@@ -255,6 +292,9 @@ def construir_parser() -> argparse.ArgumentParser:
     p = sub.add_parser("simular", help="prueba real en Facebook SIN publicar (captura y descarta)")
     p.add_argument("--id", required=True)
     p.add_argument("--grupo")
+    p = sub.add_parser("publicar-ahora", help="publica YA una publicación del calendario (respeta anti-baneo)")
+    p.add_argument("--id", required=True)
+    p.add_argument("--grupo")
     p = sub.add_parser("publicar-pendientes", help="una pasada: publica como máximo una tarea pendiente")
     p.add_argument("--sin-demora", action="store_true")
     p = sub.add_parser("ejecutar", help="deja el agente corriendo y publica según el calendario")
@@ -270,7 +310,7 @@ def construir_parser() -> argparse.ArgumentParser:
 COMANDOS = {
     "iniciar-sesion": cmd_iniciar_sesion, "verificar-sesion": cmd_verificar_sesion,
     "validar": cmd_validar, "vista-previa": cmd_vista_previa, "estado": cmd_estado,
-    "simular": cmd_simular, "publicar-pendientes": cmd_publicar_pendientes,
+    "simular": cmd_simular, "publicar-ahora": cmd_publicar_ahora, "publicar-pendientes": cmd_publicar_pendientes,
     "ejecutar": cmd_ejecutar, "sincronizar": cmd_sincronizar, "reanudar": cmd_reanudar,
 }
 

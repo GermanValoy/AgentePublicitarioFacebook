@@ -193,8 +193,9 @@ Además:
 | `verificar-sesion` | Comprueba la sesión y si hay advertencias de Facebook |
 | `validar` | Prueba todas las publicaciones sin abrir Facebook |
 | `vista-previa [--id X]` | Muestra el texto final por grupo |
-| `simular --id X [--grupo Y]` | Prueba real en Facebook sin publicar |
+| `simular --id X [--grupo Y]` | Prueba real en Facebook sin publicar. También: `probar_en_facebook.bat` |
 | `estado` | Resumen de límites, pendientes y movimientos |
+| `publicar-ahora --id X [--grupo Y]` | Publica ya una publicación (respeta anti-baneo). También: `publicar_ahora.bat` |
 | `publicar-pendientes` | Una pasada (publica como máximo 1) — para cron |
 | `ejecutar` | Deja el agente trabajando según el calendario |
 | `sincronizar` | Sube tus fotos/ideas y baja lo nuevo desde GitHub |
