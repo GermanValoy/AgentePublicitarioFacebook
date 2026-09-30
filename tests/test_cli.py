@@ -47,6 +47,8 @@ def preparar(proyecto, monkeypatch, estado="publicada", hora=dt.time(11, 0)):
 
 
 def args(**kw):
+    kw.setdefault("espera_aprobacion", 15)
+    kw.setdefault("espera_telegram", 0)
     return argparse.Namespace(oculto=False, grupo=None, **kw)
 
 
@@ -84,8 +86,40 @@ def test_simular_no_toca_el_historial(proyecto, monkeypatch):
     assert falso.urls and not (config.carpeta_datos / "historial.json").exists()
 
 
-def test_publicar_ahora_en_modo_aprobacion_pide_tu_clic(proyecto, monkeypatch):
+def test_publicar_ahora_en_modo_aprobacion_pregunta_por_telegram(proyecto, monkeypatch):
+    from agente import telegram
+    from .test_telegram import TelegramFalso
     config, falso = preparar(proyecto, monkeypatch)
     config.modo = "aprobacion"
-    assert cli.cmd_publicar_ahora(config, args(id="promo")) == 0
-    assert falso.modo == "asistido"
+    tg = TelegramFalso()
+    monkeypatch.setattr(telegram, "cargar", lambda carpeta: tg)
+    original = telegram.AprobadorTelegram.procesar
+
+    def procesar_y_aprobar(self, espera=0, comandos=None):
+        if self.pendientes():
+            tg.tocar("si")
+        return original(self, 0, comandos)
+
+    monkeypatch.setattr(telegram.AprobadorTelegram, "procesar", procesar_y_aprobar)
+    assert cli.cmd_publicar_ahora(config, args(id="promo", espera_aprobacion=1, espera_telegram=0)) == 0
+    assert falso.modo == "automatico" and falso.urls
+    assert any("Publicado" in e[0] for e in tg.enviados)
+
+
+def test_publicar_ahora_rechazada_por_telegram(proyecto, monkeypatch):
+    from agente import telegram
+    from .test_telegram import TelegramFalso
+    config, falso = preparar(proyecto, monkeypatch)
+    config.modo = "aprobacion"
+    tg = TelegramFalso()
+    monkeypatch.setattr(telegram, "cargar", lambda carpeta: tg)
+    original = telegram.AprobadorTelegram.procesar
+
+    def procesar_y_rechazar(self, espera=0, comandos=None):
+        if self.pendientes():
+            tg.tocar("no")
+        return original(self, 0, comandos)
+
+    monkeypatch.setattr(telegram.AprobadorTelegram, "procesar", procesar_y_rechazar)
+    assert cli.cmd_publicar_ahora(config, args(id="promo", espera_aprobacion=1, espera_telegram=0)) == 1
+    assert falso.urls == []

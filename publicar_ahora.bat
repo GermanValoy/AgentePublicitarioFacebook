@@ -1,5 +1,5 @@
 @echo off
-REM Publica YA una publicacion del calendario (en modo asistido vos haces el clic final).
+REM Publica YA una publicacion del calendario. En modo aprobacion te la manda a Telegram para que la apruebes.
 REM Respeta las reglas anti-baneo: horario, limite diario y descanso por grupo.
 cd /d "%~dp0"
 call .venv\Scripts\activate.bat

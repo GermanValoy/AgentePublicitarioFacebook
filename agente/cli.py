@@ -190,12 +190,31 @@ def cmd_publicar_ahora(config, args) -> int:
         print(f"Ahora no se puede publicar en '{grupo}': {decision.motivo}")
         return 1
     texto, _ = elegir_variante(pub.texto, historial.textos_publicados(grupo) + historial.textos_publicados(limite=5))
-    # Si lo ejecutás a mano estás frente a la PC: en modo aprobacion se usa asistido (hacés vos el clic).
-    modo = "asistido" if config.modo == "aprobacion" else config.modo
+    imagenes = [config.carpeta_imagenes / n for n in pub.imagenes]
+    clave = f"{pub.id}|{grupo}|manual-{ahora:%Y-%m-%dT%H:%M}"
+    modo = config.modo
+    aprobador = _aprobador(config) if modo == "aprobacion" else None
+    if aprobador:
+        aprobador.procesar()  # descartar respuestas viejas
+        aprobador.solicitar(clave, pub.id, grupo, texto, imagenes)
+        print(f"Te mandé la publicación a Telegram. Tocá ✅ Publicar o ❌ No publicar "
+              f"(espero hasta {args.espera_aprobacion} minutos)...")
+        limite = time.time() + args.espera_aprobacion * 60
+        while aprobador.estado(clave) == "pendiente" and time.time() < limite:
+            aprobador.procesar(espera=args.espera_telegram)
+        decision_tg = aprobador.estado(clave)
+        if decision_tg != "aprobada":
+            aprobador.cerrar(clave, "❌ No se publica" if decision_tg == "rechazada" else "⌛ Sin respuesta, no se publicó")
+            historial.agregar(clave, pub.id, grupo, "no_confirmada", config.ahora(), texto,
+                              "Rechazada desde Telegram" if decision_tg == "rechazada" else "Sin respuesta en Telegram")
+            print("No se publicó (rechazada o sin respuesta).")
+            return 1
+        modo = "automatico"  # ya lo aprobaste: el agente hace el clic en "Publicar"
+
     print(f"Publicando '{pub.id}' en '{grupo}' (modo {modo})...")
     with _bloqueo(config), _publicador(config, modo=modo, oculto=args.oculto) as navegador:
-        res = navegador.publicar(config.grupos[grupo].url, texto, [config.carpeta_imagenes / n for n in pub.imagenes])
-    historial.agregar(f"{pub.id}|{grupo}|manual-{ahora:%Y-%m-%dT%H:%M}", pub.id, grupo, res.estado,
+        res = navegador.publicar(config.grupos[grupo].url, texto, imagenes)
+    historial.agregar(clave, pub.id, grupo, res.estado,
                       config.ahora(), texto, res.detalle + (f" | captura: {res.captura}" if res.captura else ""))
     print(f"Resultado: {res.estado}. {res.detalle}")
     if res.captura:
@@ -203,6 +222,11 @@ def cmd_publicar_ahora(config, args) -> int:
     if res.estado == "bloqueada":
         antiban.pausar(config, res.detalle)
         print("¡Facebook mostró una advertencia! El agente quedó pausado.")
+    if aprobador:
+        aprobador.cerrar(clave, "✅ Publicada" if res.estado == "publicada" else f"⚠️ {res.estado}")
+        aviso = {"publicada": f"✅ Publicado en «{grupo}».",
+                 "bloqueada": f"🚨 Facebook mostró una advertencia y el agente quedó PAUSADO: {res.detalle}"}
+        aprobador.avisar(aviso.get(res.estado, f"⚠️ No se pudo publicar en «{grupo}»: {res.detalle}"), res.captura)
     return 0 if res.estado in ("publicada", "simulada") else 1
 
 
@@ -406,6 +430,8 @@ def construir_parser() -> argparse.ArgumentParser:
     p = sub.add_parser("publicar-ahora", help="publica YA una publicación del calendario (respeta anti-baneo)")
     p.add_argument("--id", required=True)
     p.add_argument("--grupo")
+    p.add_argument("--espera-aprobacion", type=int, default=15, help="minutos para aprobar por Telegram")
+    p.add_argument("--espera-telegram", type=int, default=25, help=argparse.SUPPRESS)
     p = sub.add_parser("publicar-pendientes", help="una pasada: publica como máximo una tarea pendiente")
     p.add_argument("--sin-demora", action="store_true")
     p = sub.add_parser("ejecutar", help="deja el agente corriendo y publica según el calendario")
