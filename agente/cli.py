@@ -190,8 +190,10 @@ def cmd_publicar_ahora(config, args) -> int:
         print(f"Ahora no se puede publicar en '{grupo}': {decision.motivo}")
         return 1
     texto, _ = elegir_variante(pub.texto, historial.textos_publicados(grupo) + historial.textos_publicados(limite=5))
-    print(f"Publicando '{pub.id}' en '{grupo}' (modo {config.modo})...")
-    with _bloqueo(config), _publicador(config, oculto=args.oculto) as navegador:
+    # Si lo ejecutás a mano estás frente a la PC: en modo aprobacion se usa asistido (hacés vos el clic).
+    modo = "asistido" if config.modo == "aprobacion" else config.modo
+    print(f"Publicando '{pub.id}' en '{grupo}' (modo {modo})...")
+    with _bloqueo(config), _publicador(config, modo=modo, oculto=args.oculto) as navegador:
         res = navegador.publicar(config.grupos[grupo].url, texto, [config.carpeta_imagenes / n for n in pub.imagenes])
     historial.agregar(f"{pub.id}|{grupo}|manual-{ahora:%Y-%m-%dT%H:%M}", pub.id, grupo, res.estado,
                       config.ahora(), texto, res.detalle + (f" | captura: {res.captura}" if res.captura else ""))

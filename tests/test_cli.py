@@ -23,6 +23,7 @@ class NavegadorFalso:
         self.urls = []
 
     def __call__(self, config, modo=None, oculto=False):
+        self.modo = modo
         return self
 
     def __enter__(self):
@@ -81,3 +82,10 @@ def test_simular_no_toca_el_historial(proyecto, monkeypatch):
     config, falso = preparar(proyecto, monkeypatch, estado="simulada", hora=dt.time(23, 30))
     assert cli.cmd_simular(config, args(id="promo")) == 0
     assert falso.urls and not (config.carpeta_datos / "historial.json").exists()
+
+
+def test_publicar_ahora_en_modo_aprobacion_pide_tu_clic(proyecto, monkeypatch):
+    config, falso = preparar(proyecto, monkeypatch)
+    config.modo = "aprobacion"
+    assert cli.cmd_publicar_ahora(config, args(id="promo")) == 0
+    assert falso.modo == "asistido"
