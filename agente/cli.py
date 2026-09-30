@@ -44,7 +44,7 @@ def _publicador(config: Config, modo: str | None = None, oculto: bool = False):
     if modo == "aprobacion":
         modo = "automatico"  # ya lo aprobaste por Telegram: el agente hace el clic en "Publicar"
     return PublicadorFacebook(config.carpeta_datos / "perfil_navegador", config.carpeta_datos / "capturas",
-                              modo, oculto=oculto, navegador=config.navegador)
+                              modo, oculto=oculto or config.navegador_oculto, navegador=config.navegador)
 
 
 @contextmanager
@@ -167,6 +167,23 @@ def cmd_verificar_sesion(config, args) -> int:
     return 0 if ok else 1
 
 
+def _solo_si_el_agente_esta_detenido(funcion):
+    """publicar-ahora y simular usan el mismo navegador y el mismo Telegram que el agente."""
+    def envoltura(config, args):
+        try:
+            with _unica_instancia(config):
+                return funcion(config, args)
+        except ErrorConfig as e:
+            if "ya está funcionando" not in str(e):
+                raise
+            print("El agente está funcionando (en segundo plano o en otra ventana) y usa el mismo navegador.\n"
+                  "Para esta prueba: 1) detener_agente.bat  2) volvé a abrir este archivo  "
+                  "3) al terminar, iniciar_en_segundo_plano.vbs")
+            return 1
+    return envoltura
+
+
+@_solo_si_el_agente_esta_detenido
 def cmd_publicar_ahora(config, args) -> int:
     """Publica una publicación del calendario ya mismo en un grupo, respetando las reglas anti-baneo."""
     publicaciones = {p.id: p for p in cargar_publicaciones(config.archivo_programadas)}
@@ -230,6 +247,7 @@ def cmd_publicar_ahora(config, args) -> int:
     return 0 if res.estado in ("publicada", "simulada") else 1
 
 
+@_solo_si_el_agente_esta_detenido
 def cmd_simular(config, args) -> int:
     """Prueba de punta a punta en Facebook, sin publicar: escribe, adjunta, captura y descarta."""
     publicaciones = {p.id: p for p in cargar_publicaciones(config.archivo_programadas)}
@@ -323,7 +341,39 @@ def cmd_publicar_pendientes(config, args) -> int:
     return 0
 
 
+@contextmanager
+def _unica_instancia(config: Config):
+    """Impide que haya dos agentes corriendo a la vez (por ejemplo uno oculto y otro en una ventana).
+    El candado lo libera el sistema operativo aunque el proceso se cierre de golpe."""
+    config.carpeta_datos.mkdir(parents=True, exist_ok=True)
+    archivo = open(config.carpeta_datos / "agente_en_marcha.lock", "a+")
+    try:
+        if os.name == "nt":
+            import msvcrt
+            archivo.seek(0)
+            msvcrt.locking(archivo.fileno(), msvcrt.LK_NBLCK, 1)
+        else:
+            import fcntl
+            fcntl.flock(archivo.fileno(), fcntl.LOCK_EX | fcntl.LOCK_NB)
+    except OSError:
+        archivo.close()
+        raise ErrorConfig("El agente ya está funcionando (quizás en segundo plano). "
+                          "Para cerrarlo usá detener_agente.bat") from None
+    pid = config.carpeta_datos / "agente.pid"
+    pid.write_text(str(os.getpid()))
+    try:
+        yield
+    finally:
+        pid.unlink(missing_ok=True)
+        archivo.close()
+
+
 def cmd_ejecutar(config, args) -> int:
+    with _unica_instancia(config):
+        return _bucle(config, args)
+
+
+def _bucle(config, args) -> int:
     aprobador = _aprobador(config)
     log.info("Agente en marcha (modo %s). Revisa el calendario cada ~%d minutos. %s Ctrl+C para salir.",
              config.modo, args.intervalo,

@@ -123,3 +123,24 @@ def test_publicar_ahora_rechazada_por_telegram(proyecto, monkeypatch):
     monkeypatch.setattr(telegram.AprobadorTelegram, "procesar", procesar_y_rechazar)
     assert cli.cmd_publicar_ahora(config, args(id="promo", espera_aprobacion=1, espera_telegram=0)) == 1
     assert falso.urls == []
+
+
+def test_no_permite_dos_agentes_a_la_vez(config):
+    import pytest
+    from agente.config import ErrorConfig
+    with cli._unica_instancia(config):
+        assert (config.carpeta_datos / "agente.pid").read_text().isdigit()
+        with pytest.raises(ErrorConfig, match="ya está funcionando"):
+            with cli._unica_instancia(config):
+                pass
+    assert not (config.carpeta_datos / "agente.pid").exists()
+    with cli._unica_instancia(config):  # liberado: se puede volver a abrir
+        pass
+
+
+def test_publicar_ahora_avisa_si_el_agente_esta_andando(proyecto, monkeypatch, capsys):
+    config, falso = preparar(proyecto, monkeypatch)
+    with cli._unica_instancia(config):
+        assert cli.cmd_publicar_ahora(config, args(id="promo")) == 1
+    assert falso.urls == []
+    assert "detener_agente.bat" in capsys.readouterr().out

@@ -100,6 +100,7 @@ class Config:
     zona: ZoneInfo
     modo: str
     navegador: str
+    navegador_oculto: bool
     limites: Limites
     contenido: ReglasContenido
     grupos: dict[str, Grupo]
@@ -197,4 +198,5 @@ def cargar_config(raiz: Path = RAIZ, archivo: Path | None = None) -> Config:
             notas=str(g.get("notas", "")),
         )
 
-    return Config(raiz=raiz, zona=zona, modo=modo, navegador=navegador, limites=limites, contenido=contenido, grupos=grupos)
+    return Config(raiz=raiz, zona=zona, modo=modo, navegador=navegador,
+                  navegador_oculto=bool(datos.get("navegador_oculto", False)), limites=limites, contenido=contenido, grupos=grupos)

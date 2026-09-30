@@ -175,7 +175,11 @@ El agente hace todo solo y **vos solo aprobás desde el celular o la PC**:
 Configuración (una sola vez):
 1. Doble clic en `configurar_telegram.bat` y seguí los pasos (crear el bot con @BotFather,
    pegar el token y mandarle /start). Queda en `modo: aprobacion`.
-2. Doble clic en `activar_inicio_automatico.bat` para que el agente arranque solo al prender la PC.
+2. Doble clic en `activar_inicio_automatico.bat` para que el agente arranque solo y **oculto**
+   (en segundo plano, sin ventana) al prender la PC.
+   - Iniciarlo oculto a mano: `iniciar_en_segundo_plano.vbs` · Cerrarlo: `detener_agente.bat`
+   - Lo que hace queda en `datos/agente.log`; desde Telegram: `/estado`.
+   - `navegador_oculto: true` en config.yaml oculta también el navegador (no recomendado el primer mes).
 3. Configurá Windows para que **no se suspenda** en el horario de publicación
    (Configuración → Sistema → Inicio/apagado y suspensión → "Nunca" cuando está enchufada).
 

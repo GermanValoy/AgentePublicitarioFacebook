@@ -20,6 +20,10 @@ modo: aprobacion
 #   chrome   -> tu Google Chrome instalado     msedge -> Microsoft Edge (viene con Windows)
 navegador: chromium
 
+# true = el navegador trabaja invisible. Más cómodo, pero Facebook lo detecta más fácil:
+# dejalo en false al menos el primer mes (la ventana aparece ~1 minuto solo al publicar).
+navegador_oculto: false
+
 # ---------------------------------------------------------------------
 #  LÍMITES ANTI-BANEO (conservadores a propósito; no los subas mucho)
 # ---------------------------------------------------------------------

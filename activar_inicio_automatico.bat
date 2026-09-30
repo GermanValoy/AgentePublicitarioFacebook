@@ -1,11 +1,12 @@
 @echo off
-REM Hace que el agente arranque solo (minimizado) cada vez que prendes la PC e iniciás sesion en Windows.
+REM Hace que el agente arranque solo y OCULTO (en segundo plano) cada vez que prendes la PC.
 cd /d "%~dp0"
-set "DESTINO=%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup\AgenteFacebook.bat"
-> "%DESTINO%" echo @echo off
->> "%DESTINO%" echo cd /d "%~dp0"
->> "%DESTINO%" echo start "Agente Facebook" /min cmd /c ejecutar_agente.bat
-echo Listo: el agente va a arrancar solo cada vez que prendas la PC.
+set "INICIO=%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup"
+del "%INICIO%\AgenteFacebook.bat" >nul 2>nul
+> "%INICIO%\AgenteFacebook.vbs" echo CreateObject("WScript.Shell").Run """%~dp0iniciar_en_segundo_plano.vbs""", 0, False
+echo Listo: el agente va a arrancar solo y oculto cada vez que prendas la PC.
+echo Te va a llegar "Agente en marcha" a Telegram cuando arranque.
+echo.
 echo Para desactivarlo, borra este archivo:
-echo   %DESTINO%
+echo   %INICIO%\AgenteFacebook.vbs
 pause
