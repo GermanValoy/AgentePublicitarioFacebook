@@ -70,6 +70,21 @@ def test_avisa_si_la_foto_no_aparece_y_guarda_diagnostico(tmp_path, imagen, monk
     assert list((tmp_path / "capturas").glob("*error-imagenes.html"))
 
 
+def test_texto_largo_no_se_corta_por_tiempo(tmp_path):
+    """Un texto largo escrito a ritmo humano tarda más que el límite normal de espera de Playwright."""
+    p = abrir(tmp_path, "automatico")
+    p.velocidad = 0.3
+    p.page.set_default_timeout(2_000)  # simula el límite de 30 s con un texto más corto
+    texto = "\n".join(f"Línea {i}: reparación y mantenimiento de computadoras ✅" for i in range(8))
+    try:
+        res = p.publicar(PAGINA, texto, [])
+        publicado = p.page.locator("#publicado").inner_text()
+    finally:
+        p.__exit__(None, None, None)
+    assert res.estado == "publicada", res.detalle
+    assert "Línea 7" in publicado
+
+
 def test_modo_simulacion_no_publica(tmp_path, imagen):
     p = abrir(tmp_path, "simulacion")
     try:

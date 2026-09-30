@@ -203,6 +203,16 @@ class PublicadorFacebook:
         log.info("Foto(s) adjuntada(s): %d", len(archivos))
         self._pausa(3 + 2 * len(imagenes), 5 + 2 * len(imagenes))  # tiempo de subida
 
+    def _escribir(self, caja, texto: str) -> None:
+        """Escribe letra por letra, de a una línea, dándole a cada línea el tiempo que necesita
+        (un texto largo escrito a ritmo humano tarda más que el límite normal de 30 segundos)."""
+        demora = random.uniform(35, 90) * self.velocidad
+        for i, linea in enumerate(texto.split("\n")):
+            if i:
+                caja.press("Enter")
+            if linea:
+                caja.press_sequentially(linea, delay=demora, timeout=len(linea) * (demora + 50) + 15_000)
+
     def _descartar(self, dialogo) -> None:
         try:
             self.page.keyboard.press("Escape")
@@ -253,7 +263,7 @@ class PublicadorFacebook:
         log.info("Escribiendo el texto")
         caja = dialogo.get_by_role("textbox").first
         caja.click()
-        caja.press_sequentially(texto, delay=random.uniform(35, 90) * self.velocidad)
+        self._escribir(caja, texto)
         self._pausa(1, 3)
 
         if imagenes:
