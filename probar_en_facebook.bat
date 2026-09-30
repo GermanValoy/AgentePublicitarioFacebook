@@ -2,6 +2,7 @@
 REM Prueba real en Facebook SIN publicar: escribe, adjunta la foto, saca una captura y descarta.
 cd /d "%~dp0"
 call .venv\Scripts\activate.bat
+pip install -q -r requirements.txt 2>nul
 python -m agente sincronizar
 echo.
 echo Publicaciones disponibles:

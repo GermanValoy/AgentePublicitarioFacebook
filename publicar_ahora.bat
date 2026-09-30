@@ -3,6 +3,7 @@ REM Publica YA una publicacion del calendario (en modo asistido vos haces el cli
 REM Respeta las reglas anti-baneo: horario, limite diario y descanso por grupo.
 cd /d "%~dp0"
 call .venv\Scripts\activate.bat
+pip install -q -r requirements.txt 2>nul
 python -m agente sincronizar
 echo.
 echo Publicaciones disponibles:

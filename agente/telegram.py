@@ -57,6 +57,9 @@ class Telegram:
             except Exception:
                 raise ErrorTelegram(f"Telegram respondió {e.code}") from None
         except (urllib.error.URLError, TimeoutError, OSError) as e:
+            if "CERTIFICATE_VERIFY_FAILED" in str(e):
+                raise ErrorTelegram("un antivirus o proxy está interceptando la conexión segura. Actualizá con "
+                                    "sincronizar.bat y volvé a abrir este archivo (se instala 'truststore')") from None
             raise ErrorTelegram(f"Sin conexión con Telegram: {e}") from None
         if not respuesta.get("ok"):
             raise ErrorTelegram(respuesta.get("description", "error desconocido"))

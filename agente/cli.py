@@ -428,7 +428,18 @@ COMANDOS = {
 }
 
 
+def _usar_certificados_del_sistema() -> None:
+    """Usa los certificados de Windows/Mac/Linux para las conexiones seguras (Telegram).
+    Sin esto falla con antivirus que analizan HTTPS (error CERTIFICATE_VERIFY_FAILED)."""
+    try:
+        import truststore
+        truststore.inject_into_ssl()
+    except ImportError:
+        pass
+
+
 def main(argv: list[str] | None = None) -> int:
+    _usar_certificados_del_sistema()
     for flujo in (sys.stdout, sys.stderr):
         if hasattr(flujo, "reconfigure"):
             flujo.reconfigure(encoding="utf-8", errors="replace")  # consola de Windows
