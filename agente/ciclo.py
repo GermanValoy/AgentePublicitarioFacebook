@@ -24,8 +24,13 @@ FabricaPublicador = Callable[[], AbstractContextManager]
 def ejecutar_ciclo(config: Config, publicaciones: list[Publicacion], historial: Historial,
                    fabrica_publicador: FabricaPublicador, ahora: dt.datetime | None = None,
                    rng: random.Random | None = None,
-                   esperar: Callable[[float], None] = time.sleep) -> str | None:
-    """Devuelve el estado de la publicación realizada, o None si no se hizo nada."""
+                   esperar: Callable[[float], None] = time.sleep, aprobador=None) -> str | None:
+    """Devuelve el estado de la publicación realizada, "esperando_aprobacion", o None si no se hizo nada.
+
+    En modo "aprobacion" se pide permiso por Telegram (aprobador) antes de publicar cada tarea.
+    """
+    if config.modo == "aprobacion" and aprobador is None:
+        raise ValueError("El modo 'aprobacion' necesita Telegram configurado")
     hora_fija = ahora is not None
     ahora = ahora or config.ahora()
     rng = rng or random.Random()
@@ -42,6 +47,8 @@ def ejecutar_ciclo(config: Config, publicaciones: list[Publicacion], historial: 
         historial.agregar(t.clave, t.publicacion.id, t.grupo, "vencida", ahora,
                           detalle="Pasó el retraso máximo sin poder publicarse (se evita publicar en ráfaga)")
         log.info("Vencida: '%s' en '%s'", t.publicacion.id, t.grupo)
+        if aprobador and aprobador.estado(t.clave):
+            aprobador.cerrar(t.clave, "⌛ Venció sin publicarse")
 
     for t in pendientes:
         pub = t.publicacion
@@ -55,23 +62,41 @@ def ejecutar_ciclo(config: Config, publicaciones: list[Publicacion], historial: 
             log.info("En espera '%s' -> '%s': %s", pub.id, t.grupo, decision.motivo)
             continue
 
-        # Se elige la variante más distinta a lo publicado recientemente en TODOS los grupos,
-        # pero solo se descarta si se parece demasiado a algo ya publicado en ESTE grupo.
-        previos_grupo = historial.textos_publicados(t.grupo)
-        texto, _ = elegir_variante(pub.texto, previos_grupo + historial.textos_publicados(limite=5), rng)
-        sim = max((similitud(texto, p) for p in previos_grupo), default=0.0)
-        if sim > config.contenido.similitud_maxima:
-            historial.agregar(t.clave, pub.id, t.grupo, "omitida", ahora, texto,
-                              f"Texto {sim:.0%} igual a uno ya publicado en el grupo. Agregá variaciones {{a|b}}")
-            log.warning("Omitida '%s' en '%s': texto demasiado parecido a uno anterior (%.0f%%)",
-                        pub.id, t.grupo, sim * 100)
+        imagenes = [config.carpeta_imagenes / n for n in pub.imagenes]
+        estado_aprobacion = aprobador.estado(t.clave) if aprobador else None
+        if estado_aprobacion == "pendiente":
+            log.info("Esperando tu aprobación en Telegram: '%s' -> '%s'", pub.id, t.grupo)
+            return "esperando_aprobacion"
+        if estado_aprobacion == "rechazada":
+            historial.agregar(t.clave, pub.id, t.grupo, "no_confirmada", ahora, aprobador.texto(t.clave),
+                              "Rechazada desde Telegram")
+            aprobador.cerrar(t.clave)
+            log.info("Rechazada desde Telegram: '%s' -> '%s'", pub.id, t.grupo)
             continue
+
+        if estado_aprobacion == "aprobada":
+            texto = aprobador.texto(t.clave)
+        else:
+            # Se elige la variante más distinta a lo publicado recientemente en TODOS los grupos,
+            # pero solo se descarta si se parece demasiado a algo ya publicado en ESTE grupo.
+            previos_grupo = historial.textos_publicados(t.grupo)
+            texto, _ = elegir_variante(pub.texto, previos_grupo + historial.textos_publicados(limite=5), rng)
+            sim = max((similitud(texto, p) for p in previos_grupo), default=0.0)
+            if sim > config.contenido.similitud_maxima:
+                historial.agregar(t.clave, pub.id, t.grupo, "omitida", ahora, texto,
+                                  f"Texto {sim:.0%} igual a uno ya publicado en el grupo. Agregá variaciones {{a|b}}")
+                log.warning("Omitida '%s' en '%s': texto demasiado parecido a uno anterior (%.0f%%)",
+                            pub.id, t.grupo, sim * 100)
+                continue
+            if config.modo == "aprobacion":
+                aprobador.solicitar(t.clave, pub.id, t.grupo, texto, imagenes)
+                log.info("Pedí tu aprobación por Telegram: '%s' -> '%s'", pub.id, t.grupo)
+                return "esperando_aprobacion"
 
         demora = rng.uniform(config.limites.demora_aleatoria_min_seg, config.limites.demora_aleatoria_max_seg)
         log.info("Publicando '%s' en '%s' (modo %s) en %.0f segundos...", pub.id, t.grupo, config.modo, demora)
         esperar(demora)
 
-        imagenes = [config.carpeta_imagenes / n for n in pub.imagenes]
         with fabrica_publicador() as publicador:
             res = publicador.publicar(config.grupos[t.grupo].url, texto, imagenes)
 
@@ -82,6 +107,16 @@ def ejecutar_ciclo(config: Config, publicaciones: list[Publicacion], historial: 
         if res.estado == "bloqueada":
             antiban.pausar(config, res.detalle)
             log.critical("¡Facebook mostró una advertencia! El agente quedó PAUSADO. Detalle: %s", res.detalle)
+        if aprobador:
+            if estado_aprobacion:
+                aprobador.cerrar(t.clave, {"publicada": "✅ Publicada"}.get(res.estado, f"⚠️ {res.estado}"))
+            avisos = {
+                "publicada": f"✅ Publicado en «{t.grupo}».",
+                "bloqueada": f"🚨 Facebook mostró una advertencia y el agente quedó PAUSADO: {res.detalle}\n"
+                             "Revisá tu cuenta y mandá /reanudar cuando esté todo bien.",
+            }
+            aprobador.avisar(avisos.get(res.estado, f"⚠️ No se pudo publicar en «{t.grupo}»: {res.detalle}"),
+                             res.captura)
         return res.estado
 
     return None

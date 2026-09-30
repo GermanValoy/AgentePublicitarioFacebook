@@ -9,7 +9,9 @@ zona_horaria: America/Argentina/Tucuman
 
 # Cómo publica el agente:
 #   simulacion  -> hace todo en Facebook pero NO publica (descarta el borrador). Para probar.
-#   asistido    -> deja el borrador listo y VOS hacés clic en "Publicar". (RECOMENDADO)
+#   asistido    -> deja el borrador listo y VOS hacés clic en "Publicar" en la PC.
+#   aprobacion  -> te pregunta por Telegram (celular o PC) y publica solo si tocás ✅. (RECOMENDADO)
+#                  Se activa solo al ejecutar configurar_telegram.bat
 #   automatico  -> publica solo. Más riesgo de bloqueo: usalo solo tras semanas sin problemas.
 modo: asistido
 

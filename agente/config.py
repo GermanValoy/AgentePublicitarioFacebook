@@ -9,7 +9,7 @@ from zoneinfo import ZoneInfo, ZoneInfoNotFoundError
 import yaml
 
 RAIZ = Path(__file__).resolve().parent.parent
-MODOS = ("simulacion", "asistido", "automatico")
+MODOS = ("simulacion", "asistido", "aprobacion", "automatico")
 NAVEGADORES = ("chromium", "chrome", "msedge")
 DIAS = {
     "lunes": 0, "martes": 1, "miercoles": 2, "miércoles": 2, "jueves": 3,

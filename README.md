@@ -162,6 +162,28 @@ Las imágenes se arman con `herramientas/imagenes.py`: `placa()` (diseño simple
 
 ---
 
+## 5c. Aprobar desde el celular con Telegram (recomendado)
+
+El agente hace todo solo y **vos solo aprobás desde el celular o la PC**:
+
+1. A la hora programada te llega a Telegram la **foto y el texto** con dos botones:
+   **✅ Publicar** / **❌ No publicar**.
+2. Si tocás ✅, el agente publica solo y te manda la **captura** como confirmación.
+3. Comandos desde Telegram: `/estado`, `/pausar`, `/reanudar`.
+4. Si Facebook muestra una advertencia, el agente se pausa y te avisa al instante.
+
+Configuración (una sola vez):
+1. Doble clic en `configurar_telegram.bat` y seguí los pasos (crear el bot con @BotFather,
+   pegar el token y mandarle /start). Queda en `modo: aprobacion`.
+2. Doble clic en `activar_inicio_automatico.bat` para que el agente arranque solo al prender la PC.
+3. Configurá Windows para que **no se suspenda** en el horario de publicación
+   (Configuración → Sistema → Inicio/apagado y suspensión → "Nunca" cuando está enchufada).
+
+El token del bot queda solo en tu PC (`datos/telegram.json`), nunca se sube a GitHub.
+**La PC tiene que estar prendida** para que el agente pueda publicar.
+
+---
+
 ## 6. Pruebas antes de publicar
 
 Hay **tres niveles** de prueba. Hacelos en este orden cada vez que cambies algo:
@@ -198,6 +220,7 @@ Además:
 | `publicar-ahora --id X [--grupo Y]` | Publica ya una publicación (respeta anti-baneo). También: `publicar_ahora.bat` |
 | `publicar-pendientes` | Una pasada (publica como máximo 1) — para cron |
 | `ejecutar` | Deja el agente trabajando según el calendario |
+| `configurar-telegram` | Conecta Telegram para aprobar desde el celular |
 | `sincronizar` | Sube tus fotos/ideas y baja lo nuevo desde GitHub |
 | `reanudar` | Quita la pausa de emergencia |
 

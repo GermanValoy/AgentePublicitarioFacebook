@@ -5,6 +5,7 @@ import argparse
 import logging
 import os
 import random
+import re
 import sys
 import time
 from contextlib import contextmanager
@@ -16,6 +17,7 @@ from .contenido import elegir_variante
 from .historial import Historial
 from .planificador import grupos_de, proxima_ocurrencia, tareas_del_momento
 from .publicaciones import cargar_publicaciones
+from . import telegram
 from .sincronizacion import ErrorSincronizacion, conectado, sincronizar
 from .validador import validar_todas
 
@@ -38,8 +40,11 @@ def _historial(config: Config) -> Historial:
 
 def _publicador(config: Config, modo: str | None = None, oculto: bool = False):
     from .publicador import PublicadorFacebook
+    modo = modo or config.modo
+    if modo == "aprobacion":
+        modo = "automatico"  # ya lo aprobaste por Telegram: el agente hace el clic en "Publicar"
     return PublicadorFacebook(config.carpeta_datos / "perfil_navegador", config.carpeta_datos / "capturas",
-                              modo or config.modo, oculto=oculto, navegador=config.navegador)
+                              modo, oculto=oculto, navegador=config.navegador)
 
 
 @contextmanager
@@ -102,37 +107,42 @@ def cmd_vista_previa(config, args) -> int:
     return 0
 
 
-def cmd_estado(config, args) -> int:
+def resumen_estado(config: Config) -> str:
     historial = _historial(config)
     ahora = config.ahora()
     pausa = antiban.pausa_activa(config)
-    print(f"Ahora: {ahora:%d/%m/%Y %H:%M}  |  modo: {config.modo}  |  "
-          f"{'PAUSADO: ' + pausa if pausa else 'activo'}")
+    lineas = [f"Ahora: {ahora:%d/%m/%Y %H:%M}  |  modo: {config.modo}  |  "
+              f"{'PAUSADO: ' + pausa if pausa else 'activo'}"]
     hoy = [r for r in historial.actividad() if r.momento.astimezone(config.zona).date() == ahora.date()]
-    print(f"Publicaciones hoy: {len(hoy)}/{config.limites.max_publicaciones_por_dia}\n")
+    lineas.append(f"Publicaciones hoy: {len(hoy)}/{config.limites.max_publicaciones_por_dia}\n")
 
     publicaciones = cargar_publicaciones(config.archivo_programadas)
     pendientes, _ = tareas_del_momento(publicaciones, config, historial, ahora)
-    print("Pendientes ahora:")
+    lineas.append("Pendientes ahora:")
     for t in pendientes:
         d = antiban.evaluar(ahora, t.grupo, config, historial)
-        print(f"  - {t.publicacion.id} -> {t.grupo}: {'se puede publicar' if d.permitido else d.motivo}")
+        lineas.append(f"  - {t.publicacion.id} -> {t.grupo}: {'se puede publicar' if d.permitido else d.motivo}")
     if not pendientes:
-        print("  (ninguna)")
+        lineas.append("  (ninguna)")
 
-    print("\nPróximas programadas:")
+    lineas.append("\nPróximas programadas:")
     proximas = [(proxima_ocurrencia(p, config, ahora), p) for p in publicaciones if p.activa]
     proximas = sorted((x for x in proximas if x[0]), key=lambda x: x[0])
     for momento, p in proximas[:10]:
-        print(f"  - {momento:%d/%m %H:%M}  {p.id}  ->  {', '.join(grupos_de(p, config))}")
+        lineas.append(f"  - {momento:%d/%m %H:%M}  {p.id}  ->  {', '.join(grupos_de(p, config))}")
     if not proximas:
-        print("  (ninguna)")
+        lineas.append("  (ninguna)")
 
-    print("\nÚltimos movimientos:")
+    lineas.append("\nÚltimos movimientos:")
     for r in historial.registros[-8:]:
-        print(f"  - {r.momento:%d/%m %H:%M}  {r.estado:<13} {r.publicacion_id} -> {r.grupo}")
+        lineas.append(f"  - {r.momento:%d/%m %H:%M}  {r.estado:<13} {r.publicacion_id} -> {r.grupo}")
     if not historial.registros:
-        print("  (ninguno)")
+        lineas.append("  (ninguno)")
+    return "\n".join(lineas)
+
+
+def cmd_estado(config, args) -> int:
+    print(resumen_estado(config))
     return 0
 
 
@@ -221,20 +231,53 @@ def cmd_simular(config, args) -> int:
     return 0 if res.estado == "simulada" else 1
 
 
-def _una_pasada(config_inicial: Config, args) -> None:
+def _aprobador(config: Config) -> telegram.AprobadorTelegram | None:
+    cliente = telegram.cargar(config.carpeta_datos)
+    if cliente is None:
+        if config.modo == "aprobacion":
+            raise ErrorConfig("El modo 'aprobacion' necesita Telegram: ejecutá configurar_telegram.bat")
+        return None
+    return telegram.AprobadorTelegram(cliente, config.carpeta_datos / "aprobaciones.json")
+
+
+def _una_pasada(config_inicial: Config, args, aprobador=None) -> str | None:
     config = cargar_config(config_inicial.raiz)  # se relee para tomar cambios sin reiniciar
     publicaciones = cargar_publicaciones(config.archivo_programadas)
+    if aprobador is None:
+        aprobador = _aprobador(config)
+        if aprobador:
+            aprobador.procesar(comandos=_comandos_telegram(config))  # tomar botones tocados desde la última vez
     with _bloqueo(config):
-        ejecutar_ciclo(config, publicaciones, _historial(config),
-                       lambda: _publicador(config, oculto=args.oculto),
-                       esperar=(lambda s: None) if args.sin_demora else time.sleep)
+        return ejecutar_ciclo(config, publicaciones, _historial(config),
+                              lambda: _publicador(config, oculto=args.oculto),
+                              esperar=(lambda s: None) if args.sin_demora else time.sleep,
+                              aprobador=aprobador)
 
 
-def _sincronizar(config: Config) -> bool:
+def _comandos_telegram(config: Config):
+    def responder(texto: str) -> str:
+        if texto.startswith("/estado"):
+            return resumen_estado(config)
+        if texto.startswith("/pausar"):
+            antiban.pausar(config, "Pausado desde Telegram")
+            return "⏸️ Agente pausado. No se publica nada hasta que mandes /reanudar."
+        if texto.startswith("/reanudar"):
+            antiban.reanudar(config)
+            return "▶️ Agente reanudado."
+        return ("Comandos:\n/estado - qué se publicó y qué viene\n/pausar - frenar todo\n"
+                "/reanudar - volver a publicar\n\nCuando toque publicar te mando la foto y el texto "
+                "con los botones ✅ Publicar / ❌ No publicar.")
+    return responder
+
+
+def _sincronizar(config: Config, aprobador=None) -> bool:
     if not conectado(config.raiz):
         return False
     try:
-        log.info("GitHub: %s", sincronizar(config.raiz))
+        resumen = sincronizar(config.raiz)
+        log.info("GitHub: %s", resumen)
+        if aprobador and "bajaron" in resumen:
+            aprobador.avisar(f"🔄 Llegaron novedades desde GitHub: {resumen}")
         return True
     except ErrorSincronizacion as e:
         log.warning("GitHub: no se pudo sincronizar. %s", e)
@@ -255,20 +298,86 @@ def cmd_publicar_pendientes(config, args) -> int:
 
 
 def cmd_ejecutar(config, args) -> int:
-    log.info("Agente en marcha (modo %s). Revisa el calendario cada ~%d minutos. Ctrl+C para salir.",
-             config.modo, args.intervalo)
-    ultima_sincronizacion = 0.0
+    aprobador = _aprobador(config)
+    log.info("Agente en marcha (modo %s). Revisa el calendario cada ~%d minutos. %s Ctrl+C para salir.",
+             config.modo, args.intervalo,
+             "Telegram conectado: respondé desde el celular." if aprobador else "")
+    if aprobador:
+        aprobador.avisar(f"🤖 Agente en marcha (modo {config.modo}). Mandá /estado para ver qué viene.")
+    comandos = _comandos_telegram(config)
+    ultima_sincronizacion = ultima_pasada = 0.0
     while True:
         try:
             if args.sincronizar_cada and time.time() - ultima_sincronizacion >= args.sincronizar_cada * 60:
-                _sincronizar(config)
+                _sincronizar(config, aprobador)
                 ultima_sincronizacion = time.time()
-            _una_pasada(config, args)
+            if time.time() - ultima_pasada >= args.intervalo * 60:
+                _una_pasada(config, args, aprobador)
+                ultima_pasada = time.time()
+            if aprobador:
+                # Espera escuchando a Telegram: si tocás un botón, se actúa enseguida.
+                if aprobador.procesar(espera=25, comandos=comandos):
+                    ultima_pasada = 0.0
+            else:
+                time.sleep(30)
         except KeyboardInterrupt:
             raise
+        except telegram.ErrorTelegram as e:
+            log.warning("Telegram: %s", e)
+            time.sleep(30)
         except Exception:
             log.exception("Error en la pasada; se reintenta en la próxima")
-        time.sleep(args.intervalo * 60 + random.uniform(0, 60))
+            time.sleep(60)
+
+
+def cmd_configurar_telegram(config, args) -> int:
+    print("""
+=== CONECTAR TELEGRAM (gratis) ===
+1. En tu celular abrí Telegram y buscá  @BotFather  (tiene tilde azul).
+2. Mandale  /newbot
+3. Te pide un nombre: por ejemplo  Agente Servicio Tecnico
+4. Te pide un usuario que termine en "bot": por ejemplo  servicio_tafi_bot
+5. BotFather te responde con un TOKEN largo, parecido a  123456789:AAH...xyz
+""")
+    token = input("Pegá acá el token y presioná Enter: ").strip()
+    cliente = telegram.Telegram(token)
+    try:
+        bot = cliente.llamar("getMe")
+    except telegram.ErrorTelegram as e:
+        print(f"El token no funciona: {e}")
+        return 1
+    print(f"\nPerfecto. Ahora abrí este link en el celular y tocá INICIAR (o mandale /start):")
+    print(f"    https://t.me/{bot['username']}\n")
+    print("Esperando tu mensaje (hasta 5 minutos)...")
+    desde, limite = 0, time.time() + 300
+    while time.time() < limite:
+        for u in cliente.actualizaciones(desde, espera=25):
+            desde = u["update_id"] + 1
+            chat = (u.get("message") or {}).get("chat", {})
+            if chat.get("type") == "private":
+                telegram.guardar(config.carpeta_datos, token, chat["id"])
+                cliente.chat_id = chat["id"]
+                cliente.llamar("getUpdates", {"offset": desde})  # marcar como leídos
+                cliente.mensaje("✅ ¡Conectado! Desde acá vas a aprobar las publicaciones.\n"
+                                "Mandá /estado para ver qué viene.")
+                print("¡Listo! Telegram conectado. Te llegó un mensaje de prueba.")
+                return _activar_modo_aprobacion(config)
+    print("No llegó ningún mensaje. Volvé a intentarlo.")
+    return 1
+
+
+def _activar_modo_aprobacion(config: Config) -> int:
+    archivo = config.raiz / "config" / "config.yaml"
+    contenido = archivo.read_text(encoding="utf-8")
+    if "\nmodo: aprobacion" in contenido:
+        return 0
+    nuevo, cambios = re.subn(r"(?m)^modo:\s*\w+", "modo: aprobacion", contenido, count=1)
+    if cambios:
+        archivo.write_text(nuevo, encoding="utf-8")
+        print("Modo cambiado a 'aprobacion': de ahora en más aprobás desde Telegram.")
+    else:
+        print("Poné  modo: aprobacion  en config/config.yaml para aprobar desde Telegram.")
+    return 0
 
 
 def cmd_reanudar(config, args) -> int:
@@ -303,6 +412,7 @@ def construir_parser() -> argparse.ArgumentParser:
     p.add_argument("--sincronizar-cada", type=int, default=30,
                    help="minutos entre sincronizaciones con GitHub (0 = nunca; por defecto 30)")
     sub.add_parser("sincronizar", help="sube tus fotos/ideas y baja lo nuevo desde GitHub")
+    sub.add_parser("configurar-telegram", help="conecta un bot de Telegram para aprobar desde el celular")
     sub.add_parser("reanudar", help="quita la pausa de emergencia")
     return parser
 
@@ -311,7 +421,8 @@ COMANDOS = {
     "iniciar-sesion": cmd_iniciar_sesion, "verificar-sesion": cmd_verificar_sesion,
     "validar": cmd_validar, "vista-previa": cmd_vista_previa, "estado": cmd_estado,
     "simular": cmd_simular, "publicar-ahora": cmd_publicar_ahora, "publicar-pendientes": cmd_publicar_pendientes,
-    "ejecutar": cmd_ejecutar, "sincronizar": cmd_sincronizar, "reanudar": cmd_reanudar,
+    "ejecutar": cmd_ejecutar, "sincronizar": cmd_sincronizar,
+    "configurar-telegram": cmd_configurar_telegram, "reanudar": cmd_reanudar,
 }
 
 
