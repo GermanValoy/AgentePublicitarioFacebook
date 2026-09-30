@@ -44,6 +44,32 @@ def test_modo_automatico_publica(tmp_path, imagen):
     assert res.captura.is_file()
 
 
+@pytest.mark.parametrize("variante", ["selector", "zona"])
+def test_adjunta_fotos_en_todas_las_variantes_de_facebook(tmp_path, imagen, variante):
+    p = abrir(tmp_path, "automatico")
+    try:
+        res = p.publicar(f"{PAGINA}?fotos={variante}", "Hola vecinos", [imagen, imagen])
+        publicado = p.page.locator("#publicado").inner_text()
+    finally:
+        p.__exit__(None, None, None)
+    assert res.estado == "publicada", res.detalle
+    assert publicado.endswith("fotos:2")
+
+
+def test_avisa_si_la_foto_no_aparece_y_guarda_diagnostico(tmp_path, imagen, monkeypatch):
+    import agente.publicador as modulo
+    reloj = iter(range(0, 10_000, 10))
+    monkeypatch.setattr(modulo.time, "monotonic", lambda: next(reloj))  # no esperar 30 s de verdad
+    p = abrir(tmp_path, "simulacion")
+    try:
+        res = p.publicar(f"{PAGINA}?fotos=nada", "Hola vecinos", [imagen])
+    finally:
+        p.__exit__(None, None, None)
+    assert res.estado == "fallida" and "vista previa" in res.detalle
+    assert res.captura and res.captura.is_file()
+    assert list((tmp_path / "capturas").glob("*error-imagenes.html"))
+
+
 def test_modo_simulacion_no_publica(tmp_path, imagen):
     p = abrir(tmp_path, "simulacion")
     try:

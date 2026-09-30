@@ -2,29 +2,55 @@
 <html lang="es">
 <head><meta charset="utf-8"><title>Grupo de prueba</title></head>
 <body>
-  <!-- Imita la estructura básica del compositor de un grupo de Facebook -->
+  <!-- Imita la estructura básica del compositor de un grupo de Facebook.
+       ?fotos=entrada  -> "Foto/video" agrega un input dentro del cuadro (por defecto)
+       ?fotos=selector -> "Foto/video" abre directamente la ventana de elegir archivos
+       ?fotos=zona     -> "Foto/video" muestra una zona "Agregar fotos/videos" que abre la ventana
+       ?fotos=nada     -> se cargan archivos pero nunca aparece la vista previa -->
   <h1>Vecinos Zona Norte</h1>
   <div role="button" id="abrir" tabindex="0">Escribe algo...</div>
   <div style="height:1500px"></div>
+  <input type="file" id="oculto" multiple hidden>
   <div role="dialog" id="dialogo" hidden>
+    <img src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" alt="perfil">
     <div role="textbox" contenteditable="true" id="caja" style="min-height:80px;border:1px solid #999"></div>
-    <div role="button" id="foto" tabindex="0">Foto/video</div>
+    <div role="button" id="foto" aria-label="Foto/video" tabindex="0">📷</div>
     <div id="zona"></div>
+    <div id="vistas"></div>
     <div role="button" id="publicar" tabindex="0">Publicar</div>
   </div>
   <div id="publicado"></div>
   <script>
+    const modo = new URLSearchParams(location.search).get("fotos") || "entrada";
     const dialogo = document.getElementById("dialogo");
+    let cantidad = 0;
+    function mostrar(archivos) {
+      cantidad = archivos.length;
+      if (modo === "nada") return;
+      for (const a of archivos) {
+        const img = document.createElement("img");
+        img.src = URL.createObjectURL(a); img.width = 80;
+        document.getElementById("vistas").appendChild(img);
+      }
+    }
+    const oculto = document.getElementById("oculto");
+    oculto.onchange = () => mostrar(oculto.files);
     document.getElementById("abrir").onclick = () => { dialogo.hidden = false; };
     document.getElementById("foto").onclick = () => {
+      if (modo === "selector") { oculto.click(); return; }
+      if (modo === "zona") {
+        const z = document.createElement("div");
+        z.textContent = "Agregar fotos/videos"; z.onclick = () => oculto.click();
+        document.getElementById("zona").appendChild(z); return;
+      }
       const entrada = document.createElement("input");
-      entrada.type = "file"; entrada.multiple = true; entrada.id = "archivos";
+      entrada.type = "file"; entrada.multiple = true;
+      entrada.onchange = () => mostrar(entrada.files);
       document.getElementById("zona").appendChild(entrada);
     };
     document.getElementById("publicar").onclick = () => {
-      const archivos = document.getElementById("archivos");
       document.getElementById("publicado").textContent =
-        document.getElementById("caja").innerText + " | fotos:" + (archivos ? archivos.files.length : 0);
+        document.getElementById("caja").innerText + " | fotos:" + cantidad;
       dialogo.hidden = true;
     };
     document.addEventListener("keydown", (e) => { if (e.key === "Escape") dialogo.hidden = true; });

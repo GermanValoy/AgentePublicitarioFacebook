@@ -11,12 +11,16 @@ Modos:
 from __future__ import annotations
 
 import datetime as dt
+import logging
 import os
 import random
 import re
+import time
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Callable
+
+log = logging.getLogger("agente")
 
 URL_FACEBOOK = "https://www.facebook.com/"
 
@@ -30,7 +34,7 @@ PATRONES_BLOQUEO = re.compile(
 TEXTO_COMPOSITOR = re.compile(
     r"escrib[eí] algo|write something|crea una publicaci[oó]n|create a public post|crear publicaci[oó]n", re.I)
 BOTON_FOTO = re.compile(r"foto\/v[ií]deo|photo\/video", re.I)  # "/" escapada: Playwright la exige
-BOTON_AGREGAR_FOTOS = re.compile(r"agrega(r)? fotos|add photos", re.I)
+BOTON_AGREGAR_FOTOS = re.compile(r"agrega(r)? fotos|add photos|arrastra|drag and drop", re.I)
 BOTON_PUBLICAR = re.compile(r"^\s*(publicar|post)\s*$", re.I)
 BOTON_DESCARTAR = re.compile(r"^\s*(descartar|discard|salir|leave)\s*$", re.I)
 
@@ -94,11 +98,27 @@ class PublicadorFacebook:
     def _pausa(self, desde: float = 1.0, hasta: float = 3.0) -> None:
         self.page.wait_for_timeout(random.uniform(desde, hasta) * 1000 * self.velocidad)
 
-    def _captura(self, etiqueta: str) -> Path:
-        self.carpeta_capturas.mkdir(parents=True, exist_ok=True)
-        ruta = self.carpeta_capturas / f"{dt.datetime.now():%Y%m%d-%H%M%S}-{etiqueta}.png"
-        self.page.screenshot(path=str(ruta))
-        return ruta
+    def _captura(self, etiqueta: str) -> Path | None:
+        """Guarda una captura. Si falla (Facebook a veces tarda en cargar fuentes) no corta el proceso."""
+        try:
+            self.carpeta_capturas.mkdir(parents=True, exist_ok=True)
+            ruta = self.carpeta_capturas / f"{dt.datetime.now():%Y%m%d-%H%M%S}-{etiqueta}.png"
+            self.page.screenshot(path=str(ruta), timeout=20_000, animations="disabled", caret="hide")
+            log.info("Captura guardada: %s", ruta)
+            return ruta
+        except Exception as e:
+            log.warning("No se pudo sacar la captura (%s): %s", etiqueta, e)
+            return None
+
+    def _guardar_diagnostico(self, dialogo, etiqueta: str) -> None:
+        """Guarda el HTML del cuadro de publicación para poder ajustar el agente si Facebook cambia."""
+        try:
+            self.carpeta_capturas.mkdir(parents=True, exist_ok=True)
+            ruta = self.carpeta_capturas / f"{dt.datetime.now():%Y%m%d-%H%M%S}-{etiqueta}.html"
+            ruta.write_text(dialogo.evaluate("e => e.outerHTML"), encoding="utf-8")
+            log.info("Diagnóstico guardado: %s", ruta)
+        except Exception as e:
+            log.warning("No se pudo guardar el diagnóstico: %s", e)
 
     def sesion_activa(self) -> bool:
         self.page.goto(URL_FACEBOOK, wait_until="domcontentloaded")
@@ -129,34 +149,86 @@ class PublicadorFacebook:
                 return candidato.first
         return None
 
+    def _subir_por_entrada(self, dialogo, archivos: list[str]) -> bool:
+        entrada = dialogo.locator("input[type=file]")
+        if entrada.count():
+            entrada.last.set_input_files(archivos)
+            return True
+        return False
+
+    def _subir_con_selector(self, boton, archivos: list[str]) -> bool:
+        """Hace clic en el botón y, si se abre la ventana de elegir archivos, carga las fotos ahí."""
+        from playwright.sync_api import TimeoutError as TiempoAgotado
+        try:
+            with self.page.expect_file_chooser(timeout=6_000) as selector:
+                boton.click()
+            selector.value.set_files(archivos)
+            return True
+        except TiempoAgotado:
+            return False
+
+    def _boton(self, dialogo, patron):
+        for candidato in (dialogo.get_by_role("button", name=patron), dialogo.get_by_label(patron),
+                          dialogo.get_by_text(patron)):
+            if candidato.count() and candidato.first.is_visible():
+                return candidato.first
+        return None
+
     def _adjuntar_imagenes(self, dialogo, imagenes: list[Path]) -> None:
         archivos = [str(i) for i in imagenes]
-        entrada = dialogo.locator("input[type=file]")
-        if not entrada.count():
-            dialogo.get_by_role("button", name=BOTON_FOTO).first.click()
-            self._pausa(1, 2)
-        if not entrada.count():
-            with self.page.expect_file_chooser(timeout=10_000) as selector:
-                dialogo.get_by_text(BOTON_AGREGAR_FOTOS).first.click()
-            selector.value.set_files(archivos)
-        else:
-            entrada.first.set_input_files(archivos)
+        miniaturas_antes = dialogo.locator("img").count()
+
+        subido = self._subir_por_entrada(dialogo, archivos)
+        if not subido:
+            boton = self._boton(dialogo, BOTON_FOTO)
+            if boton is None:
+                raise RuntimeError("no se encontró el botón 'Foto/video' en el cuadro de publicación")
+            log.info("Clic en 'Foto/video'")
+            subido = self._subir_con_selector(boton, archivos)
+            if not subido:  # el clic mostró la zona "Agregar fotos/videos" en lugar del selector
+                self._pausa(1, 2)
+                subido = self._subir_por_entrada(dialogo, archivos)
+            if not subido:
+                zona = self._boton(dialogo, BOTON_AGREGAR_FOTOS)
+                subido = zona is not None and self._subir_con_selector(zona, archivos)
+        if not subido:
+            raise RuntimeError("no se encontró dónde cargar las fotos")
+
+        # Confirmar que Facebook muestra la vista previa de la foto.
+        limite = time.monotonic() + 30
+        while dialogo.locator("img").count() <= miniaturas_antes:
+            if time.monotonic() > limite:
+                raise RuntimeError("se cargó el archivo pero Facebook no mostró la vista previa de la foto")
+            self.page.wait_for_timeout(500)
+        log.info("Foto(s) adjuntada(s): %d", len(archivos))
         self._pausa(3 + 2 * len(imagenes), 5 + 2 * len(imagenes))  # tiempo de subida
 
     def _descartar(self, dialogo) -> None:
-        self.page.keyboard.press("Escape")
-        self._pausa(1, 2)
-        boton = self.page.get_by_role("button", name=BOTON_DESCARTAR)
-        if boton.count() and boton.first.is_visible():
-            boton.first.click()
-        dialogo.wait_for(state="hidden", timeout=10_000)
+        try:
+            self.page.keyboard.press("Escape")
+            self._pausa(1, 2)
+            boton = self.page.get_by_role("button", name=BOTON_DESCARTAR)
+            if boton.count() and boton.first.is_visible():
+                boton.first.click()
+            dialogo.wait_for(state="hidden", timeout=10_000)
+            log.info("Borrador descartado")
+        except Exception as e:
+            log.warning("No se pudo cerrar el borrador: %s", e)
 
     # ---- publicación ---------------------------------------------------------------------
     def publicar(self, url_grupo: str, texto: str, imagenes: list[Path]) -> ResultadoPublicacion:
+        try:
+            return self._publicar(url_grupo, texto, imagenes)
+        except Exception as e:
+            log.exception("Error inesperado al publicar")
+            return ResultadoPublicacion("fallida", f"Error inesperado: {e}", self._captura("error"))
+
+    def _publicar(self, url_grupo: str, texto: str, imagenes: list[Path]) -> ResultadoPublicacion:
         page = self.page
         if self.verificar_sesion and not self.sesion_activa():
             return ResultadoPublicacion("fallida", "No hay sesión de Facebook. Ejecutá: python -m agente iniciar-sesion")
 
+        log.info("Abriendo el grupo %s", url_grupo)
         page.goto(url_grupo, wait_until="domcontentloaded")
         self._pausa(3, 6)
         bloqueo = self.detectar_bloqueo()
@@ -178,16 +250,20 @@ class PublicadorFacebook:
         dialogo.wait_for(state="visible", timeout=15_000)
         self._pausa(1, 3)
 
+        log.info("Escribiendo el texto")
         caja = dialogo.get_by_role("textbox").first
         caja.click()
         caja.press_sequentially(texto, delay=random.uniform(35, 90) * self.velocidad)
         self._pausa(1, 3)
 
         if imagenes:
+            log.info("Adjuntando %d imagen(es)", len(imagenes))
             try:
                 self._adjuntar_imagenes(dialogo, imagenes)
             except Exception as e:
+                log.warning("No se pudieron adjuntar las imágenes: %s", e)
                 captura = self._captura("error-imagenes")
+                self._guardar_diagnostico(dialogo, "error-imagenes")
                 self._descartar(dialogo)
                 return ResultadoPublicacion("fallida", f"No se pudieron adjuntar las imágenes: {e}", captura)
 
