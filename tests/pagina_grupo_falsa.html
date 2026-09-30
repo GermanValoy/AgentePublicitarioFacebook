@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="es">
+<head><meta charset="utf-8"><title>Grupo de prueba</title></head>
+<body>
+  <!-- Imita la estructura básica del compositor de un grupo de Facebook -->
+  <h1>Vecinos Zona Norte</h1>
+  <div role="button" id="abrir" tabindex="0">Escribe algo...</div>
+  <div style="height:1500px"></div>
+  <div role="dialog" id="dialogo" hidden>
+    <div role="textbox" contenteditable="true" id="caja" style="min-height:80px;border:1px solid #999"></div>
+    <div role="button" id="foto" tabindex="0">Foto/video</div>
+    <div id="zona"></div>
+    <div role="button" id="publicar" tabindex="0">Publicar</div>
+  </div>
+  <div id="publicado"></div>
+  <script>
+    const dialogo = document.getElementById("dialogo");
+    document.getElementById("abrir").onclick = () => { dialogo.hidden = false; };
+    document.getElementById("foto").onclick = () => {
+      const entrada = document.createElement("input");
+      entrada.type = "file"; entrada.multiple = true; entrada.id = "archivos";
+      document.getElementById("zona").appendChild(entrada);
+    };
+    document.getElementById("publicar").onclick = () => {
+      const archivos = document.getElementById("archivos");
+      document.getElementById("publicado").textContent =
+        document.getElementById("caja").innerText + " | fotos:" + (archivos ? archivos.files.length : 0);
+      dialogo.hidden = true;
+    };
+    document.addEventListener("keydown", (e) => { if (e.key === "Escape") dialogo.hidden = true; });
+  </script>
+</body>
+</html>

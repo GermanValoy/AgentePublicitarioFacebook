@@ -1,0 +1,70 @@
+# =====================================================================
+#  CONFIGURACIÓN DEL AGENTE
+#  Después de editar este archivo ejecutá:  python -m agente validar
+# =====================================================================
+
+# Tu zona horaria (lista: https://en.wikipedia.org/wiki/List_of_tz_database_time_zones)
+# Ejemplos: America/Argentina/Buenos_Aires, America/Mexico_City, America/Bogota, Europe/Madrid
+zona_horaria: America/Argentina/Buenos_Aires
+
+# Cómo publica el agente:
+#   simulacion  -> hace todo en Facebook pero NO publica (descarta el borrador). Para probar.
+#   asistido    -> deja el borrador listo y VOS hacés clic en "Publicar". (RECOMENDADO)
+#   automatico  -> publica solo. Más riesgo de bloqueo: usalo solo tras semanas sin problemas.
+modo: asistido
+
+# Navegador que usa el agente (siempre con un perfil propio, separado del tuyo):
+#   chromium -> el de Playwright (instalalo con: python -m playwright install chromium)
+#   chrome   -> tu Google Chrome instalado     msedge -> Microsoft Edge (viene con Windows)
+navegador: chromium
+
+# ---------------------------------------------------------------------
+#  LÍMITES ANTI-BANEO (conservadores a propósito; no los subas mucho)
+# ---------------------------------------------------------------------
+limites:
+  max_publicaciones_por_dia: 3              # en total, sumando todos los grupos
+  min_minutos_entre_publicaciones: 45       # pausa mínima entre una y otra
+  dias_entre_publicaciones_mismo_grupo: 7   # no repetir en el mismo grupo antes de X días
+  horario_permitido:
+    desde: "09:00"
+    hasta: "21:00"
+  demora_aleatoria_segundos: [30, 300]      # espera al azar antes de cada publicación
+  max_horas_retraso: 12                     # si la PC estuvo apagada, no publica lo viejo en ráfaga
+  max_intentos: 2                           # reintentos si algo falla
+
+# ---------------------------------------------------------------------
+#  REGLAS DEL CONTENIDO (pruebas automáticas antes de publicar)
+# ---------------------------------------------------------------------
+contenido:
+  min_caracteres: 30
+  max_caracteres: 1500
+  max_enlaces: 1          # los enlaces son lo que más activa el filtro de spam
+  max_hashtags: 5
+  max_imagenes: 4
+  max_mb_imagen: 8
+  min_lado_imagen: 400    # píxeles
+  similitud_maxima: 0.85  # no repetir en un grupo un texto 85% igual a uno anterior
+  palabras_prohibidas:    # palabras que suelen disparar filtros o que los admins odian
+    - gratis gratis
+    - dinero fácil
+    - haz clic aquí
+    - hacé clic acá
+
+# ---------------------------------------------------------------------
+#  GRUPOS  (solo grupos donde SOS MIEMBRO y que PERMITEN publicidad)
+# ---------------------------------------------------------------------
+#  nombre:            como lo vas a llamar en programadas.yaml
+#  url:               dirección del grupo (copiala del navegador)
+#  activo:            false para dejar de usarlo sin borrarlo
+#  dias_permitidos:   opcional, si el grupo solo acepta publicidad ciertos días
+grupos:
+  - nombre: Vecinos Zona Norte
+    url: https://www.facebook.com/groups/REEMPLAZAR_POR_ID_DEL_GRUPO
+    activo: true
+    notas: Permite publicidad de servicios
+
+  - nombre: Clasificados de la Ciudad
+    url: https://www.facebook.com/groups/REEMPLAZAR_POR_ID_DEL_GRUPO_2
+    activo: true
+    dias_permitidos: [sabado, domingo]
+    notas: Solo publicidad los fines de semana

@@ -1,0 +1,41 @@
+# =====================================================================
+#  CALENDARIO DE PUBLICACIONES
+#  1) Poné tus fotos en la carpeta publicaciones/imagenes/
+#  2) Agregá acá una entrada por publicación
+#  3) Probá:  python -m agente validar   y   python -m agente vista-previa
+#
+#  Campos:
+#    id:                nombre único, sin espacios (ej: limpieza-octubre)
+#    fecha:             AAAA-MM-DD
+#    hora:              "HH:MM"  (con comillas)
+#    grupos:            lista de nombres de config.yaml, o [todos]
+#    imagenes:          nombres de archivo dentro de publicaciones/imagenes/ (máx. 4)
+#    texto:             el mensaje. Usá {opción1|opción2} para que cada grupo reciba
+#                       un texto distinto (Facebook castiga textos idénticos).
+#    repetir_cada_dias: opcional, para repetir la publicación periódicamente
+#    activa:            false para pausarla sin borrarla
+#
+#  Si una publicación va a varios grupos, el agente las separa solo
+#  respetando los límites de config.yaml (no salen todas juntas).
+# =====================================================================
+
+publicaciones:
+  - id: ejemplo-mantenimiento
+    activa: false        # <- cambialo a true cuando tengas tus grupos reales
+    fecha: 2026-10-03
+    hora: "10:30"
+    grupos: [Vecinos Zona Norte, Clasificados de la Ciudad]
+    imagenes: [ejemplo-servicio-tecnico.png]
+    repetir_cada_dias: 14
+    texto: |
+      {¡Hola vecinos!|¡Buenas a todos!|¡Hola, qué tal!} 👋 Soy técnico en {mantenimiento|reparación} de computadoras.
+
+      🖥️ {¿Tu PC o notebook anda lenta?|¿Tu computadora tarda en arrancar o se calienta?|¿Tu notebook hace ruido o se apaga sola?}
+      Te ofrezco:
+      ✅ Limpieza interna y cambio de pasta térmica
+      ✅ Formateo e instalación de Windows y programas
+      ✅ Eliminación de virus
+      ✅ Mejoras: disco SSD y memoria RAM
+
+      {Presupuesto sin cargo.|Te paso presupuesto sin compromiso.} {Atiendo a domicilio o retiro el equipo.|Voy a tu casa o retiro el equipo.}
+      📩 {Escribime por privado|Mandame un mensaje} y te respondo {a la brevedad|enseguida}.

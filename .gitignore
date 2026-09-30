@@ -1,0 +1,7 @@
+# Datos locales del agente: contiene la SESIÓN de Facebook (cookies). Nunca subir.
+datos/
+__pycache__/
+*.pyc
+.venv/
+venv/
+.pytest_cache/
