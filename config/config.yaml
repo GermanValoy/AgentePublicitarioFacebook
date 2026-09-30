@@ -13,7 +13,7 @@ zona_horaria: America/Argentina/Tucuman
 #   aprobacion  -> te pregunta por Telegram (celular o PC) y publica solo si tocás ✅. (RECOMENDADO)
 #                  Se activa solo al ejecutar configurar_telegram.bat
 #   automatico  -> publica solo. Más riesgo de bloqueo: usalo solo tras semanas sin problemas.
-modo: asistido
+modo: aprobacion
 
 # Navegador que usa el agente (siempre con un perfil propio, separado del tuyo):
 #   chromium -> el de Playwright (instalalo con: python -m playwright install chromium)
