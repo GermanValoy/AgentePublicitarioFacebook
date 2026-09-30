@@ -4,8 +4,8 @@
 # =====================================================================
 
 # Tu zona horaria (lista: https://en.wikipedia.org/wiki/List_of_tz_database_time_zones)
-# Ejemplos: America/Argentina/Buenos_Aires, America/Mexico_City, America/Bogota, Europe/Madrid
-zona_horaria: America/Argentina/Buenos_Aires
+# Ejemplos: America/Argentina/Tucuman, America/Mexico_City, America/Bogota, Europe/Madrid
+zona_horaria: America/Argentina/Tucuman
 
 # Cómo publica el agente:
 #   simulacion  -> hace todo en Facebook pero NO publica (descarta el borrador). Para probar.
@@ -58,13 +58,18 @@ contenido:
 #  activo:            false para dejar de usarlo sin borrarlo
 #  dias_permitidos:   opcional, si el grupo solo acepta publicidad ciertos días
 grupos:
-  - nombre: Vecinos Zona Norte
-    url: https://www.facebook.com/groups/REEMPLAZAR_POR_ID_DEL_GRUPO
+  - nombre: FERIA AMERICANA TAFI VIEJO
+    url: https://www.facebook.com/groups/494048248305342
     activo: true
     notas: Permite publicidad de servicios
 
-  - nombre: Clasificados de la Ciudad
-    url: https://www.facebook.com/groups/REEMPLAZAR_POR_ID_DEL_GRUPO_2
+  - nombre: Venta de Garage Tafi Viejo
+    url: https://www.facebook.com/groups/ventadegaragetafiviejo
     activo: true
-    dias_permitidos: [sabado, domingo]
-    notas: Solo publicidad los fines de semana
+    dias_permitidos: [Lunes,Miercoles,Viernes]
+    notas: 3 dias a la semana
+
+  - nombre: Alguien Sabe!!! Tafi Viejo Ventas!!!
+    url: https://www.facebook.com/groups/934004185192382
+    activo: true
+    notas: Permite publicidad de servicios

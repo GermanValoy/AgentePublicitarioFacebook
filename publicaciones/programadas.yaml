@@ -1,41 +1,70 @@
-# =====================================================================
-#  CALENDARIO DE PUBLICACIONES
-#  1) Poné tus fotos en la carpeta publicaciones/imagenes/
-#  2) Agregá acá una entrada por publicación
-#  3) Probá:  python -m agente validar   y   python -m agente vista-previa
-#
-#  Campos:
-#    id:                nombre único, sin espacios (ej: limpieza-octubre)
-#    fecha:             AAAA-MM-DD
-#    hora:              "HH:MM"  (con comillas)
-#    grupos:            lista de nombres de config.yaml, o [todos]
-#    imagenes:          nombres de archivo dentro de publicaciones/imagenes/ (máx. 4)
-#    texto:             el mensaje. Usá {opción1|opción2} para que cada grupo reciba
-#                       un texto distinto (Facebook castiga textos idénticos).
-#    repetir_cada_dias: opcional, para repetir la publicación periódicamente
-#    activa:            false para pausarla sin borrarla
-#
-#  Si una publicación va a varios grupos, el agente las separa solo
-#  respetando los límites de config.yaml (no salen todas juntas).
-# =====================================================================
+# Calendario: cada grupo recibe el anuncio 1 vez por semana, en días distintos.
+# Para agregar más publicaciones, copiá un bloque completo y cambiá id, fecha, grupos e imagen.
 
 publicaciones:
-  - id: ejemplo-mantenimiento
-    activa: false        # <- cambialo a true cuando tengas tus grupos reales
-    fecha: 2026-10-03
+  - id: servicio-lunes
+    activa: true
+    fecha: 2026-10-05        # lunes
     hora: "10:30"
-    grupos: [Vecinos Zona Norte, Clasificados de la Ciudad]
-    imagenes: [ejemplo-servicio-tecnico.png]
-    repetir_cada_dias: 14
+    grupos: ["Venta de Garage Tafi Viejo"]
+    imagenes: [servicio-tecnico-tafi.png]
+    repetir_cada_dias: 7
     texto: |
-      {¡Hola vecinos!|¡Buenas a todos!|¡Hola, qué tal!} 👋 Soy técnico en {mantenimiento|reparación} de computadoras.
+      ✅ REPARACIÓN Y MANTENIMIENTO DE NETBOOKS, NOTEBOOKS Y PC ✅
 
-      🖥️ {¿Tu PC o notebook anda lenta?|¿Tu computadora tarda en arrancar o se calienta?|¿Tu notebook hace ruido o se apaga sola?}
-      Te ofrezco:
-      ✅ Limpieza interna y cambio de pasta térmica
-      ✅ Formateo e instalación de Windows y programas
-      ✅ Eliminación de virus
-      ✅ Mejoras: disco SSD y memoria RAM
+      {¡Hola a todos!|¡Buenas, vecinos!|¡Hola! ¿Cómo están?} 👋 {Te ofrecemos|Estos son nuestros servicios|Esto es lo que hacemos}:
 
-      {Presupuesto sin cargo.|Te paso presupuesto sin compromiso.} {Atiendo a domicilio o retiro el equipo.|Voy a tu casa o retiro el equipo.}
-      📩 {Escribime por privado|Mandame un mensaje} y te respondo {a la brevedad|enseguida}.
+      ➡️ Desbloqueo de netbooks {de todas las marcas|todas las marcas}, G1 a G15.
+      ➡️ Instalación de Windows 7, 8, 10 y 11.
+      ➡️ Instalación de programas: Microsoft Office, Adobe Acrobat Reader, Photoshop, Corel {y más|y muchos más}.
+      ➡️ {Asistencia remota: te ayudamos a distancia|Soporte remoto: lo resolvemos a distancia, sin que te muevas de tu casa}.
+
+      📍 {Estamos en|Nos encontrás en|Te esperamos en} Monteagudo 1140, Tafí Viejo
+      💳 {Recibimos tarjetas de crédito|Aceptamos tarjetas de crédito}
+
+      {¡Te esperamos!|¡Consultanos sin compromiso!|¡Escribinos por privado y te respondemos enseguida!} 🙌
+
+  - id: servicio-miercoles
+    activa: true
+    fecha: 2026-10-07        # miércoles
+    hora: "11:00"
+    grupos: ["FERIA AMERICANA TAFI VIEJO"]
+    imagenes: [servicio-tecnico-tafi.png]
+    repetir_cada_dias: 7
+    texto: |
+      ✅ REPARACIÓN Y MANTENIMIENTO DE NETBOOKS, NOTEBOOKS Y PC ✅
+
+      {¡Hola a todos!|¡Buenas, vecinos!|¡Hola! ¿Cómo están?} 👋 {Te ofrecemos|Estos son nuestros servicios|Esto es lo que hacemos}:
+
+      ➡️ Desbloqueo de netbooks {de todas las marcas|todas las marcas}, G1 a G15.
+      ➡️ Instalación de Windows 7, 8, 10 y 11.
+      ➡️ Instalación de programas: Microsoft Office, Adobe Acrobat Reader, Photoshop, Corel {y más|y muchos más}.
+      ➡️ {Asistencia remota: te ayudamos a distancia|Soporte remoto: lo resolvemos a distancia, sin que te muevas de tu casa}.
+
+      📍 {Estamos en|Nos encontrás en|Te esperamos en} Monteagudo 1140, Tafí Viejo
+      💳 {Recibimos tarjetas de crédito|Aceptamos tarjetas de crédito}
+
+      {¡Te esperamos!|¡Consultanos sin compromiso!|¡Escribinos por privado y te respondemos enseguida!} 🙌
+
+  - id: servicio-viernes
+    activa: true
+    fecha: 2026-10-09        # viernes
+    hora: "10:00"
+    grupos: ["Alguien Sabe!!! Tafi Viejo Ventas!!!"]
+    imagenes: [servicio-tecnico-tafi.png]
+    repetir_cada_dias: 7
+    texto: |
+      ✅ REPARACIÓN Y MANTENIMIENTO DE NETBOOKS, NOTEBOOKS Y PC ✅
+
+      {¡Hola a todos!|¡Buenas, vecinos!|¡Hola! ¿Cómo están?} 👋 {Te ofrecemos|Estos son nuestros servicios|Esto es lo que hacemos}:
+
+      ➡️ Desbloqueo de netbooks {de todas las marcas|todas las marcas}, G1 a G15.
+      ➡️ Instalación de Windows 7, 8, 10 y 11.
+      ➡️ Instalación de programas: Microsoft Office, Adobe Acrobat Reader, Photoshop, Corel {y más|y muchos más}.
+      ➡️ {Asistencia remota: te ayudamos a distancia|Soporte remoto: lo resolvemos a distancia, sin que te muevas de tu casa}.
+
+      📍 {Estamos en|Nos encontrás en|Te esperamos en} Monteagudo 1140, Tafí Viejo
+      💳 {Recibimos tarjetas de crédito|Aceptamos tarjetas de crédito}
+
+      {¡Te esperamos!|¡Consultanos sin compromiso!|¡Escribinos por privado y te respondemos enseguida!} 🙌
+
