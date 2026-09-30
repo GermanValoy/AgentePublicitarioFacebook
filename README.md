@@ -158,7 +158,7 @@ Cómo conectarla (una sola vez):
 3. Listo. Para sincronizar a mano en cualquier momento: `sincronizar.bat`.
 
 La carpeta `datos/` (tu sesión de Facebook) **nunca** se sube.
-Las imágenes se generan con `python -m herramientas.imagenes` (ver `herramientas/imagenes.py`).
+Las imágenes se arman con `herramientas/imagenes.py`: `placa()` (diseño simple) o `placa_con_foto()` (foto de fondo de `publicaciones/fondos/` + tus datos encima). Los fondos se generan con IA (FLUX.1 schnell, 40 monedas) **sin texto**, y el programa escribe los datos, así nunca salen mal.
 
 ---
 

@@ -30,7 +30,7 @@ publicaciones:
     fecha: 2026-10-07        # miércoles
     hora: "11:00"
     grupos: ["FERIA AMERICANA TAFI VIEJO"]
-    imagenes: [servicio-tecnico-tafi.png]
+    imagenes: [servicio-tecnico-foto.jpg]
     repetir_cada_dias: 7
     texto: |
       ✅ REPARACIÓN Y MANTENIMIENTO DE NETBOOKS, NOTEBOOKS Y PC ✅

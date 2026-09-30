@@ -4,8 +4,12 @@ Uso:
     python -m herramientas.imagenes   (regenera la placa principal)
 
 Desde código:
-    from herramientas.imagenes import placa
+    from herramientas.imagenes import placa, placa_con_foto
     placa("SERVICIO TÉCNICO", "Netbooks · Notebooks · PC", ["Ítem 1", "Ítem 2"], "salida.png", tema="azul")
+    placa_con_foto("publicaciones/fondos/taller.jpg", "TÍTULO", "Subtítulo", ["Ítem 1"], "salida.png")
+
+Las fotos de fondo (generadas con IA sin texto, o fotos propias) van en publicaciones/fondos/.
+El texto siempre lo escribe este programa, así los datos (dirección, WhatsApp) nunca salen mal.
 """
 from __future__ import annotations
 
@@ -85,6 +89,59 @@ def placa(titulo: str, subtitulo: str, items: list[str], salida: str | Path, tem
     salida = Path(salida)
     salida.parent.mkdir(parents=True, exist_ok=True)
     im.save(salida, optimize=True)
+    return salida
+
+
+def placa_con_foto(fondo: str | Path, titulo: str, subtitulo: str, items: list[str], salida: str | Path,
+                   tema: str = "azul", subir_foto: float = 0.25) -> Path:
+    """Foto arriba y los datos del negocio sobre un degradado oscuro abajo.
+
+    subir_foto: cuánto se sube la foto (0 a 0.4) para que se vea el centro/abajo de la imagen,
+    donde suele estar lo importante (la notebook, las manos, etc.).
+    """
+    arriba, _, acento, texto, suave = TEMAS[tema]
+    with Image.open(fondo) as foto:
+        foto = foto.convert("RGB")
+        lado = min(foto.size)
+        izq, sup = (foto.width - lado) // 2, (foto.height - lado) // 2
+        foto = foto.crop((izq, sup, izq + lado, sup + lado)).resize((W, H), Image.LANCZOS)
+    im = Image.new("RGB", (W, H), arriba)
+    im.paste(foto, (0, 170 - int(H * max(0.0, min(subir_foto, 0.4)))))
+
+    # Degradado oscuro desde la mitad hacia abajo para que el texto se lea sobre cualquier foto.
+    capa = Image.new("RGBA", (W, H), (0, 0, 0, 0))
+    dc = ImageDraw.Draw(capa)
+    inicio = 380
+    for y in range(inicio, H):
+        t = min(1.0, (y - inicio) / 200)
+        opacidad = int(235 * t) if y < 700 else min(255, 235 + (y - 700) // 4)  # opaco al final
+        dc.line([(0, y), (W, y)], fill=(*arriba, opacidad))
+    im = Image.alpha_composite(im.convert("RGBA"), capa).convert("RGB")
+    d = ImageDraw.Draw(im)
+
+    def centrado(y, contenido, fuente, color):
+        d.text(((W - d.textlength(contenido, font=fuente)) / 2, y), contenido, font=fuente, fill=color)
+
+    d.rectangle([0, 0, W, 170], fill=acento)
+    centrado(28, titulo, _ajustar(d, titulo, 62, W - 80), arriba)
+    centrado(105, subtitulo, _ajustar(d, subtitulo, 42, W - 80), arriba)
+
+    y = 560
+    for item in items[:4]:
+        d.ellipse([100, y + 8, 128, y + 36], fill=acento)
+        d.line([(107, y + 22), (113, y + 29), (122, y + 15)], fill=arriba, width=4)
+        d.text((150, y), item, font=_ajustar(d, item, 38, W - 190, negrita=False), fill=texto)
+        y += 58
+
+    d.rounded_rectangle([80, 810, 1000, 985], radius=26, outline=acento, width=4)
+    centrado(825, f"{NEGOCIO['direccion']} · {NEGOCIO['ciudad']}",
+             _ajustar(d, f"{NEGOCIO['direccion']} · {NEGOCIO['ciudad']}", 46, 880), texto)
+    centrado(885, f"WhatsApp {NEGOCIO['whatsapp']}", _fuente(46), acento)
+    centrado(942, NEGOCIO["pie"], _fuente(32, negrita=False), suave)
+
+    salida = Path(salida)
+    salida.parent.mkdir(parents=True, exist_ok=True)
+    im.save(salida, quality=90, optimize=True)
     return salida
 
 
