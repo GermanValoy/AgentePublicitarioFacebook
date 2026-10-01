@@ -8,6 +8,7 @@ import re
 import sys
 import time
 from contextlib import contextmanager
+from pathlib import Path
 
 from . import antiban
 from .ciclo import ejecutar_ciclo
@@ -411,7 +412,24 @@ def _unica_instancia(config: Config):
         archivo.close()
 
 
+def _migrar_inicio_automatico(config: Config) -> None:
+    """Las versiones viejas arrancaban con un .vbs que ya no existe: se reemplaza por el .bat nuevo."""
+    carpeta = Path(os.environ.get("APPDATA", "")) / "Microsoft" / "Windows" / "Start Menu" / "Programs" / "Startup"
+    viejo = carpeta / "AgenteFacebook.vbs"
+    if not os.environ.get("APPDATA") or not viejo.is_file():
+        return
+    try:
+        viejo.unlink()
+        (carpeta / "AgenteFacebook.bat").write_text(
+            f'@echo off\r\ncd /d "{config.raiz}"\r\nstart "" /min cmd /c iniciar_en_segundo_plano.bat\r\n',
+            encoding="utf-8")
+        log.info("Se actualizó el inicio automático (de .vbs a .bat)")
+    except OSError as e:
+        log.warning("No se pudo actualizar el inicio automático: %s", e)
+
+
 def cmd_ejecutar(config, args) -> int:
+    _migrar_inicio_automatico(config)
     if args.esperar_inicio:
         time.sleep(args.esperar_inicio)  # dar tiempo a que termine la versión anterior
     with _unica_instancia(config):

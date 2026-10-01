@@ -183,3 +183,14 @@ def test_si_no_arranca_lo_anota_y_avisa(tmp_path, monkeypatch):
     cli._avisar_fallo_de_arranque(argparse.Namespace(comando="ejecutar"), "El agente ya está funcionando")
     assert "ya está funcionando" in (tmp_path / "datos" / "arranque.log").read_text(encoding="utf-8")
     assert "no pudo arrancar" in tg.enviados[-1][0]
+
+
+def test_reemplaza_el_inicio_automatico_viejo(config, tmp_path, monkeypatch):
+    inicio = tmp_path / "appdata" / "Microsoft" / "Windows" / "Start Menu" / "Programs" / "Startup"
+    inicio.mkdir(parents=True)
+    (inicio / "AgenteFacebook.vbs").write_text('CreateObject("WScript.Shell").Run "x.vbs"')
+    monkeypatch.setenv("APPDATA", str(tmp_path / "appdata"))
+    cli._migrar_inicio_automatico(config)
+    assert not (inicio / "AgenteFacebook.vbs").exists()
+    nuevo = (inicio / "AgenteFacebook.bat").read_text(encoding="utf-8")
+    assert "iniciar_en_segundo_plano.bat" in nuevo and str(config.raiz) in nuevo
