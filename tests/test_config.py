@@ -2,7 +2,7 @@ import datetime as dt
 
 import pytest
 
-from agente.config import ErrorConfig, cargar_config, convertir_hora
+from agente.config import MODOS, ErrorConfig, cargar_config, convertir_hora
 from agente.publicaciones import cargar_publicaciones
 
 from .conftest import RAIZ_REPO
@@ -10,7 +10,7 @@ from .conftest import RAIZ_REPO
 
 def test_config_de_ejemplo_del_repo_es_valida():
     config = cargar_config(RAIZ_REPO)
-    assert config.modo == "asistido"
+    assert config.modo in MODOS  # el dueño puede cambiar el modo desde su PC
     assert cargar_publicaciones(config.archivo_programadas)
 
 
