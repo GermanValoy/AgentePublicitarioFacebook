@@ -144,3 +144,17 @@ def test_publicar_ahora_avisa_si_el_agente_esta_andando(proyecto, monkeypatch, c
         assert cli.cmd_publicar_ahora(config, args(id="promo")) == 1
     assert falso.urls == []
     assert "detener_agente.bat" in capsys.readouterr().out
+
+
+def test_se_reinicia_solo_con_version_nueva(config, monkeypatch):
+    llamadas = []
+    monkeypatch.setattr(cli, "_aprobador", lambda c: None)
+    monkeypatch.setattr(cli, "_escribir_reporte", lambda c, a=None: llamadas.append("reporte"))
+    monkeypatch.setattr(cli, "_sincronizar", lambda c, a=None: "se bajaron 3 archivos; hay una versión nueva del agente")
+    monkeypatch.setattr(cli, "_una_pasada", lambda *a: llamadas.append("pasada"))
+    monkeypatch.setattr(cli, "_reiniciar", lambda c: llamadas.append("reinicio"))
+    a = argparse.Namespace(esperar_inicio=0, reiniciar_solo=True, sincronizar_cada=30, intervalo=5,
+                           oculto=False, sin_demora=True)
+    assert cli.cmd_ejecutar(config, a) == 0
+    assert llamadas == ["reporte", "reinicio"]  # no publica con la versión vieja
+    assert not (config.carpeta_datos / "agente.pid").exists()  # libera el candado para la versión nueva

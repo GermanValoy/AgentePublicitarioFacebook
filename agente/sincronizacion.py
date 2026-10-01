@@ -13,7 +13,7 @@ from pathlib import Path
 
 log = logging.getLogger("agente")
 
-RUTAS_A_SUBIR = ["publicaciones", "config"]
+RUTAS_A_SUBIR = ["publicaciones", "config", "reportes"]
 IDENTIDAD = ["-c", "user.name=Agente (PC)", "-c", "user.email=agente-pc@users.noreply.github.com"]
 
 
@@ -47,7 +47,7 @@ def sincronizar(raiz: Path) -> str:
     _git(raiz, "add", "--", *rutas)
     hay_locales = _git(raiz, "diff", "--cached", "--quiet", revisar=False).returncode == 1
     if hay_locales:
-        _git(raiz, *IDENTIDAD, "commit", "-q", "-m", "Cambios desde la PC (fotos e ideas)")
+        _git(raiz, *IDENTIDAD, "commit", "-q", "-m", "Cambios desde la PC (fotos, ideas y reporte)")
 
     antes = _git(raiz, "rev-parse", "HEAD").stdout.strip()
     bajada = _git(raiz, *IDENTIDAD, "pull", "--rebase", "--autostash", "-q", revisar=False)

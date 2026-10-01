@@ -158,6 +158,12 @@ Cómo conectarla (una sola vez):
 3. Listo. Para sincronizar a mano en cualquier momento: `sincronizar.bat`.
 
 La carpeta `datos/` (tu sesión de Facebook) **nunca** se sube.
+
+**Reporte diario:** el agente escribe `reportes/estado.md` una vez por día y después de cada
+publicación (si está andando, qué publicó, errores recientes; sin tokens ni datos privados) y lo
+sube a GitHub, para poder revisarlo a distancia.
+
+**Actualización automática:** cuando baja una versión nueva del agente, se reinicia solo para usarla.
 Las imágenes se arman con `herramientas/imagenes.py`: `placa()` (diseño simple) o `placa_con_foto()` (foto de fondo de `publicaciones/fondos/` + tus datos encima). Los fondos se generan con IA (FLUX.1 schnell, 40 monedas) **sin texto**, y el programa escribe los datos, así nunca salen mal.
 
 ---

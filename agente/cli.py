@@ -17,7 +17,7 @@ from .contenido import elegir_variante
 from .historial import Historial
 from .planificador import grupos_de, proxima_ocurrencia, tareas_del_momento
 from .publicaciones import cargar_publicaciones
-from . import telegram
+from . import reporte, telegram
 from .sincronizacion import ErrorSincronizacion, conectado, sincronizar
 from .validador import validar_todas
 
@@ -239,6 +239,7 @@ def cmd_publicar_ahora(config, args) -> int:
     if res.estado == "bloqueada":
         antiban.pausar(config, res.detalle)
         print("¡Facebook mostró una advertencia! El agente quedó pausado.")
+    _escribir_reporte(config)
     if aprobador:
         aprobador.cerrar(clave, "✅ Publicada" if res.estado == "publicada" else f"⚠️ {res.estado}")
         aviso = {"publicada": f"✅ Publicado en «{grupo}».",
@@ -314,18 +315,46 @@ def _comandos_telegram(config: Config):
     return responder
 
 
-def _sincronizar(config: Config, aprobador=None) -> bool:
+def _escribir_reporte(config_inicial: Config, aprobador=None) -> None:
+    try:
+        config = cargar_config(config_inicial.raiz)
+        reporte.escribir(config, _historial(config), publicaciones=cargar_publicaciones(config.archivo_programadas),
+                         telegram_conectado=telegram.cargar(config.carpeta_datos) is not None,
+                         aprobaciones_pendientes=len(aprobador.pendientes()) if aprobador else 0)
+    except Exception:
+        log.exception("No se pudo escribir el reporte")
+
+
+def cmd_reporte(config, args) -> int:
+    _escribir_reporte(config)
+    print(reporte.archivo(config).read_text(encoding="utf-8"))
+    return 0
+
+
+def _sincronizar(config: Config, aprobador=None) -> str | None:
+    """Devuelve el resumen de la sincronización, o None si no se pudo."""
     if not conectado(config.raiz):
-        return False
+        return None
     try:
         resumen = sincronizar(config.raiz)
         log.info("GitHub: %s", resumen)
         if aprobador and "bajaron" in resumen:
             aprobador.avisar(f"🔄 Llegaron novedades desde GitHub: {resumen}")
-        return True
+        return resumen
     except ErrorSincronizacion as e:
         log.warning("GitHub: no se pudo sincronizar. %s", e)
-        return False
+        return None
+
+
+def _reiniciar(config: Config) -> None:
+    """Instala lo que haga falta y arranca de nuevo el agente (oculto) con la versión nueva."""
+    import subprocess
+    subprocess.run([sys.executable, "-m", "pip", "install", "-q", "-r", "requirements.txt"],
+                   cwd=config.raiz, capture_output=True, timeout=600)
+    argumentos = [a for a in sys.argv[1:] if not a.startswith("--esperar-inicio")]
+    opciones = {"creationflags": subprocess.CREATE_NO_WINDOW} if os.name == "nt" else {"start_new_session": True}
+    subprocess.Popen([sys.executable, "-m", "agente", *argumentos, "--esperar-inicio=20"], cwd=config.raiz,
+                     stdin=subprocess.DEVNULL, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, **opciones)
 
 
 def cmd_sincronizar(config, args) -> int:
@@ -369,6 +398,8 @@ def _unica_instancia(config: Config):
 
 
 def cmd_ejecutar(config, args) -> int:
+    if args.esperar_inicio:
+        time.sleep(args.esperar_inicio)  # dar tiempo a que termine la versión anterior
     with _unica_instancia(config):
         return _bucle(config, args)
 
@@ -382,14 +413,27 @@ def _bucle(config, args) -> int:
         aprobador.avisar(f"🤖 Agente en marcha (modo {config.modo}). Mandá /estado para ver qué viene.")
     comandos = _comandos_telegram(config)
     ultima_sincronizacion = ultima_pasada = 0.0
+    dia_reporte = None
     while True:
         try:
+            if config.ahora().date() != dia_reporte:  # reporte diario (y al arrancar)
+                _escribir_reporte(config, aprobador)
+                dia_reporte = config.ahora().date()
             if args.sincronizar_cada and time.time() - ultima_sincronizacion >= args.sincronizar_cada * 60:
-                _sincronizar(config, aprobador)
+                resumen = _sincronizar(config, aprobador)
                 ultima_sincronizacion = time.time()
+                if resumen and "versión nueva" in resumen and args.reiniciar_solo:
+                    log.info("Versión nueva del agente: reiniciando para usarla")
+                    if aprobador:
+                        aprobador.avisar("🔄 Llegó una versión nueva del agente. Me reinicio solo en unos segundos.")
+                    _reiniciar(config)
+                    return 0
             if time.time() - ultima_pasada >= args.intervalo * 60:
-                _una_pasada(config, args, aprobador)
+                resultado = _una_pasada(config, args, aprobador)
                 ultima_pasada = time.time()
+                if resultado and resultado != "esperando_aprobacion":
+                    _escribir_reporte(config, aprobador)  # después de cada publicación o error
+                    ultima_sincronizacion = 0.0  # y subirlo enseguida
             if aprobador:
                 # Espera escuchando a Telegram: si tocás un botón, se actúa enseguida.
                 if aprobador.procesar(espera=25, comandos=comandos):
@@ -487,9 +531,13 @@ def construir_parser() -> argparse.ArgumentParser:
     p = sub.add_parser("ejecutar", help="deja el agente corriendo y publica según el calendario")
     p.add_argument("--intervalo", type=int, default=5, help="minutos entre revisiones (por defecto 5)")
     p.add_argument("--sin-demora", action="store_true")
+    p.add_argument("--esperar-inicio", type=int, default=0, help=argparse.SUPPRESS)
+    p.add_argument("--no-reiniciar", dest="reiniciar_solo", action="store_false",
+                   help="no reiniciarse solo cuando llega una versión nueva del agente")
     p.add_argument("--sincronizar-cada", type=int, default=30,
                    help="minutos entre sincronizaciones con GitHub (0 = nunca; por defecto 30)")
     sub.add_parser("sincronizar", help="sube tus fotos/ideas y baja lo nuevo desde GitHub")
+    sub.add_parser("reporte", help="genera reportes/estado.md (se sube a GitHub en la próxima sincronización)")
     sub.add_parser("configurar-telegram", help="conecta un bot de Telegram para aprobar desde el celular")
     sub.add_parser("reanudar", help="quita la pausa de emergencia")
     return parser
@@ -500,7 +548,8 @@ COMANDOS = {
     "validar": cmd_validar, "vista-previa": cmd_vista_previa, "estado": cmd_estado,
     "simular": cmd_simular, "publicar-ahora": cmd_publicar_ahora, "publicar-pendientes": cmd_publicar_pendientes,
     "ejecutar": cmd_ejecutar, "sincronizar": cmd_sincronizar,
-    "configurar-telegram": cmd_configurar_telegram, "reanudar": cmd_reanudar,
+    "configurar-telegram": cmd_configurar_telegram,
+    "reporte": cmd_reporte, "reanudar": cmd_reanudar,
 }
 
 
