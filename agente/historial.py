@@ -2,10 +2,10 @@
 from __future__ import annotations
 
 import datetime as dt
-import json
-import os
 from dataclasses import asdict, dataclass
 from pathlib import Path
+
+from .archivos import guardar_json, leer_json
 
 # Estados que cuentan como actividad real en Facebook para los límites anti-baneo.
 ESTADOS_ACTIVIDAD = {"publicada", "fallida", "bloqueada"}
@@ -32,8 +32,8 @@ class Historial:
     def __init__(self, archivo: Path):
         self.archivo = archivo
         self.registros: list[Registro] = []
-        if archivo.is_file():
-            self.registros = [Registro(**r) for r in json.loads(archivo.read_text(encoding="utf-8"))]
+        datos = leer_json(archivo, [])
+        self.registros = [Registro(**r) for r in datos if isinstance(r, dict)] if isinstance(datos, list) else []
 
     def agregar(self, clave: str, publicacion_id: str, grupo: str, estado: str,
                 momento: dt.datetime, texto: str = "", detalle: str = "") -> Registro:
@@ -43,11 +43,7 @@ class Historial:
         return registro
 
     def _guardar(self) -> None:
-        self.archivo.parent.mkdir(parents=True, exist_ok=True)
-        temporal = self.archivo.with_suffix(".tmp")
-        temporal.write_text(json.dumps([asdict(r) for r in self.registros], ensure_ascii=False, indent=2),
-                            encoding="utf-8")
-        os.replace(temporal, self.archivo)
+        guardar_json(self.archivo, [asdict(r) for r in self.registros])
 
     def actividad(self, grupo: str | None = None) -> list[Registro]:
         return [r for r in self.registros

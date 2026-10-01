@@ -4,7 +4,6 @@ from __future__ import annotations
 import argparse
 import logging
 import os
-import random
 import re
 import sys
 import time
@@ -317,6 +316,19 @@ def _comandos_telegram(config: Config):
     return responder
 
 
+def _avisar_recuperados(aprobador) -> None:
+    from .archivos import RECUPERADOS
+    if aprobador and RECUPERADOS:
+        nombres = ", ".join(sorted(set(RECUPERADOS)))
+        aviso = (f"🛠️ Encontré archivos dañados ({nombres}), seguramente por un corte mientras se guardaban. "
+                 "Guardé una copia y empecé de nuevo, así que funciono igual.")
+        if "historial.json" in nombres:
+            aviso += (" Ojo: perdí el registro de lo publicado, así que los límites anti-baneo "
+                      "arrancan de cero: aprobá con cuidado esta semana.")
+        aprobador.avisar(aviso)
+        RECUPERADOS.clear()
+
+
 def _escribir_reporte(config_inicial: Config, aprobador=None) -> None:
     try:
         config = cargar_config(config_inicial.raiz)
@@ -413,6 +425,7 @@ def _bucle(config, args) -> int:
              "Telegram conectado: respondé desde el celular." if aprobador else "")
     if aprobador:
         aprobador.avisar(f"🤖 Agente en marcha (modo {config.modo}). Mandá /estado para ver qué viene.")
+        _avisar_recuperados(aprobador)
     comandos = _comandos_telegram(config)
     ultima_sincronizacion = ultima_pasada = 0.0
     dia_reporte = None
@@ -468,7 +481,7 @@ def cmd_configurar_telegram(config, args) -> int:
     except telegram.ErrorTelegram as e:
         print(f"El token no funciona: {e}")
         return 1
-    print(f"\nPerfecto. Ahora abrí este link en el celular y tocá INICIAR (o mandale /start):")
+    print("\nPerfecto. Ahora abrí este link en el celular y tocá INICIAR (o mandale /start):")
     print(f"    https://t.me/{bot['username']}\n")
     print("Esperando tu mensaje (hasta 5 minutos)...")
     desde, limite = 0, time.time() + 300

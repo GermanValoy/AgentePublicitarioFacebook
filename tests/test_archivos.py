@@ -1,0 +1,36 @@
+"""El agente tiene que arrancar aunque un archivo de memoria quede vacío o dañado."""
+import json
+
+from agente import archivos, telegram
+from agente.historial import Historial
+
+
+def test_historial_vacio_no_impide_arrancar(tmp_path):
+    archivo = tmp_path / "historial.json"
+    archivo.write_text("", encoding="utf-8")  # lo que causaba el JSONDecodeError
+    h = Historial(archivo)
+    assert h.registros == []
+    assert list(tmp_path.glob("historial.danado-*.json"))  # se guarda una copia del dañado
+    assert "historial.json" in archivos.RECUPERADOS
+    archivos.RECUPERADOS.clear()
+
+
+def test_aprobaciones_danadas_no_impiden_arrancar(tmp_path):
+    archivo = tmp_path / "aprobaciones.json"
+    archivo.write_text('{"desde": 5, "pedidos": {', encoding="utf-8")
+    a = telegram.AprobadorTelegram(telegram.Telegram("t", 1), archivo)
+    assert a.datos == {"desde": 0, "pedidos": {}}
+    archivos.RECUPERADOS.clear()
+
+
+def test_telegram_json_danado_se_trata_como_no_configurado(tmp_path):
+    (tmp_path / "telegram.json").write_text("{", encoding="utf-8")
+    assert telegram.cargar(tmp_path) is None
+    archivos.RECUPERADOS.clear()
+
+
+def test_guardar_es_atomico_y_legible(tmp_path):
+    archivo = tmp_path / "x.json"
+    archivos.guardar_json(archivo, {"a": "ñ"})
+    assert json.loads(archivo.read_text(encoding="utf-8")) == {"a": "ñ"}
+    assert not list(tmp_path.glob("*.tmp"))

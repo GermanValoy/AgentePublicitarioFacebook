@@ -8,12 +8,13 @@ import datetime as dt
 import hashlib
 import json
 import logging
-import os
 import urllib.error
 import urllib.parse
 import urllib.request
 import uuid
 from pathlib import Path
+
+from .archivos import guardar_json, leer_json
 
 log = logging.getLogger("agente")
 
@@ -109,15 +110,13 @@ class AprobadorTelegram:
     def __init__(self, telegram: Telegram, archivo: Path):
         self.tg = telegram
         self.archivo = archivo
+        datos = leer_json(archivo, {})
         self.datos = {"desde": 0, "pedidos": {}}
-        if archivo.is_file():
-            self.datos = json.loads(archivo.read_text(encoding="utf-8"))
+        if isinstance(datos, dict):
+            self.datos.update({k: v for k, v in datos.items() if k in self.datos})
 
     def _guardar(self) -> None:
-        self.archivo.parent.mkdir(parents=True, exist_ok=True)
-        temporal = self.archivo.with_suffix(".tmp")
-        temporal.write_text(json.dumps(self.datos, ensure_ascii=False, indent=2), encoding="utf-8")
-        os.replace(temporal, self.archivo)
+        guardar_json(self.archivo, self.datos)
 
     # ---- lo que usa el ciclo -----------------------------------------------------------------
     def estado(self, clave: str) -> str | None:
@@ -199,11 +198,13 @@ def cargar(carpeta_datos: Path) -> Telegram | None:
     archivo = archivo_config(carpeta_datos)
     if not archivo.is_file():
         return None
-    datos = json.loads(archivo.read_text(encoding="utf-8"))
+    datos = leer_json(archivo, {})
+    if not datos.get("token") or not datos.get("chat_id"):
+        return None
     return Telegram(datos["token"], int(datos["chat_id"]))
 
 
 def guardar(carpeta_datos: Path, token: str, chat_id: int) -> None:
     archivo = archivo_config(carpeta_datos)
     archivo.parent.mkdir(parents=True, exist_ok=True)
-    archivo.write_text(json.dumps({"token": token, "chat_id": chat_id}), encoding="utf-8")
+    guardar_json(archivo, {"token": token, "chat_id": chat_id})
