@@ -9,5 +9,5 @@ if not exist datos\agente.pid (
 set /p PID=<datos\agente.pid
 taskkill /PID %PID% /T /F >nul 2>nul
 del datos\agente.pid >nul 2>nul
-echo Agente detenido. Para volver a iniciarlo: iniciar_en_segundo_plano.vbs
+echo Agente detenido. Para volver a iniciarlo: iniciar_en_segundo_plano.bat
 pause

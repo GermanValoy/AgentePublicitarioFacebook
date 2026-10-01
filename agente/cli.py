@@ -28,8 +28,10 @@ def _configurar_log(config: Config) -> None:
     config.carpeta_datos.mkdir(parents=True, exist_ok=True)
     formato = logging.Formatter("%(asctime)s %(levelname)-8s %(message)s", "%Y-%m-%d %H:%M:%S")
     log.setLevel(logging.INFO)
-    for handler in (logging.StreamHandler(sys.stdout),
-                    logging.FileHandler(config.carpeta_datos / "agente.log", encoding="utf-8")):
+    manejadores = [logging.FileHandler(config.carpeta_datos / "agente.log", encoding="utf-8")]
+    if sys.stdout is not None:  # con pythonw (oculto) no hay consola
+        manejadores.append(logging.StreamHandler(sys.stdout))
+    for handler in manejadores:
         handler.setFormatter(formato)
         log.addHandler(handler)
 
@@ -178,7 +180,7 @@ def _solo_si_el_agente_esta_detenido(funcion):
                 raise
             print("El agente está funcionando (en segundo plano o en otra ventana) y usa el mismo navegador.\n"
                   "Para esta prueba: 1) detener_agente.bat  2) volvé a abrir este archivo  "
-                  "3) al terminar, iniciar_en_segundo_plano.vbs")
+                  "3) al terminar, iniciar_en_segundo_plano.bat")
             return 1
     return envoltura
 
@@ -575,7 +577,32 @@ def main(argv: list[str] | None = None) -> int:
         return COMANDOS[args.comando](config, args)
     except ErrorConfig as e:
         print(f"Error: {e}")
+        _avisar_fallo_de_arranque(args, str(e))
         return 2
     except KeyboardInterrupt:
         print("\nAgente detenido.")
         return 0
+    except Exception as e:
+        import traceback
+        traceback.print_exc()
+        _avisar_fallo_de_arranque(args, f"{type(e).__name__}: {e}", traceback.format_exc())
+        return 1
+
+
+def _avisar_fallo_de_arranque(args, motivo: str, detalle: str = "") -> None:
+    """Si el agente oculto no puede arrancar, que quede anotado y te llegue un aviso por Telegram."""
+    if getattr(args, "comando", None) != "ejecutar":
+        return
+    datos = RAIZ / "datos"
+    try:
+        datos.mkdir(exist_ok=True)
+        with open(datos / "arranque.log", "a", encoding="utf-8") as f:
+            f.write(f"{time.strftime('%Y-%m-%d %H:%M:%S')} No arrancó: {motivo}\n{detalle}\n")
+    except OSError:
+        pass
+    try:
+        cliente = telegram.cargar(datos)
+        if cliente:
+            cliente.mensaje(f"⚠️ El agente no pudo arrancar: {motivo[:500]}")
+    except Exception:
+        pass

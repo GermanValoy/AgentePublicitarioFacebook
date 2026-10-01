@@ -158,3 +158,28 @@ def test_se_reinicia_solo_con_version_nueva(config, monkeypatch):
     assert cli.cmd_ejecutar(config, a) == 0
     assert llamadas == ["reporte", "reinicio"]  # no publica con la versión vieja
     assert not (config.carpeta_datos / "agente.pid").exists()  # libera el candado para la versión nueva
+
+
+def test_funciona_oculto_sin_consola(config, monkeypatch):
+    """Con pythonw no hay consola (sys.stdout es None): el registro igual tiene que andar."""
+    import logging
+    monkeypatch.setattr(cli.sys, "stdout", None)
+    monkeypatch.setattr(cli.log, "handlers", [])
+    cli._configurar_log(config)
+    cli.log.info("prueba oculta")
+    for h in cli.log.handlers:
+        h.flush()
+    assert "prueba oculta" in (config.carpeta_datos / "agente.log").read_text(encoding="utf-8")
+    assert all(not isinstance(h, logging.StreamHandler) or isinstance(h, logging.FileHandler)
+               for h in cli.log.handlers)
+
+
+def test_si_no_arranca_lo_anota_y_avisa(tmp_path, monkeypatch):
+    from agente import telegram
+    from .test_telegram import TelegramFalso
+    tg = TelegramFalso()
+    monkeypatch.setattr(cli, "RAIZ", tmp_path)
+    monkeypatch.setattr(telegram, "cargar", lambda carpeta: tg)
+    cli._avisar_fallo_de_arranque(argparse.Namespace(comando="ejecutar"), "El agente ya está funcionando")
+    assert "ya está funcionando" in (tmp_path / "datos" / "arranque.log").read_text(encoding="utf-8")
+    assert "no pudo arrancar" in tg.enviados[-1][0]

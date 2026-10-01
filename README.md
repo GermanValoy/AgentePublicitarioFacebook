@@ -183,7 +183,7 @@ Configuración (una sola vez):
    pegar el token y mandarle /start). Queda en `modo: aprobacion`.
 2. Doble clic en `activar_inicio_automatico.bat` para que el agente arranque solo y **oculto**
    (en segundo plano, sin ventana) al prender la PC.
-   - Iniciarlo oculto a mano: `iniciar_en_segundo_plano.vbs` · Cerrarlo: `detener_agente.bat`
+   - Iniciarlo oculto a mano: `iniciar_en_segundo_plano.bat` · Cerrarlo: `detener_agente.bat`
    - Lo que hace queda en `datos/agente.log`; desde Telegram: `/estado`.
    - `navegador_oculto: true` en config.yaml oculta también el navegador (no recomendado el primer mes).
 3. Configurá Windows para que **no se suspenda** en el horario de publicación
