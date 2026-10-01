@@ -1,0 +1,33 @@
+# Estado del agente
+
+_Actualizado: 01/10/2026 13:46 (America/Argentina/Tucuman). Si esta fecha tiene más de un día, el agente probablemente no está funcionando._
+
+- **Estado:** ✅ funcionando
+- **Modo:** aprobacion
+- **Telegram:** conectado
+- **Versión del agente:** 4fc422d (01/10 16:33)
+- **Publicaciones hoy:** 0/3
+- **Últimos 7 días:** sin movimientos
+
+## Próximas programadas
+
+| Cuándo | Publicación | Grupos |
+|---|---|---|
+| 05/10 10:30 | servicio-lunes | Venta de Garage Tafi Viejo |
+| 07/10 11:00 | servicio-miercoles | FERIA AMERICANA TAFI VIEJO |
+| 09/10 10:00 | servicio-viernes | Alguien Sabe!!! Tafi Viejo Ventas!!! |
+
+## Últimos movimientos
+
+(ninguno)
+
+## Avisos y errores recientes del registro
+
+- `2026-09-30 01:12:58 ERROR    Error inesperado al publicar`
+- `2026-09-30 14:39:18 WARNING  Telegram: Sin conexión con Telegram: <urlopen error [WinError 10060] Se produjo un error durante el intento de conexión ya que la parte conectada no respondió adecuadamente tras un periodo de`
+- `2026-09-30 18:24:21 WARNING  Telegram: Sin conexión con Telegram: <urlopen error [WinError 10060] Se produjo un error durante el intento de conexión ya que la parte conectada no respondió adecuadamente tras un periodo de`
+- `2026-09-30 22:11:47 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
+- `2026-09-30 22:24:07 WARNING  Telegram: Sin conexión con Telegram: <urlopen error [WinError 10060] Se produjo un error durante el intento de conexión ya que la parte conectada no respondió adecuadamente tras un periodo de`
+- `2026-10-01 03:30:38 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
+- `2026-10-01 04:58:26 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
+- `2026-10-01 13:46:37 WARNING  El archivo aprobaciones.json estaba dañado (Expecting value: line 1 column 1 (char 0)). Se guardó una copia como aprobaciones.danado-20261001-134637.json y se empezó uno nuevo.`
