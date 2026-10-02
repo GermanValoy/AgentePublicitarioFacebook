@@ -1,11 +1,11 @@
 # Estado del agente
 
-_Actualizado: 01/10/2026 16:48 (America/Argentina/Tucuman). Si esta fecha tiene más de un día, el agente probablemente no está funcionando._
+_Actualizado: 02/10/2026 00:15 (America/Argentina/Tucuman). Si esta fecha tiene más de un día, el agente probablemente no está funcionando._
 
 - **Estado:** ✅ funcionando
 - **Modo:** aprobacion
 - **Telegram:** conectado
-- **Versión del agente:** ae23107 (01/10 14:24)
+- **Versión del agente:** 9e1da19 (01/10 16:48)
 - **Publicaciones hoy:** 0/3
 - **Últimos 7 días:** sin movimientos
 
@@ -32,3 +32,4 @@ _Actualizado: 01/10/2026 16:48 (America/Argentina/Tucuman). Si esta fecha tiene 
 - `2026-10-01 04:58:26 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
 - `2026-10-01 13:46:37 WARNING  El archivo aprobaciones.json estaba dañado (Expecting value: line 1 column 1 (char 0)). Se guardó una copia como aprobaciones.danado-20261001-134637.json y se empezó uno nuevo.`
 - `2026-10-01 15:59:32 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
+- `2026-10-01 16:55:00 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
