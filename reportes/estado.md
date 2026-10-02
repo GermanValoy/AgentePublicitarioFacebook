@@ -1,11 +1,11 @@
 # Estado del agente
 
-_Actualizado: 02/10/2026 00:15 (America/Argentina/Tucuman). Si esta fecha tiene más de un día, el agente probablemente no está funcionando._
+_Actualizado: 02/10/2026 14:34 (America/Argentina/Tucuman). Si esta fecha tiene más de un día, el agente probablemente no está funcionando._
 
 - **Estado:** ✅ funcionando
 - **Modo:** aprobacion
 - **Telegram:** conectado
-- **Versión del agente:** 9e1da19 (01/10 16:48)
+- **Versión del agente:** 114d2f8 (02/10 00:15)
 - **Publicaciones hoy:** 0/3
 - **Últimos 7 días:** sin movimientos
 
@@ -23,9 +23,6 @@ _Actualizado: 02/10/2026 00:15 (America/Argentina/Tucuman). Si esta fecha tiene 
 
 ## Avisos y errores recientes del registro
 
-- `2026-09-30 01:12:58 ERROR    Error inesperado al publicar`
-- `2026-09-30 14:39:18 WARNING  Telegram: Sin conexión con Telegram: <urlopen error [WinError 10060] Se produjo un error durante el intento de conexión ya que la parte conectada no respondió adecuadamente tras un periodo de`
-- `2026-09-30 18:24:21 WARNING  Telegram: Sin conexión con Telegram: <urlopen error [WinError 10060] Se produjo un error durante el intento de conexión ya que la parte conectada no respondió adecuadamente tras un periodo de`
 - `2026-09-30 22:11:47 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
 - `2026-09-30 22:24:07 WARNING  Telegram: Sin conexión con Telegram: <urlopen error [WinError 10060] Se produjo un error durante el intento de conexión ya que la parte conectada no respondió adecuadamente tras un periodo de`
 - `2026-10-01 03:30:38 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
@@ -33,3 +30,6 @@ _Actualizado: 02/10/2026 00:15 (America/Argentina/Tucuman). Si esta fecha tiene 
 - `2026-10-01 13:46:37 WARNING  El archivo aprobaciones.json estaba dañado (Expecting value: line 1 column 1 (char 0)). Se guardó una copia como aprobaciones.danado-20261001-134637.json y se empezó uno nuevo.`
 - `2026-10-01 15:59:32 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
 - `2026-10-01 16:55:00 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
+- `2026-10-02 00:42:34 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
+- `2026-10-02 01:01:26 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
+- `2026-10-02 01:02:39 WARNING  Telegram: Sin conexión con Telegram: <urlopen error [WinError 10060] Se produjo un error durante el intento de conexión ya que la parte conectada no respondió adecuadamente tras un periodo de`
