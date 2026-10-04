@@ -1,23 +1,24 @@
-# Calendario: cada grupo recibe el anuncio 1 vez por semana, en días distintos.
-# Para agregar más publicaciones, copiá un bloque completo y cambiá id, fecha, grupos e imagen.
+# Calendario: cada grupo recibe 1 anuncio por semana, en días distintos.
+# Semana del 05/10 al 11/10. Se repite cada 7 días si no se actualiza.
 
 publicaciones:
-  - id: servicio-lunes
+  - id: celulares-2026-10-05
     activa: true
     fecha: 2026-10-05        # lunes
-    hora: "10:30"
+    hora: "10:42"
     grupos: ["Venta de Garage Tafi Viejo"]
-    imagenes: [servicio-tecnico-tafi.png]
+    imagenes: [servicios-celulares.jpg]
     repetir_cada_dias: 7
     texto: |
-      ✅ REPARACIÓN Y MANTENIMIENTO DE NETBOOKS, NOTEBOOKS Y PC ✅
+      📱 SERVICIOS PARA TU CELULAR 📱
 
-      {¡Hola a todos!|¡Buenas, vecinos!|¡Hola! ¿Cómo están?} 👋 {Te ofrecemos|Estos son nuestros servicios|Esto es lo que hacemos}:
+      {¡Hola a todos!|¡Buenas, vecinos!|¡Hola! ¿Cómo andan?} 👋 {¿Se te rompió la pantalla o no carga el celular?|¿Tu celular quedó bloqueado o con la pantalla dañada?|¿Tu celu no carga o tiene el vidrio roto?} {Lo resolvemos|Te lo arreglamos|Nos encargamos} con {garantía|trabajos garantizados} y {entrega rápida|rapidez}:
 
-      ➡️ Desbloqueo de netbooks {de todas las marcas|todas las marcas}, G1 a G15.
-      ➡️ Instalación de Windows 7, 8, 10 y 11.
-      ➡️ Instalación de programas: Microsoft Office, Adobe Acrobat Reader, Photoshop, Corel {y más|y muchos más}.
-      ➡️ {Asistencia remota: te ayudamos a distancia|Soporte remoto: lo resolvemos a distancia, sin que te muevas de tu casa}.
+      ➡️ Cambio de módulos y vidrios.
+      ➡️ Reparación de pin de carga.
+      ➡️ Desbloqueo banda negativa.
+      ➡️ Software y desbloqueo de patrón de seguridad.
+      ➡️ Venta de celulares e insumos.
 
       📍 {Estamos en|Nos encontrás en|Te esperamos en} Monteagudo 1140, Tafí Viejo
       💳 {Recibimos tarjetas de crédito|Aceptamos tarjetas de crédito}
@@ -25,22 +26,21 @@ publicaciones:
 
       {¡Te esperamos!|¡Consultanos sin compromiso!|¡Escribinos y te respondemos enseguida!} 🙌
 
-  - id: servicio-miercoles
+  - id: consolas-2026-10-07
     activa: true
     fecha: 2026-10-07        # miércoles
-    hora: "11:00"
+    hora: "16:17"
     grupos: ["FERIA AMERICANA TAFI VIEJO"]
-    imagenes: [servicio-tecnico-foto.jpg]
+    imagenes: [consolas-2026-10-05.jpg]
     repetir_cada_dias: 7
     texto: |
-      ✅ REPARACIÓN Y MANTENIMIENTO DE NETBOOKS, NOTEBOOKS Y PC ✅
+      🎮 CONSOLAS DE VIDEOJUEGOS 🎮
 
-      {¡Hola a todos!|¡Buenas, vecinos!|¡Hola! ¿Cómo están?} 👋 {Te ofrecemos|Estos son nuestros servicios|Esto es lo que hacemos}:
+      {¡Hola a todos!|¡Buenas, vecinos!|¡Hola! ¿Cómo están?} 👋 {¿Tenés una consola parada en un cajón?|¿Tu consola se recalienta o no lee los juegos?|¿Querés ponerle juegos nuevos a tu consola?} {Nosotros te ayudamos|Podemos ayudarte|Te damos una mano}:
 
-      ➡️ Desbloqueo de netbooks {de todas las marcas|todas las marcas}, G1 a G15.
-      ➡️ Instalación de Windows 7, 8, 10 y 11.
-      ➡️ Instalación de programas: Microsoft Office, Adobe Acrobat Reader, Photoshop, Corel {y más|y muchos más}.
-      ➡️ {Asistencia remota: te ayudamos a distancia|Soporte remoto: lo resolvemos a distancia, sin que te muevas de tu casa}.
+      ➡️ Liberación de PS2, PS3 y PS4.
+      ➡️ Instalación de juegos.
+      ➡️ Mantenimiento y limpieza de consolas.
 
       📍 {Estamos en|Nos encontrás en|Te esperamos en} Monteagudo 1140, Tafí Viejo
       💳 {Recibimos tarjetas de crédito|Aceptamos tarjetas de crédito}
@@ -48,26 +48,26 @@ publicaciones:
 
       {¡Te esperamos!|¡Consultanos sin compromiso!|¡Escribinos y te respondemos enseguida!} 🙌
 
-  - id: servicio-viernes
+  - id: limpieza-2026-10-09
     activa: true
     fecha: 2026-10-09        # viernes
-    hora: "10:00"
+    hora: "11:23"
     grupos: ["Alguien Sabe!!! Tafi Viejo Ventas!!!"]
-    imagenes: [servicio-tecnico-tafi.png]
+    imagenes: [limpieza-2026-10-05.jpg]
     repetir_cada_dias: 7
     texto: |
-      ✅ REPARACIÓN Y MANTENIMIENTO DE NETBOOKS, NOTEBOOKS Y PC ✅
+      🔧 ¿TU NOTEBOOK NECESITA UNA LIMPIEZA? 🔧
 
-      {¡Hola a todos!|¡Buenas, vecinos!|¡Hola! ¿Cómo están?} 👋 {Te ofrecemos|Estos son nuestros servicios|Esto es lo que hacemos}:
+      {¡Hola a todos!|¡Buenas, vecinos!|¡Hola! ¿Cómo andan?} 👋 {Estas son algunas señales|Fijate si te pasa alguna de estas cosas|Si notás alguna de estas señales}:
 
-      ➡️ Desbloqueo de netbooks {de todas las marcas|todas las marcas}, G1 a G15.
-      ➡️ Instalación de Windows 7, 8, 10 y 11.
-      ➡️ Instalación de programas: Microsoft Office, Adobe Acrobat Reader, Photoshop, Corel {y más|y muchos más}.
-      ➡️ {Asistencia remota: te ayudamos a distancia|Soporte remoto: lo resolvemos a distancia, sin que te muevas de tu casa}.
+      ➡️ Se calienta mucho o el ventilador hace ruido.
+      ➡️ Se pone lenta o se apaga sola.
+      ➡️ Hace años que nunca la abrieron para limpiarla.
+
+      {Hacemos limpieza interna y cambio de pasta térmica|Te hacemos la limpieza interna y el cambio de pasta térmica|Nos encargamos de la limpieza interna y la pasta térmica} en notebooks, netbooks y PC, para que {trabaje más fresca|rinda mejor|dure más}.
 
       📍 {Estamos en|Nos encontrás en|Te esperamos en} Monteagudo 1140, Tafí Viejo
       💳 {Recibimos tarjetas de crédito|Aceptamos tarjetas de crédito}
       📲 {WhatsApp|Consultas por WhatsApp|Escribinos al WhatsApp}: 381 649-6790
 
       {¡Te esperamos!|¡Consultanos sin compromiso!|¡Escribinos y te respondemos enseguida!} 🙌
-
