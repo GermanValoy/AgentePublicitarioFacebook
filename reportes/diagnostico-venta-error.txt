@@ -1,0 +1,18 @@
+# 05/10/2026 15:13 · etiqueta | rol | tipo | aria-label | placeholder | texto
+div | button |  | Cerrar |  | 
+div | button |  |  |  | Artículo en venta Crea una sola publicación para vender uno 
+div | button |  |  |  | Vehículo en venta Vende un coche, un camión u otro tipo de v
+div | button |  |  |  | Viviendas en venta o alquiler Publica una casa o un apartame
+div | button |  |  |  | Evento de venta Rastrillos de artículos de segunda mano, ven
+div | button |  | Atrás |  | 
+label |  |  |  |  | 
+input |  | file |  |  | 
+div | button |  |  |  | Añadir fotos o arrastrar y soltar
+div | button |  | Más información sobre cómo subir fotos desde el teléfono |  | Más información
+div | button |  | Probar |  | Probar
+label |  |  |  |  | Título
+input |  | text |  |  | 
+label |  |  |  |  | Precio
+label | combobox |  |  |  | Estado 
+div | button |  |  |  | Más detalles Para captar más atención, incluye más detalles.
+div | button |  | Siguiente |  | Siguiente
