@@ -34,3 +34,16 @@ def test_guardar_es_atomico_y_legible(tmp_path):
     archivos.guardar_json(archivo, {"a": "ñ"})
     assert json.loads(archivo.read_text(encoding="utf-8")) == {"a": "ñ"}
     assert not list(tmp_path.glob("*.tmp"))
+
+
+def test_reclasifica_intentos_viejos_que_no_publicaron(tmp_path):
+    """El 05/10 la versión vieja marcó como 'fallida' (bloqueando el grupo 7 días) un intento sin publicar."""
+    archivo = tmp_path / "historial.json"
+    base = {"clave": "x", "publicacion_id": "celulares", "grupo": "Venta de Garage", "fecha_hora": "2026-10-05T11:53:51-03:00"}
+    archivo.write_text(json.dumps([
+        {**base, "estado": "fallida", "detalle": "No se encontró el cuadro 'Escribe algo...'. ¿Sos miembro?"},
+        {**base, "estado": "fallida", "detalle": "Facebook mostró un error al publicar"},
+    ]), encoding="utf-8")
+    h = Historial(archivo)
+    assert [r.estado for r in h.registros] == ["error_navegador", "fallida"]
+    assert len(h.actividad("Venta de Garage")) == 1

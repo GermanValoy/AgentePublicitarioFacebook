@@ -46,7 +46,8 @@ def _publicador(config: Config, modo: str | None = None, oculto: bool = False):
     if modo == "aprobacion":
         modo = "automatico"  # ya lo aprobaste por Telegram: el agente hace el clic en "Publicar"
     return PublicadorFacebook(config.carpeta_datos / "perfil_navegador", config.carpeta_datos / "capturas",
-                              modo, oculto=oculto or config.navegador_oculto, navegador=config.navegador)
+                              modo, oculto=oculto or config.navegador_oculto, navegador=config.navegador,
+                              venta=config.venta, carpeta_diagnostico=config.raiz / "reportes")
 
 
 def _imprimir_validacion(config: Config, publicaciones) -> bool:
@@ -71,6 +72,8 @@ def _imprimir_validacion(config: Config, publicaciones) -> bool:
 def cmd_validar(config, args) -> int:
     publicaciones = cargar_publicaciones(config.archivo_programadas)
     print(f"Configuración OK: {len(config.grupos)} grupos, modo '{config.modo}'.\n")
+    if not config.venta.get("precio"):
+        print("Aviso: falta venta → precio en config/config.yaml (lo exigen los grupos de compra-venta).\n")
     ok = _imprimir_validacion(config, publicaciones)
     print("\nTodo listo para publicar." if ok else "\nHay errores: corregilos antes de publicar.")
     return 0 if ok else 1

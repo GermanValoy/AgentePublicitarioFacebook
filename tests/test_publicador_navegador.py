@@ -65,7 +65,7 @@ def test_avisa_si_la_foto_no_aparece_y_guarda_diagnostico(tmp_path, imagen, monk
         res = p.publicar(f"{PAGINA}?fotos=nada", "Hola vecinos", [imagen])
     finally:
         p.__exit__(None, None, None)
-    assert res.estado == "fallida" and "vista previa" in res.detalle
+    assert res.estado == "error_navegador" and "vista previa" in res.detalle  # no se publicó nada
     assert res.captura and res.captura.is_file()
     assert list((tmp_path / "capturas").glob("*error-imagenes.html"))
 
@@ -115,3 +115,58 @@ def test_detecta_bloqueo(tmp_path):
     finally:
         p.__exit__(None, None, None)
     assert res.estado == "bloqueada"
+
+
+PAGINA_VENTA = (Path(__file__).parent / "pagina_grupo_venta_falsa.html").as_uri()
+TEXTO_VENTA = "✅ REPARACIÓN DE NOTEBOOKS Y PC ✅\n\nHago limpieza y formateo.\n📲 WhatsApp: 381 649-6790"
+
+
+def abrir_venta(tmp_path, modo, venta=None):
+    publicador = PublicadorFacebook(tmp_path / "perfil", tmp_path / "capturas", modo, oculto=True,
+                                    verificar_sesion=False, velocidad=0.01,
+                                    venta={"precio": "15000", "estado": ""} if venta is None else venta,
+                                    carpeta_diagnostico=tmp_path / "reportes")
+    try:
+        return publicador.__enter__()
+    except Exception as e:
+        pytest.skip(f"No se pudo abrir Chromium: {e}")
+
+
+def test_grupo_de_compraventa_publica_articulo_en_venta(tmp_path, imagen):
+    p = abrir_venta(tmp_path, "automatico")
+    try:
+        res = p.publicar(PAGINA_VENTA, TEXTO_VENTA, [imagen])
+        publicado = p.page.locator("#publicado").inner_text()
+    finally:
+        p.__exit__(None, None, None)
+    assert res.estado == "publicada", res.detalle
+    titulo, precio, estado, descripcion, fotos = publicado.split(" | ")
+    assert titulo == "REPARACIÓN DE NOTEBOOKS Y PC"  # primera línea sin emojis
+    assert precio == "15000" and estado == "Nuevo" and fotos == "fotos:1"
+    assert "Hago limpieza y formateo." in descripcion and "381 649-6790" in descripcion
+    lista = (tmp_path / "reportes" / "diagnostico-venta-formulario.txt").read_text(encoding="utf-8")
+    assert "Título" in lista and "15000" not in lista  # lista los campos, no lo escrito
+
+
+def test_compraventa_en_simulacion_no_publica(tmp_path, imagen):
+    p = abrir_venta(tmp_path, "simulacion")
+    try:
+        res = p.publicar(PAGINA_VENTA, TEXTO_VENTA, [imagen])
+        publicado = p.page.locator("#publicado").inner_text()
+    finally:
+        p.__exit__(None, None, None)
+    assert res.estado == "simulada", res.detalle
+    assert publicado == ""
+
+
+def test_compraventa_sin_precio_avisa(tmp_path, imagen):
+    p = abrir_venta(tmp_path, "automatico", venta={})
+    try:
+        res = p.publicar(PAGINA_VENTA, TEXTO_VENTA, [imagen])
+    finally:
+        p.__exit__(None, None, None)
+    assert res.estado == "error_navegador" and "precio" in res.detalle
+
+
+def test_titulo_de_texto():
+    assert PublicadorFacebook.titulo_de("\n🔧 {no} \n✅ SERVICIO TÉCNICO ✅\nresto") == "SERVICIO TÉCNICO"

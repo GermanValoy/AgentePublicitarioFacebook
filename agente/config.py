@@ -101,6 +101,7 @@ class Config:
     modo: str
     navegador: str
     navegador_oculto: bool
+    venta: dict
     limites: Limites
     contenido: ReglasContenido
     grupos: dict[str, Grupo]
@@ -126,6 +127,18 @@ def _numero(seccion: dict, clave: str, defecto, campo: str, minimo=0):
     if isinstance(valor, bool) or not isinstance(valor, (int, float)) or valor < minimo:
         raise ErrorConfig(f"{campo}.{clave} debe ser un número mayor o igual a {minimo}")
     return type(defecto)(valor)
+
+
+def _venta(valor) -> dict:
+    """Datos para grupos de compra-venta (Facebook exige precio en «Artículo en venta»)."""
+    if valor is None:
+        return {}
+    if not isinstance(valor, dict):
+        raise ErrorConfig("venta debe tener 'precio' (y opcionalmente 'estado')")
+    precio = valor.get("precio")
+    if precio is not None and (isinstance(precio, bool) or not isinstance(precio, (int, float)) or precio < 0):
+        raise ErrorConfig("venta.precio debe ser un número (sin $ ni puntos), por ejemplo 15000")
+    return {"precio": "" if precio is None else str(int(precio)), "estado": str(valor.get("estado") or "")}
 
 
 def cargar_config(raiz: Path = RAIZ, archivo: Path | None = None) -> Config:
@@ -199,4 +212,5 @@ def cargar_config(raiz: Path = RAIZ, archivo: Path | None = None) -> Config:
         )
 
     return Config(raiz=raiz, zona=zona, modo=modo, navegador=navegador,
-                  navegador_oculto=bool(datos.get("navegador_oculto", False)), limites=limites, contenido=contenido, grupos=grupos)
+                  navegador_oculto=bool(datos.get("navegador_oculto", False)),
+                  venta=_venta(datos.get("venta")), limites=limites, contenido=contenido, grupos=grupos)

@@ -12,6 +12,7 @@ ESTADOS_ACTIVIDAD = {"publicada", "fallida", "bloqueada"}
 # Intentos fallidos que se pueden reintentar. "error_navegador" = no se llegó a escribir nada en Facebook
 # (el navegador no abrió o no apareció el cuadro para publicar): no cuenta para los límites anti-baneo.
 ESTADOS_INTENTO = {"fallida", "error_navegador"}
+SIN_PUBLICAR = ("No se encontró el cuadro", "No se pudieron adjuntar las imágenes")
 # Estados que dan por terminada una tarea (no se vuelve a intentar).
 ESTADOS_FINALES = {"publicada", "vencida", "omitida", "no_confirmada", "bloqueada"}
 
@@ -37,6 +38,9 @@ class Historial:
         self.registros: list[Registro] = []
         datos = leer_json(archivo, [])
         self.registros = [Registro(**r) for r in datos if isinstance(r, dict)] if isinstance(datos, list) else []
+        for r in self.registros:  # versiones viejas marcaban como "fallida" intentos que no publicaron nada
+            if r.estado == "fallida" and r.detalle.startswith(SIN_PUBLICAR):
+                r.estado = "error_navegador"
 
     def agregar(self, clave: str, publicacion_id: str, grupo: str, estado: str,
                 momento: dt.datetime, texto: str = "", detalle: str = "") -> Registro:

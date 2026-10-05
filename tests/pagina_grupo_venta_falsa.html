@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="es">
+<head><meta charset="utf-8"><title>Grupo de compra-venta de prueba</title></head>
+<body>
+  <!-- Imita un grupo de compra-venta: «Vender algo» → «Artículo en venta» → formulario → Siguiente → Publicar -->
+  <h1>Venta de Garage</h1>
+  <div role="button" id="vender" tabindex="0">Vender algo</div>
+  <p>Publicación de un vecino: vendo bicicleta</p>
+  <div role="dialog" id="elegir" hidden>
+    <div role="button" id="articulo" tabindex="0">Artículo en venta</div>
+    <div role="button" tabindex="0">Vehículo en venta</div>
+  </div>
+  <div role="dialog" id="formulario" hidden>
+    <div role="button" id="agregar" tabindex="0">Agregar fotos</div>
+    <input type="file" id="fotos" multiple hidden>
+    <div id="vistas"></div>
+    <label>Título <input id="titulo"></label>
+    <label>Precio <input id="precio" inputmode="numeric"></label>
+    <div role="combobox" aria-label="Estado" id="estado" tabindex="0">Estado</div>
+    <div id="opciones" hidden><div role="option" id="nuevo">Nuevo</div><div role="option">Usado: como nuevo</div></div>
+    <label>Descripción <textarea id="descripcion"></textarea></label>
+    <div role="button" id="siguiente" tabindex="0">Siguiente</div>
+    <div role="button" id="publicar" tabindex="0" hidden>Publicar</div>
+  </div>
+  <div id="publicado"></div>
+  <script>
+    const $ = (id) => document.getElementById(id);
+    let fotos = 0, estado = "";
+    $("vender").onclick = () => { $("elegir").hidden = false; };
+    $("articulo").onclick = () => { $("elegir").hidden = true; $("formulario").hidden = false; };
+    $("agregar").onclick = () => $("fotos").click();
+    $("fotos").onchange = () => {
+      fotos = $("fotos").files.length;
+      for (const f of $("fotos").files) {
+        const img = document.createElement("img"); img.src = URL.createObjectURL(f); img.width = 60;
+        $("vistas").appendChild(img);
+      }
+    };
+    $("estado").onclick = () => { $("opciones").hidden = false; };
+    $("nuevo").onclick = () => { estado = "Nuevo"; $("opciones").hidden = true; };
+    $("siguiente").onclick = () => { $("siguiente").hidden = true; $("publicar").hidden = false; };
+    $("publicar").onclick = () => {
+      $("publicado").textContent = [$("titulo").value, $("precio").value, estado,
+                                    $("descripcion").value, "fotos:" + fotos].join(" | ");
+      $("formulario").hidden = true;
+    };
+    document.addEventListener("keydown", (e) => { if (e.key === "Escape") $("formulario").hidden = true; });
+  </script>
+</body>
+</html>

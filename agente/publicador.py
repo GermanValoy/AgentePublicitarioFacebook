@@ -36,6 +36,25 @@ TEXTO_COMPOSITOR = re.compile(
 BOTON_FOTO = re.compile(r"foto\/v[ií]deo|photo\/video", re.I)  # "/" escapada: Playwright la exige
 BOTON_AGREGAR_FOTOS = re.compile(r"agrega(r)? fotos|add photos|arrastra|drag and drop", re.I)
 BOTON_PUBLICAR = re.compile(r"^\s*(publicar|post)\s*$", re.I)
+# Grupos de compra-venta: "Vender algo" → "Artículo en venta" → formulario (fotos, título, precio, descripción).
+BOTON_VENDER = re.compile(r"vender algo|vende algo|sell something|qu[eé] vas a vender", re.I)
+OPCION_ARTICULO = re.compile(r"art[ií]culo en venta|item for sale", re.I)
+CAMPO_TITULO = re.compile(r"^\s*(t[ií]tulo|title)", re.I)
+CAMPO_PRECIO = re.compile(r"^\s*(precio|price)", re.I)
+CAMPO_DESCRIPCION = re.compile(r"descripci[oó]n|description|describ", re.I)
+CAMPO_ESTADO = re.compile(r"^\s*(estado|condici[oó]n|condition)", re.I)
+OPCION_NUEVO = re.compile(r"^\s*(nuevo|new)\b", re.I)
+BOTON_SIGUIENTE = re.compile(r"^\s*(siguiente|next)\s*$", re.I)
+EMOJIS = re.compile(r"[^\w\s.,:;!¡?¿()%$/+&'\"-]", re.UNICODE)
+
+JS_CONTROLES = """(raiz) => Array.from(raiz.querySelectorAll(
+  'input,textarea,select,[role=button],[role=combobox],[role=textbox],[role=radio],label'))
+  .slice(0, 200).map(e => {
+    const rol = e.getAttribute('role') || '';
+    const texto = (e.tagName === 'LABEL' || rol === 'button') ? (e.innerText || '').replace(/\\s+/g, ' ') : '';
+    return [e.tagName.toLowerCase(), rol, e.getAttribute('type') || '', (e.getAttribute('aria-label') || ''),
+            e.getAttribute('placeholder') || '', texto].map(x => x.slice(0, 60)).join(' | ');
+  }).filter((v, i, a) => a.indexOf(v) === i).join('\\n')"""
 BOTON_DESCARTAR = re.compile(r"^\s*(descartar|discard|salir|leave)\s*$", re.I)
 
 
@@ -54,7 +73,8 @@ def confirmar_por_consola(mensaje: str) -> bool:
 class PublicadorFacebook:
     def __init__(self, carpeta_perfil: Path, carpeta_capturas: Path, modo: str, oculto: bool = False,
                  confirmar: Callable[[str], bool] = confirmar_por_consola, verificar_sesion: bool = True,
-                 velocidad: float = 1.0, navegador: str = "chromium"):
+                 velocidad: float = 1.0, navegador: str = "chromium", venta: dict | None = None,
+                 carpeta_diagnostico: Path | None = None):
         self.carpeta_perfil = carpeta_perfil
         self.carpeta_capturas = carpeta_capturas
         self.modo = modo
@@ -63,6 +83,8 @@ class PublicadorFacebook:
         self.verificar_sesion = verificar_sesion
         self.velocidad = velocidad  # 1.0 = ritmo humano; los tests usan valores bajos
         self.navegador = navegador  # chromium (de Playwright), chrome o msedge (instalados en la PC)
+        self.venta = venta or {}  # precio (y opcionalmente estado) para grupos de compra-venta
+        self.carpeta_diagnostico = carpeta_diagnostico  # reportes/: lista de campos (sin datos) para ajustar
 
     # ---- ciclo de vida -------------------------------------------------------------------
     def __enter__(self) -> "PublicadorFacebook":
@@ -109,6 +131,20 @@ class PublicadorFacebook:
         except Exception as e:
             log.warning("No se pudo sacar la captura (%s): %s", etiqueta, e)
             return None
+
+    def _guardar_controles(self, contenedor, etiqueta: str) -> None:
+        """Guarda en reportes/ la lista de campos y botones del formulario (sin lo escrito en ellos),
+        para poder ajustar el agente a distancia si Facebook cambia el formulario."""
+        if not self.carpeta_diagnostico:
+            return
+        try:
+            self.carpeta_diagnostico.mkdir(parents=True, exist_ok=True)
+            lista = contenedor.evaluate(JS_CONTROLES)
+            (self.carpeta_diagnostico / f"diagnostico-{etiqueta}.txt").write_text(
+                f"# {dt.datetime.now():%d/%m/%Y %H:%M} · etiqueta | rol | tipo | aria-label | placeholder | texto\n"
+                + lista + "\n", encoding="utf-8")
+        except Exception as e:
+            log.warning("No se pudo guardar la lista de campos: %s", e)
 
     def _guardar_diagnostico(self, dialogo, etiqueta: str) -> None:
         """Guarda el HTML del cuadro de publicación para poder ajustar el agente si Facebook cambia."""
@@ -203,6 +239,103 @@ class PublicadorFacebook:
         log.info("Foto(s) adjuntada(s): %d", len(archivos))
         self._pausa(3 + 2 * len(imagenes), 5 + 2 * len(imagenes))  # tiempo de subida
 
+    def _buscar_en(self, contenedor, patron, solo_botones: bool = False):
+        candidatos = [contenedor.get_by_role("button", name=patron)]
+        if not solo_botones:
+            candidatos += [contenedor.get_by_role("menuitem", name=patron), contenedor.get_by_role("radio", name=patron),
+                           contenedor.get_by_text(patron)]
+        for c in candidatos:
+            try:
+                for i in range(min(c.count(), 5)):
+                    if c.nth(i).is_visible():
+                        return c.nth(i)
+            except Exception:
+                continue
+        return None
+
+    def _campo(self, contenedor, patron):
+        for c in (contenedor.get_by_label(patron), contenedor.get_by_placeholder(patron),
+                  contenedor.get_by_role("textbox", name=patron)):
+            try:
+                if c.count() and c.first.is_visible():
+                    return c.first
+            except Exception:
+                continue
+        return None
+
+    @staticmethod
+    def titulo_de(texto: str) -> str:
+        """Primera línea del texto, sin emojis, como título del artículo (máx. 90 caracteres)."""
+        for linea in texto.splitlines():
+            limpia = " ".join(EMOJIS.sub(" ", linea).split())
+            if len(limpia) >= 5:
+                return limpia[:90]
+        return "Servicio técnico"
+
+    def _publicar_venta(self, vender, texto: str, imagenes: list[Path]) -> ResultadoPublicacion:
+        """Grupos de compra-venta: «Vender algo» → «Artículo en venta» → fotos, título, precio y descripción."""
+        page = self.page
+        precio = str(self.venta.get("precio", "")).strip()
+        if not precio:
+            return ResultadoPublicacion("error_navegador", "Es un grupo de compra-venta y falta el precio: "
+                                        "poné venta → precio en config/config.yaml", self._captura("venta-sin-precio"))
+        log.info("Grupo de compra-venta: «Vender algo»")
+        vender.click()
+        self._pausa(2, 4)
+        elegir = page.get_by_role("dialog")
+        articulo = self._buscar_en(elegir.last if elegir.count() else page, OPCION_ARTICULO)
+        if articulo is not None:
+            log.info("«Artículo en venta»")
+            articulo.click()
+            self._pausa(2, 4)
+        dialogos = page.get_by_role("dialog")
+        formulario = dialogos.last if dialogos.count() else page.locator("body")
+        self._guardar_controles(formulario, "venta-formulario")
+
+        try:
+            if imagenes:
+                log.info("Adjuntando %d imagen(es)", len(imagenes))
+                self._adjuntar_imagenes(formulario, imagenes)
+            faltan = []
+            for nombre, patron, valor in (("título", CAMPO_TITULO, self.titulo_de(texto)),
+                                          ("precio", CAMPO_PRECIO, precio)):
+                campo = self._campo(formulario, patron)
+                if campo is None:
+                    faltan.append(nombre)
+                    continue
+                campo.click()
+                self._escribir(campo, valor)
+                self._pausa(1, 2)
+            estado = self._campo(formulario, CAMPO_ESTADO) or self._buscar_en(formulario, CAMPO_ESTADO)
+            if estado is not None:
+                try:
+                    estado.click()
+                    self._pausa(1, 2)
+                    opcion = self._buscar_en(page, re.compile(self.venta.get("estado", "") or OPCION_NUEVO.pattern,
+                                                              re.I))
+                    if opcion is not None:
+                        opcion.click()
+                except Exception as e:
+                    log.info("No se pudo elegir el estado del artículo (se sigue igual): %s", e)
+            descripcion = self._campo(formulario, CAMPO_DESCRIPCION)
+            if descripcion is None:
+                faltan.append("descripción")
+            else:
+                descripcion.click()
+                log.info("Escribiendo la descripción")
+                self._escribir(descripcion, texto)
+            if faltan:
+                raise RuntimeError(f"no se encontraron los campos: {', '.join(faltan)}")
+        except Exception as e:
+            log.warning("Formulario de venta: %s", e)
+            self._guardar_controles(formulario, "venta-error")
+            captura = self._captura("venta-error")
+            self._descartar(formulario)
+            return ResultadoPublicacion("error_navegador", f"Formulario de venta: {e}", captura)
+
+        self._pausa(1, 3)
+        return self._terminar(formulario, pasos_siguiente=True)
+
     def _escribir(self, caja, texto: str) -> None:
         """Escribe letra por letra, de a una línea, dándole a cada línea el tiempo que necesita
         (un texto largo escrito a ritmo humano tarda más que el límite normal de 30 segundos)."""
@@ -253,6 +386,9 @@ class PublicadorFacebook:
 
         compositor = self._buscar_compositor()
         if compositor is None:
+            vender = self._buscar_en(page, BOTON_VENDER)
+            if vender is not None:
+                return self._publicar_venta(vender, texto, imagenes)
             # No llegó a escribir nada: no cuenta como actividad en el grupo (se puede reintentar).
             return ResultadoPublicacion("error_navegador", "No se encontró el cuadro 'Escribe algo...'. "
                                         "¿Sos miembro del grupo y permite publicar?", self._captura("sin-compositor"))
@@ -276,8 +412,11 @@ class PublicadorFacebook:
                 captura = self._captura("error-imagenes")
                 self._guardar_diagnostico(dialogo, "error-imagenes")
                 self._descartar(dialogo)
-                return ResultadoPublicacion("fallida", f"No se pudieron adjuntar las imágenes: {e}", captura)
+                return ResultadoPublicacion("error_navegador", f"No se pudieron adjuntar las imágenes: {e}", captura)
 
+        return self._terminar(dialogo)
+
+    def _terminar(self, dialogo, pasos_siguiente: bool = False) -> ResultadoPublicacion:
         captura = self._captura(f"borrador-{self.modo}")
 
         if self.modo == "simulacion":
@@ -286,7 +425,8 @@ class PublicadorFacebook:
 
         if self.modo == "asistido":
             publicada = self.confirmar(
-                "\n>>> El borrador está listo en el navegador. Revisalo y hacé clic en «Publicar».\n"
+                "\n>>> El borrador está listo en el navegador. Revisalo y hacé clic en «Publicar»"
+                + (" (o «Siguiente» y después «Publicar»)" if pasos_siguiente else "") + ".\n"
                 "    Si no querés publicarlo, cerralo y respondé 'n'.")
             if not publicada:
                 if dialogo.is_visible():
@@ -294,8 +434,26 @@ class PublicadorFacebook:
                 return ResultadoPublicacion("no_confirmada", "El usuario decidió no publicar", captura)
             return ResultadoPublicacion("publicada", "Publicada por el usuario (modo asistido)", captura)
 
-        dialogo.get_by_role("button", name=BOTON_PUBLICAR).last.click()
-        dialogo.wait_for(state="hidden", timeout=60_000)
+        if pasos_siguiente:  # el formulario de venta tiene "Siguiente" antes de "Publicar"
+            for _ in range(3):
+                siguiente = self._buscar_en(self.page, BOTON_SIGUIENTE, solo_botones=True)
+                if siguiente is None or self._buscar_en(self.page, BOTON_PUBLICAR, solo_botones=True):
+                    break
+                siguiente.click()
+                self._pausa(2, 4)
+            boton = self._buscar_en(self.page, BOTON_PUBLICAR, solo_botones=True)
+            if boton is None:
+                self._guardar_controles(self.page.locator("body"), "venta-publicar")
+                raise RuntimeError("no se encontró el botón «Publicar» del formulario de venta")
+            boton.click()
+        else:
+            dialogo.get_by_role("button", name=BOTON_PUBLICAR).last.click()
+        try:
+            dialogo.wait_for(state="hidden", timeout=60_000)
+        except Exception:
+            if not pasos_siguiente:
+                raise
+            self._pausa(5, 8)  # el formulario de venta a veces es una página entera, no una ventana
         self._pausa(3, 6)
         bloqueo = self.detectar_bloqueo()
         if bloqueo:
