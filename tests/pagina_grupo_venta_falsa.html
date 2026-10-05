@@ -2,49 +2,70 @@
 <html lang="es">
 <head><meta charset="utf-8"><title>Grupo de compra-venta de prueba</title></head>
 <body>
-  <!-- Imita un grupo de compra-venta: «Vender algo» → «Artículo en venta» → formulario → Siguiente → Publicar -->
+  <!-- Copia la estructura REAL que reportó la PC (reportes/diagnostico-venta-*.txt, 05/10/2026):
+       una sola ventana con el selector y después el formulario; input de fotos oculto dentro de un label;
+       contador "Fotos · N/42"; miniaturas como fondos (no <img>); "Estado" es un label con rol combobox;
+       la descripción está dentro de "Más detalles" (cerrado); "Siguiente" y después "Publicar". -->
   <h1>Venta de Garage</h1>
   <div role="button" id="vender" tabindex="0">Vender algo</div>
-  <p>Publicación de un vecino: vendo bicicleta</p>
-  <div role="dialog" id="elegir" hidden>
-    <div role="button" id="articulo" tabindex="0">Artículo en venta</div>
-    <div role="button" tabindex="0">Vehículo en venta</div>
-  </div>
-  <div role="dialog" id="formulario" hidden>
-    <div role="button" id="agregar" tabindex="0">Agregar fotos</div>
-    <input type="file" id="fotos" multiple hidden>
-    <div id="vistas"></div>
-    <label>Título <input id="titulo"></label>
-    <label>Precio <input id="precio" inputmode="numeric"></label>
-    <div role="combobox" aria-label="Estado" id="estado" tabindex="0">Estado</div>
-    <div id="opciones" hidden><div role="option" id="nuevo">Nuevo</div><div role="option">Usado: como nuevo</div></div>
-    <label>Descripción <textarea id="descripcion"></textarea></label>
-    <div role="button" id="siguiente" tabindex="0">Siguiente</div>
-    <div role="button" id="publicar" tabindex="0" hidden>Publicar</div>
+  <p>Publicación de un vecino: vendo bicicleta, artículo en venta usado</p>
+  <div role="dialog" id="dialogo" hidden>
+    <div role="button" aria-label="Cerrar" id="cerrar" tabindex="0">x</div>
+    <div id="paso-elegir">
+      <div role="button" id="articulo" tabindex="0">Artículo en venta Crea una sola publicación para vender uno o varios artículos</div>
+      <div role="button" tabindex="0">Vehículo en venta Vende un coche, un camión u otro tipo de vehículo</div>
+    </div>
+    <div id="paso-formulario" hidden>
+      <div role="button" aria-label="Atrás" tabindex="0">&lt;</div>
+      <div id="contador">Fotos · 0/42 Puedes añadir un máximo de 42 fotos</div>
+      <label><input type="file" id="fotos" multiple accept="image/*,image/heif,image/heic" style="display:none"></label>
+      <div role="button" id="agregar" tabindex="0">Añadir fotos o arrastrar y soltar</div>
+      <div id="miniaturas"></div>
+      <label><span>Título</span><input type="text" id="titulo"></label>
+      <label><span>Precio</span><input type="text" id="precio"></label>
+      <label role="combobox" id="estado" tabindex="0"><span>Estado</span></label>
+      <div role="listbox" id="opciones" hidden>
+        <div role="option" id="nuevo">Nuevo</div><div role="option">Usado: como nuevo</div>
+      </div>
+      <div role="button" id="mas" tabindex="0">Más detalles Para captar más atención, incluye más detalles.</div>
+      <div id="detalles" hidden><label><span>Descripción</span><textarea id="descripcion"></textarea></label></div>
+      <div role="button" aria-label="Siguiente" id="siguiente" tabindex="0">Siguiente</div>
+    </div>
+    <div id="paso-publicar" hidden>
+      <p>Publica en más lugares</p>
+      <div role="button" aria-label="Publicar" id="publicar" tabindex="0">Publicar</div>
+    </div>
   </div>
   <div id="publicado"></div>
   <script>
     const $ = (id) => document.getElementById(id);
     let fotos = 0, estado = "";
-    $("vender").onclick = () => { $("elegir").hidden = false; };
-    $("articulo").onclick = () => { $("elegir").hidden = true; $("formulario").hidden = false; };
+    $("vender").onclick = () => { $("dialogo").hidden = false; };
+    $("articulo").onclick = () => { $("paso-elegir").hidden = true; $("paso-formulario").hidden = false; };
     $("agregar").onclick = () => $("fotos").click();
     $("fotos").onchange = () => {
       fotos = $("fotos").files.length;
-      for (const f of $("fotos").files) {
-        const img = document.createElement("img"); img.src = URL.createObjectURL(f); img.width = 60;
-        $("vistas").appendChild(img);
-      }
+      setTimeout(() => {  // Facebook tarda en procesar la foto
+        $("contador").textContent = "Fotos · " + fotos + "/42 Puedes añadir un máximo de 42 fotos";
+        for (const f of $("fotos").files) {
+          const d = document.createElement("div");
+          d.style.cssText = "width:60px;height:60px;background-image:url(" + URL.createObjectURL(f) + ")";
+          $("miniaturas").appendChild(d);
+        }
+      }, 300);
     };
     $("estado").onclick = () => { $("opciones").hidden = false; };
     $("nuevo").onclick = () => { estado = "Nuevo"; $("opciones").hidden = true; };
-    $("siguiente").onclick = () => { $("siguiente").hidden = true; $("publicar").hidden = false; };
+    $("mas").onclick = () => { $("detalles").hidden = false; };
+    $("siguiente").onclick = () => { $("paso-formulario").hidden = true; $("paso-publicar").hidden = false; };
     $("publicar").onclick = () => {
       $("publicado").textContent = [$("titulo").value, $("precio").value, estado,
                                     $("descripcion").value, "fotos:" + fotos].join(" | ");
-      $("formulario").hidden = true;
+      $("dialogo").hidden = true;
     };
-    document.addEventListener("keydown", (e) => { if (e.key === "Escape") $("formulario").hidden = true; });
+    const cerrar = () => { $("dialogo").hidden = true; };
+    $("cerrar").onclick = cerrar;
+    document.addEventListener("keydown", (e) => { if (e.key === "Escape") cerrar(); });
   </script>
 </body>
 </html>

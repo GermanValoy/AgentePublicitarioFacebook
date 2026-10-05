@@ -124,7 +124,7 @@ TEXTO_VENTA = "✅ REPARACIÓN DE NOTEBOOKS Y PC ✅\n\nHago limpieza y formateo
 def abrir_venta(tmp_path, modo, venta=None):
     publicador = PublicadorFacebook(tmp_path / "perfil", tmp_path / "capturas", modo, oculto=True,
                                     verificar_sesion=False, velocidad=0.01,
-                                    venta={"precio": "15000", "estado": ""} if venta is None else venta,
+                                    venta={"precio": "0", "estado": ""} if venta is None else venta,
                                     carpeta_diagnostico=tmp_path / "reportes")
     try:
         return publicador.__enter__()
@@ -142,10 +142,10 @@ def test_grupo_de_compraventa_publica_articulo_en_venta(tmp_path, imagen):
     assert res.estado == "publicada", res.detalle
     titulo, precio, estado, descripcion, fotos = publicado.split(" | ")
     assert titulo == "REPARACIÓN DE NOTEBOOKS Y PC"  # primera línea sin emojis
-    assert precio == "15000" and estado == "Nuevo" and fotos == "fotos:1"
+    assert precio == "0" and estado == "Nuevo" and fotos == "fotos:1"
     assert "Hago limpieza y formateo." in descripcion and "381 649-6790" in descripcion
     lista = (tmp_path / "reportes" / "diagnostico-venta-formulario.txt").read_text(encoding="utf-8")
-    assert "Título" in lista and "15000" not in lista  # lista los campos, no lo escrito
+    assert "Título" in lista and "REPARACIÓN" not in lista  # lista los campos, no lo escrito
 
 
 def test_compraventa_en_simulacion_no_publica(tmp_path, imagen):

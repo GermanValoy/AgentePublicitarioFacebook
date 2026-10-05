@@ -44,6 +44,8 @@ CAMPO_PRECIO = re.compile(r"^\s*(precio|price)", re.I)
 CAMPO_DESCRIPCION = re.compile(r"descripci[oó]n|description|describ", re.I)
 CAMPO_ESTADO = re.compile(r"^\s*(estado|condici[oó]n|condition)", re.I)
 OPCION_NUEVO = re.compile(r"^\s*(nuevo|new)\b", re.I)
+CONTADOR_FOTOS = re.compile(r"(?:fotos|photos)\s*[·•:-]\s*(\d+)\s*/\s*\d+", re.I)
+BOTON_MAS_DETALLES = re.compile(r"m[aá]s detalles|more details", re.I)
 BOTON_SIGUIENTE = re.compile(r"^\s*(siguiente|next)\s*$", re.I)
 EMOJIS = re.compile(r"[^\w\s.,:;!¡?¿()%$/+&'\"-]", re.UNICODE)
 
@@ -54,7 +56,7 @@ JS_CONTROLES = """(raiz) => Array.from(raiz.querySelectorAll(
     const texto = (e.tagName === 'LABEL' || rol === 'button') ? (e.innerText || '').replace(/\\s+/g, ' ') : '';
     return [e.tagName.toLowerCase(), rol, e.getAttribute('type') || '', (e.getAttribute('aria-label') || ''),
             e.getAttribute('placeholder') || '', texto].map(x => x.slice(0, 60)).join(' | ');
-  }).filter((v, i, a) => a.indexOf(v) === i).join('\\n')"""
+  }).join('\\n')"""
 BOTON_DESCARTAR = re.compile(r"^\s*(descartar|discard|salir|leave)\s*$", re.I)
 
 
@@ -210,9 +212,19 @@ class PublicadorFacebook:
                 return candidato.first
         return None
 
+    @staticmethod
+    def _contador_fotos(contenedor) -> int:
+        """Lee el contador del formulario de venta ("Fotos · 1/42"). 0 si no hay contador."""
+        try:
+            m = CONTADOR_FOTOS.search(contenedor.inner_text(timeout=2_000))
+            return int(m.group(1)) if m else 0
+        except Exception:
+            return 0
+
     def _adjuntar_imagenes(self, dialogo, imagenes: list[Path]) -> None:
         archivos = [str(i) for i in imagenes]
         miniaturas_antes = dialogo.locator("img").count()
+        fotos_antes = self._contador_fotos(dialogo)
 
         subido = self._subir_por_entrada(dialogo, archivos)
         if not subido:
@@ -230,9 +242,9 @@ class PublicadorFacebook:
         if not subido:
             raise RuntimeError("no se encontró dónde cargar las fotos")
 
-        # Confirmar que Facebook muestra la vista previa de la foto.
-        limite = time.monotonic() + 30
-        while dialogo.locator("img").count() <= miniaturas_antes:
+        # Confirmar que Facebook tomó la foto: aparece la miniatura o sube el contador "Fotos · N/42".
+        limite = time.monotonic() + 45
+        while not (dialogo.locator("img").count() > miniaturas_antes or self._contador_fotos(dialogo) > fotos_antes):
             if time.monotonic() > limite:
                 raise RuntimeError("se cargó el archivo pero Facebook no mostró la vista previa de la foto")
             self.page.wait_for_timeout(500)
@@ -243,7 +255,7 @@ class PublicadorFacebook:
         candidatos = [contenedor.get_by_role("button", name=patron)]
         if not solo_botones:
             candidatos += [contenedor.get_by_role("menuitem", name=patron), contenedor.get_by_role("radio", name=patron),
-                           contenedor.get_by_text(patron)]
+                           contenedor.get_by_role("option", name=patron), contenedor.get_by_text(patron)]
         for c in candidatos:
             try:
                 for i in range(min(c.count(), 5)):
@@ -318,6 +330,12 @@ class PublicadorFacebook:
                 except Exception as e:
                     log.info("No se pudo elegir el estado del artículo (se sigue igual): %s", e)
             descripcion = self._campo(formulario, CAMPO_DESCRIPCION)
+            if descripcion is None:  # suele estar dentro de "Más detalles", que viene cerrado
+                mas = self._buscar_en(formulario, BOTON_MAS_DETALLES)
+                if mas is not None:
+                    mas.click()
+                    self._pausa(1, 2)
+                    descripcion = self._campo(formulario, CAMPO_DESCRIPCION)
             if descripcion is None:
                 faltan.append("descripción")
             else:
