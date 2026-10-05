@@ -1,11 +1,11 @@
 # Estado del agente
 
-_Actualizado: 05/10/2026 13:20 (America/Argentina/Tucuman). Si esta fecha tiene más de un día, el agente probablemente no está funcionando._
+_Actualizado: 05/10/2026 13:37 (America/Argentina/Tucuman). Si esta fecha tiene más de un día, el agente probablemente no está funcionando._
 
 - **Estado:** ✅ funcionando
 - **Modo:** aprobacion
-- **Telegram:** conectado
-- **Versión del agente:** d98f7d0 (05/10 13:00)
+- **Telegram:** conectado · 1 aprobación(es) esperando respuesta
+- **Versión del agente:** e4a009a (05/10 13:20)
 - **Publicaciones hoy:** 0/3
 - **Últimos 7 días:** 1 error_navegador
 
@@ -25,7 +25,6 @@ _Actualizado: 05/10/2026 13:20 (America/Argentina/Tucuman). Si esta fecha tiene 
 
 ## Avisos y errores recientes del registro
 
-- `2026-10-05 08:09:29 WARNING  GitHub: no se pudo sincronizar. Tus cambios y los de GitHub chocan en el mismo archivo. Se siguen usando los archivos de la PC; pedile a Claude que lo resuelva. Detalle: fatal: update_ref fai`
 - `2026-10-05 08:39:50 WARNING  GitHub: no se pudo sincronizar. Tus cambios y los de GitHub chocan en el mismo archivo. Se siguen usando los archivos de la PC; pedile a Claude que lo resuelva. Detalle: fatal: update_ref fai`
 - `2026-10-05 09:10:11 WARNING  GitHub: no se pudo sincronizar. Tus cambios y los de GitHub chocan en el mismo archivo. Se siguen usando los archivos de la PC; pedile a Claude que lo resuelva. Detalle: fatal: update_ref fai`
 - `2026-10-05 09:40:35 WARNING  GitHub: no se pudo sincronizar. Tus cambios y los de GitHub chocan en el mismo archivo. Se siguen usando los archivos de la PC; pedile a Claude que lo resuelva. Detalle: fatal: update_ref fai`
@@ -35,3 +34,4 @@ _Actualizado: 05/10/2026 13:20 (America/Argentina/Tucuman). Si esta fecha tiene 
 - `2026-10-05 11:42:33 WARNING  GitHub: no se pudo sincronizar. Tus cambios y los de GitHub chocan en el mismo archivo. Se siguen usando los archivos de la PC; pedile a Claude que lo resuelva. Detalle: fatal: update_ref fai`
 - `2026-10-05 11:56:18 WARNING  GitHub: no se pudo sincronizar. No se pudo bajar lo nuevo de GitHub (se reintenta en 30 minutos). Detalle: fatal: update_ref failed for ref 'ORIG_HEAD': cannot lock ref 'ORIG_HEAD': unable to`
 - `2026-10-05 12:00:03 WARNING  GitHub: no se pudo sincronizar. No se pudo bajar lo nuevo de GitHub (se reintenta en 30 minutos). Detalle: fatal: update_ref failed for ref 'ORIG_HEAD': cannot lock ref 'ORIG_HEAD': unable to`
+- `2026-10-05 13:27:51 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
