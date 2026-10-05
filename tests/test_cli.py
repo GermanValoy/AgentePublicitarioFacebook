@@ -203,3 +203,23 @@ def test_comando_reporte_por_telegram(config, monkeypatch):
     respuesta = cli._comandos_telegram(config)("/reporte")
     assert llamadas == ["reporte"] and "subido a GitHub" in respuesta
     assert "/reporte" in cli._comandos_telegram(config)("/ayuda")
+
+
+def test_detener_de_forma_ordenada(config, monkeypatch):
+    monkeypatch.setattr(cli, "_aprobador", lambda c: None)
+    monkeypatch.setattr(cli, "_escribir_reporte", lambda c, a=None: None)
+    monkeypatch.setattr(cli, "_sincronizar", lambda c, a=None: "todo al día")
+    pasadas = []
+
+    def pasada(*a):
+        pasadas.append(1)
+        cli._pedido_de_detener(config).write_text("")  # alguien ejecuta detener_agente.bat
+
+    monkeypatch.setattr(cli, "_una_pasada", pasada)
+    monkeypatch.setattr(cli.time, "sleep", lambda s: None)
+    a = argparse.Namespace(esperar_inicio=0, reiniciar_solo=True, sincronizar_cada=30, intervalo=5,
+                           oculto=False, sin_demora=True)
+    assert cli.cmd_ejecutar(config, a) == 0
+    assert pasadas == [1]
+    assert not cli._pedido_de_detener(config).exists()
+    assert not (config.carpeta_datos / "agente.pid").exists()

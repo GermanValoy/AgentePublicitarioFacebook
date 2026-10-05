@@ -415,8 +415,13 @@ def _migrar_inicio_automatico(config: Config) -> None:
         log.warning("No se pudo actualizar el inicio automático: %s", e)
 
 
+def _pedido_de_detener(config: Config) -> Path:
+    return config.carpeta_datos / "DETENER"
+
+
 def cmd_ejecutar(config, args) -> int:
     _migrar_inicio_automatico(config)
+    _pedido_de_detener(config).unlink(missing_ok=True)
     if args.esperar_inicio:
         time.sleep(args.esperar_inicio)  # dar tiempo a que termine la versión anterior
     with _unica_instancia(config):
@@ -435,6 +440,12 @@ def _bucle(config, args) -> int:
     ultima_sincronizacion = ultima_pasada = 0.0
     dia_reporte = None
     while True:
+        if _pedido_de_detener(config).exists():  # detener_agente.bat: cierre ordenado, sin cortar nada a medias
+            _pedido_de_detener(config).unlink(missing_ok=True)
+            log.info("Agente detenido a pedido")
+            if aprobador:
+                aprobador.avisar("⏹️ Agente detenido. Para volver a iniciarlo: iniciar_en_segundo_plano.bat")
+            return 0
         try:
             if config.ahora().date() != dia_reporte:  # reporte diario (y al arrancar)
                 _escribir_reporte(config, aprobador)

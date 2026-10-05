@@ -83,3 +83,18 @@ def test_quita_candados_viejos_de_git(repos):
     (pc / "publicaciones" / "imagenes" / "nueva.jpg").write_bytes(b"x")
     assert "subieron" in sincronizar(pc)
     assert not candado.exists()
+
+
+def test_repara_orig_head_danado(repos):
+    """Error real en la PC: 'cannot lock ref ORIG_HEAD: reference broken'."""
+    claude, pc = repos
+    (pc / ".git" / "ORIG_HEAD").write_bytes(b"")  # vacío: lo que deja un corte a mitad de escritura
+    git(pc, "commit", "-q", "--allow-empty", "-m", "local")  # obliga a reordenar (como en la PC)
+    (claude / "publicaciones" / "programadas.yaml").write_text("publicaciones: [x]\n")
+    git(claude, "commit", "-qam", "semana")
+    git(claude, "push", "-q")
+    resumen = sincronizar(pc)
+    assert "bajaron" in resumen
+    # En Git para Windows un ORIG_HEAD vacío corta la sincronización: tiene que quedar reparado.
+    orig = pc / ".git" / "ORIG_HEAD"
+    assert not orig.exists() or len(orig.read_text().strip()) == 40

@@ -8,6 +8,7 @@ Nunca sube la carpeta datos/ (tu sesión de Facebook): está en .gitignore y ade
 from __future__ import annotations
 
 import logging
+import re
 import subprocess
 import time
 from pathlib import Path
@@ -49,6 +50,15 @@ def _destrabar(raiz: Path) -> None:
             if candado.is_file() and candado.stat().st_mtime < limite:
                 candado.unlink()
                 log.info("Git: se quitó un candado viejo (%s)", candado.name)
+        except OSError:
+            pass
+    # Referencias de respaldo que Git recrea solo: si quedaron vacías o dañadas, se borran.
+    for respaldo in ("ORIG_HEAD", "FETCH_HEAD", "AUTO_MERGE"):
+        archivo = git / respaldo
+        try:
+            if archivo.is_file() and not re.match(r"^[0-9a-f]{40}", archivo.read_text(errors="replace").strip()):
+                archivo.unlink()
+                log.info("Git: se quitó %s dañado", respaldo)
         except OSError:
             pass
     if (git / "rebase-merge").exists() or (git / "rebase-apply").exists():
