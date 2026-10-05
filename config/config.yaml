@@ -27,7 +27,7 @@ navegador_oculto: false
 # Grupos de COMPRA-VENTA ("Vender algo" → "Artículo en venta"): Facebook exige un precio.
 # El título se toma de la primera línea del texto y la descripción es el texto completo.
 venta:
-  precio:             # COMPLETAR: solo números, sin $ ni puntos (ej: 15000). Vacío = no publica en esos grupos
+  precio: 0           # solo números, sin $ ni puntos. Con 0 Facebook suele mostrar "Gratis"
   estado: Nuevo       # Nuevo / Usado (si el formulario lo pide)
 
 # ---------------------------------------------------------------------

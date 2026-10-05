@@ -51,3 +51,16 @@ def test_publicacion_sin_campos_obligatorios(proyecto):
         """)
     with pytest.raises(ErrorConfig, match="texto"):
         cargar_publicaciones(config.archivo_programadas)
+
+
+def test_precio_cero_es_valido(tmp_path):
+    (tmp_path / "config").mkdir()
+    (tmp_path / "config" / "config.yaml").write_text("venta:\n  precio: 0\n", encoding="utf-8")
+    assert cargar_config(tmp_path).venta["precio"] == "0"  # "0" (texto) cuenta como precio cargado
+
+
+def test_precio_invalido(tmp_path):
+    (tmp_path / "config").mkdir()
+    (tmp_path / "config" / "config.yaml").write_text("venta:\n  precio: $1.000\n", encoding="utf-8")
+    with pytest.raises(ErrorConfig, match="precio"):
+        cargar_config(tmp_path)
