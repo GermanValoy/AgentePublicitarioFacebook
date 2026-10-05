@@ -253,7 +253,8 @@ class PublicadorFacebook:
 
         compositor = self._buscar_compositor()
         if compositor is None:
-            return ResultadoPublicacion("fallida", "No se encontró el cuadro 'Escribe algo...'. "
+            # No llegó a escribir nada: no cuenta como actividad en el grupo (se puede reintentar).
+            return ResultadoPublicacion("error_navegador", "No se encontró el cuadro 'Escribe algo...'. "
                                         "¿Sos miembro del grupo y permite publicar?", self._captura("sin-compositor"))
         compositor.click()
         dialogo = page.get_by_role("dialog").filter(has=page.get_by_role("textbox")).last

@@ -9,8 +9,8 @@ from .archivos import guardar_json, leer_json
 
 # Estados que cuentan como actividad real en Facebook para los límites anti-baneo.
 ESTADOS_ACTIVIDAD = {"publicada", "fallida", "bloqueada"}
-# Intentos fallidos que se pueden reintentar. "error_navegador" = el navegador no llegó a abrir Facebook,
-# así que no cuenta como actividad en Facebook para los límites anti-baneo.
+# Intentos fallidos que se pueden reintentar. "error_navegador" = no se llegó a escribir nada en Facebook
+# (el navegador no abrió o no apareció el cuadro para publicar): no cuenta para los límites anti-baneo.
 ESTADOS_INTENTO = {"fallida", "error_navegador"}
 # Estados que dan por terminada una tarea (no se vuelve a intentar).
 ESTADOS_FINALES = {"publicada", "vencida", "omitida", "no_confirmada", "bloqueada"}
