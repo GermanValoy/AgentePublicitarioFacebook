@@ -1,13 +1,13 @@
 # Estado del agente
 
-_Actualizado: 05/10/2026 11:56 (America/Argentina/Tucuman). Si esta fecha tiene más de un día, el agente probablemente no está funcionando._
+_Actualizado: 05/10/2026 13:00 (America/Argentina/Tucuman). Si esta fecha tiene más de un día, el agente probablemente no está funcionando._
 
 - **Estado:** ✅ funcionando
 - **Modo:** aprobacion
 - **Telegram:** conectado
-- **Versión del agente:** 427d22e (05/10 11:55)
-- **Publicaciones hoy:** 1/3
-- **Últimos 7 días:** 1 fallida
+- **Versión del agente:** 743608f (05/10 15:47)
+- **Publicaciones hoy:** 0/3
+- **Últimos 7 días:** 1 error_navegador
 
 ## Próximas programadas
 
@@ -21,11 +21,10 @@ _Actualizado: 05/10/2026 11:56 (America/Argentina/Tucuman). Si esta fecha tiene 
 
 | Fecha | Estado | Publicación | Grupo | Detalle |
 |---|---|---|---|---|
-| 05/10 11:53 | fallida | celulares-2026-10-05 | Venta de Garage Tafi Viejo | No se encontró el cuadro 'Escribe algo...'. ¿Sos miembro del grupo y permite publicar? / captura: 20261005-115351-sin-co |
+| 05/10 11:53 | error_navegador | celulares-2026-10-05 | Venta de Garage Tafi Viejo | No se encontró el cuadro 'Escribe algo...'. ¿Sos miembro del grupo y permite publicar? / captura: 20261005-115351-sin-co |
 
 ## Avisos y errores recientes del registro
 
-- `2026-10-05 07:39:16 WARNING  GitHub: no se pudo sincronizar. Tus cambios y los de GitHub chocan en el mismo archivo. Se siguen usando los archivos de la PC; pedile a Claude que lo resuelva. Detalle: fatal: update_ref fai`
 - `2026-10-05 08:09:29 WARNING  GitHub: no se pudo sincronizar. Tus cambios y los de GitHub chocan en el mismo archivo. Se siguen usando los archivos de la PC; pedile a Claude que lo resuelva. Detalle: fatal: update_ref fai`
 - `2026-10-05 08:39:50 WARNING  GitHub: no se pudo sincronizar. Tus cambios y los de GitHub chocan en el mismo archivo. Se siguen usando los archivos de la PC; pedile a Claude que lo resuelva. Detalle: fatal: update_ref fai`
 - `2026-10-05 09:10:11 WARNING  GitHub: no se pudo sincronizar. Tus cambios y los de GitHub chocan en el mismo archivo. Se siguen usando los archivos de la PC; pedile a Claude que lo resuelva. Detalle: fatal: update_ref fai`
@@ -35,3 +34,4 @@ _Actualizado: 05/10/2026 11:56 (America/Argentina/Tucuman). Si esta fecha tiene 
 - `2026-10-05 11:12:06 WARNING  GitHub: no se pudo sincronizar. Tus cambios y los de GitHub chocan en el mismo archivo. Se siguen usando los archivos de la PC; pedile a Claude que lo resuelva. Detalle: fatal: update_ref fai`
 - `2026-10-05 11:42:33 WARNING  GitHub: no se pudo sincronizar. Tus cambios y los de GitHub chocan en el mismo archivo. Se siguen usando los archivos de la PC; pedile a Claude que lo resuelva. Detalle: fatal: update_ref fai`
 - `2026-10-05 11:56:18 WARNING  GitHub: no se pudo sincronizar. No se pudo bajar lo nuevo de GitHub (se reintenta en 30 minutos). Detalle: fatal: update_ref failed for ref 'ORIG_HEAD': cannot lock ref 'ORIG_HEAD': unable to`
+- `2026-10-05 12:00:03 WARNING  GitHub: no se pudo sincronizar. No se pudo bajar lo nuevo de GitHub (se reintenta en 30 minutos). Detalle: fatal: update_ref failed for ref 'ORIG_HEAD': cannot lock ref 'ORIG_HEAD': unable to`
