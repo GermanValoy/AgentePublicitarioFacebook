@@ -192,3 +192,32 @@ def test_multipart_de_fotos(tmp_path, monkeypatch):
     assert capturado["url"].endswith("/botT/sendPhoto")
     assert "multipart/form-data" in capturado["tipo"]
     assert b"PNGDATA" in capturado["cuerpo"] and b"hola" in capturado["cuerpo"]
+
+
+class NavegadorQueNoAbre:
+    """Simula que el navegador no puede abrirse (perfil en uso, Chromium roto, etc.)."""
+
+    @contextmanager
+    def fabrica(self):
+        raise RuntimeError("BrowserType.launch_persistent_context: perfil en uso")
+        yield
+
+
+def test_si_el_navegador_no_abre_avisa_y_no_queda_en_silencio(entorno):
+    config, pubs, hist, tg, aprobador = entorno
+    roto = NavegadorQueNoAbre()
+    ciclo(config, pubs, hist, roto, aprobador)
+    tg.tocar("si")
+    aprobador.procesar()
+
+    # Primer intento: falla, avisa y deja la aprobación para reintentar.
+    assert ciclo(config, pubs, hist, roto, aprobador) == "error_navegador"
+    assert "No se pudo abrir el navegador" in tg.enviados[-1][0] and "vuelvo a intentar" in tg.enviados[-1][0]
+    assert [p["estado"] for p in aprobador.datos["pedidos"].values()] == ["aprobada"]
+
+    # No cuenta como publicado en el grupo: reintenta a los pocos minutos (no espera 7 días).
+    # Segundo intento (máximo 2): falla, avisa y cierra; no sigue reintentando para siempre.
+    assert ciclo(config, pubs, hist, roto, aprobador, "2026-10-05 10:05") == "error_navegador"
+    assert "vuelvo a intentar" not in tg.enviados[-1][0]
+    assert [r.estado for r in hist.registros] == ["error_navegador", "error_navegador"]
+    assert not any(p["grupo"] == "Grupo A" for p in aprobador.datos["pedidos"].values())

@@ -9,6 +9,7 @@ from __future__ import annotations
 
 import logging
 import subprocess
+import time
 from pathlib import Path
 
 log = logging.getLogger("agente")
@@ -38,10 +39,28 @@ def conectado(raiz: Path) -> bool:
     return (raiz / ".git").exists()
 
 
+def _destrabar(raiz: Path) -> None:
+    """Quita candados viejos de Git y operaciones a medias (quedan si la PC se apaga o el proceso
+    se corta en el medio). Sin esto Git falla con 'update_ref failed' o 'index.lock exists'."""
+    git = raiz / ".git"
+    limite = time.time() - 600
+    for candado in [git / "index.lock", git / "HEAD.lock", git / "ORIG_HEAD.lock", *git.glob("refs/**/*.lock")]:
+        try:
+            if candado.is_file() and candado.stat().st_mtime < limite:
+                candado.unlink()
+                log.info("Git: se quitó un candado viejo (%s)", candado.name)
+        except OSError:
+            pass
+    if (git / "rebase-merge").exists() or (git / "rebase-apply").exists():
+        _git(raiz, "rebase", "--abort", revisar=False)
+        log.info("Git: se canceló una actualización que había quedado a medias")
+
+
 def sincronizar(raiz: Path) -> str:
     """Sube los cambios locales y baja los remotos. Devuelve un resumen de lo que pasó."""
     if not conectado(raiz):
         return "La carpeta no está conectada a GitHub (ejecutá conectar_github.bat)"
+    _destrabar(raiz)
 
     rutas = [r for r in RUTAS_A_SUBIR if (raiz / r).exists()]
     _git(raiz, "add", "--", *rutas)
@@ -53,9 +72,12 @@ def sincronizar(raiz: Path) -> str:
     bajada = _git(raiz, *IDENTIDAD, "pull", "--rebase", "--autostash", "-q", revisar=False)
     if bajada.returncode != 0:
         _git(raiz, "rebase", "--abort", revisar=False)
-        raise ErrorSincronizacion("Tus cambios y los de GitHub chocan en el mismo archivo. Se siguen usando "
-                                  "los archivos de la PC; pedile a Claude que lo resuelva. Detalle: "
-                                  + (bajada.stderr or bajada.stdout).strip())
+        detalle = (bajada.stderr or bajada.stdout).strip()
+        if "CONFLICT" in detalle or "conflict" in detalle:
+            raise ErrorSincronizacion("Tus cambios y los de GitHub chocan en el mismo archivo. Se siguen usando "
+                                      "los archivos de la PC; pedile a Claude que lo resuelva. Detalle: " + detalle)
+        raise ErrorSincronizacion("No se pudo bajar lo nuevo de GitHub (se reintenta en 30 minutos). "
+                                  "Detalle: " + detalle)
     despues = _git(raiz, "rev-parse", "HEAD").stdout.strip()
 
     partes = []

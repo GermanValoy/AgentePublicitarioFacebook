@@ -49,25 +49,6 @@ def _publicador(config: Config, modo: str | None = None, oculto: bool = False):
                               modo, oculto=oculto or config.navegador_oculto, navegador=config.navegador)
 
 
-@contextmanager
-def _bloqueo(config: Config):
-    """Evita que corran dos agentes a la vez (por ejemplo el bucle y el Programador de tareas)."""
-    archivo = config.carpeta_datos / "agente.lock"
-    archivo.parent.mkdir(parents=True, exist_ok=True)
-    if archivo.exists() and time.time() - archivo.stat().st_mtime > 3 * 3600:
-        archivo.unlink()  # quedó de una ejecución que se cortó
-    try:
-        fd = os.open(archivo, os.O_CREAT | os.O_EXCL | os.O_WRONLY)
-    except FileExistsError:
-        raise ErrorConfig("Ya hay otro agente trabajando (si no es así, borrá datos/agente.lock)") from None
-    try:
-        os.write(fd, str(os.getpid()).encode())
-        os.close(fd)
-        yield
-    finally:
-        archivo.unlink(missing_ok=True)
-
-
 def _imprimir_validacion(config: Config, publicaciones) -> bool:
     resultados = validar_todas(publicaciones, config, config.ahora())
     todo_ok = True
@@ -231,7 +212,7 @@ def cmd_publicar_ahora(config, args) -> int:
         modo = "automatico"  # ya lo aprobaste: el agente hace el clic en "Publicar"
 
     print(f"Publicando '{pub.id}' en '{grupo}' (modo {modo})...")
-    with _bloqueo(config), _publicador(config, modo=modo, oculto=args.oculto) as navegador:
+    with _publicador(config, modo=modo, oculto=args.oculto) as navegador:
         res = navegador.publicar(config.grupos[grupo].url, texto, imagenes)
     historial.agregar(clave, pub.id, grupo, res.estado,
                       config.ahora(), texto, res.detalle + (f" | captura: {res.captura}" if res.captura else ""))
@@ -268,7 +249,7 @@ def cmd_simular(config, args) -> int:
         print("Indicá un grupo válido con --grupo")
         return 1
     texto, _ = elegir_variante(pub.texto, _historial(config).textos_publicados(grupo))
-    with _bloqueo(config), _publicador(config, modo="simulacion", oculto=args.oculto) as navegador:
+    with _publicador(config, modo="simulacion", oculto=args.oculto) as navegador:
         res = navegador.publicar(config.grupos[grupo].url, texto, [config.carpeta_imagenes / n for n in pub.imagenes])
     print(f"Resultado: {res.estado}. {res.detalle}")
     if res.captura:
@@ -294,11 +275,10 @@ def _una_pasada(config_inicial: Config, args, aprobador=None) -> str | None:
         aprobador = _aprobador(config)
         if aprobador:
             aprobador.procesar(comandos=_comandos_telegram(config))  # tomar botones tocados desde la última vez
-    with _bloqueo(config):
-        return ejecutar_ciclo(config, publicaciones, _historial(config),
-                              lambda: _publicador(config, oculto=args.oculto),
-                              esperar=(lambda s: None) if args.sin_demora else time.sleep,
-                              aprobador=aprobador)
+    return ejecutar_ciclo(config, publicaciones, _historial(config),
+                          lambda: _publicador(config, oculto=args.oculto),
+                          esperar=(lambda s: None) if args.sin_demora else time.sleep,
+                          aprobador=aprobador)
 
 
 def _comandos_telegram(config: Config):
@@ -308,10 +288,16 @@ def _comandos_telegram(config: Config):
         if texto.startswith("/pausar"):
             antiban.pausar(config, "Pausado desde Telegram")
             return "⏸️ Agente pausado. No se publica nada hasta que mandes /reanudar."
+        if texto.startswith("/reporte"):
+            _escribir_reporte(config)
+            resumen = _sincronizar(config)
+            return ("📋 Reporte actualizado y subido a GitHub: avisale a Claude que lo revise."
+                    if resumen is not None else "📋 Reporte actualizado, pero no se pudo subir a GitHub ahora.")
         if texto.startswith("/reanudar"):
             antiban.reanudar(config)
             return "▶️ Agente reanudado."
-        return ("Comandos:\n/estado - qué se publicó y qué viene\n/pausar - frenar todo\n"
+        return ("Comandos:\n/estado - qué se publicó y qué viene\n/reporte - subir el registro para que Claude lo revise\n"
+                "/pausar - frenar todo\n"
                 "/reanudar - volver a publicar\n\nCuando toque publicar te mando la foto y el texto "
                 "con los botones ✅ Publicar / ❌ No publicar.")
     return responder
@@ -380,8 +366,9 @@ def cmd_sincronizar(config, args) -> int:
 
 
 def cmd_publicar_pendientes(config, args) -> int:
-    _sincronizar(config)
-    _una_pasada(config, args)
+    with _unica_instancia(config):
+        _sincronizar(config)
+        _una_pasada(config, args)
     return 0
 
 

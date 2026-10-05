@@ -194,3 +194,12 @@ def test_reemplaza_el_inicio_automatico_viejo(config, tmp_path, monkeypatch):
     assert not (inicio / "AgenteFacebook.vbs").exists()
     nuevo = (inicio / "AgenteFacebook.bat").read_text(encoding="utf-8")
     assert "iniciar_en_segundo_plano.bat" in nuevo and str(config.raiz) in nuevo
+
+
+def test_comando_reporte_por_telegram(config, monkeypatch):
+    llamadas = []
+    monkeypatch.setattr(cli, "_escribir_reporte", lambda c, a=None: llamadas.append("reporte"))
+    monkeypatch.setattr(cli, "_sincronizar", lambda c, a=None: "todo al día")
+    respuesta = cli._comandos_telegram(config)("/reporte")
+    assert llamadas == ["reporte"] and "subido a GitHub" in respuesta
+    assert "/reporte" in cli._comandos_telegram(config)("/ayuda")

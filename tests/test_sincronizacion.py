@@ -70,3 +70,16 @@ def test_cambios_en_ambos_lados_sin_choque(repos):
     (pc / "publicaciones" / "imagenes" / "local.jpg").write_bytes(b"x")
     resumen = sincronizar(pc)
     assert "subieron" in resumen and "bajaron" in resumen
+
+
+def test_quita_candados_viejos_de_git(repos):
+    import os
+    import time
+    _, pc = repos
+    candado = pc / ".git" / "HEAD.lock"
+    candado.write_text("")
+    viejo = time.time() - 3600
+    os.utime(candado, (viejo, viejo))
+    (pc / "publicaciones" / "imagenes" / "nueva.jpg").write_bytes(b"x")
+    assert "subieron" in sincronizar(pc)
+    assert not candado.exists()

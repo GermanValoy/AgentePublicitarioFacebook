@@ -9,6 +9,9 @@ from .archivos import guardar_json, leer_json
 
 # Estados que cuentan como actividad real en Facebook para los límites anti-baneo.
 ESTADOS_ACTIVIDAD = {"publicada", "fallida", "bloqueada"}
+# Intentos fallidos que se pueden reintentar. "error_navegador" = el navegador no llegó a abrir Facebook,
+# así que no cuenta como actividad en Facebook para los límites anti-baneo.
+ESTADOS_INTENTO = {"fallida", "error_navegador"}
 # Estados que dan por terminada una tarea (no se vuelve a intentar).
 ESTADOS_FINALES = {"publicada", "vencida", "omitida", "no_confirmada", "bloqueada"}
 
@@ -55,7 +58,7 @@ class Historial:
             return True
         if incluir_simuladas and any(r.estado == "simulada" for r in propios):
             return True
-        return sum(r.estado == "fallida" for r in propios) >= max_intentos
+        return sum(r.estado in ESTADOS_INTENTO for r in propios) >= max_intentos
 
     def textos_publicados(self, grupo: str | None = None, limite: int = 10) -> list[str]:
         """Últimos textos publicados en un grupo (o en cualquier grupo si grupo es None)."""

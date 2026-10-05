@@ -14,6 +14,7 @@ from .contenido import elegir_variante, similitud
 from .historial import Historial
 from .planificador import tareas_del_momento
 from .publicaciones import Publicacion
+from .publicador import ResultadoPublicacion
 from .validador import validar_todas
 
 log = logging.getLogger("agente")
@@ -97,8 +98,13 @@ def ejecutar_ciclo(config: Config, publicaciones: list[Publicacion], historial: 
         log.info("Publicando '%s' en '%s' (modo %s) en %.0f segundos...", pub.id, t.grupo, config.modo, demora)
         esperar(demora)
 
-        with fabrica_publicador() as publicador:
-            res = publicador.publicar(config.grupos[t.grupo].url, texto, imagenes)
+        try:
+            with fabrica_publicador() as publicador:
+                res = publicador.publicar(config.grupos[t.grupo].url, texto, imagenes)
+        except Exception as e:  # p. ej. el navegador no abre: se registra y se avisa, nunca en silencio
+            log.exception("No se pudo abrir el navegador para publicar")
+            res = ResultadoPublicacion("error_navegador",
+                                       f"No se pudo abrir el navegador: {type(e).__name__}: {e}"[:400])
 
         momento = ahora if hora_fija else config.ahora()
         historial.agregar(t.clave, pub.id, t.grupo, res.estado, momento, texto,
@@ -108,8 +114,12 @@ def ejecutar_ciclo(config: Config, publicaciones: list[Publicacion], historial: 
             antiban.pausar(config, res.detalle)
             log.critical("¡Facebook mostró una advertencia! El agente quedó PAUSADO. Detalle: %s", res.detalle)
         if aprobador:
-            if estado_aprobacion:
+            reintenta = (res.estado in ("fallida", "error_navegador")
+                         and not historial.ya_procesada(t.clave, config.limites.max_intentos))
+            if estado_aprobacion and not reintenta:
                 aprobador.cerrar(t.clave, {"publicada": "✅ Publicada"}.get(res.estado, f"⚠️ {res.estado}"))
+            if reintenta:
+                res.detalle += " (lo vuelvo a intentar en unos minutos)"
             avisos = {
                 "publicada": f"✅ Publicado en «{t.grupo}».",
                 "bloqueada": f"🚨 Facebook mostró una advertencia y el agente quedó PAUSADO: {res.detalle}\n"

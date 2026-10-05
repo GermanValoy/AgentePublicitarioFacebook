@@ -242,6 +242,6 @@ Todos se usan como `python -m agente <comando>` (con el entorno `.venv` activado
   Corré `simular` y mirá la captura en `datos/capturas/`. Verificá que seas miembro del grupo.
   Si Facebook cambió los textos de los botones, se ajustan en `agente/publicador.py`
   (`TEXTO_COMPOSITOR`, `BOTON_FOTO`, `BOTON_PUBLICAR`).
-- **"Ya hay otro agente trabajando"**: cerrá la otra ventana, o borrá `datos/agente.lock`.
+- **"El agente ya está funcionando"**: hay otro abierto (quizás oculto). Cerralo con `detener_agente.bat`.
 - **El agente quedó pausado**: leé el motivo con `estado`, revisá tu cuenta y usá `reanudar`.
 - Todo queda registrado en `datos/agente.log` y `datos/historial.json`.
