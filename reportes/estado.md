@@ -1,11 +1,11 @@
 # Estado del agente
 
-_Actualizado: 06/10/2026 00:05 (America/Argentina/Tucuman). Si esta fecha tiene más de un día, el agente probablemente no está funcionando._
+_Actualizado: 06/10/2026 16:04 (America/Argentina/Tucuman). Si esta fecha tiene más de un día, el agente probablemente no está funcionando._
 
 - **Estado:** ✅ funcionando
 - **Modo:** aprobacion
 - **Telegram:** conectado
-- **Versión del agente:** a69472a (05/10 18:18)
+- **Versión del agente:** e4d2727 (06/10 00:05)
 - **Publicaciones hoy:** 0/3
 - **Últimos 7 días:** 2 error_navegador
 
@@ -26,13 +26,13 @@ _Actualizado: 06/10/2026 00:05 (America/Argentina/Tucuman). Si esta fecha tiene 
 
 ## Avisos y errores recientes del registro
 
-- `2026-10-05 10:41:34 WARNING  GitHub: no se pudo sincronizar. Tus cambios y los de GitHub chocan en el mismo archivo. Se siguen usando los archivos de la PC; pedile a Claude que lo resuelva. Detalle: fatal: update_ref fai`
-- `2026-10-05 11:12:06 WARNING  GitHub: no se pudo sincronizar. Tus cambios y los de GitHub chocan en el mismo archivo. Se siguen usando los archivos de la PC; pedile a Claude que lo resuelva. Detalle: fatal: update_ref fai`
-- `2026-10-05 11:42:33 WARNING  GitHub: no se pudo sincronizar. Tus cambios y los de GitHub chocan en el mismo archivo. Se siguen usando los archivos de la PC; pedile a Claude que lo resuelva. Detalle: fatal: update_ref fai`
-- `2026-10-05 11:56:18 WARNING  GitHub: no se pudo sincronizar. No se pudo bajar lo nuevo de GitHub (se reintenta en 30 minutos). Detalle: fatal: update_ref failed for ref 'ORIG_HEAD': cannot lock ref 'ORIG_HEAD': unable to`
-- `2026-10-05 12:00:03 WARNING  GitHub: no se pudo sincronizar. No se pudo bajar lo nuevo de GitHub (se reintenta en 30 minutos). Detalle: fatal: update_ref failed for ref 'ORIG_HEAD': cannot lock ref 'ORIG_HEAD': unable to`
-- `2026-10-05 13:27:51 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
-- `2026-10-05 15:13:12 WARNING  Formulario de venta: se cargó el archivo pero Facebook no mostró la vista previa de la foto`
-- `2026-10-05 15:13:23 WARNING  No se pudo cerrar el borrador: Locator.wait_for: Timeout 10000ms exceeded.`
 - `2026-10-05 16:07:13 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
 - `2026-10-05 17:18:11 WARNING  Telegram: Sin conexión con Telegram: <urlopen error [WinError 10060] Se produjo un error durante el intento de conexión ya que la parte conectada no respondió adecuadamente tras un periodo de`
+- `2026-10-06 00:27:02 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
+- `2026-10-06 02:02:57 WARNING  Telegram: Sin conexión con Telegram: <urlopen error [WinError 10060] Se produjo un error durante el intento de conexión ya que la parte conectada no respondió adecuadamente tras un periodo de`
+- `2026-10-06 05:39:43 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
+- `2026-10-06 06:39:34 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
+- `2026-10-06 06:43:23 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
+- `2026-10-06 07:49:57 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
+- `2026-10-06 10:48:06 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
+- `2026-10-06 11:02:12 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
