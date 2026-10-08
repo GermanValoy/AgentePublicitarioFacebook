@@ -1,11 +1,11 @@
 # Estado del agente
 
-_Actualizado: 07/10/2026 16:26 (America/Argentina/Tucuman). Si esta fecha tiene más de un día, el agente probablemente no está funcionando._
+_Actualizado: 07/10/2026 23:13 (America/Argentina/Tucuman). Si esta fecha tiene más de un día, el agente probablemente no está funcionando._
 
 - **Estado:** ✅ funcionando
 - **Modo:** aprobacion
 - **Telegram:** conectado
-- **Versión del agente:** 3d73ead (07/10 09:53)
+- **Versión del agente:** ae92ce2 (07/10 16:26)
 - **Publicaciones hoy:** 1/3
 - **Últimos 7 días:** 2 error_navegador, 1 publicada
 
@@ -27,7 +27,6 @@ _Actualizado: 07/10/2026 16:26 (America/Argentina/Tucuman). Si esta fecha tiene 
 
 ## Avisos y errores recientes del registro
 
-- `2026-10-06 02:02:57 WARNING  Telegram: Sin conexión con Telegram: <urlopen error [WinError 10060] Se produjo un error durante el intento de conexión ya que la parte conectada no respondió adecuadamente tras un periodo de`
 - `2026-10-06 05:39:43 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
 - `2026-10-06 06:39:34 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
 - `2026-10-06 06:43:23 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
@@ -37,3 +36,4 @@ _Actualizado: 07/10/2026 16:26 (America/Argentina/Tucuman). Si esta fecha tiene 
 - `2026-10-07 01:02:44 WARNING  Telegram: Sin conexión con Telegram: <urlopen error [WinError 10060] Se produjo un error durante el intento de conexión ya que la parte conectada no respondió adecuadamente tras un periodo de`
 - `2026-10-07 13:03:03 WARNING  Telegram: Sin conexión con Telegram: <urlopen error [WinError 10060] Se produjo un error durante el intento de conexión ya que la parte conectada no respondió adecuadamente tras un periodo de`
 - `2026-10-07 14:21:33 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
+- `2026-10-07 21:02:59 WARNING  Telegram: Sin conexión con Telegram: <urlopen error [WinError 10060] Se produjo un error durante el intento de conexión ya que la parte conectada no respondió adecuadamente tras un periodo de`
