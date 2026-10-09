@@ -1,11 +1,11 @@
 # Estado del agente
 
-_Actualizado: 08/10/2026 00:00 (America/Argentina/Tucuman). Si esta fecha tiene más de un día, el agente probablemente no está funcionando._
+_Actualizado: 09/10/2026 00:00 (America/Argentina/Tucuman). Si esta fecha tiene más de un día, el agente probablemente no está funcionando._
 
 - **Estado:** ✅ funcionando
 - **Modo:** aprobacion
 - **Telegram:** conectado
-- **Versión del agente:** 3709df0 (07/10 23:13)
+- **Versión del agente:** 1bbb6a8 (08/10 00:14)
 - **Publicaciones hoy:** 0/3
 - **Últimos 7 días:** 2 error_navegador, 1 publicada
 
@@ -27,13 +27,13 @@ _Actualizado: 08/10/2026 00:00 (America/Argentina/Tucuman). Si esta fecha tiene 
 
 ## Avisos y errores recientes del registro
 
-- `2026-10-06 06:39:34 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
-- `2026-10-06 06:43:23 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
-- `2026-10-06 07:49:57 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
-- `2026-10-06 10:48:06 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
-- `2026-10-06 11:02:12 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
-- `2026-10-07 01:02:44 WARNING  Telegram: Sin conexión con Telegram: <urlopen error [WinError 10060] Se produjo un error durante el intento de conexión ya que la parte conectada no respondió adecuadamente tras un periodo de`
-- `2026-10-07 13:03:03 WARNING  Telegram: Sin conexión con Telegram: <urlopen error [WinError 10060] Se produjo un error durante el intento de conexión ya que la parte conectada no respondió adecuadamente tras un periodo de`
-- `2026-10-07 14:21:33 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
-- `2026-10-07 21:02:59 WARNING  Telegram: Sin conexión con Telegram: <urlopen error [WinError 10060] Se produjo un error durante el intento de conexión ya que la parte conectada no respondió adecuadamente tras un periodo de`
-- `2026-10-07 23:20:46 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
+- `2026-10-08 05:23:04 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
+- `2026-10-08 07:14:32 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
+- `2026-10-08 08:01:32 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
+- `2026-10-08 09:27:07 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
+- `2026-10-08 10:49:03 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
+- `2026-10-08 13:02:55 WARNING  Telegram: Sin conexión con Telegram: <urlopen error [WinError 10060] Se produjo un error durante el intento de conexión ya que la parte conectada no respondió adecuadamente tras un periodo de`
+- `2026-10-08 17:02:50 WARNING  Telegram: Sin conexión con Telegram: <urlopen error [WinError 10060] Se produjo un error durante el intento de conexión ya que la parte conectada no respondió adecuadamente tras un periodo de`
+- `2026-10-08 19:09:11 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
+- `2026-10-08 22:11:04 WARNING  Telegram: Bad Gateway`
+- `2026-10-08 22:12:15 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
