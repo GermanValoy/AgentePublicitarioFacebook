@@ -25,11 +25,11 @@ publicaciones:
 
       {¡Te esperamos!|¡Consultanos sin compromiso!|¡Escribinos y te asesoramos!} 🙌
 
-  - id: netbook-2026-10-12
+  - id: netbook-2026-10-13
     activa: true
-    fecha: 2026-10-12        # lunes (Venta de Garage solo acepta lunes, miércoles y viernes)
-    hora: "11:48"
-    grupos: ["Venta de Garage Tafi Viejo"]
+    fecha: 2026-10-13        # martes (grupo nuevo, sin publicaciones previas)
+    hora: "11:27"
+    grupos: ["Alguien sabe Yo se? Por un Tafi mejor"]
     imagenes: [netbook-2026-10-12.jpg]
     repetir_cada_dias: 7
     texto: |
