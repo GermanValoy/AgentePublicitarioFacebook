@@ -70,3 +70,73 @@ publicaciones:
       📲 {WhatsApp|Consultas por WhatsApp|Escribinos al WhatsApp}: 381 649-6790
 
       {¡Te esperamos!|¡Consultanos sin compromiso!|¡Escribinos y te respondemos enseguida!} 🙌
+
+  - id: celulares-2026-10-15
+    activa: true
+    fecha: 2026-10-15        # jueves (grupo nuevo)
+    hora: "10:52"
+    grupos: ["Grupo nuevo 1 (…6047)"]
+    imagenes: [servicios-celulares.jpg]
+    repetir_cada_dias: 7
+    texto: |
+      📱 SERVICIOS PARA TU CELULAR 📱
+
+      {¡Hola a todos!|¡Buenas, vecinos!|¡Hola! ¿Cómo andan?} 👋 {¿Se te rompió la pantalla o no carga el celular?|¿Tu celular quedó bloqueado o con la pantalla dañada?|¿Tu celu no carga o tiene el vidrio roto?} {Lo resolvemos|Te lo arreglamos|Nos encargamos} con {garantía|trabajos garantizados} y {entrega rápida|rapidez}:
+
+      ➡️ Cambio de módulos y vidrios.
+      ➡️ Reparación de pin de carga.
+      ➡️ Desbloqueo banda negativa.
+      ➡️ Software y desbloqueo de patrón de seguridad.
+      ➡️ Venta de celulares e insumos.
+
+      📍 {Estamos en|Nos encontrás en|Te esperamos en} Monteagudo 1140, Tafí Viejo
+      💳 {Recibimos tarjetas de crédito|Aceptamos tarjetas de crédito}
+      📲 {WhatsApp|Consultas por WhatsApp|Escribinos al WhatsApp}: 381 649-6790
+
+      {¡Te esperamos!|¡Consultanos sin compromiso!|¡Escribinos y te respondemos enseguida!} 🙌
+
+  - id: consolas-2026-10-17
+    activa: true
+    fecha: 2026-10-17        # sábado (grupo nuevo)
+    hora: "11:14"
+    grupos: ["Grupo nuevo 2 (…4801)"]
+    imagenes: [consolas-2026-10-05.jpg]
+    repetir_cada_dias: 7
+    texto: |
+      🎮 CONSOLAS DE VIDEOJUEGOS 🎮
+
+      {¡Hola a todos!|¡Buenas, vecinos!|¡Hola! ¿Cómo están?} 👋 {¿Tenés una consola parada en un cajón?|¿Tu consola se recalienta o no lee los juegos?|¿Querés ponerle juegos nuevos a tu consola?} {Nosotros te ayudamos|Podemos ayudarte|Te damos una mano}:
+
+      ➡️ Liberación de PS2, PS3 y PS4.
+      ➡️ Instalación de juegos.
+      ➡️ Mantenimiento y limpieza de consolas.
+
+      📍 {Estamos en|Nos encontrás en|Te esperamos en} Monteagudo 1140, Tafí Viejo
+      💳 {Recibimos tarjetas de crédito|Aceptamos tarjetas de crédito}
+      📲 {WhatsApp|Consultas por WhatsApp|Escribinos al WhatsApp}: 381 649-6790
+
+      {¡Te esperamos!|¡Consultanos sin compromiso!|¡Escribinos y te respondemos enseguida!} 🙌
+
+  - id: limpieza-2026-10-18
+    activa: true
+    fecha: 2026-10-18        # domingo (grupo nuevo)
+    hora: "12:06"
+    grupos: ["Grupo nuevo 3 (…2145)"]
+    imagenes: [limpieza-2026-10-05.jpg]
+    repetir_cada_dias: 7
+    texto: |
+      🔧 ¿TU NOTEBOOK NECESITA UNA LIMPIEZA? 🔧
+
+      {¡Hola a todos!|¡Buenas, vecinos!|¡Hola! ¿Cómo andan?} 👋 {Estas son algunas señales|Fijate si te pasa alguna de estas cosas|Si notás alguna de estas señales}:
+
+      ➡️ Se calienta mucho o el ventilador hace ruido.
+      ➡️ Se pone lenta o se apaga sola.
+      ➡️ Hace años que nunca la abrieron para limpiarla.
+
+      {Hacemos limpieza interna y cambio de pasta térmica|Te hacemos la limpieza interna y el cambio de pasta térmica|Nos encargamos de la limpieza interna y la pasta térmica} en notebooks, netbooks y PC, para que {trabaje más fresca|rinda mejor|dure más}.
+
+      📍 {Estamos en|Nos encontrás en|Te esperamos en} Monteagudo 1140, Tafí Viejo
+      💳 {Recibimos tarjetas de crédito|Aceptamos tarjetas de crédito}
+      📲 {WhatsApp|Consultas por WhatsApp|Escribinos al WhatsApp}: 381 649-6790
+
+      {¡Te esperamos!|¡Consultanos sin compromiso!|¡Escribinos y te respondemos enseguida!} 🙌
