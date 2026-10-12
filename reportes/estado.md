@@ -1,11 +1,11 @@
 # Estado del agente
 
-_Actualizado: 12/10/2026 01:03 (America/Argentina/Tucuman). Si esta fecha tiene más de un día, el agente probablemente no está funcionando._
+_Actualizado: 12/10/2026 11:58 (America/Argentina/Tucuman). Si esta fecha tiene más de un día, el agente probablemente no está funcionando._
 
 - **Estado:** ✅ funcionando
 - **Modo:** aprobacion
 - **Telegram:** conectado
-- **Versión del agente:** 0a350eb (12/10 03:37)
+- **Versión del agente:** ae0abe1 (12/10 01:03)
 - **Publicaciones hoy:** 0/3
 - **Últimos 7 días:** 2 error_navegador, 2 publicada
 
@@ -13,9 +13,9 @@ _Actualizado: 12/10/2026 01:03 (America/Argentina/Tucuman). Si esta fecha tiene 
 
 | Cuándo | Publicación | Grupos |
 |---|---|---|
-| 12/10 11:48 | netbook-2026-10-12 | Venta de Garage Tafi Viejo |
 | 14/10 17:36 | ssd-ram-2026-10-14 | FERIA AMERICANA TAFI VIEJO |
 | 16/10 17:09 | soporte-2026-10-16 | Alguien Sabe!!! Tafi Viejo Ventas!!! |
+| 19/10 11:48 | netbook-2026-10-12 | Venta de Garage Tafi Viejo |
 
 ## Desde cuándo se puede publicar en cada grupo
 
@@ -31,6 +31,7 @@ _Regla anti-baneo: no repetir en un grupo antes de 7 días. Programá cada grupo
 
 | Fecha | Estado | Publicación | Grupo | Detalle |
 |---|---|---|---|---|
+| 12/10 11:57 | error_navegador | netbook-2026-10-12 | Venta de Garage Tafi Viejo | Formulario de venta: no se encontró el botón 'Foto/video' en el cuadro de publicación / captura: 20261012-115738-venta-e |
 | 09/10 12:14 | publicada | limpieza-2026-10-09 | Alguien Sabe!!! Tafi Viejo Ventas!!! | Publicada automáticamente / captura: 20261009-121457-publicada.png |
 | 07/10 16:25 | publicada | consolas-2026-10-07 | FERIA AMERICANA TAFI VIEJO | Publicada automáticamente / captura: 20261007-162531-publicada.png |
 | 05/10 15:13 | error_navegador | celulares-2026-10-05 | Venta de Garage Tafi Viejo | Formulario de venta: se cargó el archivo pero Facebook no mostró la vista previa de la foto / captura: 20261005-151312-v |
@@ -38,7 +39,6 @@ _Regla anti-baneo: no repetir en un grupo antes de 7 días. Programá cada grupo
 
 ## Avisos y errores recientes del registro
 
-- `2026-10-09 01:02:59 WARNING  Telegram: Sin conexión con Telegram: <urlopen error [WinError 10060] Se produjo un error durante el intento de conexión ya que la parte conectada no respondió adecuadamente tras un periodo de`
 - `2026-10-09 05:02:55 WARNING  Telegram: Sin conexión con Telegram: <urlopen error [WinError 10060] Se produjo un error durante el intento de conexión ya que la parte conectada no respondió adecuadamente tras un periodo de`
 - `2026-10-09 05:52:48 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
 - `2026-10-09 09:03:01 WARNING  Telegram: Sin conexión con Telegram: <urlopen error [WinError 10060] Se produjo un error durante el intento de conexión ya que la parte conectada no respondió adecuadamente tras un periodo de`
@@ -48,3 +48,4 @@ _Regla anti-baneo: no repetir en un grupo antes de 7 días. Programá cada grupo
 - `2026-10-09 14:40:02 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
 - `2026-10-09 14:47:55 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
 - `2026-10-09 17:44:19 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
+- `2026-10-12 11:57:36 WARNING  Formulario de venta: no se encontró el botón 'Foto/video' en el cuadro de publicación`
