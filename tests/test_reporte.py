@@ -44,3 +44,13 @@ def test_reporte_muestra_pausa(config, historial):
 def test_escribir_crea_el_archivo(config, historial):
     ruta = reporte.escribir(config, historial)
     assert ruta == config.raiz / "reportes" / "estado.md" and ruta.read_text(encoding="utf-8").startswith("# Estado")
+
+
+def test_reporte_dice_desde_cuando_se_puede_publicar_en_cada_grupo(config, historial):
+    historial.agregar("x", "promo", "Grupo A", "publicada", momento(config, "2026-10-07 16:25"))
+    historial.agregar("y", "promo", "Grupo B", "error_navegador", momento(config, "2026-10-07 16:25"))
+    texto = reporte.generar(config, historial, ahora=momento(config, "2026-10-12 00:30"))
+    assert "| Grupo A | 07/10 16:25 | 14/10 16:25 | todos |" in texto
+    assert "| Grupo B | — | ya | todos |" in texto  # un error sin publicar no bloquea el grupo
+    assert "| Solo Sabados | — | ya | sábado |" in texto
+    assert "Inactivo" not in texto.split("Desde cuándo")[1].split("Últimos")[0]

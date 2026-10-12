@@ -2,10 +2,10 @@
 # Semana del 12/10 al 18/10. Se repite cada 7 días si no se actualiza.
 
 publicaciones:
-  - id: ssd-ram-2026-10-12
+  - id: ssd-ram-2026-10-14
     activa: true
-    fecha: 2026-10-12        # lunes
-    hora: "11:36"
+    fecha: 2026-10-14        # miércoles (FERIA tuvo publicación el 07/10 16:25: se respeta el descanso de 7 días)
+    hora: "17:36"
     grupos: ["FERIA AMERICANA TAFI VIEJO"]
     imagenes: [ssd-ram-2026-10-12.jpg]
     repetir_cada_dias: 7
@@ -25,10 +25,10 @@ publicaciones:
 
       {¡Te esperamos!|¡Consultanos sin compromiso!|¡Escribinos y te asesoramos!} 🙌
 
-  - id: netbook-2026-10-14
+  - id: netbook-2026-10-12
     activa: true
-    fecha: 2026-10-14        # miércoles
-    hora: "15:48"
+    fecha: 2026-10-12        # lunes (Venta de Garage solo acepta lunes, miércoles y viernes)
+    hora: "11:48"
     grupos: ["Venta de Garage Tafi Viejo"]
     imagenes: [netbook-2026-10-12.jpg]
     repetir_cada_dias: 7

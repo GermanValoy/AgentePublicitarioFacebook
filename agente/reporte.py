@@ -79,6 +79,24 @@ def generar(config: Config, historial: Historial, publicaciones=(), telegram_con
     filas = [f"| {m:%d/%m %H:%M} | {p.id} | {', '.join(grupos_de(p, config))} |" for m, p in proximas if m][:10]
     l += (["| Cuándo | Publicación | Grupos |", "|---|---|---|", *filas] if filas else ["(ninguna)"])
 
+    l += ["", "## Desde cuándo se puede publicar en cada grupo", "",
+          "_Regla anti-baneo: no repetir en un grupo antes de "
+          f"{config.limites.dias_entre_publicaciones_mismo_grupo} días. Programá cada grupo después de esta fecha._", "",
+          "| Grupo | Última publicación | Se puede desde | Días permitidos |", "|---|---|---|---|"]
+    nombres_dias = ["lunes", "martes", "miércoles", "jueves", "viernes", "sábado", "domingo"]
+    for nombre, grupo in config.grupos.items():
+        if not grupo.activo:
+            continue
+        propias = historial.actividad(nombre)
+        if propias:
+            ultima = max(r.momento for r in propias).astimezone(config.zona)
+            desde = ultima + dt.timedelta(days=config.limites.dias_entre_publicaciones_mismo_grupo)
+            ultima_txt, desde_txt = f"{ultima:%d/%m %H:%M}", f"{desde:%d/%m %H:%M}"
+        else:
+            ultima_txt, desde_txt = "—", "ya"
+        dias = ", ".join(nombres_dias[d] for d in grupo.dias_permitidos) if grupo.dias_permitidos else "todos"
+        l.append(f"| {nombre} | {ultima_txt} | {desde_txt} | {dias} |")
+
     l += ["", "## Últimos movimientos", ""]
     ultimos = historial.registros[-15:]
     if ultimos:
