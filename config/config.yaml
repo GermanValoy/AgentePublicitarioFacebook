@@ -77,7 +77,7 @@ grupos:
 
   - nombre: Venta de Garage Tafi Viejo
     url: https://www.facebook.com/groups/ventadegaragetafiviejo
-    activo: true
+    activo: false     # reemplazado el 12/10 por "Alguien sabe Yo se? Por un Tafi mejor"
     dias_permitidos: [Lunes,Miercoles,Viernes]
     notas: 3 dias a la semana
 
