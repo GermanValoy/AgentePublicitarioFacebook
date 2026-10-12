@@ -1,11 +1,11 @@
 # Estado del agente
 
-_Actualizado: 12/10/2026 00:30 (America/Argentina/Tucuman). Si esta fecha tiene más de un día, el agente probablemente no está funcionando._
+_Actualizado: 12/10/2026 01:03 (America/Argentina/Tucuman). Si esta fecha tiene más de un día, el agente probablemente no está funcionando._
 
 - **Estado:** ✅ funcionando
 - **Modo:** aprobacion
 - **Telegram:** conectado
-- **Versión del agente:** 419834d (09/10 16:30)
+- **Versión del agente:** 0a350eb (12/10 03:37)
 - **Publicaciones hoy:** 0/3
 - **Últimos 7 días:** 2 error_navegador, 2 publicada
 
@@ -13,9 +13,19 @@ _Actualizado: 12/10/2026 00:30 (America/Argentina/Tucuman). Si esta fecha tiene 
 
 | Cuándo | Publicación | Grupos |
 |---|---|---|
-| 12/10 10:42 | celulares-2026-10-05 | Venta de Garage Tafi Viejo |
-| 14/10 16:17 | consolas-2026-10-07 | FERIA AMERICANA TAFI VIEJO |
-| 16/10 11:23 | limpieza-2026-10-09 | Alguien Sabe!!! Tafi Viejo Ventas!!! |
+| 12/10 11:48 | netbook-2026-10-12 | Venta de Garage Tafi Viejo |
+| 14/10 17:36 | ssd-ram-2026-10-14 | FERIA AMERICANA TAFI VIEJO |
+| 16/10 17:09 | soporte-2026-10-16 | Alguien Sabe!!! Tafi Viejo Ventas!!! |
+
+## Desde cuándo se puede publicar en cada grupo
+
+_Regla anti-baneo: no repetir en un grupo antes de 7 días. Programá cada grupo después de esta fecha._
+
+| Grupo | Última publicación | Se puede desde | Días permitidos |
+|---|---|---|---|
+| FERIA AMERICANA TAFI VIEJO | 07/10 16:25 | 14/10 16:25 | todos |
+| Venta de Garage Tafi Viejo | — | ya | lunes, miércoles, viernes |
+| Alguien Sabe!!! Tafi Viejo Ventas!!! | 09/10 12:14 | 16/10 12:14 | todos |
 
 ## Últimos movimientos
 
