@@ -1,13 +1,13 @@
 # Estado del agente
 
-_Actualizado: 13/10/2026 11:37 (America/Argentina/Tucuman). Si esta fecha tiene más de un día, el agente probablemente no está funcionando._
+_Actualizado: 13/10/2026 11:51 (America/Argentina/Tucuman). Si esta fecha tiene más de un día, el agente probablemente no está funcionando._
 
 - **Estado:** ✅ funcionando
 - **Modo:** aprobacion
 - **Telegram:** conectado
-- **Versión del agente:** bc84e41 (13/10 00:21)
+- **Versión del agente:** cd51b33 (13/10 14:43)
 - **Publicaciones hoy:** 1/3
-- **Últimos 7 días:** 2 error_navegador, 1 fallida, 2 publicada
+- **Últimos 7 días:** 3 error_navegador, 3 publicada
 
 ## Próximas programadas
 
@@ -28,7 +28,7 @@ _Regla anti-baneo: no repetir en un grupo antes de 7 días. Programá cada grupo
 |---|---|---|---|
 | FERIA AMERICANA TAFI VIEJO | 07/10 16:25 | 14/10 16:25 | todos |
 | Alguien Sabe!!! Tafi Viejo Ventas!!! | 09/10 12:14 | 16/10 12:14 | todos |
-| Alguien sabe Yo se? Por un Tafi mejor | 13/10 11:36 | 20/10 11:36 | todos |
+| Alguien sabe Yo se? Por un Tafi mejor | 13/10 11:50 | 20/10 11:50 | todos |
 | Grupo nuevo 1 (…6047) | — | ya | todos |
 | Grupo nuevo 2 (…4801) | — | ya | todos |
 | Grupo nuevo 3 (…2145) | — | ya | todos |
@@ -37,7 +37,8 @@ _Regla anti-baneo: no repetir en un grupo antes de 7 días. Programá cada grupo
 
 | Fecha | Estado | Publicación | Grupo | Detalle |
 |---|---|---|---|---|
-| 13/10 11:36 | fallida | netbook-2026-10-13 | Alguien sabe Yo se? Por un Tafi mejor | Error inesperado: Locator.wait_for: Timeout 15000ms exceeded. Call log:   - waiting for get_by_role("dialog").filter(has |
+| 13/10 11:50 | publicada | netbook-2026-10-13 | Alguien sabe Yo se? Por un Tafi mejor | Publicada automáticamente / captura: 20261013-115023-publicada.png |
+| 13/10 11:36 | error_navegador | netbook-2026-10-13 | Alguien sabe Yo se? Por un Tafi mejor | Error inesperado: Locator.wait_for: Timeout 15000ms exceeded. Call log:   - waiting for get_by_role("dialog").filter(has |
 | 12/10 12:08 | error_navegador | netbook-2026-10-12 | Venta de Garage Tafi Viejo | Formulario de venta: se cargó el archivo pero Facebook no mostró la vista previa de la foto / captura: 20261012-120751-v |
 | 12/10 11:57 | error_navegador | netbook-2026-10-12 | Venta de Garage Tafi Viejo | Formulario de venta: no se encontró el botón 'Foto/video' en el cuadro de publicación / captura: 20261012-115738-venta-e |
 | 09/10 12:14 | publicada | limpieza-2026-10-09 | Alguien Sabe!!! Tafi Viejo Ventas!!! | Publicada automáticamente / captura: 20261009-121457-publicada.png |
