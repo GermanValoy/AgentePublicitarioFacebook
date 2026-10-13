@@ -183,3 +183,13 @@ def test_ignora_otras_ventanas_ocultas_con_cuadro_de_texto(tmp_path, imagen):
         p.__exit__(None, None, None)
     assert res.estado == "publicada", res.detalle
     assert "Hago service de PC" in publicado and publicado.endswith("fotos:1")
+
+
+def test_error_antes_de_escribir_no_bloquea_el_grupo(tmp_path, monkeypatch):
+    p = abrir(tmp_path, "automatico")
+    monkeypatch.setattr(p, "_dialogo_visible_con_texto", lambda espera=20: (_ for _ in ()).throw(RuntimeError("x")))
+    try:
+        res = p.publicar(PAGINA, "Hola", [])
+    finally:
+        p.__exit__(None, None, None)
+    assert res.estado == "error_navegador"

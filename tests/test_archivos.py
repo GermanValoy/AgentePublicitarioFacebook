@@ -47,3 +47,14 @@ def test_reclasifica_intentos_viejos_que_no_publicaron(tmp_path):
     h = Historial(archivo)
     assert [r.estado for r in h.registros] == ["error_navegador", "fallida"]
     assert len(h.actividad("Venta de Garage")) == 1
+
+
+def test_reclasifica_el_intento_del_13_10(tmp_path):
+    archivo = tmp_path / "historial.json"
+    archivo.write_text(json.dumps([{
+        "clave": "x", "publicacion_id": "netbook-2026-10-13", "grupo": "Alguien sabe Yo se? Por un Tafi mejor",
+        "fecha_hora": "2026-10-13T11:36:00-03:00", "estado": "fallida",
+        "detalle": 'Error inesperado: Locator.wait_for: Timeout 15000ms exceeded. Call log:   - waiting for '
+                   'get_by_role("dialog").filter(has=get_by_role("textbox")).last to be visible'}]), encoding="utf-8")
+    h = Historial(archivo)
+    assert h.registros[0].estado == "error_navegador" and h.actividad() == []

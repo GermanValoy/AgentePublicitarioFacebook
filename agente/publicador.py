@@ -87,6 +87,7 @@ class PublicadorFacebook:
         self.navegador = navegador  # chromium (de Playwright), chrome o msedge (instalados en la PC)
         self.venta = venta or {}  # precio (y opcionalmente estado) para grupos de compra-venta
         self.carpeta_diagnostico = carpeta_diagnostico  # reportes/: lista de campos (sin datos) para ajustar
+        self._escribio = False  # si ya se empezó a escribir en Facebook (para clasificar errores)
 
     # ---- ciclo de vida -------------------------------------------------------------------
     def __enter__(self) -> "PublicadorFacebook":
@@ -376,6 +377,7 @@ class PublicadorFacebook:
     def _escribir(self, caja, texto: str) -> None:
         """Escribe letra por letra, de a una línea, dándole a cada línea el tiempo que necesita
         (un texto largo escrito a ritmo humano tarda más que el límite normal de 30 segundos)."""
+        self._escribio = True
         demora = random.uniform(35, 90) * self.velocidad
         for i, linea in enumerate(texto.split("\n")):
             if i:
@@ -397,11 +399,14 @@ class PublicadorFacebook:
 
     # ---- publicación ---------------------------------------------------------------------
     def publicar(self, url_grupo: str, texto: str, imagenes: list[Path]) -> ResultadoPublicacion:
+        self._escribio = False
         try:
             return self._publicar(url_grupo, texto, imagenes)
         except Exception as e:
             log.exception("Error inesperado al publicar")
-            return ResultadoPublicacion("fallida", f"Error inesperado: {e}", self._captura("error"))
+            # Si falló antes de escribir nada, no se publicó: no cuenta para los límites del grupo.
+            estado = "fallida" if self._escribio else "error_navegador"
+            return ResultadoPublicacion(estado, f"Error inesperado: {e}", self._captura("error"))
 
     def _publicar(self, url_grupo: str, texto: str, imagenes: list[Path]) -> ResultadoPublicacion:
         page = self.page
