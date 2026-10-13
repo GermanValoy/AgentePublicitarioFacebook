@@ -1,24 +1,24 @@
 # Estado del agente
 
-_Actualizado: 13/10/2026 00:00 (America/Argentina/Tucuman). Si esta fecha tiene más de un día, el agente probablemente no está funcionando._
+_Actualizado: 13/10/2026 11:37 (America/Argentina/Tucuman). Si esta fecha tiene más de un día, el agente probablemente no está funcionando._
 
 - **Estado:** ✅ funcionando
 - **Modo:** aprobacion
 - **Telegram:** conectado
-- **Versión del agente:** a894cbf (12/10 22:50)
-- **Publicaciones hoy:** 0/3
-- **Últimos 7 días:** 2 error_navegador, 2 publicada
+- **Versión del agente:** bc84e41 (13/10 00:21)
+- **Publicaciones hoy:** 1/3
+- **Últimos 7 días:** 2 error_navegador, 1 fallida, 2 publicada
 
 ## Próximas programadas
 
 | Cuándo | Publicación | Grupos |
 |---|---|---|
-| 13/10 11:27 | netbook-2026-10-13 | Alguien sabe Yo se? Por un Tafi mejor |
 | 14/10 17:36 | ssd-ram-2026-10-14 | FERIA AMERICANA TAFI VIEJO |
 | 15/10 10:52 | celulares-2026-10-15 | Grupo nuevo 1 (…6047) |
 | 16/10 17:09 | soporte-2026-10-16 | Alguien Sabe!!! Tafi Viejo Ventas!!! |
 | 17/10 11:14 | consolas-2026-10-17 | Grupo nuevo 2 (…4801) |
 | 18/10 12:06 | limpieza-2026-10-18 | Grupo nuevo 3 (…2145) |
+| 20/10 11:27 | netbook-2026-10-13 | Alguien sabe Yo se? Por un Tafi mejor |
 
 ## Desde cuándo se puede publicar en cada grupo
 
@@ -28,7 +28,7 @@ _Regla anti-baneo: no repetir en un grupo antes de 7 días. Programá cada grupo
 |---|---|---|---|
 | FERIA AMERICANA TAFI VIEJO | 07/10 16:25 | 14/10 16:25 | todos |
 | Alguien Sabe!!! Tafi Viejo Ventas!!! | 09/10 12:14 | 16/10 12:14 | todos |
-| Alguien sabe Yo se? Por un Tafi mejor | — | ya | todos |
+| Alguien sabe Yo se? Por un Tafi mejor | 13/10 11:36 | 20/10 11:36 | todos |
 | Grupo nuevo 1 (…6047) | — | ya | todos |
 | Grupo nuevo 2 (…4801) | — | ya | todos |
 | Grupo nuevo 3 (…2145) | — | ya | todos |
@@ -37,6 +37,7 @@ _Regla anti-baneo: no repetir en un grupo antes de 7 días. Programá cada grupo
 
 | Fecha | Estado | Publicación | Grupo | Detalle |
 |---|---|---|---|---|
+| 13/10 11:36 | fallida | netbook-2026-10-13 | Alguien sabe Yo se? Por un Tafi mejor | Error inesperado: Locator.wait_for: Timeout 15000ms exceeded. Call log:   - waiting for get_by_role("dialog").filter(has |
 | 12/10 12:08 | error_navegador | netbook-2026-10-12 | Venta de Garage Tafi Viejo | Formulario de venta: se cargó el archivo pero Facebook no mostró la vista previa de la foto / captura: 20261012-120751-v |
 | 12/10 11:57 | error_navegador | netbook-2026-10-12 | Venta de Garage Tafi Viejo | Formulario de venta: no se encontró el botón 'Foto/video' en el cuadro de publicación / captura: 20261012-115738-venta-e |
 | 09/10 12:14 | publicada | limpieza-2026-10-09 | Alguien Sabe!!! Tafi Viejo Ventas!!! | Publicada automáticamente / captura: 20261009-121457-publicada.png |
@@ -46,13 +47,13 @@ _Regla anti-baneo: no repetir en un grupo antes de 7 días. Programá cada grupo
 
 ## Avisos y errores recientes del registro
 
-- `2026-10-09 14:47:55 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
-- `2026-10-09 17:44:19 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
-- `2026-10-12 11:57:36 WARNING  Formulario de venta: no se encontró el botón 'Foto/video' en el cuadro de publicación`
-- `2026-10-12 12:07:51 WARNING  Formulario de venta: se cargó el archivo pero Facebook no mostró la vista previa de la foto`
-- `2026-10-12 12:08:03 WARNING  No se pudo cerrar el borrador: Locator.wait_for: Timeout 10000ms exceeded.`
-- `2026-10-12 15:27:24 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
-- `2026-10-12 19:01:10 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
-- `2026-10-12 19:16:34 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
-- `2026-10-12 20:14:20 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
-- `2026-10-12 23:24:30 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
+- `2026-10-13 06:28:22 WARNING  Telegram: Sin conexión con Telegram: <urlopen error [Errno 11001] getaddrinfo failed>`
+- `2026-10-13 06:28:52 WARNING  Telegram: Sin conexión con Telegram: <urlopen error [Errno 11001] getaddrinfo failed>`
+- `2026-10-13 06:29:22 WARNING  Telegram: Sin conexión con Telegram: <urlopen error [Errno 11001] getaddrinfo failed>`
+- `2026-10-13 06:29:52 WARNING  Telegram: Sin conexión con Telegram: <urlopen error [Errno 11001] getaddrinfo failed>`
+- `2026-10-13 06:30:22 WARNING  Telegram: Sin conexión con Telegram: <urlopen error [Errno 11001] getaddrinfo failed>`
+- `2026-10-13 06:30:52 WARNING  Telegram: Sin conexión con Telegram: <urlopen error [Errno 11001] getaddrinfo failed>`
+- `2026-10-13 07:00:32 WARNING  Telegram: Sin conexión con Telegram: <urlopen error [WinError 10060] Se produjo un error durante el intento de conexión ya que la parte conectada no respondió adecuadamente tras un periodo de`
+- `2026-10-13 07:04:50 WARNING  Telegram: Sin conexión con Telegram: <urlopen error _ssl.c:983: The handshake operation timed out>`
+- `2026-10-13 10:31:49 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
+- `2026-10-13 11:36:29 ERROR    Error inesperado al publicar`
