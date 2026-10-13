@@ -178,6 +178,25 @@ class PublicadorFacebook:
         m = PATRONES_BLOQUEO.search(texto)
         return f"Facebook mostró: '{m.group(0)}'" if m else None
 
+    def _dialogo_visible_con_texto(self, espera: float = 20):
+        """La ventana «Crear publicación»: la que está visible y tiene un cuadro de texto visible.
+        Facebook deja otras ventanas (chats, avisos) en la página sin tamaño, así que no sirve
+        tomar «la última ventana con cuadro de texto»."""
+        limite = time.monotonic() + espera
+        while True:
+            dialogos = self.page.get_by_role("dialog")
+            for i in reversed(range(dialogos.count())):
+                candidato = dialogos.nth(i)
+                try:
+                    caja = candidato.get_by_role("textbox")
+                    if candidato.is_visible() and any(caja.nth(j).is_visible() for j in range(min(caja.count(), 5))):
+                        return candidato
+                except Exception:
+                    continue
+            if time.monotonic() > limite:
+                raise RuntimeError("no se abrió la ventana «Crear publicación» con el cuadro para escribir")
+            self.page.wait_for_timeout(500)
+
     def _buscar_compositor(self):
         for candidato in (
             self.page.get_by_role("button", name=TEXTO_COMPOSITOR),
@@ -411,12 +430,12 @@ class PublicadorFacebook:
             return ResultadoPublicacion("error_navegador", "No se encontró el cuadro 'Escribe algo...'. "
                                         "¿Sos miembro del grupo y permite publicar?", self._captura("sin-compositor"))
         compositor.click()
-        dialogo = page.get_by_role("dialog").filter(has=page.get_by_role("textbox")).last
-        dialogo.wait_for(state="visible", timeout=15_000)
+        dialogo = self._dialogo_visible_con_texto()
         self._pausa(1, 3)
 
         log.info("Escribiendo el texto")
-        caja = dialogo.get_by_role("textbox").first
+        cajas = dialogo.get_by_role("textbox")
+        caja = next((cajas.nth(j) for j in range(cajas.count()) if cajas.nth(j).is_visible()), cajas.first)
         caja.click()
         self._escribir(caja, texto)
         self._pausa(1, 3)

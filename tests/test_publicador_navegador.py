@@ -170,3 +170,16 @@ def test_compraventa_sin_precio_avisa(tmp_path, imagen):
 
 def test_titulo_de_texto():
     assert PublicadorFacebook.titulo_de("\n🔧 {no} \n✅ SERVICIO TÉCNICO ✅\nresto") == "SERVICIO TÉCNICO"
+
+
+def test_ignora_otras_ventanas_ocultas_con_cuadro_de_texto(tmp_path, imagen):
+    """Error real del 13/10: había otra ventana oculta con cuadro de texto y el agente esperaba esa."""
+    p = abrir(tmp_path, "automatico")
+    p.page.set_default_timeout(5_000)
+    try:
+        res = p.publicar(f"{PAGINA}?extra=1", "Hola vecinos\nHago service de PC", [imagen])
+        publicado = p.page.locator("#publicado").inner_text()
+    finally:
+        p.__exit__(None, None, None)
+    assert res.estado == "publicada", res.detalle
+    assert "Hago service de PC" in publicado and publicado.endswith("fotos:1")

@@ -35,7 +35,17 @@
     }
     const oculto = document.getElementById("oculto");
     oculto.onchange = () => mostrar(oculto.files);
-    document.getElementById("abrir").onclick = () => { dialogo.hidden = false; };
+    document.getElementById("abrir").onclick = () => {
+      dialogo.hidden = false;
+      if (new URLSearchParams(location.search).get("extra")) {
+        // Como en Facebook real: otra ventana oculta con cuadro de texto (p. ej. un chat) al final de la página.
+        const oculto = document.createElement("div");
+        oculto.setAttribute("role", "dialog");
+        oculto.style.cssText = "width:0;height:0;overflow:hidden";  // Facebook la deja en la página, sin tamaño
+        oculto.innerHTML = '<div role="textbox" contenteditable="true">chat</div>';
+        document.body.appendChild(oculto);
+      }
+    };
     document.getElementById("foto").onclick = () => {
       if (modo === "selector") { oculto.click(); return; }
       if (modo === "zona") {
