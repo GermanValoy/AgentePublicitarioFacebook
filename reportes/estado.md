@@ -1,13 +1,13 @@
 # Estado del agente
 
-_Actualizado: 13/10/2026 11:51 (America/Argentina/Tucuman). Si esta fecha tiene más de un día, el agente probablemente no está funcionando._
+_Actualizado: 14/10/2026 00:00 (America/Argentina/Tucuman). Si esta fecha tiene más de un día, el agente probablemente no está funcionando._
 
 - **Estado:** ✅ funcionando
 - **Modo:** aprobacion
 - **Telegram:** conectado
-- **Versión del agente:** cd51b33 (13/10 14:43)
-- **Publicaciones hoy:** 1/3
-- **Últimos 7 días:** 3 error_navegador, 3 publicada
+- **Versión del agente:** 7d42945 (13/10 11:52)
+- **Publicaciones hoy:** 0/3
+- **Últimos 7 días:** 3 error_navegador, 3 publicada, 1 vencida
 
 ## Próximas programadas
 
@@ -37,6 +37,7 @@ _Regla anti-baneo: no repetir en un grupo antes de 7 días. Programá cada grupo
 
 | Fecha | Estado | Publicación | Grupo | Detalle |
 |---|---|---|---|---|
+| 13/10 23:29 | vencida | netbook-2026-10-13 | Alguien sabe Yo se? Por un Tafi mejor | Pasó el retraso máximo sin poder publicarse (se evita publicar en ráfaga) |
 | 13/10 11:50 | publicada | netbook-2026-10-13 | Alguien sabe Yo se? Por un Tafi mejor | Publicada automáticamente / captura: 20261013-115023-publicada.png |
 | 13/10 11:36 | error_navegador | netbook-2026-10-13 | Alguien sabe Yo se? Por un Tafi mejor | Error inesperado: Locator.wait_for: Timeout 15000ms exceeded. Call log:   - waiting for get_by_role("dialog").filter(has |
 | 12/10 12:08 | error_navegador | netbook-2026-10-12 | Venta de Garage Tafi Viejo | Formulario de venta: se cargó el archivo pero Facebook no mostró la vista previa de la foto / captura: 20261012-120751-v |
@@ -48,13 +49,13 @@ _Regla anti-baneo: no repetir en un grupo antes de 7 días. Programá cada grupo
 
 ## Avisos y errores recientes del registro
 
-- `2026-10-13 06:28:22 WARNING  Telegram: Sin conexión con Telegram: <urlopen error [Errno 11001] getaddrinfo failed>`
-- `2026-10-13 06:28:52 WARNING  Telegram: Sin conexión con Telegram: <urlopen error [Errno 11001] getaddrinfo failed>`
-- `2026-10-13 06:29:22 WARNING  Telegram: Sin conexión con Telegram: <urlopen error [Errno 11001] getaddrinfo failed>`
-- `2026-10-13 06:29:52 WARNING  Telegram: Sin conexión con Telegram: <urlopen error [Errno 11001] getaddrinfo failed>`
-- `2026-10-13 06:30:22 WARNING  Telegram: Sin conexión con Telegram: <urlopen error [Errno 11001] getaddrinfo failed>`
 - `2026-10-13 06:30:52 WARNING  Telegram: Sin conexión con Telegram: <urlopen error [Errno 11001] getaddrinfo failed>`
 - `2026-10-13 07:00:32 WARNING  Telegram: Sin conexión con Telegram: <urlopen error [WinError 10060] Se produjo un error durante el intento de conexión ya que la parte conectada no respondió adecuadamente tras un periodo de`
 - `2026-10-13 07:04:50 WARNING  Telegram: Sin conexión con Telegram: <urlopen error _ssl.c:983: The handshake operation timed out>`
 - `2026-10-13 10:31:49 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
 - `2026-10-13 11:36:29 ERROR    Error inesperado al publicar`
+- `2026-10-13 14:43:31 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
+- `2026-10-13 15:00:20 WARNING  Telegram: Sin conexión con Telegram: <urlopen error [WinError 10060] Se produjo un error durante el intento de conexión ya que la parte conectada no respondió adecuadamente tras un periodo de`
+- `2026-10-13 17:04:47 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
+- `2026-10-13 19:00:36 WARNING  Telegram: Sin conexión con Telegram: <urlopen error [WinError 10060] Se produjo un error durante el intento de conexión ya que la parte conectada no respondió adecuadamente tras un periodo de`
+- `2026-10-13 23:00:11 WARNING  Telegram: Sin conexión con Telegram: <urlopen error [WinError 10060] Se produjo un error durante el intento de conexión ya que la parte conectada no respondió adecuadamente tras un periodo de`
