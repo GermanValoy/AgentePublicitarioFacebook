@@ -1,13 +1,13 @@
 # Estado del agente
 
-_Actualizado: 17/10/2026 19:49 (America/Argentina/Tucuman). Si esta fecha tiene más de un día, el agente probablemente no está funcionando._
+_Actualizado: 17/10/2026 19:55 (America/Argentina/Tucuman). Si esta fecha tiene más de un día, el agente probablemente no está funcionando._
 
 - **Estado:** ✅ funcionando
 - **Modo:** aprobacion
 - **Telegram:** conectado
-- **Versión del agente:** 5df2548 (17/10 00:05)
-- **Publicaciones hoy:** 0/3
-- **Últimos 7 días:** 3 error_navegador, 4 publicada, 1 vencida
+- **Versión del agente:** desconocida
+- **Publicaciones hoy:** 1/3
+- **Últimos 7 días:** 3 error_navegador, 5 publicada, 1 vencida
 
 ## Próximas programadas
 
@@ -30,13 +30,14 @@ _Regla anti-baneo: no repetir en un grupo antes de 7 días. Programá cada grupo
 | Alguien Sabe!!! Tafi Viejo Ventas!!! | 16/10 17:25 | 23/10 17:25 | todos |
 | Alguien sabe Yo se? Por un Tafi mejor | 13/10 11:50 | 20/10 11:50 | todos |
 | Grupo nuevo 1 (…6047) | 15/10 11:36 | 22/10 11:36 | todos |
-| Grupo nuevo 2 (…4801) | — | ya | todos |
+| Grupo nuevo 2 (…4801) | 17/10 19:54 | 24/10 19:54 | todos |
 | Grupo nuevo 3 (…2145) | — | ya | todos |
 
 ## Últimos movimientos
 
 | Fecha | Estado | Publicación | Grupo | Detalle |
 |---|---|---|---|---|
+| 17/10 19:54 | publicada | consolas-2026-10-17 | Grupo nuevo 2 (…4801) | Publicada automáticamente / captura: 20261017-195441-publicada.png |
 | 16/10 17:25 | publicada | soporte-2026-10-16 | Alguien Sabe!!! Tafi Viejo Ventas!!! | Publicada automáticamente / captura: 20261016-172524-publicada.png |
 | 15/10 11:36 | publicada | celulares-2026-10-15 | Grupo nuevo 1 (…6047) | Publicada automáticamente / captura: 20261015-113639-publicada.png |
 | 14/10 18:15 | publicada | ssd-ram-2026-10-14 | FERIA AMERICANA TAFI VIEJO | Publicada automáticamente / captura: 20261014-181514-publicada.png |
