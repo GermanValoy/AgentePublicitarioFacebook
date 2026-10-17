@@ -1,12 +1,12 @@
 # Estado del agente
 
-_Actualizado: 16/10/2026 21:18 (America/Argentina/Tucuman). Si esta fecha tiene más de un día, el agente probablemente no está funcionando._
+_Actualizado: 17/10/2026 00:05 (America/Argentina/Tucuman). Si esta fecha tiene más de un día, el agente probablemente no está funcionando._
 
 - **Estado:** ✅ funcionando
 - **Modo:** aprobacion
 - **Telegram:** conectado
-- **Versión del agente:** dfddd12 (16/10 17:26)
-- **Publicaciones hoy:** 1/3
+- **Versión del agente:** 3646951 (16/10 21:18)
+- **Publicaciones hoy:** 0/3
 - **Últimos 7 días:** 3 error_navegador, 4 publicada, 1 vencida
 
 ## Próximas programadas
@@ -52,9 +52,6 @@ _Regla anti-baneo: no repetir en un grupo antes de 7 días. Programá cada grupo
 
 ## Avisos y errores recientes del registro
 
-- `2026-10-16 03:09:15 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
-- `2026-10-16 05:29:34 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
-- `2026-10-16 06:00:04 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
 - `2026-10-16 09:27:40 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
 - `2026-10-16 11:00:11 WARNING  GitHub: no se pudo sincronizar. No se pudo bajar lo nuevo de GitHub (se reintenta en 30 minutos). Detalle: fatal: unable to access 'https://github.com/GermanValoy/AgentePublicitarioFacebook.g`
 - `2026-10-16 11:00:43 WARNING  Telegram: Sin conexión con Telegram: <urlopen error [WinError 10060] Se produjo un error durante el intento de conexión ya que la parte conectada no respondió adecuadamente tras un periodo de`
@@ -62,3 +59,6 @@ _Regla anti-baneo: no repetir en un grupo antes de 7 días. Programá cada grupo
 - `2026-10-16 15:20:14 WARNING  Telegram: Bad Gateway`
 - `2026-10-16 19:15:11 WARNING  Telegram: Sin conexión con Telegram: <urlopen error [WinError 10060] Se produjo un error durante el intento de conexión ya que la parte conectada no respondió adecuadamente tras un periodo de`
 - `2026-10-16 19:17:53 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
+- `2026-10-16 21:34:04 WARNING  Telegram: Sin conexión con Telegram: <urlopen error [WinError 10054] Se ha forzado la interrupción de una conexión existente por el host remoto>`
+- `2026-10-16 21:38:39 WARNING  Telegram: Sin conexión con Telegram: <urlopen error [WinError 10054] Se ha forzado la interrupción de una conexión existente por el host remoto>`
+- `2026-10-16 23:00:16 WARNING  Telegram: Sin conexión con Telegram: <urlopen error [WinError 10060] Se produjo un error durante el intento de conexión ya que la parte conectada no respondió adecuadamente tras un periodo de`
