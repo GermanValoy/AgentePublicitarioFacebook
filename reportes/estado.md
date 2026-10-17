@@ -1,11 +1,11 @@
 # Estado del agente
 
-_Actualizado: 17/10/2026 00:05 (America/Argentina/Tucuman). Si esta fecha tiene más de un día, el agente probablemente no está funcionando._
+_Actualizado: 17/10/2026 19:49 (America/Argentina/Tucuman). Si esta fecha tiene más de un día, el agente probablemente no está funcionando._
 
 - **Estado:** ✅ funcionando
 - **Modo:** aprobacion
 - **Telegram:** conectado
-- **Versión del agente:** 3646951 (16/10 21:18)
+- **Versión del agente:** 5df2548 (17/10 00:05)
 - **Publicaciones hoy:** 0/3
 - **Últimos 7 días:** 3 error_navegador, 4 publicada, 1 vencida
 
@@ -13,12 +13,12 @@ _Actualizado: 17/10/2026 00:05 (America/Argentina/Tucuman). Si esta fecha tiene 
 
 | Cuándo | Publicación | Grupos |
 |---|---|---|
-| 17/10 11:14 | consolas-2026-10-17 | Grupo nuevo 2 (…4801) |
 | 18/10 12:06 | limpieza-2026-10-18 | Grupo nuevo 3 (…2145) |
 | 20/10 11:27 | netbook-2026-10-13 | Alguien sabe Yo se? Por un Tafi mejor |
 | 21/10 17:36 | ssd-ram-2026-10-14 | FERIA AMERICANA TAFI VIEJO |
 | 22/10 10:52 | celulares-2026-10-15 | Grupo nuevo 1 (…6047) |
 | 23/10 17:09 | soporte-2026-10-16 | Alguien Sabe!!! Tafi Viejo Ventas!!! |
+| 24/10 11:14 | consolas-2026-10-17 | Grupo nuevo 2 (…4801) |
 
 ## Desde cuándo se puede publicar en cada grupo
 
@@ -52,8 +52,6 @@ _Regla anti-baneo: no repetir en un grupo antes de 7 días. Programá cada grupo
 
 ## Avisos y errores recientes del registro
 
-- `2026-10-16 09:27:40 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
-- `2026-10-16 11:00:11 WARNING  GitHub: no se pudo sincronizar. No se pudo bajar lo nuevo de GitHub (se reintenta en 30 minutos). Detalle: fatal: unable to access 'https://github.com/GermanValoy/AgentePublicitarioFacebook.g`
 - `2026-10-16 11:00:43 WARNING  Telegram: Sin conexión con Telegram: <urlopen error [WinError 10060] Se produjo un error durante el intento de conexión ya que la parte conectada no respondió adecuadamente tras un periodo de`
 - `2026-10-16 14:51:21 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
 - `2026-10-16 15:20:14 WARNING  Telegram: Bad Gateway`
@@ -62,3 +60,5 @@ _Regla anti-baneo: no repetir en un grupo antes de 7 días. Programá cada grupo
 - `2026-10-16 21:34:04 WARNING  Telegram: Sin conexión con Telegram: <urlopen error [WinError 10054] Se ha forzado la interrupción de una conexión existente por el host remoto>`
 - `2026-10-16 21:38:39 WARNING  Telegram: Sin conexión con Telegram: <urlopen error [WinError 10054] Se ha forzado la interrupción de una conexión existente por el host remoto>`
 - `2026-10-16 23:00:16 WARNING  Telegram: Sin conexión con Telegram: <urlopen error [WinError 10060] Se produjo un error durante el intento de conexión ya que la parte conectada no respondió adecuadamente tras un periodo de`
+- `2026-10-17 01:34:40 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
+- `2026-10-17 02:11:16 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
