@@ -1,11 +1,11 @@
 # Estado del agente
 
-_Actualizado: 17/10/2026 19:55 (America/Argentina/Tucuman). Si esta fecha tiene más de un día, el agente probablemente no está funcionando._
+_Actualizado: 17/10/2026 22:56 (America/Argentina/Tucuman). Si esta fecha tiene más de un día, el agente probablemente no está funcionando._
 
 - **Estado:** ✅ funcionando
 - **Modo:** aprobacion
 - **Telegram:** conectado
-- **Versión del agente:** desconocida
+- **Versión del agente:** 8283490 (17/10 19:56)
 - **Publicaciones hoy:** 1/3
 - **Últimos 7 días:** 3 error_navegador, 5 publicada, 1 vencida
 
@@ -53,8 +53,6 @@ _Regla anti-baneo: no repetir en un grupo antes de 7 días. Programá cada grupo
 
 ## Avisos y errores recientes del registro
 
-- `2026-10-16 11:00:43 WARNING  Telegram: Sin conexión con Telegram: <urlopen error [WinError 10060] Se produjo un error durante el intento de conexión ya que la parte conectada no respondió adecuadamente tras un periodo de`
-- `2026-10-16 14:51:21 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
 - `2026-10-16 15:20:14 WARNING  Telegram: Bad Gateway`
 - `2026-10-16 19:15:11 WARNING  Telegram: Sin conexión con Telegram: <urlopen error [WinError 10060] Se produjo un error durante el intento de conexión ya que la parte conectada no respondió adecuadamente tras un periodo de`
 - `2026-10-16 19:17:53 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
@@ -63,3 +61,5 @@ _Regla anti-baneo: no repetir en un grupo antes de 7 días. Programá cada grupo
 - `2026-10-16 23:00:16 WARNING  Telegram: Sin conexión con Telegram: <urlopen error [WinError 10060] Se produjo un error durante el intento de conexión ya que la parte conectada no respondió adecuadamente tras un periodo de`
 - `2026-10-17 01:34:40 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
 - `2026-10-17 02:11:16 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
+- `2026-10-17 21:39:50 WARNING  Telegram: Sin conexión con Telegram: <urlopen error [WinError 10054] Se ha forzado la interrupción de una conexión existente por el host remoto>`
+- `2026-10-17 21:47:49 WARNING  Telegram: Sin conexión con Telegram: <urlopen error [WinError 10054] Se ha forzado la interrupción de una conexión existente por el host remoto>`
