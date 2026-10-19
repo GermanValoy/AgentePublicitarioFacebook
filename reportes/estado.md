@@ -1,13 +1,13 @@
 # Estado del agente
 
-_Actualizado: 19/10/2026 11:00 (America/Argentina/Tucuman). Si esta fecha tiene más de un día, el agente probablemente no está funcionando._
+_Actualizado: 19/10/2026 11:09 (America/Argentina/Tucuman). Si esta fecha tiene más de un día, el agente probablemente no está funcionando._
 
 - **Estado:** ✅ funcionando
 - **Modo:** aprobacion
 - **Telegram:** conectado
-- **Versión del agente:** c36cbd6 (19/10 01:05)
-- **Publicaciones hoy:** 0/3
-- **Últimos 7 días:** 4 error_navegador, 5 publicada, 1 vencida
+- **Versión del agente:** de11290 (19/10 11:01)
+- **Publicaciones hoy:** 1/3
+- **Últimos 7 días:** 4 error_navegador, 6 publicada, 1 vencida
 
 ## Próximas programadas
 
@@ -31,12 +31,13 @@ _Regla anti-baneo: no repetir en un grupo antes de 7 días. Programá cada grupo
 | Alguien sabe Yo se? Por un Tafi mejor | 13/10 11:50 | 20/10 11:50 | todos |
 | Grupo nuevo 1 (…6047) | 15/10 11:36 | 22/10 11:36 | todos |
 | Grupo nuevo 2 (…4801) | 17/10 19:54 | 24/10 19:54 | todos |
-| Grupo nuevo 3 (…2145) | — | ya | todos |
+| Grupo nuevo 3 (…2145) | 19/10 11:08 | 26/10 11:08 | todos |
 
 ## Últimos movimientos
 
 | Fecha | Estado | Publicación | Grupo | Detalle |
 |---|---|---|---|---|
+| 19/10 11:08 | publicada | netbook-2026-10-19 | Grupo nuevo 3 (…2145) | Publicada automáticamente / captura: 20261019-110852-publicada.png |
 | 19/10 11:00 | error_navegador | netbook-2026-10-19 | Grupo nuevo 3 (…2145) | No se pudieron adjuntar las imágenes: se cargó el archivo pero Facebook no mostró la vista previa de la foto / captura:  |
 | 17/10 19:54 | publicada | consolas-2026-10-17 | Grupo nuevo 2 (…4801) | Publicada automáticamente / captura: 20261017-195441-publicada.png |
 | 16/10 17:25 | publicada | soporte-2026-10-16 | Alguien Sabe!!! Tafi Viejo Ventas!!! | Publicada automáticamente / captura: 20261016-172524-publicada.png |
@@ -54,8 +55,6 @@ _Regla anti-baneo: no repetir en un grupo antes de 7 días. Programá cada grupo
 
 ## Avisos y errores recientes del registro
 
-- `2026-10-18 03:31:09 WARNING  Telegram: Sin conexión con Telegram: <urlopen error [WinError 10065] Se ha intentado una operación de socket en un host no accesible>`
-- `2026-10-19 03:00:26 WARNING  Telegram: Sin conexión con Telegram: <urlopen error [WinError 10060] Se produjo un error durante el intento de conexión ya que la parte conectada no respondió adecuadamente tras un periodo de`
 - `2026-10-19 04:36:41 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
 - `2026-10-19 07:00:15 WARNING  Telegram: Sin conexión con Telegram: <urlopen error [WinError 10060] Se produjo un error durante el intento de conexión ya que la parte conectada no respondió adecuadamente tras un periodo de`
 - `2026-10-19 08:43:10 WARNING  Telegram: Sin conexión con Telegram: <urlopen error _ssl.c:983: The handshake operation timed out>`
@@ -64,3 +63,5 @@ _Regla anti-baneo: no repetir en un grupo antes de 7 días. Programá cada grupo
 - `2026-10-19 11:00:30 WARNING  No se pudieron adjuntar las imágenes: se cargó el archivo pero Facebook no mostró la vista previa de la foto`
 - `2026-10-19 11:00:43 WARNING  No se pudo cerrar el borrador: Locator.wait_for: Timeout 10000ms exceeded.`
 - `2026-10-19 11:00:44 WARNING  No se pudo avisar por Telegram: Sin conexión con Telegram: <urlopen error [Errno 11001] getaddrinfo failed>`
+- `2026-10-19 11:00:45 WARNING  Telegram: Sin conexión con Telegram: <urlopen error [Errno 11001] getaddrinfo failed>`
+- `2026-10-19 11:05:48 WARNING  Telegram: Sin conexión con Telegram: <urlopen error [WinError 10054] Se ha forzado la interrupción de una conexión existente por el host remoto>`
