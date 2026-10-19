@@ -1,11 +1,11 @@
 # Estado del agente
 
-_Actualizado: 18/10/2026 02:21 (America/Argentina/Tucuman). Si esta fecha tiene más de un día, el agente probablemente no está funcionando._
+_Actualizado: 19/10/2026 01:05 (America/Argentina/Tucuman). Si esta fecha tiene más de un día, el agente probablemente no está funcionando._
 
 - **Estado:** ✅ funcionando
 - **Modo:** aprobacion
 - **Telegram:** conectado
-- **Versión del agente:** c8bbcf6 (18/10 00:28)
+- **Versión del agente:** c4d960c (18/10 02:21)
 - **Publicaciones hoy:** 0/3
 - **Últimos 7 días:** 3 error_navegador, 5 publicada, 1 vencida
 
@@ -13,12 +13,12 @@ _Actualizado: 18/10/2026 02:21 (America/Argentina/Tucuman). Si esta fecha tiene 
 
 | Cuándo | Publicación | Grupos |
 |---|---|---|
-| 18/10 12:06 | limpieza-2026-10-18 | Grupo nuevo 3 (…2145) |
 | 20/10 11:27 | netbook-2026-10-13 | Alguien sabe Yo se? Por un Tafi mejor |
 | 21/10 17:36 | ssd-ram-2026-10-14 | FERIA AMERICANA TAFI VIEJO |
 | 22/10 10:52 | celulares-2026-10-15 | Grupo nuevo 1 (…6047) |
 | 23/10 17:09 | soporte-2026-10-16 | Alguien Sabe!!! Tafi Viejo Ventas!!! |
 | 24/10 11:14 | consolas-2026-10-17 | Grupo nuevo 2 (…4801) |
+| 25/10 12:06 | limpieza-2026-10-18 | Grupo nuevo 3 (…2145) |
 
 ## Desde cuándo se puede publicar en cada grupo
 
@@ -53,8 +53,6 @@ _Regla anti-baneo: no repetir en un grupo antes de 7 días. Programá cada grupo
 
 ## Avisos y errores recientes del registro
 
-- `2026-10-16 15:20:14 WARNING  Telegram: Bad Gateway`
-- `2026-10-16 19:15:11 WARNING  Telegram: Sin conexión con Telegram: <urlopen error [WinError 10060] Se produjo un error durante el intento de conexión ya que la parte conectada no respondió adecuadamente tras un periodo de`
 - `2026-10-16 19:17:53 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
 - `2026-10-16 21:34:04 WARNING  Telegram: Sin conexión con Telegram: <urlopen error [WinError 10054] Se ha forzado la interrupción de una conexión existente por el host remoto>`
 - `2026-10-16 21:38:39 WARNING  Telegram: Sin conexión con Telegram: <urlopen error [WinError 10054] Se ha forzado la interrupción de una conexión existente por el host remoto>`
@@ -63,3 +61,5 @@ _Regla anti-baneo: no repetir en un grupo antes de 7 días. Programá cada grupo
 - `2026-10-17 02:11:16 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
 - `2026-10-17 21:39:50 WARNING  Telegram: Sin conexión con Telegram: <urlopen error [WinError 10054] Se ha forzado la interrupción de una conexión existente por el host remoto>`
 - `2026-10-17 21:47:49 WARNING  Telegram: Sin conexión con Telegram: <urlopen error [WinError 10054] Se ha forzado la interrupción de una conexión existente por el host remoto>`
+- `2026-10-18 03:30:28 WARNING  Telegram: Sin conexión con Telegram: <urlopen error [WinError 10060] Se produjo un error durante el intento de conexión ya que la parte conectada no respondió adecuadamente tras un periodo de`
+- `2026-10-18 03:31:09 WARNING  Telegram: Sin conexión con Telegram: <urlopen error [WinError 10065] Se ha intentado una operación de socket en un host no accesible>`
