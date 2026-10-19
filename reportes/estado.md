@@ -1,24 +1,24 @@
 # Estado del agente
 
-_Actualizado: 19/10/2026 01:05 (America/Argentina/Tucuman). Si esta fecha tiene más de un día, el agente probablemente no está funcionando._
+_Actualizado: 19/10/2026 11:00 (America/Argentina/Tucuman). Si esta fecha tiene más de un día, el agente probablemente no está funcionando._
 
 - **Estado:** ✅ funcionando
 - **Modo:** aprobacion
 - **Telegram:** conectado
-- **Versión del agente:** c4d960c (18/10 02:21)
+- **Versión del agente:** c36cbd6 (19/10 01:05)
 - **Publicaciones hoy:** 0/3
-- **Últimos 7 días:** 3 error_navegador, 5 publicada, 1 vencida
+- **Últimos 7 días:** 4 error_navegador, 5 publicada, 1 vencida
 
 ## Próximas programadas
 
 | Cuándo | Publicación | Grupos |
 |---|---|---|
-| 20/10 11:27 | netbook-2026-10-13 | Alguien sabe Yo se? Por un Tafi mejor |
-| 21/10 17:36 | ssd-ram-2026-10-14 | FERIA AMERICANA TAFI VIEJO |
-| 22/10 10:52 | celulares-2026-10-15 | Grupo nuevo 1 (…6047) |
-| 23/10 17:09 | soporte-2026-10-16 | Alguien Sabe!!! Tafi Viejo Ventas!!! |
-| 24/10 11:14 | consolas-2026-10-17 | Grupo nuevo 2 (…4801) |
-| 25/10 12:06 | limpieza-2026-10-18 | Grupo nuevo 3 (…2145) |
+| 20/10 14:23 | windows-2026-10-20 | Alguien sabe Yo se? Por un Tafi mejor |
+| 22/10 13:34 | celu-bateria-2026-10-22 | Grupo nuevo 1 (…6047) |
+| 23/10 18:41 | ssd-ram-2026-10-23 | Alguien Sabe!!! Tafi Viejo Ventas!!! |
+| 24/10 11:17 | limpieza-2026-10-24 | FERIA AMERICANA TAFI VIEJO |
+| 25/10 12:52 | celulares-2026-10-25 | Grupo nuevo 2 (…4801) |
+| 26/10 10:48 | netbook-2026-10-19 | Grupo nuevo 3 (…2145) |
 
 ## Desde cuándo se puede publicar en cada grupo
 
@@ -37,6 +37,7 @@ _Regla anti-baneo: no repetir en un grupo antes de 7 días. Programá cada grupo
 
 | Fecha | Estado | Publicación | Grupo | Detalle |
 |---|---|---|---|---|
+| 19/10 11:00 | error_navegador | netbook-2026-10-19 | Grupo nuevo 3 (…2145) | No se pudieron adjuntar las imágenes: se cargó el archivo pero Facebook no mostró la vista previa de la foto / captura:  |
 | 17/10 19:54 | publicada | consolas-2026-10-17 | Grupo nuevo 2 (…4801) | Publicada automáticamente / captura: 20261017-195441-publicada.png |
 | 16/10 17:25 | publicada | soporte-2026-10-16 | Alguien Sabe!!! Tafi Viejo Ventas!!! | Publicada automáticamente / captura: 20261016-172524-publicada.png |
 | 15/10 11:36 | publicada | celulares-2026-10-15 | Grupo nuevo 1 (…6047) | Publicada automáticamente / captura: 20261015-113639-publicada.png |
@@ -53,13 +54,13 @@ _Regla anti-baneo: no repetir en un grupo antes de 7 días. Programá cada grupo
 
 ## Avisos y errores recientes del registro
 
-- `2026-10-16 19:17:53 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
-- `2026-10-16 21:34:04 WARNING  Telegram: Sin conexión con Telegram: <urlopen error [WinError 10054] Se ha forzado la interrupción de una conexión existente por el host remoto>`
-- `2026-10-16 21:38:39 WARNING  Telegram: Sin conexión con Telegram: <urlopen error [WinError 10054] Se ha forzado la interrupción de una conexión existente por el host remoto>`
-- `2026-10-16 23:00:16 WARNING  Telegram: Sin conexión con Telegram: <urlopen error [WinError 10060] Se produjo un error durante el intento de conexión ya que la parte conectada no respondió adecuadamente tras un periodo de`
-- `2026-10-17 01:34:40 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
-- `2026-10-17 02:11:16 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
-- `2026-10-17 21:39:50 WARNING  Telegram: Sin conexión con Telegram: <urlopen error [WinError 10054] Se ha forzado la interrupción de una conexión existente por el host remoto>`
-- `2026-10-17 21:47:49 WARNING  Telegram: Sin conexión con Telegram: <urlopen error [WinError 10054] Se ha forzado la interrupción de una conexión existente por el host remoto>`
-- `2026-10-18 03:30:28 WARNING  Telegram: Sin conexión con Telegram: <urlopen error [WinError 10060] Se produjo un error durante el intento de conexión ya que la parte conectada no respondió adecuadamente tras un periodo de`
 - `2026-10-18 03:31:09 WARNING  Telegram: Sin conexión con Telegram: <urlopen error [WinError 10065] Se ha intentado una operación de socket en un host no accesible>`
+- `2026-10-19 03:00:26 WARNING  Telegram: Sin conexión con Telegram: <urlopen error [WinError 10060] Se produjo un error durante el intento de conexión ya que la parte conectada no respondió adecuadamente tras un periodo de`
+- `2026-10-19 04:36:41 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
+- `2026-10-19 07:00:15 WARNING  Telegram: Sin conexión con Telegram: <urlopen error [WinError 10060] Se produjo un error durante el intento de conexión ya que la parte conectada no respondió adecuadamente tras un periodo de`
+- `2026-10-19 08:43:10 WARNING  Telegram: Sin conexión con Telegram: <urlopen error _ssl.c:983: The handshake operation timed out>`
+- `2026-10-19 08:48:32 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
+- `2026-10-19 08:50:50 WARNING  Telegram: Sin conexión con Telegram: <urlopen error _ssl.c:983: The handshake operation timed out>`
+- `2026-10-19 11:00:30 WARNING  No se pudieron adjuntar las imágenes: se cargó el archivo pero Facebook no mostró la vista previa de la foto`
+- `2026-10-19 11:00:43 WARNING  No se pudo cerrar el borrador: Locator.wait_for: Timeout 10000ms exceeded.`
+- `2026-10-19 11:00:44 WARNING  No se pudo avisar por Telegram: Sin conexión con Telegram: <urlopen error [Errno 11001] getaddrinfo failed>`
