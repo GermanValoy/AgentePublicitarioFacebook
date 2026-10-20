@@ -1,13 +1,13 @@
 # Estado del agente
 
-_Actualizado: 20/10/2026 14:30 (America/Argentina/Tucuman). Si esta fecha tiene más de un día, el agente probablemente no está funcionando._
+_Actualizado: 20/10/2026 14:46 (America/Argentina/Tucuman). Si esta fecha tiene más de un día, el agente probablemente no está funcionando._
 
 - **Estado:** ✅ funcionando
 - **Modo:** aprobacion
 - **Telegram:** conectado
-- **Versión del agente:** 3c553d2 (20/10 07:30)
+- **Versión del agente:** ab34cdb (20/10 14:30)
 - **Publicaciones hoy:** 0/3
-- **Últimos 7 días:** 1 error_navegador, 5 publicada, 1 vencida
+- **Últimos 7 días:** 2 error_navegador, 5 publicada, 1 vencida
 
 ## Próximas programadas
 
@@ -37,6 +37,7 @@ _Regla anti-baneo: no repetir en un grupo antes de 7 días. Programá cada grupo
 
 | Fecha | Estado | Publicación | Grupo | Detalle |
 |---|---|---|---|---|
+| 20/10 14:45 | error_navegador | windows-2026-10-20 | Alguien sabe Yo se? Por un Tafi mejor | Error inesperado: Page.goto: net::ERR_CONNECTION_TIMED_OUT at https://www.facebook.com/ Call log:   - navigating to "htt |
 | 19/10 11:08 | publicada | netbook-2026-10-19 | Grupo nuevo 3 (…2145) | Publicada automáticamente / captura: 20261019-110852-publicada.png |
 | 19/10 11:00 | error_navegador | netbook-2026-10-19 | Grupo nuevo 3 (…2145) | No se pudieron adjuntar las imágenes: se cargó el archivo pero Facebook no mostró la vista previa de la foto / captura:  |
 | 17/10 19:54 | publicada | consolas-2026-10-17 | Grupo nuevo 2 (…4801) | Publicada automáticamente / captura: 20261017-195441-publicada.png |
@@ -51,12 +52,9 @@ _Regla anti-baneo: no repetir en un grupo antes de 7 días. Programá cada grupo
 | 09/10 12:14 | publicada | limpieza-2026-10-09 | Alguien Sabe!!! Tafi Viejo Ventas!!! | Publicada automáticamente / captura: 20261009-121457-publicada.png |
 | 07/10 16:25 | publicada | consolas-2026-10-07 | FERIA AMERICANA TAFI VIEJO | Publicada automáticamente / captura: 20261007-162531-publicada.png |
 | 05/10 15:13 | error_navegador | celulares-2026-10-05 | Venta de Garage Tafi Viejo | Formulario de venta: se cargó el archivo pero Facebook no mostró la vista previa de la foto / captura: 20261005-151312-v |
-| 05/10 11:53 | error_navegador | celulares-2026-10-05 | Venta de Garage Tafi Viejo | No se encontró el cuadro 'Escribe algo...'. ¿Sos miembro del grupo y permite publicar? / captura: 20261005-115351-sin-co |
 
 ## Avisos y errores recientes del registro
 
-- `2026-10-20 07:39:00 WARNING  Telegram: Sin conexión con Telegram: <urlopen error [Errno 11001] getaddrinfo failed>`
-- `2026-10-20 07:39:30 WARNING  Telegram: Sin conexión con Telegram: <urlopen error [Errno 11001] getaddrinfo failed>`
 - `2026-10-20 07:40:00 WARNING  Telegram: Sin conexión con Telegram: <urlopen error [Errno 11001] getaddrinfo failed>`
 - `2026-10-20 07:40:30 WARNING  Telegram: Sin conexión con Telegram: <urlopen error [Errno 11001] getaddrinfo failed>`
 - `2026-10-20 07:41:00 WARNING  Telegram: Sin conexión con Telegram: <urlopen error [Errno 11001] getaddrinfo failed>`
@@ -65,3 +63,5 @@ _Regla anti-baneo: no repetir en un grupo antes de 7 días. Programá cada grupo
 - `2026-10-20 10:14:29 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
 - `2026-10-20 10:46:06 WARNING  Telegram: Sin conexión con Telegram: <urlopen error [WinError 10060] Se produjo un error durante el intento de conexión ya que la parte conectada no respondió adecuadamente tras un periodo de`
 - `2026-10-20 10:46:47 WARNING  Telegram: Sin conexión con Telegram: <urlopen error [Errno 11001] getaddrinfo failed>`
+- `2026-10-20 14:45:58 ERROR    Error inesperado al publicar`
+- `2026-10-20 14:46:10 WARNING  No se pudo avisar por Telegram: Sin conexión con Telegram: <urlopen error [Errno 11001] getaddrinfo failed>`
