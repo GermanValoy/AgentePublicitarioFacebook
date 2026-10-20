@@ -1,24 +1,24 @@
 # Estado del agente
 
-_Actualizado: 20/10/2026 07:30 (America/Argentina/Tucuman). Si esta fecha tiene más de un día, el agente probablemente no está funcionando._
+_Actualizado: 20/10/2026 14:30 (America/Argentina/Tucuman). Si esta fecha tiene más de un día, el agente probablemente no está funcionando._
 
 - **Estado:** ✅ funcionando
 - **Modo:** aprobacion
 - **Telegram:** conectado
-- **Versión del agente:** cd3f725 (19/10 23:15)
+- **Versión del agente:** 3c553d2 (20/10 07:30)
 - **Publicaciones hoy:** 0/3
-- **Últimos 7 días:** 2 error_navegador, 6 publicada, 1 vencida
+- **Últimos 7 días:** 1 error_navegador, 5 publicada, 1 vencida
 
 ## Próximas programadas
 
 | Cuándo | Publicación | Grupos |
 |---|---|---|
-| 20/10 14:23 | windows-2026-10-20 | Alguien sabe Yo se? Por un Tafi mejor |
 | 22/10 13:34 | celu-bateria-2026-10-22 | Grupo nuevo 1 (…6047) |
 | 23/10 18:41 | ssd-ram-2026-10-23 | Alguien Sabe!!! Tafi Viejo Ventas!!! |
 | 24/10 11:17 | limpieza-2026-10-24 | FERIA AMERICANA TAFI VIEJO |
 | 25/10 12:52 | celulares-2026-10-25 | Grupo nuevo 2 (…4801) |
 | 26/10 10:48 | netbook-2026-10-19 | Grupo nuevo 3 (…2145) |
+| 27/10 14:23 | windows-2026-10-20 | Alguien sabe Yo se? Por un Tafi mejor |
 
 ## Desde cuándo se puede publicar en cada grupo
 
@@ -55,13 +55,13 @@ _Regla anti-baneo: no repetir en un grupo antes de 7 días. Programá cada grupo
 
 ## Avisos y errores recientes del registro
 
-- `2026-10-19 11:00:30 WARNING  No se pudieron adjuntar las imágenes: se cargó el archivo pero Facebook no mostró la vista previa de la foto`
-- `2026-10-19 11:00:43 WARNING  No se pudo cerrar el borrador: Locator.wait_for: Timeout 10000ms exceeded.`
-- `2026-10-19 11:00:44 WARNING  No se pudo avisar por Telegram: Sin conexión con Telegram: <urlopen error [Errno 11001] getaddrinfo failed>`
-- `2026-10-19 11:00:45 WARNING  Telegram: Sin conexión con Telegram: <urlopen error [Errno 11001] getaddrinfo failed>`
-- `2026-10-19 11:05:48 WARNING  Telegram: Sin conexión con Telegram: <urlopen error [WinError 10054] Se ha forzado la interrupción de una conexión existente por el host remoto>`
-- `2026-10-19 11:24:24 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
-- `2026-10-19 17:29:17 WARNING  Telegram: Sin conexión con Telegram: <urlopen error [WinError 10060] Se produjo un error durante el intento de conexión ya que la parte conectada no respondió adecuadamente tras un periodo de`
-- `2026-10-19 19:11:45 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
-- `2026-10-19 19:51:30 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
-- `2026-10-20 07:30:55 WARNING  No se pudo avisar por Telegram: Sin conexión con Telegram: <urlopen error [Errno 11001] getaddrinfo failed>`
+- `2026-10-20 07:39:00 WARNING  Telegram: Sin conexión con Telegram: <urlopen error [Errno 11001] getaddrinfo failed>`
+- `2026-10-20 07:39:30 WARNING  Telegram: Sin conexión con Telegram: <urlopen error [Errno 11001] getaddrinfo failed>`
+- `2026-10-20 07:40:00 WARNING  Telegram: Sin conexión con Telegram: <urlopen error [Errno 11001] getaddrinfo failed>`
+- `2026-10-20 07:40:30 WARNING  Telegram: Sin conexión con Telegram: <urlopen error [Errno 11001] getaddrinfo failed>`
+- `2026-10-20 07:41:00 WARNING  Telegram: Sin conexión con Telegram: <urlopen error [Errno 11001] getaddrinfo failed>`
+- `2026-10-20 07:41:30 WARNING  Telegram: Sin conexión con Telegram: <urlopen error [Errno 11001] getaddrinfo failed>`
+- `2026-10-20 08:45:46 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
+- `2026-10-20 10:14:29 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
+- `2026-10-20 10:46:06 WARNING  Telegram: Sin conexión con Telegram: <urlopen error [WinError 10060] Se produjo un error durante el intento de conexión ya que la parte conectada no respondió adecuadamente tras un periodo de`
+- `2026-10-20 10:46:47 WARNING  Telegram: Sin conexión con Telegram: <urlopen error [Errno 11001] getaddrinfo failed>`
