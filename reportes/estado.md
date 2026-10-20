@@ -1,12 +1,12 @@
 # Estado del agente
 
-_Actualizado: 19/10/2026 23:15 (America/Argentina/Tucuman). Si esta fecha tiene más de un día, el agente probablemente no está funcionando._
+_Actualizado: 20/10/2026 07:30 (America/Argentina/Tucuman). Si esta fecha tiene más de un día, el agente probablemente no está funcionando._
 
 - **Estado:** ✅ funcionando
 - **Modo:** aprobacion
 - **Telegram:** conectado
-- **Versión del agente:** 24347ec (19/10 17:04)
-- **Publicaciones hoy:** 1/3
+- **Versión del agente:** cd3f725 (19/10 23:15)
+- **Publicaciones hoy:** 0/3
 - **Últimos 7 días:** 2 error_navegador, 6 publicada, 1 vencida
 
 ## Próximas programadas
@@ -55,7 +55,6 @@ _Regla anti-baneo: no repetir en un grupo antes de 7 días. Programá cada grupo
 
 ## Avisos y errores recientes del registro
 
-- `2026-10-19 08:50:50 WARNING  Telegram: Sin conexión con Telegram: <urlopen error _ssl.c:983: The handshake operation timed out>`
 - `2026-10-19 11:00:30 WARNING  No se pudieron adjuntar las imágenes: se cargó el archivo pero Facebook no mostró la vista previa de la foto`
 - `2026-10-19 11:00:43 WARNING  No se pudo cerrar el borrador: Locator.wait_for: Timeout 10000ms exceeded.`
 - `2026-10-19 11:00:44 WARNING  No se pudo avisar por Telegram: Sin conexión con Telegram: <urlopen error [Errno 11001] getaddrinfo failed>`
@@ -65,3 +64,4 @@ _Regla anti-baneo: no repetir en un grupo antes de 7 días. Programá cada grupo
 - `2026-10-19 17:29:17 WARNING  Telegram: Sin conexión con Telegram: <urlopen error [WinError 10060] Se produjo un error durante el intento de conexión ya que la parte conectada no respondió adecuadamente tras un periodo de`
 - `2026-10-19 19:11:45 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
 - `2026-10-19 19:51:30 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
+- `2026-10-20 07:30:55 WARNING  No se pudo avisar por Telegram: Sin conexión con Telegram: <urlopen error [Errno 11001] getaddrinfo failed>`
