@@ -1,24 +1,24 @@
 # Estado del agente
 
-_Actualizado: 22/10/2026 12:58 (America/Argentina/Tucuman). Si esta fecha tiene más de un día, el agente probablemente no está funcionando._
+_Actualizado: 22/10/2026 13:44 (America/Argentina/Tucuman). Si esta fecha tiene más de un día, el agente probablemente no está funcionando._
 
 - **Estado:** ✅ funcionando
 - **Modo:** aprobacion
 - **Telegram:** conectado
-- **Versión del agente:** 29889fb (22/10 10:54)
-- **Publicaciones hoy:** 0/3
-- **Últimos 7 días:** 2 error_navegador, 4 publicada
+- **Versión del agente:** 901d52c (22/10 12:58)
+- **Publicaciones hoy:** 1/3
+- **Últimos 7 días:** 2 error_navegador, 5 publicada
 
 ## Próximas programadas
 
 | Cuándo | Publicación | Grupos |
 |---|---|---|
-| 22/10 13:34 | celu-bateria-2026-10-22 | Grupo nuevo 1 (…6047) |
 | 23/10 18:41 | ssd-ram-2026-10-23 | Alguien Sabe!!! Tafi Viejo Ventas!!! |
 | 24/10 11:17 | limpieza-2026-10-24 | FERIA AMERICANA TAFI VIEJO |
 | 25/10 12:52 | celulares-2026-10-25 | Grupo nuevo 2 (…4801) |
 | 26/10 10:48 | netbook-2026-10-19 | Grupo nuevo 3 (…2145) |
 | 27/10 14:23 | windows-2026-10-20 | Alguien sabe Yo se? Por un Tafi mejor |
+| 29/10 13:34 | celu-bateria-2026-10-22 | Grupo nuevo 1 (…6047) |
 
 ## Desde cuándo se puede publicar en cada grupo
 
@@ -29,7 +29,7 @@ _Regla anti-baneo: no repetir en un grupo antes de 7 días. Programá cada grupo
 | FERIA AMERICANA TAFI VIEJO | 14/10 18:15 | 21/10 18:15 | todos |
 | Alguien Sabe!!! Tafi Viejo Ventas!!! | 16/10 17:25 | 23/10 17:25 | todos |
 | Alguien sabe Yo se? Por un Tafi mejor | 20/10 14:57 | 27/10 14:57 | todos |
-| Grupo nuevo 1 (…6047) | 15/10 11:36 | 22/10 11:36 | todos |
+| Grupo nuevo 1 (…6047) | 22/10 13:43 | 29/10 13:43 | todos |
 | Grupo nuevo 2 (…4801) | 17/10 19:54 | 24/10 19:54 | todos |
 | Grupo nuevo 3 (…2145) | 19/10 11:08 | 26/10 11:08 | todos |
 
@@ -37,6 +37,7 @@ _Regla anti-baneo: no repetir en un grupo antes de 7 días. Programá cada grupo
 
 | Fecha | Estado | Publicación | Grupo | Detalle |
 |---|---|---|---|---|
+| 22/10 13:43 | publicada | celu-bateria-2026-10-22 | Grupo nuevo 1 (…6047) | Publicada automáticamente / captura: 20261022-134328-publicada.png |
 | 20/10 14:57 | publicada | windows-2026-10-20 | Alguien sabe Yo se? Por un Tafi mejor | Publicada automáticamente / captura: 20261020-145746-publicada.png |
 | 20/10 14:45 | error_navegador | windows-2026-10-20 | Alguien sabe Yo se? Por un Tafi mejor | Error inesperado: Page.goto: net::ERR_CONNECTION_TIMED_OUT at https://www.facebook.com/ Call log:   - navigating to "htt |
 | 19/10 11:08 | publicada | netbook-2026-10-19 | Grupo nuevo 3 (…2145) | Publicada automáticamente / captura: 20261019-110852-publicada.png |
@@ -51,7 +52,6 @@ _Regla anti-baneo: no repetir en un grupo antes de 7 días. Programá cada grupo
 | 12/10 12:08 | error_navegador | netbook-2026-10-12 | Venta de Garage Tafi Viejo | Formulario de venta: se cargó el archivo pero Facebook no mostró la vista previa de la foto / captura: 20261012-120751-v |
 | 12/10 11:57 | error_navegador | netbook-2026-10-12 | Venta de Garage Tafi Viejo | Formulario de venta: no se encontró el botón 'Foto/video' en el cuadro de publicación / captura: 20261012-115738-venta-e |
 | 09/10 12:14 | publicada | limpieza-2026-10-09 | Alguien Sabe!!! Tafi Viejo Ventas!!! | Publicada automáticamente / captura: 20261009-121457-publicada.png |
-| 07/10 16:25 | publicada | consolas-2026-10-07 | FERIA AMERICANA TAFI VIEJO | Publicada automáticamente / captura: 20261007-162531-publicada.png |
 
 ## Avisos y errores recientes del registro
 
