@@ -1,11 +1,11 @@
 # Estado del agente
 
-_Actualizado: 22/10/2026 00:00 (America/Argentina/Tucuman). Si esta fecha tiene más de un día, el agente probablemente no está funcionando._
+_Actualizado: 22/10/2026 10:54 (America/Argentina/Tucuman). Si esta fecha tiene más de un día, el agente probablemente no está funcionando._
 
 - **Estado:** ✅ funcionando
 - **Modo:** aprobacion
 - **Telegram:** conectado
-- **Versión del agente:** c69bda2 (21/10 20:10)
+- **Versión del agente:** c26967c (22/10 00:12)
 - **Publicaciones hoy:** 0/3
 - **Últimos 7 días:** 2 error_navegador, 5 publicada
 
@@ -55,9 +55,6 @@ _Regla anti-baneo: no repetir en un grupo antes de 7 días. Programá cada grupo
 
 ## Avisos y errores recientes del registro
 
-- `2026-10-20 08:45:46 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
-- `2026-10-20 10:14:29 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
-- `2026-10-20 10:46:06 WARNING  Telegram: Sin conexión con Telegram: <urlopen error [WinError 10060] Se produjo un error durante el intento de conexión ya que la parte conectada no respondió adecuadamente tras un periodo de`
 - `2026-10-20 10:46:47 WARNING  Telegram: Sin conexión con Telegram: <urlopen error [Errno 11001] getaddrinfo failed>`
 - `2026-10-20 14:45:58 ERROR    Error inesperado al publicar`
 - `2026-10-20 14:46:10 WARNING  No se pudo avisar por Telegram: Sin conexión con Telegram: <urlopen error [Errno 11001] getaddrinfo failed>`
@@ -65,3 +62,6 @@ _Regla anti-baneo: no repetir en un grupo antes de 7 días. Programá cada grupo
 - `2026-10-21 11:09:52 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
 - `2026-10-21 11:18:01 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
 - `2026-10-21 21:45:29 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
+- `2026-10-22 02:46:04 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
+- `2026-10-22 03:51:07 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
+- `2026-10-22 08:09:12 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
