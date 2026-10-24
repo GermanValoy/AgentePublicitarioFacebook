@@ -1,11 +1,11 @@
 # Estado del agente
 
-_Actualizado: 24/10/2026 00:37 (America/Argentina/Tucuman). Si esta fecha tiene más de un día, el agente probablemente no está funcionando._
+_Actualizado: 24/10/2026 12:32 (America/Argentina/Tucuman). Si esta fecha tiene más de un día, el agente probablemente no está funcionando._
 
 - **Estado:** ✅ funcionando
 - **Modo:** aprobacion
 - **Telegram:** conectado
-- **Versión del agente:** 2b988b4 (23/10 18:50)
+- **Versión del agente:** be6de58 (24/10 00:38)
 - **Publicaciones hoy:** 0/3
 - **Últimos 7 días:** 2 error_navegador, 5 publicada
 
@@ -13,12 +13,12 @@ _Actualizado: 24/10/2026 00:37 (America/Argentina/Tucuman). Si esta fecha tiene 
 
 | Cuándo | Publicación | Grupos |
 |---|---|---|
-| 24/10 11:17 | limpieza-2026-10-24 | FERIA AMERICANA TAFI VIEJO |
 | 25/10 12:52 | celulares-2026-10-25 | Grupo nuevo 2 (…4801) |
 | 26/10 10:48 | netbook-2026-10-19 | Grupo nuevo 3 (…2145) |
 | 27/10 14:23 | windows-2026-10-20 | Alguien sabe Yo se? Por un Tafi mejor |
 | 29/10 13:34 | celu-bateria-2026-10-22 | Grupo nuevo 1 (…6047) |
 | 30/10 18:41 | ssd-ram-2026-10-23 | Alguien Sabe!!! Tafi Viejo Ventas!!! |
+| 31/10 11:17 | limpieza-2026-10-24 | FERIA AMERICANA TAFI VIEJO |
 
 ## Desde cuándo se puede publicar en cada grupo
 
