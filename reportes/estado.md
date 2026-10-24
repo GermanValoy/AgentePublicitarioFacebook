@@ -1,13 +1,13 @@
 # Estado del agente
 
-_Actualizado: 24/10/2026 12:32 (America/Argentina/Tucuman). Si esta fecha tiene más de un día, el agente probablemente no está funcionando._
+_Actualizado: 24/10/2026 13:10 (America/Argentina/Tucuman). Si esta fecha tiene más de un día, el agente probablemente no está funcionando._
 
 - **Estado:** ✅ funcionando
 - **Modo:** aprobacion
 - **Telegram:** conectado
-- **Versión del agente:** be6de58 (24/10 00:38)
-- **Publicaciones hoy:** 0/3
-- **Últimos 7 días:** 2 error_navegador, 5 publicada
+- **Versión del agente:** 91dd659 (24/10 12:32)
+- **Publicaciones hoy:** 1/3
+- **Últimos 7 días:** 2 error_navegador, 6 publicada
 
 ## Próximas programadas
 
@@ -26,7 +26,7 @@ _Regla anti-baneo: no repetir en un grupo antes de 7 días. Programá cada grupo
 
 | Grupo | Última publicación | Se puede desde | Días permitidos |
 |---|---|---|---|
-| FERIA AMERICANA TAFI VIEJO | 14/10 18:15 | 21/10 18:15 | todos |
+| FERIA AMERICANA TAFI VIEJO | 24/10 13:09 | 31/10 13:09 | todos |
 | Alguien Sabe!!! Tafi Viejo Ventas!!! | 23/10 18:49 | 30/10 18:49 | todos |
 | Alguien sabe Yo se? Por un Tafi mejor | 20/10 14:57 | 27/10 14:57 | todos |
 | Grupo nuevo 1 (…6047) | 22/10 13:43 | 29/10 13:43 | todos |
@@ -37,6 +37,7 @@ _Regla anti-baneo: no repetir en un grupo antes de 7 días. Programá cada grupo
 
 | Fecha | Estado | Publicación | Grupo | Detalle |
 |---|---|---|---|---|
+| 24/10 13:09 | publicada | limpieza-2026-10-24 | FERIA AMERICANA TAFI VIEJO | Publicada automáticamente / captura: 20261024-130955-publicada.png |
 | 23/10 18:49 | publicada | ssd-ram-2026-10-23 | Alguien Sabe!!! Tafi Viejo Ventas!!! | Publicada automáticamente / captura: 20261023-184939-publicada.png |
 | 22/10 13:43 | publicada | celu-bateria-2026-10-22 | Grupo nuevo 1 (…6047) | Publicada automáticamente / captura: 20261022-134328-publicada.png |
 | 20/10 14:57 | publicada | windows-2026-10-20 | Alguien sabe Yo se? Por un Tafi mejor | Publicada automáticamente / captura: 20261020-145746-publicada.png |
@@ -51,7 +52,6 @@ _Regla anti-baneo: no repetir en un grupo antes de 7 días. Programá cada grupo
 | 13/10 11:50 | publicada | netbook-2026-10-13 | Alguien sabe Yo se? Por un Tafi mejor | Publicada automáticamente / captura: 20261013-115023-publicada.png |
 | 13/10 11:36 | error_navegador | netbook-2026-10-13 | Alguien sabe Yo se? Por un Tafi mejor | Error inesperado: Locator.wait_for: Timeout 15000ms exceeded. Call log:   - waiting for get_by_role("dialog").filter(has |
 | 12/10 12:08 | error_navegador | netbook-2026-10-12 | Venta de Garage Tafi Viejo | Formulario de venta: se cargó el archivo pero Facebook no mostró la vista previa de la foto / captura: 20261012-120751-v |
-| 12/10 11:57 | error_navegador | netbook-2026-10-12 | Venta de Garage Tafi Viejo | Formulario de venta: no se encontró el botón 'Foto/video' en el cuadro de publicación / captura: 20261012-115738-venta-e |
 
 ## Avisos y errores recientes del registro
 
