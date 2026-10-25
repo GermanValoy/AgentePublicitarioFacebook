@@ -1,20 +1,89 @@
-# Calendario: cada grupo recibe 1 anuncio por semana, en días distintos.
-# Semana del 19/10 al 25/10. Se repite cada 7 días si no se actualiza.
+# Calendario: cada grupo activo recibe 1 anuncio por semana, en días distintos.
+# Semana del 26/10 al 01/11. Se repite cada 7 días si no se actualiza.
 
 publicaciones:
-  - id: netbook-2026-10-19
+  - id: limpieza-2026-10-26
     activa: true
-    fecha: 2026-10-19        # lunes; grupo sin publicaciones previas
-    hora: "10:48"
+    fecha: 2026-10-26        # Lunes
+    hora: "10:37"
+    grupos: ["Grupo nuevo 2 (…4801)"]
+    imagenes: [limpieza-2026-10-05.jpg]
+    repetir_cada_dias: 7
+    texto: |
+      🔧 LIMPIEZA Y PASTA TÉRMICA PARA TU PC 🔧
+
+      {¡Hola a todos!|¡Buenas, vecinos!|¡Hola! ¿Cómo andan?} 👋 {Si tu compu se calienta, hace ruido o se apaga sola, seguramente necesita mantenimiento|¿Tu notebook se pone lenta y el ventilador suena fuerte? Puede ser polvo acumulado|Con el tiempo el polvo se junta adentro de la PC y la hace trabajar peor}. {Hacemos limpieza interna y cambio de pasta térmica|Te hacemos la limpieza interna y la pasta térmica|Nos encargamos de limpiarla por dentro y cambiar la pasta térmica} para que {trabaje más fresca|rinda mejor|dure más}:
+
+      ➡️ Limpieza interna de PC, notebooks y netbooks.
+      ➡️ Cambio de pasta térmica.
+      ➡️ Revisión general del equipo.
+      ➡️ Reparación y mantenimiento con garantía.
+
+      📍 {Estamos en|Nos encontrás en|Te esperamos en} Monteagudo 1140, Tafí Viejo
+      💳 {Recibimos tarjetas de crédito|Aceptamos tarjetas de crédito}
+      📲 {WhatsApp|Consultas por WhatsApp|Escribinos al WhatsApp}: 381 649-6790
+
+      {¡Te esperamos!|¡Consultanos sin compromiso!|¡Escribinos y te respondemos enseguida!} 🙌
+
+  - id: celulares-2026-10-27
+    activa: true
+    fecha: 2026-10-27        # Martes
+    hora: "15:12"
     grupos: ["Grupo nuevo 3 (…2145)"]
+    imagenes: [servicios-celulares.jpg]
+    repetir_cada_dias: 7
+    texto: |
+      📱 REPARACIÓN DE CELULARES EN TAFÍ VIEJO 📱
+
+      {¡Hola a todos!|¡Buenas, vecinos!|¡Hola! ¿Cómo andan?} 👋 {¿Se te rompió la pantalla o no carga el celular?|¿Tu celu tiene el vidrio roto o quedó bloqueado?|¿Tu celular no carga bien o se quedó con el patrón de seguridad?} {Lo resolvemos|Te lo arreglamos|Nos encargamos de repararlo} con {garantía|trabajos garantizados} y {entrega rápida|rapidez}:
+
+      ➡️ Cambio de módulos y vidrios.
+      ➡️ Reparación de pin de carga.
+      ➡️ Desbloqueo banda negativa.
+      ➡️ Software y desbloqueo de patrón de seguridad.
+
+      📍 {Estamos en|Nos encontrás en|Te esperamos en} Monteagudo 1140, Tafí Viejo
+      💳 {Recibimos tarjetas de crédito|Aceptamos tarjetas de crédito}
+      📲 {WhatsApp|Consultas por WhatsApp|Escribinos al WhatsApp}: 381 649-6790
+
+      {¡Te esperamos!|¡Consultanos sin compromiso!|¡Escribinos y te respondemos enseguida!} 🙌
+
+  - id: consolas-2026-10-28
+    activa: true
+    fecha: 2026-10-28        # Miercoles
+    hora: "17:26"
+    grupos: ["Alguien sabe Yo se? Por un Tafi mejor"]
+    imagenes: [consolas-2026-10-05.jpg]
+    repetir_cada_dias: 7
+    texto: |
+      🎮 SERVICIO PARA TU CONSOLA 🎮
+
+      {¡Hola a todos!|¡Buenas, vecinos!|¡Hola! ¿Cómo andan?} 👋 {¿Querés volver a jugar con tu consola?|¿Tenés una PlayStation guardada o que anda mal?|¿Querés tener más juegos en tu consola?} {Te damos una mano|Nos encargamos de todo|Lo hacemos acá en el local}:
+
+      ➡️ Liberación de PS2, PS3 y PS4.
+      ➡️ Instalación de juegos.
+      ➡️ Mantenimiento y limpieza de la consola.
+
+      📍 {Estamos en|Nos encontrás en|Te esperamos en} Monteagudo 1140, Tafí Viejo
+      💳 {Recibimos tarjetas de crédito|Aceptamos tarjetas de crédito}
+      📲 {WhatsApp|Consultas por WhatsApp|Escribinos al WhatsApp}: 381 649-6790
+
+      {¡Te esperamos!|¡Consultanos sin compromiso!|¡Escribinos y te respondemos enseguida!} 🙌
+
+  - id: netbook-2026-10-29
+    activa: true
+    fecha: 2026-10-29        # Jueves
+    hora: "16:04"
+    grupos: ["Grupo nuevo 1 (…6047)"]
     imagenes: [netbook-2026-10-12.jpg]
     repetir_cada_dias: 7
     texto: |
       💻 DESBLOQUEO DE NETBOOKS G1 A G15 💻
 
-      {¡Hola a todos!|¡Buenas, vecinos!|¡Hola! ¿Cómo andan?} 👋 {¿Tenés una netbook del colegio que quedó bloqueada?|¿Se bloqueó la netbook y no sabés cómo seguir?|¿Hay una netbook guardada que no se puede usar por el bloqueo?} {Nosotros podemos ayudarte|Te damos una mano|Nos encargamos}:
+      {¡Hola a todos!|¡Buenas, vecinos!|¡Hola! ¿Cómo andan?} 👋 {¿Tenés una netbook del colegio que quedó bloqueada?|¿Se bloqueó la netbook y no sabés cómo seguir?|¿Hay una netbook guardada que no se puede usar por el bloqueo?} {Nosotros podemos ayudarte|Te damos una mano|Nos encargamos de todo}:
 
       ➡️ Desbloqueo de netbooks G1 a G15.
+      ➡️ Desbloqueo de contraseñas, patrones y cuentas.
       ➡️ Instalación de Windows y programas.
       ➡️ Limpieza y mantenimiento.
 
@@ -24,11 +93,11 @@ publicaciones:
 
       {¡Te esperamos!|¡Consultanos sin compromiso!|¡Escribinos y te respondemos enseguida!} 🙌
 
-  - id: windows-2026-10-20
+  - id: windows-2026-10-31
     activa: true
-    fecha: 2026-10-20        # martes; grupo disponible desde 20/10 11:50
-    hora: "14:23"
-    grupos: ["Alguien sabe Yo se? Por un Tafi mejor"]
+    fecha: 2026-10-31        # Sabado
+    hora: "10:53"
+    grupos: ["Alguien Sabe!!! Tafi Viejo Ventas!!!"]
     imagenes: [windows-2026-10-18.jpg]
     repetir_cada_dias: 7
     texto: |
@@ -47,34 +116,11 @@ publicaciones:
 
       {¡Te esperamos!|¡Consultanos sin compromiso!|¡Escribinos y te respondemos enseguida!} 🙌
 
-  - id: celu-bateria-2026-10-22
+  - id: ssd-ram-2026-11-01
     activa: true
-    fecha: 2026-10-22        # jueves; grupo disponible desde 22/10 11:36
-    hora: "13:34"
-    grupos: ["Grupo nuevo 1 (…6047)"]
-    imagenes: [bateria-2026-10-18.jpg]
-    repetir_cada_dias: 7
-    texto: |
-      🔋 CUIDÁ LA BATERÍA DE TU CELULAR 🔋
-
-      {¡Hola a todos!|¡Buenas, vecinos!|¡Hola! ¿Cómo andan?} 👋 {Unos consejos simples para que tu celu dure más|Tips para cuidar la carga de tu celular|Algunas costumbres que ayudan a la batería}: no lo dejes cargando toda la noche, evitá cargadores truchos y no lo expongas al calor. {Y si ya no carga bien o el cable no hace contacto, podemos revisarlo|Si ya tiene problemas de carga, lo revisamos|Si el celu ya no carga como antes, pasá y lo vemos}:
-
-      ➡️ Reparación de pin de carga.
-      ➡️ Cambio de módulos y vidrios.
-      ➡️ Software y desbloqueo de patrón.
-      ➡️ Trabajos con garantía y entrega rápida.
-
-      📍 {Estamos en|Nos encontrás en|Te esperamos en} Monteagudo 1140, Tafí Viejo
-      💳 {Recibimos tarjetas de crédito|Aceptamos tarjetas de crédito}
-      📲 {WhatsApp|Consultas por WhatsApp|Escribinos al WhatsApp}: 381 649-6790
-
-      {¡Te esperamos!|¡Consultanos sin compromiso!|¡Escribinos y te respondemos enseguida!} 🙌
-
-  - id: ssd-ram-2026-10-23
-    activa: true
-    fecha: 2026-10-23        # viernes; grupo disponible desde 23/10 17:25
-    hora: "18:41"
-    grupos: ["Alguien Sabe!!! Tafi Viejo Ventas!!!"]
+    fecha: 2026-11-01        # Domingo
+    hora: "15:21"
+    grupos: ["FERIA AMERICANA TAFI VIEJO"]
     imagenes: [ssd-ram-2026-10-12.jpg]
     repetir_cada_dias: 7
     texto: |
@@ -86,54 +132,6 @@ publicaciones:
       ➡️ Ampliación de memoria RAM.
       ➡️ Instalación de Windows 7, 8, 10 y 11.
       ➡️ Limpieza interna y revisión general.
-
-      📍 {Estamos en|Nos encontrás en|Te esperamos en} Monteagudo 1140, Tafí Viejo
-      💳 {Recibimos tarjetas de crédito|Aceptamos tarjetas de crédito}
-      📲 {WhatsApp|Consultas por WhatsApp|Escribinos al WhatsApp}: 381 649-6790
-
-      {¡Te esperamos!|¡Consultanos sin compromiso!|¡Escribinos y te respondemos enseguida!} 🙌
-
-  - id: limpieza-2026-10-24
-    activa: true
-    fecha: 2026-10-24        # sábado; grupo disponible desde 21/10 18:15
-    hora: "11:17"
-    grupos: ["FERIA AMERICANA TAFI VIEJO"]
-    imagenes: [limpieza-2026-10-05.jpg]
-    repetir_cada_dias: 7
-    texto: |
-      🔧 ¿TU NOTEBOOK NECESITA UNA LIMPIEZA? 🔧
-
-      {¡Hola a todos!|¡Buenas, vecinos!|¡Hola! ¿Cómo andan?} 👋 {Estas son algunas señales|Fijate si te pasa alguna de estas cosas|Si notás alguna de estas señales}:
-
-      ➡️ Se calienta mucho o el ventilador hace ruido.
-      ➡️ Se pone lenta o se apaga sola.
-      ➡️ Hace años que nunca la abrieron para limpiarla.
-
-      {Hacemos limpieza interna y cambio de pasta térmica|Te hacemos la limpieza interna y el cambio de pasta térmica|Nos encargamos de la limpieza interna y la pasta térmica} en notebooks, netbooks y PC, para que {trabaje más fresca|rinda mejor|dure más}.
-
-      📍 {Estamos en|Nos encontrás en|Te esperamos en} Monteagudo 1140, Tafí Viejo
-      💳 {Recibimos tarjetas de crédito|Aceptamos tarjetas de crédito}
-      📲 {WhatsApp|Consultas por WhatsApp|Escribinos al WhatsApp}: 381 649-6790
-
-      {¡Te esperamos!|¡Consultanos sin compromiso!|¡Escribinos y te respondemos enseguida!} 🙌
-
-  - id: celulares-2026-10-25
-    activa: true
-    fecha: 2026-10-25        # domingo; grupo disponible desde 24/10 19:54
-    hora: "12:52"
-    grupos: ["Grupo nuevo 2 (…4801)"]
-    imagenes: [servicios-celulares.jpg]
-    repetir_cada_dias: 7
-    texto: |
-      📱 SERVICIOS PARA TU CELULAR 📱
-
-      {¡Hola a todos!|¡Buenas, vecinos!|¡Hola! ¿Cómo andan?} 👋 {¿Se te rompió la pantalla o no carga el celular?|¿Tu celular quedó bloqueado o con la pantalla dañada?|¿Tu celu no carga o tiene el vidrio roto?} {Lo resolvemos|Te lo arreglamos|Nos encargamos} con {garantía|trabajos garantizados} y {entrega rápida|rapidez}:
-
-      ➡️ Cambio de módulos y vidrios.
-      ➡️ Reparación de pin de carga.
-      ➡️ Desbloqueo banda negativa.
-      ➡️ Software y desbloqueo de patrón de seguridad.
-      ➡️ Venta de celulares e insumos.
 
       📍 {Estamos en|Nos encontrás en|Te esperamos en} Monteagudo 1140, Tafí Viejo
       💳 {Recibimos tarjetas de crédito|Aceptamos tarjetas de crédito}
