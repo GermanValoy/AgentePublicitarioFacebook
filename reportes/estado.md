@@ -1,11 +1,11 @@
 # Estado del agente
 
-_Actualizado: 26/10/2026 11:19 (America/Argentina/Tucuman). Si esta fecha tiene más de un día, el agente probablemente no está funcionando._
+_Actualizado: 26/10/2026 13:48 (America/Argentina/Tucuman). Si esta fecha tiene más de un día, el agente probablemente no está funcionando._
 
 - **Estado:** ✅ funcionando
 - **Modo:** aprobacion
 - **Telegram:** conectado
-- **Versión del agente:** fbc959b (26/10 01:17)
+- **Versión del agente:** 2cdbadf (26/10 11:20)
 - **Publicaciones hoy:** 1/3
 - **Últimos 7 días:** 1 error_navegador, 5 publicada
 
@@ -55,7 +55,6 @@ _Regla anti-baneo: no repetir en un grupo antes de 7 días. Programá cada grupo
 
 ## Avisos y errores recientes del registro
 
-- `2026-10-26 10:51:06 WARNING  Telegram: Bad Request: too Many Requests: retry after 8`
 - `2026-10-26 10:52:27 WARNING  Telegram: Bad Request: too Many Requests: retry after 8`
 - `2026-10-26 10:53:48 WARNING  Telegram: Bad Request: too Many Requests: retry after 8`
 - `2026-10-26 10:55:10 WARNING  Telegram: Bad Request: too Many Requests: retry after 8`
@@ -65,3 +64,4 @@ _Regla anti-baneo: no repetir en un grupo antes de 7 días. Programá cada grupo
 - `2026-10-26 10:59:51 WARNING  Telegram: Sin conexión con Telegram: <urlopen error EOF occurred in violation of protocol (_ssl.c:2417)>`
 - `2026-10-26 11:01:13 WARNING  Telegram: Bad Request: too Many Requests: retry after 8`
 - `2026-10-26 11:02:34 WARNING  Telegram: Bad Request: too Many Requests: retry after 8`
+- `2026-10-26 12:18:32 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
