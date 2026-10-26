@@ -1,11 +1,11 @@
 # Estado del agente
 
-_Actualizado: 26/10/2026 14:00 (America/Argentina/Tucuman). Si esta fecha tiene más de un día, el agente probablemente no está funcionando._
+_Actualizado: 26/10/2026 16:28 (America/Argentina/Tucuman). Si esta fecha tiene más de un día, el agente probablemente no está funcionando._
 
 - **Estado:** ✅ funcionando
 - **Modo:** aprobacion
 - **Telegram:** conectado
-- **Versión del agente:** cf488ab (26/10 13:48)
+- **Versión del agente:** 5f5e719 (26/10 14:00)
 - **Publicaciones hoy:** 1/3
 - **Últimos 7 días:** 1 error_navegador, 5 publicada
 
