@@ -1,11 +1,11 @@
 # Estado del agente
 
-_Actualizado: 28/10/2026 00:00 (America/Argentina/Tucuman). Si esta fecha tiene más de un día, el agente probablemente no está funcionando._
+_Actualizado: 28/10/2026 11:08 (America/Argentina/Tucuman). Si esta fecha tiene más de un día, el agente probablemente no está funcionando._
 
 - **Estado:** ✅ funcionando
 - **Modo:** aprobacion
 - **Telegram:** conectado
-- **Versión del agente:** 0c1f6f6 (27/10 15:29)
+- **Versión del agente:** be01f90 (28/10 00:07)
 - **Publicaciones hoy:** 0/3
 - **Últimos 7 días:** 5 publicada
 
@@ -55,13 +55,13 @@ _Regla anti-baneo: no repetir en un grupo antes de 7 días. Programá cada grupo
 
 ## Avisos y errores recientes del registro
 
-- `2026-10-26 20:15:52 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
-- `2026-10-26 22:44:58 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
-- `2026-10-27 00:36:25 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
-- `2026-10-27 02:46:01 WARNING  Telegram: Sin conexión con Telegram: <urlopen error [WinError 10060] Se produjo un error durante el intento de conexión ya que la parte conectada no respondió adecuadamente tras un periodo de`
-- `2026-10-27 03:33:28 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
-- `2026-10-27 13:01:48 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
-- `2026-10-27 14:46:07 WARNING  Telegram: Sin conexión con Telegram: <urlopen error [WinError 10060] Se produjo un error durante el intento de conexión ya que la parte conectada no respondió adecuadamente tras un periodo de`
-- `2026-10-27 18:00:52 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
-- `2026-10-27 22:46:10 WARNING  Telegram: Sin conexión con Telegram: <urlopen error [WinError 10060] Se produjo un error durante el intento de conexión ya que la parte conectada no respondió adecuadamente tras un periodo de`
-- `2026-10-27 23:55:58 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
+- `2026-10-28 00:18:09 WARNING  Telegram: Sin conexión con Telegram: <urlopen error [Errno 11001] getaddrinfo failed>`
+- `2026-10-28 00:18:39 WARNING  Telegram: Sin conexión con Telegram: <urlopen error [Errno 11001] getaddrinfo failed>`
+- `2026-10-28 00:19:09 WARNING  Telegram: Sin conexión con Telegram: <urlopen error [Errno 11001] getaddrinfo failed>`
+- `2026-10-28 00:19:39 WARNING  Telegram: Sin conexión con Telegram: <urlopen error [Errno 11001] getaddrinfo failed>`
+- `2026-10-28 00:20:09 WARNING  Telegram: Sin conexión con Telegram: <urlopen error [Errno 11001] getaddrinfo failed>`
+- `2026-10-28 00:20:39 WARNING  Telegram: Sin conexión con Telegram: <urlopen error [Errno 11001] getaddrinfo failed>`
+- `2026-10-28 00:21:09 WARNING  Telegram: Sin conexión con Telegram: <urlopen error [Errno 11001] getaddrinfo failed>`
+- `2026-10-28 00:35:59 WARNING  Telegram: Sin conexión con Telegram: <urlopen error [WinError 10060] Se produjo un error durante el intento de conexión ya que la parte conectada no respondió adecuadamente tras un periodo de`
+- `2026-10-28 08:36:05 WARNING  Telegram: Sin conexión con Telegram: <urlopen error [WinError 10060] Se produjo un error durante el intento de conexión ya que la parte conectada no respondió adecuadamente tras un periodo de`
+- `2026-10-28 11:08:44 WARNING  No se pudo avisar por Telegram: Sin conexión con Telegram: <urlopen error [WinError 10051] Se ha intentado una operación de socket en una red no accesible>`
