@@ -1,11 +1,11 @@
 # Estado del agente
 
-_Actualizado: 28/10/2026 11:08 (America/Argentina/Tucuman). Si esta fecha tiene más de un día, el agente probablemente no está funcionando._
+_Actualizado: 28/10/2026 11:44 (America/Argentina/Tucuman). Si esta fecha tiene más de un día, el agente probablemente no está funcionando._
 
 - **Estado:** ✅ funcionando
 - **Modo:** aprobacion
 - **Telegram:** conectado
-- **Versión del agente:** be01f90 (28/10 00:07)
+- **Versión del agente:** 89b0008 (28/10 11:08)
 - **Publicaciones hoy:** 0/3
 - **Últimos 7 días:** 5 publicada
 
@@ -55,13 +55,13 @@ _Regla anti-baneo: no repetir en un grupo antes de 7 días. Programá cada grupo
 
 ## Avisos y errores recientes del registro
 
-- `2026-10-28 00:18:09 WARNING  Telegram: Sin conexión con Telegram: <urlopen error [Errno 11001] getaddrinfo failed>`
-- `2026-10-28 00:18:39 WARNING  Telegram: Sin conexión con Telegram: <urlopen error [Errno 11001] getaddrinfo failed>`
-- `2026-10-28 00:19:09 WARNING  Telegram: Sin conexión con Telegram: <urlopen error [Errno 11001] getaddrinfo failed>`
-- `2026-10-28 00:19:39 WARNING  Telegram: Sin conexión con Telegram: <urlopen error [Errno 11001] getaddrinfo failed>`
-- `2026-10-28 00:20:09 WARNING  Telegram: Sin conexión con Telegram: <urlopen error [Errno 11001] getaddrinfo failed>`
-- `2026-10-28 00:20:39 WARNING  Telegram: Sin conexión con Telegram: <urlopen error [Errno 11001] getaddrinfo failed>`
-- `2026-10-28 00:21:09 WARNING  Telegram: Sin conexión con Telegram: <urlopen error [Errno 11001] getaddrinfo failed>`
 - `2026-10-28 00:35:59 WARNING  Telegram: Sin conexión con Telegram: <urlopen error [WinError 10060] Se produjo un error durante el intento de conexión ya que la parte conectada no respondió adecuadamente tras un periodo de`
 - `2026-10-28 08:36:05 WARNING  Telegram: Sin conexión con Telegram: <urlopen error [WinError 10060] Se produjo un error durante el intento de conexión ya que la parte conectada no respondió adecuadamente tras un periodo de`
 - `2026-10-28 11:08:44 WARNING  No se pudo avisar por Telegram: Sin conexión con Telegram: <urlopen error [WinError 10051] Se ha intentado una operación de socket en una red no accesible>`
+- `2026-10-28 11:08:49 WARNING  GitHub: no se pudo sincronizar. No se pudo bajar lo nuevo de GitHub (se reintenta en 30 minutos). Detalle: fatal: unable to access 'https://github.com/GermanValoy/AgentePublicitarioFacebook.g`
+- `2026-10-28 11:08:55 WARNING  Telegram: Sin conexión con Telegram: <urlopen error [WinError 10053] Se ha anulado una conexión establecida por el software en su equipo host>`
+- `2026-10-28 11:22:46 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
+- `2026-10-28 11:23:16 WARNING  Telegram: Sin conexión con Telegram: <urlopen error [Errno 11001] getaddrinfo failed>`
+- `2026-10-28 11:23:46 WARNING  Telegram: Sin conexión con Telegram: <urlopen error [Errno 11001] getaddrinfo failed>`
+- `2026-10-28 11:24:16 WARNING  Telegram: Sin conexión con Telegram: <urlopen error [Errno 11001] getaddrinfo failed>`
+- `2026-10-28 11:24:46 WARNING  Telegram: Sin conexión con Telegram: <urlopen error [Errno 11001] getaddrinfo failed>`
