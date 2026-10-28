@@ -1,24 +1,24 @@
 # Estado del agente
 
-_Actualizado: 28/10/2026 11:44 (America/Argentina/Tucuman). Si esta fecha tiene más de un día, el agente probablemente no está funcionando._
+_Actualizado: 28/10/2026 17:55 (America/Argentina/Tucuman). Si esta fecha tiene más de un día, el agente probablemente no está funcionando._
 
 - **Estado:** ✅ funcionando
 - **Modo:** aprobacion
 - **Telegram:** conectado
-- **Versión del agente:** 89b0008 (28/10 11:08)
-- **Publicaciones hoy:** 0/3
-- **Últimos 7 días:** 5 publicada
+- **Versión del agente:** 5af39fe (28/10 11:44)
+- **Publicaciones hoy:** 1/3
+- **Últimos 7 días:** 6 publicada
 
 ## Próximas programadas
 
 | Cuándo | Publicación | Grupos |
 |---|---|---|
-| 28/10 17:26 | consolas-2026-10-28 | Alguien sabe Yo se? Por un Tafi mejor |
 | 29/10 16:04 | netbook-2026-10-29 | Grupo nuevo 1 (…6047) |
 | 31/10 10:53 | windows-2026-10-31 | Alguien Sabe!!! Tafi Viejo Ventas!!! |
 | 01/11 15:21 | ssd-ram-2026-11-01 | FERIA AMERICANA TAFI VIEJO |
 | 02/11 10:37 | limpieza-2026-10-26 | Grupo nuevo 2 (…4801) |
 | 03/11 15:12 | celulares-2026-10-27 | Grupo nuevo 3 (…2145) |
+| 04/11 17:26 | consolas-2026-10-28 | Alguien sabe Yo se? Por un Tafi mejor |
 
 ## Desde cuándo se puede publicar en cada grupo
 
@@ -28,7 +28,7 @@ _Regla anti-baneo: no repetir en un grupo antes de 7 días. Programá cada grupo
 |---|---|---|---|
 | FERIA AMERICANA TAFI VIEJO | 24/10 13:09 | 31/10 13:09 | todos |
 | Alguien Sabe!!! Tafi Viejo Ventas!!! | 23/10 18:49 | 30/10 18:49 | todos |
-| Alguien sabe Yo se? Por un Tafi mejor | 20/10 14:57 | 27/10 14:57 | todos |
+| Alguien sabe Yo se? Por un Tafi mejor | 28/10 17:54 | 04/11 17:54 | todos |
 | Grupo nuevo 1 (…6047) | 22/10 13:43 | 29/10 13:43 | todos |
 | Grupo nuevo 2 (…4801) | 26/10 11:19 | 02/11 11:19 | todos |
 | Grupo nuevo 3 (…2145) | 27/10 15:28 | 03/11 15:28 | todos |
@@ -37,6 +37,7 @@ _Regla anti-baneo: no repetir en un grupo antes de 7 días. Programá cada grupo
 
 | Fecha | Estado | Publicación | Grupo | Detalle |
 |---|---|---|---|---|
+| 28/10 17:54 | publicada | consolas-2026-10-28 | Alguien sabe Yo se? Por un Tafi mejor | Publicada automáticamente / captura: 20261028-175444-publicada.png |
 | 27/10 15:28 | publicada | celulares-2026-10-27 | Grupo nuevo 3 (…2145) | Publicada automáticamente / captura: 20261027-152818-publicada.png |
 | 26/10 11:19 | publicada | limpieza-2026-10-26 | Grupo nuevo 2 (…4801) | Publicada automáticamente / captura: 20261026-111905-publicada.png |
 | 24/10 13:09 | publicada | limpieza-2026-10-24 | FERIA AMERICANA TAFI VIEJO | Publicada automáticamente / captura: 20261024-130955-publicada.png |
@@ -51,11 +52,9 @@ _Regla anti-baneo: no repetir en un grupo antes de 7 días. Programá cada grupo
 | 15/10 11:36 | publicada | celulares-2026-10-15 | Grupo nuevo 1 (…6047) | Publicada automáticamente / captura: 20261015-113639-publicada.png |
 | 14/10 18:15 | publicada | ssd-ram-2026-10-14 | FERIA AMERICANA TAFI VIEJO | Publicada automáticamente / captura: 20261014-181514-publicada.png |
 | 13/10 23:29 | vencida | netbook-2026-10-13 | Alguien sabe Yo se? Por un Tafi mejor | Pasó el retraso máximo sin poder publicarse (se evita publicar en ráfaga) |
-| 13/10 11:50 | publicada | netbook-2026-10-13 | Alguien sabe Yo se? Por un Tafi mejor | Publicada automáticamente / captura: 20261013-115023-publicada.png |
 
 ## Avisos y errores recientes del registro
 
-- `2026-10-28 00:35:59 WARNING  Telegram: Sin conexión con Telegram: <urlopen error [WinError 10060] Se produjo un error durante el intento de conexión ya que la parte conectada no respondió adecuadamente tras un periodo de`
 - `2026-10-28 08:36:05 WARNING  Telegram: Sin conexión con Telegram: <urlopen error [WinError 10060] Se produjo un error durante el intento de conexión ya que la parte conectada no respondió adecuadamente tras un periodo de`
 - `2026-10-28 11:08:44 WARNING  No se pudo avisar por Telegram: Sin conexión con Telegram: <urlopen error [WinError 10051] Se ha intentado una operación de socket en una red no accesible>`
 - `2026-10-28 11:08:49 WARNING  GitHub: no se pudo sincronizar. No se pudo bajar lo nuevo de GitHub (se reintenta en 30 minutos). Detalle: fatal: unable to access 'https://github.com/GermanValoy/AgentePublicitarioFacebook.g`
@@ -65,3 +64,4 @@ _Regla anti-baneo: no repetir en un grupo antes de 7 días. Programá cada grupo
 - `2026-10-28 11:23:46 WARNING  Telegram: Sin conexión con Telegram: <urlopen error [Errno 11001] getaddrinfo failed>`
 - `2026-10-28 11:24:16 WARNING  Telegram: Sin conexión con Telegram: <urlopen error [Errno 11001] getaddrinfo failed>`
 - `2026-10-28 11:24:46 WARNING  Telegram: Sin conexión con Telegram: <urlopen error [Errno 11001] getaddrinfo failed>`
+- `2026-10-28 17:03:58 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
