@@ -1,12 +1,12 @@
 # Estado del agente
 
-_Actualizado: 29/10/2026 17:53 (America/Argentina/Tucuman). Si esta fecha tiene más de un día, el agente probablemente no está funcionando._
+_Actualizado: 30/10/2026 00:00 (America/Argentina/Tucuman). Si esta fecha tiene más de un día, el agente probablemente no está funcionando._
 
 - **Estado:** ✅ funcionando
 - **Modo:** aprobacion
 - **Telegram:** conectado
-- **Versión del agente:** a3b396c (29/10 16:17)
-- **Publicaciones hoy:** 1/3
+- **Versión del agente:** 1f11ac5 (29/10 17:53)
+- **Publicaciones hoy:** 0/3
 - **Últimos 7 días:** 6 publicada
 
 ## Próximas programadas
@@ -55,8 +55,6 @@ _Regla anti-baneo: no repetir en un grupo antes de 7 días. Programá cada grupo
 
 ## Avisos y errores recientes del registro
 
-- `2026-10-28 11:23:46 WARNING  Telegram: Sin conexión con Telegram: <urlopen error [Errno 11001] getaddrinfo failed>`
-- `2026-10-28 11:24:16 WARNING  Telegram: Sin conexión con Telegram: <urlopen error [Errno 11001] getaddrinfo failed>`
 - `2026-10-28 11:24:46 WARNING  Telegram: Sin conexión con Telegram: <urlopen error [Errno 11001] getaddrinfo failed>`
 - `2026-10-28 17:03:58 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
 - `2026-10-29 01:29:15 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
@@ -65,3 +63,5 @@ _Regla anti-baneo: no repetir en un grupo antes de 7 días. Programá cada grupo
 - `2026-10-29 04:39:12 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
 - `2026-10-29 11:24:37 WARNING  Telegram: Sin conexión con Telegram: <urlopen error [WinError 10060] Se produjo un error durante el intento de conexión ya que la parte conectada no respondió adecuadamente tras un periodo de`
 - `2026-10-29 12:13:56 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
+- `2026-10-29 18:56:53 WARNING  Telegram: Sin conexión con Telegram: <urlopen error [WinError 10054] Se ha forzado la interrupción de una conexión existente por el host remoto>`
+- `2026-10-29 22:18:56 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
