@@ -1,13 +1,13 @@
 # Estado del agente
 
-_Actualizado: 31/10/2026 13:01 (America/Argentina/Tucuman). Si esta fecha tiene más de un día, el agente probablemente no está funcionando._
+_Actualizado: 31/10/2026 14:06 (America/Argentina/Tucuman). Si esta fecha tiene más de un día, el agente probablemente no está funcionando._
 
 - **Estado:** ✅ funcionando
 - **Modo:** aprobacion
 - **Telegram:** conectado
-- **Versión del agente:** e699701 (31/10 11:47)
+- **Versión del agente:** fdb7ddc (31/10 13:02)
 - **Publicaciones hoy:** 1/3
-- **Últimos 7 días:** 6 publicada
+- **Últimos 7 días:** 5 publicada
 
 ## Próximas programadas
 
