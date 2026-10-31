@@ -1,11 +1,11 @@
 # Estado del agente
 
-_Actualizado: 31/10/2026 01:00 (America/Argentina/Tucuman). Si esta fecha tiene más de un día, el agente probablemente no está funcionando._
+_Actualizado: 31/10/2026 11:47 (America/Argentina/Tucuman). Si esta fecha tiene más de un día, el agente probablemente no está funcionando._
 
 - **Estado:** ✅ funcionando
 - **Modo:** aprobacion
 - **Telegram:** conectado
-- **Versión del agente:** fb3837c (30/10 18:42)
+- **Versión del agente:** 4bad872 (31/10 01:00)
 - **Publicaciones hoy:** 0/3
 - **Últimos 7 días:** 5 publicada
 
@@ -13,12 +13,12 @@ _Actualizado: 31/10/2026 01:00 (America/Argentina/Tucuman). Si esta fecha tiene 
 
 | Cuándo | Publicación | Grupos |
 |---|---|---|
-| 31/10 10:53 | windows-2026-10-31 | Alguien Sabe!!! Tafi Viejo Ventas!!! |
 | 01/11 15:21 | ssd-ram-2026-11-01 | FERIA AMERICANA TAFI VIEJO |
 | 02/11 10:37 | limpieza-2026-10-26 | Grupo nuevo 2 (…4801) |
 | 03/11 15:12 | celulares-2026-10-27 | Grupo nuevo 3 (…2145) |
 | 04/11 17:26 | consolas-2026-10-28 | Alguien sabe Yo se? Por un Tafi mejor |
 | 05/11 16:04 | netbook-2026-10-29 | Grupo nuevo 1 (…6047) |
+| 07/11 10:53 | windows-2026-10-31 | Alguien Sabe!!! Tafi Viejo Ventas!!! |
 
 ## Desde cuándo se puede publicar en cada grupo
 
@@ -55,7 +55,6 @@ _Regla anti-baneo: no repetir en un grupo antes de 7 días. Programá cada grupo
 
 ## Avisos y errores recientes del registro
 
-- `2026-10-29 01:29:15 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
 - `2026-10-29 03:24:41 WARNING  Telegram: Sin conexión con Telegram: <urlopen error [WinError 10060] Se produjo un error durante el intento de conexión ya que la parte conectada no respondió adecuadamente tras un periodo de`
 - `2026-10-29 03:45:09 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
 - `2026-10-29 04:39:12 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
@@ -65,3 +64,4 @@ _Regla anti-baneo: no repetir en un grupo antes de 7 días. Programá cada grupo
 - `2026-10-29 22:18:56 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
 - `2026-10-30 16:18:34 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
 - `2026-10-30 19:42:56 WARNING  No se pudo responder el comando: Sin conexión con Telegram: <urlopen error [WinError 10060] Se produjo un error durante el intento de conexión ya que la parte conectada no respondió adecuadam`
+- `2026-10-31 02:25:36 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
