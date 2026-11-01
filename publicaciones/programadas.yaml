@@ -1,18 +1,63 @@
 # Calendario: cada grupo activo recibe 1 anuncio por semana, en días distintos.
-# Semana del 26/10 al 01/11. Se repite cada 7 días si no se actualiza.
+# Semana del 02/11 al 08/11. Se repite cada 7 días si no se actualiza.
 
 publicaciones:
-  - id: limpieza-2026-10-26
+  - id: bateria-2026-11-02
     activa: true
-    fecha: 2026-10-26        # Lunes
-    hora: "10:37"
+    fecha: 2026-11-02        # Lunes
+    hora: "13:08"
     grupos: ["Grupo nuevo 2 (…4801)"]
+    imagenes: [bateria-2026-10-18.jpg]
+    repetir_cada_dias: 7
+    texto: |
+      🔋 CUIDÁ LA BATERÍA DE TU CELULAR 🔋
+
+      {¡Hola a todos!|¡Buenas, vecinos!|¡Hola! ¿Cómo andan?} 👋 {Unos consejos simples para que tu celu te dure más|Tips rápidos para cuidar la batería de tu celular|Si tu celular se queda sin carga enseguida, fijate estos consejos}: no lo dejes cargando toda la noche, evitá que llegue al 0%, usá un cargador de buena calidad y no lo expongas al calor. Si igual no carga bien o se apaga solo, {podemos revisarlo|lo revisamos en el local|le hacemos un diagnóstico}:
+
+      ➡️ Reparación de pin de carga.
+      ➡️ Cambio de módulos y vidrios.
+      ➡️ Software y desbloqueo de patrón de seguridad.
+      ➡️ Trabajos con garantía y entrega rápida.
+
+      📍 {Estamos en|Nos encontrás en|Te esperamos en} Monteagudo 1140, Tafí Viejo
+      💳 {Recibimos tarjetas de crédito|Aceptamos tarjetas de crédito}
+      📲 {WhatsApp|Consultas por WhatsApp|Escribinos al WhatsApp}: 381 649-6790
+
+      {¡Te esperamos!|¡Consultanos sin compromiso!|¡Escribinos y te respondemos enseguida!} 🙌
+
+  - id: consolas-2026-11-04
+    activa: true
+    fecha: 2026-11-04        # Miercoles
+    hora: "11:42"
+    grupos: ["FERIA AMERICANA TAFI VIEJO"]
+    imagenes: [consolas-2026-10-05.jpg]
+    repetir_cada_dias: 7
+    texto: |
+      🎮 TU CONSOLA COMO NUEVA 🎮
+
+      {¡Hola a todos!|¡Buenas, vecinos!|¡Hola! ¿Cómo andan?} 👋 {¿Tenés una PlayStation que no anda o querés más juegos?|¿Tu consola está guardada y querés volver a jugar?|¿Querés renovar los juegos de tu PS?} {Te la dejamos lista|Nos encargamos de todo|Lo hacemos acá en el local}:
+
+      ➡️ Liberación de PS2, PS3 y PS4.
+      ➡️ Instalación de juegos.
+      ➡️ Mantenimiento y limpieza de la consola.
+
+      📍 {Estamos en|Nos encontrás en|Te esperamos en} Monteagudo 1140, Tafí Viejo
+      💳 {Recibimos tarjetas de crédito|Aceptamos tarjetas de crédito}
+      📲 {WhatsApp|Consultas por WhatsApp|Escribinos al WhatsApp}: 381 649-6790
+
+      {¡Te esperamos!|¡Consultanos sin compromiso!|¡Escribinos y te respondemos enseguida!} 🙌
+
+  - id: limpieza-2026-11-05
+    activa: true
+    fecha: 2026-11-05        # Jueves
+    hora: "15:36"
+    grupos: ["Alguien sabe Yo se? Por un Tafi mejor"]
     imagenes: [limpieza-2026-10-05.jpg]
     repetir_cada_dias: 7
     texto: |
-      🔧 LIMPIEZA Y PASTA TÉRMICA PARA TU PC 🔧
+      🔧 LIMPIEZA Y PASTA TÉRMICA PARA TU COMPU 🔧
 
-      {¡Hola a todos!|¡Buenas, vecinos!|¡Hola! ¿Cómo andan?} 👋 {Si tu compu se calienta, hace ruido o se apaga sola, seguramente necesita mantenimiento|¿Tu notebook se pone lenta y el ventilador suena fuerte? Puede ser polvo acumulado|Con el tiempo el polvo se junta adentro de la PC y la hace trabajar peor}. {Hacemos limpieza interna y cambio de pasta térmica|Te hacemos la limpieza interna y la pasta térmica|Nos encargamos de limpiarla por dentro y cambiar la pasta térmica} para que {trabaje más fresca|rinda mejor|dure más}:
+      {¡Hola a todos!|¡Buenas, vecinos!|¡Hola! ¿Cómo andan?} 👋 {¿Tu notebook hace ruido o se calienta mucho?|¿Tu PC se apaga sola o anda lenta?|Con el polvo acumulado la compu trabaja peor y se recalienta}. {Le hacemos una limpieza interna y cambiamos la pasta térmica|Te la limpiamos por dentro y renovamos la pasta térmica|Hacemos mantenimiento completo} para que {rinda mejor|dure más|trabaje más fresca}:
 
       ➡️ Limpieza interna de PC, notebooks y netbooks.
       ➡️ Cambio de pasta térmica.
@@ -25,113 +70,68 @@ publicaciones:
 
       {¡Te esperamos!|¡Consultanos sin compromiso!|¡Escribinos y te respondemos enseguida!} 🙌
 
-  - id: celulares-2026-10-27
+  - id: ssd-ram-2026-11-06
     activa: true
-    fecha: 2026-10-27        # Martes
-    hora: "15:12"
-    grupos: ["Grupo nuevo 3 (…2145)"]
-    imagenes: [servicios-celulares.jpg]
-    repetir_cada_dias: 7
-    texto: |
-      📱 REPARACIÓN DE CELULARES EN TAFÍ VIEJO 📱
-
-      {¡Hola a todos!|¡Buenas, vecinos!|¡Hola! ¿Cómo andan?} 👋 {¿Se te rompió la pantalla o no carga el celular?|¿Tu celu tiene el vidrio roto o quedó bloqueado?|¿Tu celular no carga bien o se quedó con el patrón de seguridad?} {Lo resolvemos|Te lo arreglamos|Nos encargamos de repararlo} con {garantía|trabajos garantizados} y {entrega rápida|rapidez}:
-
-      ➡️ Cambio de módulos y vidrios.
-      ➡️ Reparación de pin de carga.
-      ➡️ Desbloqueo banda negativa.
-      ➡️ Software y desbloqueo de patrón de seguridad.
-
-      📍 {Estamos en|Nos encontrás en|Te esperamos en} Monteagudo 1140, Tafí Viejo
-      💳 {Recibimos tarjetas de crédito|Aceptamos tarjetas de crédito}
-      📲 {WhatsApp|Consultas por WhatsApp|Escribinos al WhatsApp}: 381 649-6790
-
-      {¡Te esperamos!|¡Consultanos sin compromiso!|¡Escribinos y te respondemos enseguida!} 🙌
-
-  - id: consolas-2026-10-28
-    activa: true
-    fecha: 2026-10-28        # Miercoles
-    hora: "17:26"
-    grupos: ["Alguien sabe Yo se? Por un Tafi mejor"]
-    imagenes: [consolas-2026-10-05.jpg]
-    repetir_cada_dias: 7
-    texto: |
-      🎮 SERVICIO PARA TU CONSOLA 🎮
-
-      {¡Hola a todos!|¡Buenas, vecinos!|¡Hola! ¿Cómo andan?} 👋 {¿Querés volver a jugar con tu consola?|¿Tenés una PlayStation guardada o que anda mal?|¿Querés tener más juegos en tu consola?} {Te damos una mano|Nos encargamos de todo|Lo hacemos acá en el local}:
-
-      ➡️ Liberación de PS2, PS3 y PS4.
-      ➡️ Instalación de juegos.
-      ➡️ Mantenimiento y limpieza de la consola.
-
-      📍 {Estamos en|Nos encontrás en|Te esperamos en} Monteagudo 1140, Tafí Viejo
-      💳 {Recibimos tarjetas de crédito|Aceptamos tarjetas de crédito}
-      📲 {WhatsApp|Consultas por WhatsApp|Escribinos al WhatsApp}: 381 649-6790
-
-      {¡Te esperamos!|¡Consultanos sin compromiso!|¡Escribinos y te respondemos enseguida!} 🙌
-
-  - id: netbook-2026-10-29
-    activa: true
-    fecha: 2026-10-29        # Jueves
-    hora: "16:04"
+    fecha: 2026-11-06        # Viernes
+    hora: "12:23"
     grupos: ["Grupo nuevo 1 (…6047)"]
-    imagenes: [netbook-2026-10-12.jpg]
-    repetir_cada_dias: 7
-    texto: |
-      💻 DESBLOQUEO DE NETBOOKS G1 A G15 💻
-
-      {¡Hola a todos!|¡Buenas, vecinos!|¡Hola! ¿Cómo andan?} 👋 {¿Tenés una netbook del colegio que quedó bloqueada?|¿Se bloqueó la netbook y no sabés cómo seguir?|¿Hay una netbook guardada que no se puede usar por el bloqueo?} {Nosotros podemos ayudarte|Te damos una mano|Nos encargamos de todo}:
-
-      ➡️ Desbloqueo de netbooks G1 a G15.
-      ➡️ Desbloqueo de contraseñas, patrones y cuentas.
-      ➡️ Instalación de Windows y programas.
-      ➡️ Limpieza y mantenimiento.
-
-      📍 {Estamos en|Nos encontrás en|Te esperamos en} Monteagudo 1140, Tafí Viejo
-      💳 {Recibimos tarjetas de crédito|Aceptamos tarjetas de crédito}
-      📲 {WhatsApp|Consultas por WhatsApp|Escribinos al WhatsApp}: 381 649-6790
-
-      {¡Te esperamos!|¡Consultanos sin compromiso!|¡Escribinos y te respondemos enseguida!} 🙌
-
-  - id: windows-2026-10-31
-    activa: true
-    fecha: 2026-10-31        # Sabado
-    hora: "10:53"
-    grupos: ["Alguien Sabe!!! Tafi Viejo Ventas!!!"]
-    imagenes: [windows-2026-10-18.jpg]
-    repetir_cada_dias: 7
-    texto: |
-      🖥️ INSTALACIÓN DE WINDOWS Y PROGRAMAS 🖥️
-
-      {¡Hola a todos!|¡Buenas, vecinos!|¡Hola! ¿Cómo andan?} 👋 {¿Tu PC o notebook anda lenta, con errores o necesita empezar de cero?|¿Se te llenó la compu de cosas y ya no anda como antes?|¿Necesitás reinstalar Windows o tus programas?} {Te lo dejamos funcionando|Nos encargamos de ponerla a punto|Te damos una mano}:
-
-      ➡️ Instalación de Windows 7, 8, 10 y 11.
-      ➡️ Office, Acrobat Reader, Photoshop y Corel.
-      ➡️ Asistencia remota para consultas puntuales.
-      ➡️ Limpieza interna y revisión general.
-
-      📍 {Estamos en|Nos encontrás en|Te esperamos en} Monteagudo 1140, Tafí Viejo
-      💳 {Recibimos tarjetas de crédito|Aceptamos tarjetas de crédito}
-      📲 {WhatsApp|Consultas por WhatsApp|Escribinos al WhatsApp}: 381 649-6790
-
-      {¡Te esperamos!|¡Consultanos sin compromiso!|¡Escribinos y te respondemos enseguida!} 🙌
-
-  - id: ssd-ram-2026-11-01
-    activa: true
-    fecha: 2026-11-01        # Domingo
-    hora: "15:21"
-    grupos: ["FERIA AMERICANA TAFI VIEJO"]
     imagenes: [ssd-ram-2026-10-12.jpg]
     repetir_cada_dias: 7
     texto: |
-      🚀 MEJORÁ LA VELOCIDAD DE TU PC 🚀
+      🚀 DALE VELOCIDAD A TU PC CON SSD Y RAM 🚀
 
-      {¡Hola a todos!|¡Buenas, vecinos!|¡Hola! ¿Cómo andan?} 👋 {¿Tu compu tarda una eternidad en prender?|¿Tu notebook se traba cuando abrís varios programas?|¿Sentís que tu PC quedó lenta?} {Una mejora con SSD y más memoria RAM puede darle una segunda vida|Con un disco SSD y más RAM podés notar mucha diferencia|Cambiar el disco por un SSD y ampliar la RAM suele mejorar bastante el rendimiento}:
+      {¡Hola a todos!|¡Buenas, vecinos!|¡Hola! ¿Cómo andan?} 👋 {¿Tu compu tarda mucho en prender?|¿Tu notebook se traba al abrir varios programas?|¿Sentís que tu PC quedó lenta?} {Con un disco SSD y más memoria RAM se nota mucho la diferencia|Cambiar el disco por un SSD y ampliar la RAM suele mejorar bastante el rendimiento|Una mejora de SSD y RAM puede darle otra vida a tu equipo}:
 
       ➡️ Colocación de disco SSD.
       ➡️ Ampliación de memoria RAM.
       ➡️ Instalación de Windows 7, 8, 10 y 11.
       ➡️ Limpieza interna y revisión general.
+
+      📍 {Estamos en|Nos encontrás en|Te esperamos en} Monteagudo 1140, Tafí Viejo
+      💳 {Recibimos tarjetas de crédito|Aceptamos tarjetas de crédito}
+      📲 {WhatsApp|Consultas por WhatsApp|Escribinos al WhatsApp}: 381 649-6790
+
+      {¡Te esperamos!|¡Consultanos sin compromiso!|¡Escribinos y te respondemos enseguida!} 🙌
+
+  - id: windows-2026-11-03
+    activa: true
+    fecha: 2026-11-03        # Martes
+    hora: "17:14"
+    grupos: ["Grupo nuevo 3 (…2145)"]
+    imagenes: [windows-2026-10-18.jpg]
+    repetir_cada_dias: 7
+    texto: |
+      🖥️ WINDOWS, PROGRAMAS Y ASISTENCIA REMOTA 🖥️
+
+      {¡Hola a todos!|¡Buenas, vecinos!|¡Hola! ¿Cómo andan?} 👋 {¿Tu PC tiene errores o necesitás reinstalar Windows?|¿Necesitás instalar Office u otros programas?|¿Tenés una consulta y no podés venir al local?} {Te damos una mano|Nos encargamos de dejar todo funcionando|Lo resolvemos}, {incluso a distancia|también con asistencia remota}:
+
+      ➡️ Instalación de Windows 7, 8, 10 y 11.
+      ➡️ Office, Acrobat Reader, Photoshop y Corel.
+      ➡️ Asistencia remota para consultas puntuales.
+      ➡️ Reparación y mantenimiento de PC y notebooks.
+
+      📍 {Estamos en|Nos encontrás en|Te esperamos en} Monteagudo 1140, Tafí Viejo
+      💳 {Recibimos tarjetas de crédito|Aceptamos tarjetas de crédito}
+      📲 {WhatsApp|Consultas por WhatsApp|Escribinos al WhatsApp}: 381 649-6790
+
+      {¡Te esperamos!|¡Consultanos sin compromiso!|¡Escribinos y te respondemos enseguida!} 🙌
+
+  - id: netbook-2026-11-07
+    activa: true
+    fecha: 2026-11-07        # Sabado
+    hora: "16:47"
+    grupos: ["Alguien Sabe!!! Tafi Viejo Ventas!!!"]
+    imagenes: [netbook-2026-10-12.jpg]
+    repetir_cada_dias: 7
+    texto: |
+      💻 DESBLOQUEO DE NETBOOKS G1 A G15 💻
+
+      {¡Hola a todos!|¡Buenas, vecinos!|¡Hola! ¿Cómo andan?} 👋 {¿Tenés una netbook del colegio bloqueada?|¿Hay una netbook guardada que no se puede usar?|¿Se bloqueó la netbook y no sabés cómo seguir?} {Podemos ayudarte|Te la desbloqueamos|Nos encargamos de todo}:
+
+      ➡️ Desbloqueo de netbooks G1 a G15.
+      ➡️ Desbloqueo de contraseñas, patrones y cuentas.
+      ➡️ Instalación de Windows y programas.
+      ➡️ Limpieza y mantenimiento.
 
       📍 {Estamos en|Nos encontrás en|Te esperamos en} Monteagudo 1140, Tafí Viejo
       💳 {Recibimos tarjetas de crédito|Aceptamos tarjetas de crédito}
