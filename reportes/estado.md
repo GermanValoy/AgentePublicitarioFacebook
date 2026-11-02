@@ -1,11 +1,11 @@
 # Estado del agente
 
-_Actualizado: 01/11/2026 00:00 (America/Argentina/Tucuman). Si esta fecha tiene más de un día, el agente probablemente no está funcionando._
+_Actualizado: 02/11/2026 00:00 (America/Argentina/Tucuman). Si esta fecha tiene más de un día, el agente probablemente no está funcionando._
 
 - **Estado:** ✅ funcionando
 - **Modo:** aprobacion
 - **Telegram:** conectado
-- **Versión del agente:** 5bd93b4 (31/10 19:30)
+- **Versión del agente:** 03eabc0 (01/11 21:50)
 - **Publicaciones hoy:** 0/3
 - **Últimos 7 días:** 5 publicada
 
@@ -13,12 +13,12 @@ _Actualizado: 01/11/2026 00:00 (America/Argentina/Tucuman). Si esta fecha tiene 
 
 | Cuándo | Publicación | Grupos |
 |---|---|---|
-| 01/11 15:21 | ssd-ram-2026-11-01 | FERIA AMERICANA TAFI VIEJO |
-| 02/11 10:37 | limpieza-2026-10-26 | Grupo nuevo 2 (…4801) |
-| 03/11 15:12 | celulares-2026-10-27 | Grupo nuevo 3 (…2145) |
-| 04/11 17:26 | consolas-2026-10-28 | Alguien sabe Yo se? Por un Tafi mejor |
-| 05/11 16:04 | netbook-2026-10-29 | Grupo nuevo 1 (…6047) |
-| 07/11 10:53 | windows-2026-10-31 | Alguien Sabe!!! Tafi Viejo Ventas!!! |
+| 02/11 13:08 | bateria-2026-11-02 | Grupo nuevo 2 (…4801) |
+| 03/11 17:14 | windows-2026-11-03 | Grupo nuevo 3 (…2145) |
+| 04/11 11:42 | consolas-2026-11-04 | FERIA AMERICANA TAFI VIEJO |
+| 05/11 15:36 | limpieza-2026-11-05 | Alguien sabe Yo se? Por un Tafi mejor |
+| 06/11 12:23 | ssd-ram-2026-11-06 | Grupo nuevo 1 (…6047) |
+| 07/11 16:47 | netbook-2026-11-07 | Alguien Sabe!!! Tafi Viejo Ventas!!! |
 
 ## Desde cuándo se puede publicar en cada grupo
 
@@ -55,13 +55,13 @@ _Regla anti-baneo: no repetir en un grupo antes de 7 días. Programá cada grupo
 
 ## Avisos y errores recientes del registro
 
-- `2026-10-29 04:39:12 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
-- `2026-10-29 11:24:37 WARNING  Telegram: Sin conexión con Telegram: <urlopen error [WinError 10060] Se produjo un error durante el intento de conexión ya que la parte conectada no respondió adecuadamente tras un periodo de`
-- `2026-10-29 12:13:56 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
-- `2026-10-29 18:56:53 WARNING  Telegram: Sin conexión con Telegram: <urlopen error [WinError 10054] Se ha forzado la interrupción de una conexión existente por el host remoto>`
-- `2026-10-29 22:18:56 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
-- `2026-10-30 16:18:34 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
-- `2026-10-30 19:42:56 WARNING  No se pudo responder el comando: Sin conexión con Telegram: <urlopen error [WinError 10060] Se produjo un error durante el intento de conexión ya que la parte conectada no respondió adecuadam`
-- `2026-10-31 02:25:36 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
-- `2026-10-31 19:24:38 WARNING  Telegram: Sin conexión con Telegram: <urlopen error _ssl.c:983: The handshake operation timed out>`
-- `2026-10-31 22:45:49 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
+- `2026-11-01 06:01:53 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
+- `2026-11-01 09:12:23 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
+- `2026-11-01 09:57:30 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
+- `2026-11-01 10:47:04 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
+- `2026-11-01 12:07:36 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
+- `2026-11-01 13:29:05 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
+- `2026-11-01 20:55:54 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
+- `2026-11-01 22:00:15 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
+- `2026-11-01 22:11:01 WARNING  Telegram: Bad Gateway`
+- `2026-11-01 22:12:33 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
