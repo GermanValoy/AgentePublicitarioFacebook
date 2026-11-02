@@ -1,24 +1,24 @@
 # Estado del agente
 
-_Actualizado: 02/11/2026 12:18 (America/Argentina/Tucuman). Si esta fecha tiene más de un día, el agente probablemente no está funcionando._
+_Actualizado: 02/11/2026 13:26 (America/Argentina/Tucuman). Si esta fecha tiene más de un día, el agente probablemente no está funcionando._
 
 - **Estado:** ✅ funcionando
 - **Modo:** aprobacion
 - **Telegram:** conectado
-- **Versión del agente:** 2c49aae (02/11 10:10)
-- **Publicaciones hoy:** 0/3
-- **Últimos 7 días:** 4 publicada
+- **Versión del agente:** ff1724c (02/11 12:18)
+- **Publicaciones hoy:** 1/3
+- **Últimos 7 días:** 5 publicada
 
 ## Próximas programadas
 
 | Cuándo | Publicación | Grupos |
 |---|---|---|
-| 02/11 13:08 | bateria-2026-11-02 | Grupo nuevo 2 (…4801) |
 | 03/11 17:14 | windows-2026-11-03 | Grupo nuevo 3 (…2145) |
 | 04/11 11:42 | consolas-2026-11-04 | FERIA AMERICANA TAFI VIEJO |
 | 05/11 15:36 | limpieza-2026-11-05 | Alguien sabe Yo se? Por un Tafi mejor |
 | 06/11 12:23 | ssd-ram-2026-11-06 | Grupo nuevo 1 (…6047) |
 | 07/11 16:47 | netbook-2026-11-07 | Alguien Sabe!!! Tafi Viejo Ventas!!! |
+| 09/11 13:08 | bateria-2026-11-02 | Grupo nuevo 2 (…4801) |
 
 ## Desde cuándo se puede publicar en cada grupo
 
@@ -30,13 +30,14 @@ _Regla anti-baneo: no repetir en un grupo antes de 7 días. Programá cada grupo
 | Alguien Sabe!!! Tafi Viejo Ventas!!! | 31/10 13:01 | 07/11 13:01 | todos |
 | Alguien sabe Yo se? Por un Tafi mejor | 28/10 17:54 | 04/11 17:54 | todos |
 | Grupo nuevo 1 (…6047) | 29/10 16:15 | 05/11 16:15 | todos |
-| Grupo nuevo 2 (…4801) | 26/10 11:19 | 02/11 11:19 | todos |
+| Grupo nuevo 2 (…4801) | 02/11 13:25 | 09/11 13:25 | todos |
 | Grupo nuevo 3 (…2145) | 27/10 15:28 | 03/11 15:28 | todos |
 
 ## Últimos movimientos
 
 | Fecha | Estado | Publicación | Grupo | Detalle |
 |---|---|---|---|---|
+| 02/11 13:25 | publicada | bateria-2026-11-02 | Grupo nuevo 2 (…4801) | Publicada automáticamente / captura: 20261102-132459-publicada.png |
 | 31/10 13:01 | publicada | windows-2026-10-31 | Alguien Sabe!!! Tafi Viejo Ventas!!! | Publicada automáticamente / captura: 20261031-130100-publicada.png |
 | 29/10 16:15 | publicada | netbook-2026-10-29 | Grupo nuevo 1 (…6047) | Publicada automáticamente / captura: 20261029-161553-publicada.png |
 | 28/10 17:54 | publicada | consolas-2026-10-28 | Alguien sabe Yo se? Por un Tafi mejor | Publicada automáticamente / captura: 20261028-175444-publicada.png |
@@ -51,11 +52,9 @@ _Regla anti-baneo: no repetir en un grupo antes de 7 días. Programá cada grupo
 | 19/10 11:00 | error_navegador | netbook-2026-10-19 | Grupo nuevo 3 (…2145) | No se pudieron adjuntar las imágenes: se cargó el archivo pero Facebook no mostró la vista previa de la foto / captura:  |
 | 17/10 19:54 | publicada | consolas-2026-10-17 | Grupo nuevo 2 (…4801) | Publicada automáticamente / captura: 20261017-195441-publicada.png |
 | 16/10 17:25 | publicada | soporte-2026-10-16 | Alguien Sabe!!! Tafi Viejo Ventas!!! | Publicada automáticamente / captura: 20261016-172524-publicada.png |
-| 15/10 11:36 | publicada | celulares-2026-10-15 | Grupo nuevo 1 (…6047) | Publicada automáticamente / captura: 20261015-113639-publicada.png |
 
 ## Avisos y errores recientes del registro
 
-- `2026-11-01 09:12:23 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
 - `2026-11-01 09:57:30 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
 - `2026-11-01 10:47:04 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
 - `2026-11-01 12:07:36 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
@@ -65,3 +64,4 @@ _Regla anti-baneo: no repetir en un grupo antes de 7 días. Programá cada grupo
 - `2026-11-01 22:11:01 WARNING  Telegram: Bad Gateway`
 - `2026-11-01 22:12:33 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
 - `2026-11-02 01:06:03 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
+- `2026-11-02 12:34:28 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
