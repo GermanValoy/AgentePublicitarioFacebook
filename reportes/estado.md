@@ -1,24 +1,24 @@
 # Estado del agente
 
-_Actualizado: 04/11/2026 00:00 (America/Argentina/Tucuman). Si esta fecha tiene más de un día, el agente probablemente no está funcionando._
+_Actualizado: 04/11/2026 11:51 (America/Argentina/Tucuman). Si esta fecha tiene más de un día, el agente probablemente no está funcionando._
 
 - **Estado:** ✅ funcionando
 - **Modo:** aprobacion
 - **Telegram:** conectado
-- **Versión del agente:** ce56df6 (03/11 23:38)
-- **Publicaciones hoy:** 0/3
-- **Últimos 7 días:** 4 publicada
+- **Versión del agente:** a70e25f (04/11 00:09)
+- **Publicaciones hoy:** 1/3
+- **Últimos 7 días:** 5 publicada, 1 vencida
 
 ## Próximas programadas
 
 | Cuándo | Publicación | Grupos |
 |---|---|---|
-| 04/11 11:42 | consolas-2026-11-04 | FERIA AMERICANA TAFI VIEJO |
 | 05/11 15:36 | limpieza-2026-11-05 | Alguien sabe Yo se? Por un Tafi mejor |
 | 06/11 12:23 | ssd-ram-2026-11-06 | Grupo nuevo 1 (…6047) |
 | 07/11 16:47 | netbook-2026-11-07 | Alguien Sabe!!! Tafi Viejo Ventas!!! |
 | 09/11 13:08 | bateria-2026-11-02 | Grupo nuevo 2 (…4801) |
 | 10/11 17:14 | windows-2026-11-03 | Grupo nuevo 3 (…2145) |
+| 11/11 11:42 | consolas-2026-11-04 | FERIA AMERICANA TAFI VIEJO |
 
 ## Desde cuándo se puede publicar en cada grupo
 
@@ -26,7 +26,7 @@ _Regla anti-baneo: no repetir en un grupo antes de 7 días. Programá cada grupo
 
 | Grupo | Última publicación | Se puede desde | Días permitidos |
 |---|---|---|---|
-| FERIA AMERICANA TAFI VIEJO | 24/10 13:09 | 31/10 13:09 | todos |
+| FERIA AMERICANA TAFI VIEJO | 04/11 11:51 | 11/11 11:51 | todos |
 | Alguien Sabe!!! Tafi Viejo Ventas!!! | 31/10 13:01 | 07/11 13:01 | todos |
 | Alguien sabe Yo se? Por un Tafi mejor | 28/10 17:54 | 04/11 17:54 | todos |
 | Grupo nuevo 1 (…6047) | 29/10 16:15 | 05/11 16:15 | todos |
@@ -37,6 +37,8 @@ _Regla anti-baneo: no repetir en un grupo antes de 7 días. Programá cada grupo
 
 | Fecha | Estado | Publicación | Grupo | Detalle |
 |---|---|---|---|---|
+| 04/11 11:51 | publicada | consolas-2026-11-04 | FERIA AMERICANA TAFI VIEJO | Publicada automáticamente / captura: 20261104-115102-publicada.png |
+| 04/11 05:16 | vencida | windows-2026-11-03 | Grupo nuevo 3 (…2145) | Pasó el retraso máximo sin poder publicarse (se evita publicar en ráfaga) |
 | 02/11 13:25 | publicada | bateria-2026-11-02 | Grupo nuevo 2 (…4801) | Publicada automáticamente / captura: 20261102-132459-publicada.png |
 | 31/10 13:01 | publicada | windows-2026-10-31 | Alguien Sabe!!! Tafi Viejo Ventas!!! | Publicada automáticamente / captura: 20261031-130100-publicada.png |
 | 29/10 16:15 | publicada | netbook-2026-10-29 | Grupo nuevo 1 (…6047) | Publicada automáticamente / captura: 20261029-161553-publicada.png |
@@ -50,18 +52,16 @@ _Regla anti-baneo: no repetir en un grupo antes de 7 días. Programá cada grupo
 | 20/10 14:45 | error_navegador | windows-2026-10-20 | Alguien sabe Yo se? Por un Tafi mejor | Error inesperado: Page.goto: net::ERR_CONNECTION_TIMED_OUT at https://www.facebook.com/ Call log:   - navigating to "htt |
 | 19/10 11:08 | publicada | netbook-2026-10-19 | Grupo nuevo 3 (…2145) | Publicada automáticamente / captura: 20261019-110852-publicada.png |
 | 19/10 11:00 | error_navegador | netbook-2026-10-19 | Grupo nuevo 3 (…2145) | No se pudieron adjuntar las imágenes: se cargó el archivo pero Facebook no mostró la vista previa de la foto / captura:  |
-| 17/10 19:54 | publicada | consolas-2026-10-17 | Grupo nuevo 2 (…4801) | Publicada automáticamente / captura: 20261017-195441-publicada.png |
-| 16/10 17:25 | publicada | soporte-2026-10-16 | Alguien Sabe!!! Tafi Viejo Ventas!!! | Publicada automáticamente / captura: 20261016-172524-publicada.png |
 
 ## Avisos y errores recientes del registro
 
-- `2026-11-01 22:12:33 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
-- `2026-11-02 01:06:03 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
-- `2026-11-02 12:34:28 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
-- `2026-11-02 18:31:30 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
 - `2026-11-02 22:11:04 WARNING  Telegram: Too Many Requests: retry after 5`
 - `2026-11-02 22:12:35 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
 - `2026-11-02 22:34:37 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
 - `2026-11-02 23:52:32 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
 - `2026-11-03 08:53:06 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
 - `2026-11-03 13:12:39 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
+- `2026-11-04 03:24:18 WARNING  Telegram: Sin conexión con Telegram: <urlopen error [WinError 10060] Se produjo un error durante el intento de conexión ya que la parte conectada no respondió adecuadamente tras un periodo de`
+- `2026-11-04 07:24:26 WARNING  Telegram: Sin conexión con Telegram: <urlopen error [WinError 10054] Se ha forzado la interrupción de una conexión existente por el host remoto>`
+- `2026-11-04 11:09:46 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
+- `2026-11-04 11:24:33 WARNING  Telegram: Sin conexión con Telegram: <urlopen error [WinError 10060] Se produjo un error durante el intento de conexión ya que la parte conectada no respondió adecuadamente tras un periodo de`
