@@ -1,13 +1,13 @@
 # Estado del agente
 
-_Actualizado: 04/11/2026 17:47 (America/Argentina/Tucuman). Si esta fecha tiene más de un día, el agente probablemente no está funcionando._
+_Actualizado: 04/11/2026 23:08 (America/Argentina/Tucuman). Si esta fecha tiene más de un día, el agente probablemente no está funcionando._
 
 - **Estado:** ✅ funcionando
 - **Modo:** aprobacion
 - **Telegram:** conectado
-- **Versión del agente:** 002e28d (04/11 11:52)
+- **Versión del agente:** fb65679 (04/11 17:48)
 - **Publicaciones hoy:** 1/3
-- **Últimos 7 días:** 5 publicada, 1 vencida
+- **Últimos 7 días:** 4 publicada, 1 vencida
 
 ## Próximas programadas
 
@@ -55,8 +55,6 @@ _Regla anti-baneo: no repetir en un grupo antes de 7 días. Programá cada grupo
 
 ## Avisos y errores recientes del registro
 
-- `2026-11-02 22:11:04 WARNING  Telegram: Too Many Requests: retry after 5`
-- `2026-11-02 22:12:35 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
 - `2026-11-02 22:34:37 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
 - `2026-11-02 23:52:32 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
 - `2026-11-03 08:53:06 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
@@ -65,3 +63,5 @@ _Regla anti-baneo: no repetir en un grupo antes de 7 días. Programá cada grupo
 - `2026-11-04 07:24:26 WARNING  Telegram: Sin conexión con Telegram: <urlopen error [WinError 10054] Se ha forzado la interrupción de una conexión existente por el host remoto>`
 - `2026-11-04 11:09:46 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
 - `2026-11-04 11:24:33 WARNING  Telegram: Sin conexión con Telegram: <urlopen error [WinError 10060] Se produjo un error durante el intento de conexión ya que la parte conectada no respondió adecuadamente tras un periodo de`
+- `2026-11-04 18:27:27 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
+- `2026-11-04 21:14:46 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
