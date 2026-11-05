@@ -1,24 +1,24 @@
 # Estado del agente
 
-_Actualizado: 05/11/2026 14:34 (America/Argentina/Tucuman). Si esta fecha tiene más de un día, el agente probablemente no está funcionando._
+_Actualizado: 05/11/2026 18:21 (America/Argentina/Tucuman). Si esta fecha tiene más de un día, el agente probablemente no está funcionando._
 
 - **Estado:** ✅ funcionando
 - **Modo:** aprobacion
 - **Telegram:** conectado
-- **Versión del agente:** dc5b5a2 (05/11 00:27)
-- **Publicaciones hoy:** 0/3
+- **Versión del agente:** 41d48b3 (05/11 14:34)
+- **Publicaciones hoy:** 1/3
 - **Últimos 7 días:** 4 publicada, 1 vencida
 
 ## Próximas programadas
 
 | Cuándo | Publicación | Grupos |
 |---|---|---|
-| 05/11 15:36 | limpieza-2026-11-05 | Alguien sabe Yo se? Por un Tafi mejor |
 | 06/11 12:23 | ssd-ram-2026-11-06 | Grupo nuevo 1 (…6047) |
 | 07/11 16:47 | netbook-2026-11-07 | Alguien Sabe!!! Tafi Viejo Ventas!!! |
 | 09/11 13:08 | bateria-2026-11-02 | Grupo nuevo 2 (…4801) |
 | 10/11 17:14 | windows-2026-11-03 | Grupo nuevo 3 (…2145) |
 | 11/11 11:42 | consolas-2026-11-04 | FERIA AMERICANA TAFI VIEJO |
+| 12/11 15:36 | limpieza-2026-11-05 | Alguien sabe Yo se? Por un Tafi mejor |
 
 ## Desde cuándo se puede publicar en cada grupo
 
@@ -28,7 +28,7 @@ _Regla anti-baneo: no repetir en un grupo antes de 7 días. Programá cada grupo
 |---|---|---|---|
 | FERIA AMERICANA TAFI VIEJO | 04/11 11:51 | 11/11 11:51 | todos |
 | Alguien Sabe!!! Tafi Viejo Ventas!!! | 31/10 13:01 | 07/11 13:01 | todos |
-| Alguien sabe Yo se? Por un Tafi mejor | 28/10 17:54 | 04/11 17:54 | todos |
+| Alguien sabe Yo se? Por un Tafi mejor | 05/11 18:21 | 12/11 18:21 | todos |
 | Grupo nuevo 1 (…6047) | 29/10 16:15 | 05/11 16:15 | todos |
 | Grupo nuevo 2 (…4801) | 02/11 13:25 | 09/11 13:25 | todos |
 | Grupo nuevo 3 (…2145) | 27/10 15:28 | 03/11 15:28 | todos |
@@ -37,6 +37,7 @@ _Regla anti-baneo: no repetir en un grupo antes de 7 días. Programá cada grupo
 
 | Fecha | Estado | Publicación | Grupo | Detalle |
 |---|---|---|---|---|
+| 05/11 18:21 | publicada | limpieza-2026-11-05 | Alguien sabe Yo se? Por un Tafi mejor | Publicada automáticamente / captura: 20261105-182123-publicada.png |
 | 04/11 11:51 | publicada | consolas-2026-11-04 | FERIA AMERICANA TAFI VIEJO | Publicada automáticamente / captura: 20261104-115102-publicada.png |
 | 04/11 05:16 | vencida | windows-2026-11-03 | Grupo nuevo 3 (…2145) | Pasó el retraso máximo sin poder publicarse (se evita publicar en ráfaga) |
 | 02/11 13:25 | publicada | bateria-2026-11-02 | Grupo nuevo 2 (…4801) | Publicada automáticamente / captura: 20261102-132459-publicada.png |
@@ -51,7 +52,6 @@ _Regla anti-baneo: no repetir en un grupo antes de 7 días. Programá cada grupo
 | 20/10 14:57 | publicada | windows-2026-10-20 | Alguien sabe Yo se? Por un Tafi mejor | Publicada automáticamente / captura: 20261020-145746-publicada.png |
 | 20/10 14:45 | error_navegador | windows-2026-10-20 | Alguien sabe Yo se? Por un Tafi mejor | Error inesperado: Page.goto: net::ERR_CONNECTION_TIMED_OUT at https://www.facebook.com/ Call log:   - navigating to "htt |
 | 19/10 11:08 | publicada | netbook-2026-10-19 | Grupo nuevo 3 (…2145) | Publicada automáticamente / captura: 20261019-110852-publicada.png |
-| 19/10 11:00 | error_navegador | netbook-2026-10-19 | Grupo nuevo 3 (…2145) | No se pudieron adjuntar las imágenes: se cargó el archivo pero Facebook no mostró la vista previa de la foto / captura:  |
 
 ## Avisos y errores recientes del registro
 
