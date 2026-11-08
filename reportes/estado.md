@@ -1,11 +1,11 @@
 # Estado del agente
 
-_Actualizado: 07/11/2026 14:42 (America/Argentina/Tucuman). Si esta fecha tiene más de un día, el agente probablemente no está funcionando._
+_Actualizado: 08/11/2026 01:11 (America/Argentina/Tucuman). Si esta fecha tiene más de un día, el agente probablemente no está funcionando._
 
 - **Estado:** ✅ funcionando
 - **Modo:** aprobacion
 - **Telegram:** conectado
-- **Versión del agente:** 440e3c8 (07/11 11:32)
+- **Versión del agente:** dc6dc0d (07/11 14:42)
 - **Publicaciones hoy:** 0/3
 - **Últimos 7 días:** 4 publicada, 1 vencida
 
@@ -13,12 +13,12 @@ _Actualizado: 07/11/2026 14:42 (America/Argentina/Tucuman). Si esta fecha tiene 
 
 | Cuándo | Publicación | Grupos |
 |---|---|---|
-| 07/11 16:47 | netbook-2026-11-07 | Alguien Sabe!!! Tafi Viejo Ventas!!! |
 | 09/11 13:08 | bateria-2026-11-02 | Grupo nuevo 2 (…4801) |
 | 10/11 17:14 | windows-2026-11-03 | Grupo nuevo 3 (…2145) |
 | 11/11 11:42 | consolas-2026-11-04 | FERIA AMERICANA TAFI VIEJO |
 | 12/11 15:36 | limpieza-2026-11-05 | Alguien sabe Yo se? Por un Tafi mejor |
 | 13/11 12:23 | ssd-ram-2026-11-06 | Grupo nuevo 1 (…6047) |
+| 14/11 16:47 | netbook-2026-11-07 | Alguien Sabe!!! Tafi Viejo Ventas!!! |
 
 ## Desde cuándo se puede publicar en cada grupo
 
@@ -55,7 +55,6 @@ _Regla anti-baneo: no repetir en un grupo antes de 7 días. Programá cada grupo
 
 ## Avisos y errores recientes del registro
 
-- `2026-11-05 12:15:32 WARNING  Telegram: Sin conexión con Telegram: <urlopen error _ssl.c:983: The handshake operation timed out>`
 - `2026-11-05 12:46:42 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
 - `2026-11-05 21:30:20 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
 - `2026-11-05 22:37:03 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
@@ -65,3 +64,4 @@ _Regla anti-baneo: no repetir en un grupo antes de 7 días. Programá cada grupo
 - `2026-11-06 21:54:27 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
 - `2026-11-06 23:05:19 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
 - `2026-11-07 00:32:52 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
+- `2026-11-07 14:48:11 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
