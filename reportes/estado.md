@@ -1,13 +1,13 @@
 # Estado del agente
 
-_Actualizado: 09/11/2026 11:30 (America/Argentina/Tucuman). Si esta fecha tiene más de un día, el agente probablemente no está funcionando._
+_Actualizado: 09/11/2026 14:36 (America/Argentina/Tucuman). Si esta fecha tiene más de un día, el agente probablemente no está funcionando._
 
 - **Estado:** ✅ funcionando
 - **Modo:** aprobacion
 - **Telegram:** conectado
-- **Versión del agente:** f2bf275 (09/11 08:28)
+- **Versión del agente:** b4f7853 (09/11 11:31)
 - **Publicaciones hoy:** 1/3
-- **Últimos 7 días:** 5 publicada, 2 vencida
+- **Últimos 7 días:** 4 publicada, 2 vencida
 
 ## Próximas programadas
 
@@ -55,7 +55,6 @@ _Regla anti-baneo: no repetir en un grupo antes de 7 días. Programá cada grupo
 
 ## Avisos y errores recientes del registro
 
-- `2026-11-08 01:53:20 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
 - `2026-11-08 02:28:08 WARNING  Telegram: Sin conexión con Telegram: <urlopen error [Errno 11001] getaddrinfo failed>`
 - `2026-11-08 02:42:48 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
 - `2026-11-08 20:55:00 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
@@ -65,3 +64,4 @@ _Regla anti-baneo: no repetir en un grupo antes de 7 días. Programá cada grupo
 - `2026-11-09 09:55:08 WARNING  Telegram: Bad Gateway`
 - `2026-11-09 09:56:40 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
 - `2026-11-09 11:22:00 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
+- `2026-11-09 14:03:38 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
