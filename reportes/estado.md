@@ -1,11 +1,11 @@
 # Estado del agente
 
-_Actualizado: 08/11/2026 17:53 (America/Argentina/Tucuman). Si esta fecha tiene más de un día, el agente probablemente no está funcionando._
+_Actualizado: 09/11/2026 00:00 (America/Argentina/Tucuman). Si esta fecha tiene más de un día, el agente probablemente no está funcionando._
 
 - **Estado:** ✅ funcionando
 - **Modo:** aprobacion
 - **Telegram:** conectado
-- **Versión del agente:** e76ab04 (08/11 13:56)
+- **Versión del agente:** f6e87ef (08/11 21:50)
 - **Publicaciones hoy:** 0/3
 - **Últimos 7 días:** 4 publicada, 2 vencida
 
@@ -13,12 +13,12 @@ _Actualizado: 08/11/2026 17:53 (America/Argentina/Tucuman). Si esta fecha tiene 
 
 | Cuándo | Publicación | Grupos |
 |---|---|---|
-| 09/11 13:08 | bateria-2026-11-02 | Grupo nuevo 2 (…4801) |
-| 10/11 17:14 | windows-2026-11-03 | Grupo nuevo 3 (…2145) |
-| 11/11 11:42 | consolas-2026-11-04 | FERIA AMERICANA TAFI VIEJO |
-| 12/11 15:36 | limpieza-2026-11-05 | Alguien sabe Yo se? Por un Tafi mejor |
-| 13/11 12:23 | ssd-ram-2026-11-06 | Grupo nuevo 1 (…6047) |
-| 14/11 16:47 | netbook-2026-11-07 | Alguien Sabe!!! Tafi Viejo Ventas!!! |
+| 09/11 11:21 | general-2026-11-09 | Grupo nuevo 3 (…2145) |
+| 10/11 16:05 | celulares-2026-11-10 | Alguien Sabe!!! Tafi Viejo Ventas!!! |
+| 11/11 14:12 | netbook-2026-11-11 | FERIA AMERICANA TAFI VIEJO |
+| 12/11 10:47 | windows-2026-11-12 | Grupo nuevo 2 (…4801) |
+| 13/11 15:26 | consolas-2026-11-13 | Grupo nuevo 1 (…6047) |
+| 14/11 11:38 | ssd-ram-2026-11-14 | Alguien sabe Yo se? Por un Tafi mejor |
 
 ## Desde cuándo se puede publicar en cada grupo
 
@@ -55,8 +55,6 @@ _Regla anti-baneo: no repetir en un grupo antes de 7 días. Programá cada grupo
 
 ## Avisos y errores recientes del registro
 
-- `2026-11-06 08:37:44 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
-- `2026-11-06 14:04:01 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
 - `2026-11-06 18:44:47 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
 - `2026-11-06 21:54:27 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
 - `2026-11-06 23:05:19 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
@@ -65,3 +63,5 @@ _Regla anti-baneo: no repetir en un grupo antes de 7 días. Programá cada grupo
 - `2026-11-08 01:53:20 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
 - `2026-11-08 02:28:08 WARNING  Telegram: Sin conexión con Telegram: <urlopen error [Errno 11001] getaddrinfo failed>`
 - `2026-11-08 02:42:48 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
+- `2026-11-08 20:55:00 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
+- `2026-11-08 23:52:09 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
