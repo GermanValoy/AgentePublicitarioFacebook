@@ -1,12 +1,12 @@
 # Estado del agente
 
-_Actualizado: 13/11/2026 19:07 (America/Argentina/Tucuman). Si esta fecha tiene más de un día, el agente probablemente no está funcionando._
+_Actualizado: 14/11/2026 00:00 (America/Argentina/Tucuman). Si esta fecha tiene más de un día, el agente probablemente no está funcionando._
 
 - **Estado:** ✅ funcionando
 - **Modo:** aprobacion
 - **Telegram:** conectado
-- **Versión del agente:** 326252c (13/11 08:46)
-- **Publicaciones hoy:** 1/3
+- **Versión del agente:** 1d15d08 (13/11 19:08)
+- **Publicaciones hoy:** 0/3
 - **Últimos 7 días:** 5 publicada, 1 vencida
 
 ## Próximas programadas
@@ -55,7 +55,6 @@ _Regla anti-baneo: no repetir en un grupo antes de 7 días. Programá cada grupo
 
 ## Avisos y errores recientes del registro
 
-- `2026-11-11 10:31:24 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
 - `2026-11-11 13:52:23 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
 - `2026-11-11 17:54:41 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
 - `2026-11-12 02:46:46 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
@@ -65,3 +64,4 @@ _Regla anti-baneo: no repetir en un grupo antes de 7 días. Programá cada grupo
 - `2026-11-12 06:05:05 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
 - `2026-11-13 11:13:05 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
 - `2026-11-13 11:57:46 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
+- `2026-11-13 20:54:24 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
