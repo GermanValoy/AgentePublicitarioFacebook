@@ -1,13 +1,13 @@
 # Estado del agente
 
-_Actualizado: 14/11/2026 13:14 (America/Argentina/Tucuman). Si esta fecha tiene más de un día, el agente probablemente no está funcionando._
+_Actualizado: 14/11/2026 13:26 (America/Argentina/Tucuman). Si esta fecha tiene más de un día, el agente probablemente no está funcionando._
 
 - **Estado:** ✅ funcionando
 - **Modo:** aprobacion
 - **Telegram:** conectado
-- **Versión del agente:** 7517c48 (14/11 00:12)
-- **Publicaciones hoy:** 0/3
-- **Últimos 7 días:** 1 error_navegador, 5 publicada, 1 vencida
+- **Versión del agente:** 2d405fb (14/11 13:14)
+- **Publicaciones hoy:** 1/3
+- **Últimos 7 días:** 1 error_navegador, 6 publicada, 1 vencida
 
 ## Próximas programadas
 
@@ -28,7 +28,7 @@ _Regla anti-baneo: no repetir en un grupo antes de 7 días. Programá cada grupo
 |---|---|---|---|
 | FERIA AMERICANA TAFI VIEJO | 11/11 14:59 | 18/11 14:59 | todos |
 | Alguien Sabe!!! Tafi Viejo Ventas!!! | 10/11 20:19 | 17/11 20:19 | todos |
-| Alguien sabe Yo se? Por un Tafi mejor | 05/11 18:21 | 12/11 18:21 | todos |
+| Alguien sabe Yo se? Por un Tafi mejor | 14/11 13:26 | 21/11 13:26 | todos |
 | Grupo nuevo 1 (…6047) | 13/11 19:06 | 20/11 19:06 | todos |
 | Grupo nuevo 2 (…4801) | 12/11 10:51 | 19/11 10:51 | todos |
 | Grupo nuevo 3 (…2145) | 09/11 11:29 | 16/11 11:29 | todos |
@@ -37,6 +37,7 @@ _Regla anti-baneo: no repetir en un grupo antes de 7 días. Programá cada grupo
 
 | Fecha | Estado | Publicación | Grupo | Detalle |
 |---|---|---|---|---|
+| 14/11 13:26 | publicada | ssd-ram-2026-11-14 | Alguien sabe Yo se? Por un Tafi mejor | Publicada automáticamente / captura: 20261114-132559-publicada.png |
 | 14/11 13:13 | error_navegador | ssd-ram-2026-11-14 | Alguien sabe Yo se? Por un Tafi mejor | Error inesperado: no se abrió la ventana «Crear publicación» con el cuadro para escribir / captura: 20261114-131334-erro |
 | 13/11 19:06 | publicada | consolas-2026-11-13 | Grupo nuevo 1 (…6047) | Publicada automáticamente / captura: 20261113-190642-publicada.png |
 | 12/11 10:51 | publicada | windows-2026-11-12 | Grupo nuevo 2 (…4801) | Publicada automáticamente / captura: 20261112-105138-publicada.png |
@@ -51,7 +52,6 @@ _Regla anti-baneo: no repetir en un grupo antes de 7 días. Programá cada grupo
 | 02/11 13:25 | publicada | bateria-2026-11-02 | Grupo nuevo 2 (…4801) | Publicada automáticamente / captura: 20261102-132459-publicada.png |
 | 31/10 13:01 | publicada | windows-2026-10-31 | Alguien Sabe!!! Tafi Viejo Ventas!!! | Publicada automáticamente / captura: 20261031-130100-publicada.png |
 | 29/10 16:15 | publicada | netbook-2026-10-29 | Grupo nuevo 1 (…6047) | Publicada automáticamente / captura: 20261029-161553-publicada.png |
-| 28/10 17:54 | publicada | consolas-2026-10-28 | Alguien sabe Yo se? Por un Tafi mejor | Publicada automáticamente / captura: 20261028-175444-publicada.png |
 
 ## Avisos y errores recientes del registro
 
