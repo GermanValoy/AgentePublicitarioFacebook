@@ -1,24 +1,24 @@
 # Estado del agente
 
-_Actualizado: 14/11/2026 00:00 (America/Argentina/Tucuman). Si esta fecha tiene más de un día, el agente probablemente no está funcionando._
+_Actualizado: 14/11/2026 13:14 (America/Argentina/Tucuman). Si esta fecha tiene más de un día, el agente probablemente no está funcionando._
 
 - **Estado:** ✅ funcionando
 - **Modo:** aprobacion
 - **Telegram:** conectado
-- **Versión del agente:** 1d15d08 (13/11 19:08)
+- **Versión del agente:** 7517c48 (14/11 00:12)
 - **Publicaciones hoy:** 0/3
-- **Últimos 7 días:** 5 publicada, 1 vencida
+- **Últimos 7 días:** 1 error_navegador, 5 publicada, 1 vencida
 
 ## Próximas programadas
 
 | Cuándo | Publicación | Grupos |
 |---|---|---|
-| 14/11 11:38 | ssd-ram-2026-11-14 | Alguien sabe Yo se? Por un Tafi mejor |
 | 16/11 11:21 | general-2026-11-09 | Grupo nuevo 3 (…2145) |
 | 17/11 16:05 | celulares-2026-11-10 | Alguien Sabe!!! Tafi Viejo Ventas!!! |
 | 18/11 14:12 | netbook-2026-11-11 | FERIA AMERICANA TAFI VIEJO |
 | 19/11 10:47 | windows-2026-11-12 | Grupo nuevo 2 (…4801) |
 | 20/11 15:26 | consolas-2026-11-13 | Grupo nuevo 1 (…6047) |
+| 21/11 11:38 | ssd-ram-2026-11-14 | Alguien sabe Yo se? Por un Tafi mejor |
 
 ## Desde cuándo se puede publicar en cada grupo
 
@@ -37,6 +37,7 @@ _Regla anti-baneo: no repetir en un grupo antes de 7 días. Programá cada grupo
 
 | Fecha | Estado | Publicación | Grupo | Detalle |
 |---|---|---|---|---|
+| 14/11 13:13 | error_navegador | ssd-ram-2026-11-14 | Alguien sabe Yo se? Por un Tafi mejor | Error inesperado: no se abrió la ventana «Crear publicación» con el cuadro para escribir / captura: 20261114-131334-erro |
 | 13/11 19:06 | publicada | consolas-2026-11-13 | Grupo nuevo 1 (…6047) | Publicada automáticamente / captura: 20261113-190642-publicada.png |
 | 12/11 10:51 | publicada | windows-2026-11-12 | Grupo nuevo 2 (…4801) | Publicada automáticamente / captura: 20261112-105138-publicada.png |
 | 11/11 14:59 | publicada | netbook-2026-11-11 | FERIA AMERICANA TAFI VIEJO | Publicada automáticamente / captura: 20261111-145906-publicada.png |
@@ -51,13 +52,9 @@ _Regla anti-baneo: no repetir en un grupo antes de 7 días. Programá cada grupo
 | 31/10 13:01 | publicada | windows-2026-10-31 | Alguien Sabe!!! Tafi Viejo Ventas!!! | Publicada automáticamente / captura: 20261031-130100-publicada.png |
 | 29/10 16:15 | publicada | netbook-2026-10-29 | Grupo nuevo 1 (…6047) | Publicada automáticamente / captura: 20261029-161553-publicada.png |
 | 28/10 17:54 | publicada | consolas-2026-10-28 | Alguien sabe Yo se? Por un Tafi mejor | Publicada automáticamente / captura: 20261028-175444-publicada.png |
-| 27/10 15:28 | publicada | celulares-2026-10-27 | Grupo nuevo 3 (…2145) | Publicada automáticamente / captura: 20261027-152818-publicada.png |
 
 ## Avisos y errores recientes del registro
 
-- `2026-11-11 13:52:23 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
-- `2026-11-11 17:54:41 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
-- `2026-11-12 02:46:46 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
 - `2026-11-12 03:37:00 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
 - `2026-11-12 04:49:59 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
 - `2026-11-12 05:57:53 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
@@ -65,3 +62,6 @@ _Regla anti-baneo: no repetir en un grupo antes de 7 días. Programá cada grupo
 - `2026-11-13 11:13:05 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
 - `2026-11-13 11:57:46 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
 - `2026-11-13 20:54:24 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
+- `2026-11-14 00:25:41 WARNING  Telegram: Sin conexión con Telegram: <urlopen error [WinError 10054] Se ha forzado la interrupción de una conexión existente por el host remoto>`
+- `2026-11-14 09:45:22 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
+- `2026-11-14 13:13:34 ERROR    Error inesperado al publicar`
