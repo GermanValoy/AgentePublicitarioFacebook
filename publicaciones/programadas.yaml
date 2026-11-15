@@ -1,41 +1,67 @@
 # Calendario: cada grupo activo recibe 1 anuncio por semana, en días distintos.
-# Semana del 09/11 al 15/11. Se repite cada 7 días si no se actualiza.
+# Semana del 16/11 al 22/11. Se repite cada 7 días si no se actualiza.
+# El martes 17 queda libre: ningún grupo cumple el descanso de 7 días ese día dentro del horario.
 
 publicaciones:
-  - id: general-2026-11-09
+  - id: consolas-2026-11-16
     activa: true
-    fecha: 2026-11-09        # Lunes
-    hora: "11:21"
+    fecha: 2026-11-16        # Lunes; grupo disponible desde 16/11 11:29
+    hora: "13:47"
     grupos: ["Grupo nuevo 3 (…2145)"]
-    imagenes: [BannerPublicidad.jpg]
+    imagenes: [consolas-2026-10-05.jpg]
     repetir_cada_dias: 7
     texto: |
-      🛠️ SOPORTE TÉCNICO PARA PC, NOTEBOOKS Y CONSOLAS 🛠️
+      🎮 LIBERACIÓN Y MANTENIMIENTO DE CONSOLAS 🎮
 
-      {¡Hola a todos!|¡Buenas, vecinos!|¡Hola! ¿Cómo andan?} 👋 {Si tu compu, notebook, tablet o consola anda mal, podés acercarte al local|Reparamos equipos de computación y consolas en Tafí Viejo|Tenemos soluciones para tu equipo y también para tu consola}:
+      {¡Hola, vecinos!|¡Buenas a todos!|¡Hola! ¿Qué tal?} 👋 {¿Tenés la Play guardada juntando polvo?|¿Tu consola hace ruido o se calienta mucho?|¿Querés sumar juegos nuevos a tu PlayStation?} {Te la dejamos lista para volver a jugar|La revisamos y la ponemos a punto|Nos encargamos acá en el local}:
 
-      ➡️ Reparación y mantenimiento de PC, notebooks, netbooks y tablets.
-      ➡️ Desbloqueo de contraseñas, patrones y cuentas.
-      ➡️ Limpieza interna y optimización.
-      ➡️ Liberación de PS2, PS3 y PS4, e instalación de juegos.
+      ➡️ Liberación de PS2, PS3 y PS4.
+      ➡️ Instalación de juegos.
+      ➡️ Mantenimiento y limpieza interna.
+
+      {Ideal para aprovechar las vacaciones que se vienen|Así llegás con la consola lista para las vacaciones|Una buena limpieza también ayuda a que no se recaliente}.
 
       📍 {Estamos en|Nos encontrás en|Te esperamos en} Monteagudo 1140, Tafí Viejo
       💳 {Recibimos tarjetas de crédito|Aceptamos tarjetas de crédito}
       📲 {WhatsApp|Consultas por WhatsApp|Escribinos al WhatsApp}: 381 649-6790
 
-      {¡Te esperamos!|¡Consultanos sin compromiso!|¡Escribinos y te respondemos enseguida!} 🙌
+      {¡Te esperamos!|¡Consultanos sin compromiso!|¡Escribinos y coordinamos!} 🙌
 
-  - id: celulares-2026-11-10
+  - id: limpieza-2026-11-18
     activa: true
-    fecha: 2026-11-10        # Martes
-    hora: "16:05"
+    fecha: 2026-11-18        # Miercoles; grupo disponible desde 17/11 20:19
+    hora: "11:34"
     grupos: ["Alguien Sabe!!! Tafi Viejo Ventas!!!"]
+    imagenes: [limpieza-2026-11-18.jpg]
+    repetir_cada_dias: 7
+    texto: |
+      🌡️ SEÑALES DE QUE TU NOTEBOOK NECESITA LIMPIEZA 🌡️
+
+      {¡Hola a todos!|¡Buenas, vecinos!|¡Hola! ¿Cómo andan?} 👋 {Con el calor, el polvo acumulado se nota más|Ahora que empieza el calor conviene revisar esto|Un consejo útil para esta época}. {Fijate si a tu equipo le pasa algo de esto|Prestá atención a estas señales}:
+
+      1️⃣ El ventilador suena fuerte todo el tiempo.
+      2️⃣ Se calienta mucho la base o el teclado.
+      3️⃣ Se pone lenta o se traba sin motivo.
+      4️⃣ Se apaga sola cuando la usás un rato.
+      5️⃣ Hace mucho que no le cambiás la pasta térmica.
+
+      {Si te pasa alguna, te hacemos la limpieza interna|Si te identificaste, la revisamos en el local|Si notás alguna, no esperes a que se dañe}: limpieza de ventiladores, cambio de pasta térmica y revisión general de PC, notebooks y netbooks.
+
+      📍 {Estamos en|Nos encontrás en|Te esperamos en} Monteagudo 1140, Tafí Viejo
+      💳 {Recibimos tarjetas de crédito|Aceptamos tarjetas de crédito}
+      📲 {WhatsApp|Consultas por WhatsApp|Escribinos al WhatsApp}: 381 649-6790
+
+  - id: celulares-2026-11-19
+    activa: true
+    fecha: 2026-11-19        # Jueves; grupo disponible desde 18/11 14:59
+    hora: "16:52"
+    grupos: ["FERIA AMERICANA TAFI VIEJO"]
     imagenes: [servicios-celulares.jpg]
     repetir_cada_dias: 7
     texto: |
-      📱 REPARACIÓN DE CELULARES EN TAFÍ VIEJO 📱
+      📱 SERVICIO TÉCNICO DE CELULARES EN TAFÍ VIEJO 📱
 
-      {¡Hola a todos!|¡Buenas, vecinos!|¡Hola! ¿Cómo andan?} 👋 {¿Se te rompió la pantalla o el celu no carga?|¿Tu celular quedó bloqueado o con el vidrio roto?|¿Necesitás arreglar tu celular?} {Lo revisamos en el local|Te lo resolvemos con garantía|Nos encargamos con entrega rápida}:
+      {¡Hola, vecinos!|¡Buenas a todos!|¡Hola! ¿Cómo va?} 👋 {¿Se te cayó el celu y se rompió la pantalla?|¿Tu celular no carga o quedó bloqueado?|¿Necesitás arreglar el celu sin vueltas?} {Lo resolvemos con garantía y entrega rápida|Te lo arreglamos acá en el local|Traelo y lo revisamos}:
 
       ➡️ Cambio de módulos y vidrios.
       ➡️ Reparación de pin de carga.
@@ -49,94 +75,70 @@ publicaciones:
 
       {¡Te esperamos!|¡Consultanos sin compromiso!|¡Escribinos y te respondemos enseguida!} 🙌
 
-  - id: netbook-2026-11-11
+  - id: netbook-2026-11-20
     activa: true
-    fecha: 2026-11-11        # Miercoles
-    hora: "14:12"
-    grupos: ["FERIA AMERICANA TAFI VIEJO"]
+    fecha: 2026-11-20        # Viernes; grupo disponible desde 19/11 10:51
+    hora: "10:23"
+    grupos: ["Grupo nuevo 2 (…4801)"]
     imagenes: [netbook-2026-10-12.jpg]
     repetir_cada_dias: 7
     texto: |
       💻 DESBLOQUEO DE NETBOOKS G1 A G15 💻
 
-      {¡Hola a todos!|¡Buenas, vecinos!|¡Hola! ¿Cómo andan?} 👋 {¿Tenés una netbook del colegio bloqueada?|¿Hay una netbook guardada que no se puede usar?|¿Se bloqueó la netbook y no sabés cómo seguir?} {Podemos ayudarte|Te la desbloqueamos|Nos encargamos de todo}:
+      {¡Hola a todos!|¡Buenas, vecinos!|¡Hola! ¿Qué tal?} 👋 {¿La netbook del cole quedó bloqueada?|¿Tenés una netbook que no arranca por el bloqueo?|¿Querés volver a usar esa netbook guardada?} {La desbloqueamos y te la dejamos lista|Podemos ayudarte a recuperarla|Nos encargamos de dejarla funcionando}:
 
       ➡️ Desbloqueo de netbooks G1 a G15.
       ➡️ Desbloqueo de contraseñas, patrones y cuentas.
       ➡️ Instalación de Windows y programas.
-      ➡️ Limpieza y mantenimiento.
+      ➡️ Limpieza interna y mantenimiento.
+
+      {Se aprovecha muchísimo para estudiar, hacer tareas o ver videos|Bien configurada sirve para tareas, estudio y uso diario|Es una lástima tenerla guardada sin usar}.
 
       📍 {Estamos en|Nos encontrás en|Te esperamos en} Monteagudo 1140, Tafí Viejo
       💳 {Recibimos tarjetas de crédito|Aceptamos tarjetas de crédito}
       📲 {WhatsApp|Consultas por WhatsApp|Escribinos al WhatsApp}: 381 649-6790
 
-      {¡Te esperamos!|¡Consultanos sin compromiso!|¡Escribinos y te respondemos enseguida!} 🙌
-
-  - id: windows-2026-11-12
+  - id: virus-2026-11-21
     activa: true
-    fecha: 2026-11-12        # Jueves
-    hora: "10:47"
-    grupos: ["Grupo nuevo 2 (…4801)"]
-    imagenes: [windows-2026-10-18.jpg]
-    repetir_cada_dias: 7
-    texto: |
-      🖥️ WINDOWS, PROGRAMAS Y ASISTENCIA REMOTA 🖥️
-
-      {¡Hola a todos!|¡Buenas, vecinos!|¡Hola! ¿Cómo andan?} 👋 {¿Tu PC tiene errores o necesitás reinstalar Windows?|¿Necesitás instalar Office u otros programas?|¿Tenés una consulta y no podés venir al local?} {Te damos una mano|Nos encargamos de dejar todo funcionando|Lo resolvemos}, {incluso a distancia|también con asistencia remota}:
-
-      ➡️ Instalación de Windows 7, 8, 10 y 11.
-      ➡️ Office, Acrobat Reader, Photoshop y Corel.
-      ➡️ Asistencia remota para consultas puntuales.
-      ➡️ Reparación y mantenimiento de PC y notebooks.
-
-      📍 {Estamos en|Nos encontrás en|Te esperamos en} Monteagudo 1140, Tafí Viejo
-      💳 {Recibimos tarjetas de crédito|Aceptamos tarjetas de crédito}
-      📲 {WhatsApp|Consultas por WhatsApp|Escribinos al WhatsApp}: 381 649-6790
-
-      {¡Te esperamos!|¡Consultanos sin compromiso!|¡Escribinos y te respondemos enseguida!} 🙌
-
-  - id: consolas-2026-11-13
-    activa: true
-    fecha: 2026-11-13        # Viernes
-    hora: "15:26"
+    fecha: 2026-11-21        # Sabado; grupo disponible desde 20/11 19:06
+    hora: "12:18"
     grupos: ["Grupo nuevo 1 (…6047)"]
-    imagenes: [consolas-2026-10-05.jpg]
+    imagenes: [virus-2026-11-21.jpg]
     repetir_cada_dias: 7
     texto: |
-      🎮 TU CONSOLA COMO NUEVA 🎮
+      🛡️ CONSEJOS PARA EVITAR VIRUS EN TU COMPU 🛡️
 
-      {¡Hola a todos!|¡Buenas, vecinos!|¡Hola! ¿Cómo andan?} 👋 {¿Tenés una PlayStation que no anda o querés más juegos?|¿Tu consola está guardada y querés volver a jugar?|¿Querés renovar los juegos de tu PS?} {Te la dejamos lista|Nos encargamos de todo|Lo hacemos acá en el local}:
+      {¡Hola a todos!|¡Buenas, vecinos!|¡Hola! ¿Cómo andan?} 👋 {Unos consejos simples para cuidar tu PC|Para que tu compu no se llene de virus, tené en cuenta esto|Tips rápidos para usar la compu más seguro}:
 
-      ➡️ Liberación de PS2, PS3 y PS4.
-      ➡️ Instalación de juegos.
-      ➡️ Mantenimiento y limpieza de la consola.
+      ✔️ Descargá programas solo de sus páginas oficiales.
+      ✔️ No abras archivos adjuntos de correos que no conocés.
+      ✔️ Mantené Windows y el antivirus actualizados.
+      ✔️ Ojo con los pendrives que pasan de mano en mano.
+
+      {Si tu compu ya anda rara, lenta o con ventanas extrañas|Si sospechás que tu PC tiene algo raro|Si necesitás ayuda para dejarla en condiciones}, {te damos una mano en el local o con asistencia remota|la revisamos y si hace falta reinstalamos Windows y tus programas}.
 
       📍 {Estamos en|Nos encontrás en|Te esperamos en} Monteagudo 1140, Tafí Viejo
       💳 {Recibimos tarjetas de crédito|Aceptamos tarjetas de crédito}
       📲 {WhatsApp|Consultas por WhatsApp|Escribinos al WhatsApp}: 381 649-6790
 
-      {¡Te esperamos!|¡Consultanos sin compromiso!|¡Escribinos y te respondemos enseguida!} 🙌
-
-  - id: ssd-ram-2026-11-14
+  - id: bateria-2026-11-22
     activa: true
-    fecha: 2026-11-14        # Sabado
-    hora: "11:38"
+    fecha: 2026-11-22        # Domingo; grupo disponible desde 21/11 13:26
+    hora: "17:09"
     grupos: ["Alguien sabe Yo se? Por un Tafi mejor"]
-    imagenes: [ssd-ram-2026-10-12.jpg]
+    imagenes: [bateria-2026-10-18.jpg]
     repetir_cada_dias: 7
     texto: |
-      🚀 DALE VELOCIDAD A TU PC CON SSD Y RAM 🚀
+      🔋 CÓMO CUIDAR LA BATERÍA DE TU CELULAR 🔋
 
-      {¡Hola a todos!|¡Buenas, vecinos!|¡Hola! ¿Cómo andan?} 👋 {¿Tu compu tarda mucho en prender?|¿Tu notebook se traba al abrir varios programas?|¿Sentís que tu PC quedó lenta?} {Con un disco SSD y más memoria RAM se nota mucho la diferencia|Cambiar el disco por un SSD y ampliar la RAM suele mejorar bastante el rendimiento|Una mejora de SSD y RAM puede darle otra vida a tu equipo}:
+      {¡Hola, vecinos!|¡Buenas a todos!|¡Hola! ¿Qué tal?} 👋 {Con el calor, la batería del celu sufre más|Algunos hábitos ayudan mucho a que la batería dure|Si tu celu no te llega al final del día, esto te puede servir}: {evitá dejarlo al sol o en el auto|no lo uses mientras se carga si se calienta}, no esperes a que llegue al 0% y usá un cargador de buena calidad.
 
-      ➡️ Colocación de disco SSD.
-      ➡️ Ampliación de memoria RAM.
-      ➡️ Instalación de Windows 7, 8, 10 y 11.
-      ➡️ Limpieza interna y revisión general.
+      {Si igual no carga bien o el pin está flojo|Si ya probaste todo y sigue fallando|Si el celu no carga o se apaga solo}, {lo revisamos en el local|te lo diagnosticamos con garantía}:
+
+      ➡️ Reparación de pin de carga.
+      ➡️ Cambio de módulos y vidrios.
+      ➡️ Software y desbloqueo de patrón.
 
       📍 {Estamos en|Nos encontrás en|Te esperamos en} Monteagudo 1140, Tafí Viejo
       💳 {Recibimos tarjetas de crédito|Aceptamos tarjetas de crédito}
       📲 {WhatsApp|Consultas por WhatsApp|Escribinos al WhatsApp}: 381 649-6790
-
-      {¡Te esperamos!|¡Consultanos sin compromiso!|¡Escribinos y te respondemos enseguida!} 🙌
-
