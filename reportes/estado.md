@@ -1,11 +1,11 @@
 # Estado del agente
 
-_Actualizado: 15/11/2026 21:00 (America/Argentina/Tucuman). Si esta fecha tiene más de un día, el agente probablemente no está funcionando._
+_Actualizado: 16/11/2026 10:46 (America/Argentina/Tucuman). Si esta fecha tiene más de un día, el agente probablemente no está funcionando._
 
 - **Estado:** ✅ funcionando
 - **Modo:** aprobacion
 - **Telegram:** conectado
-- **Versión del agente:** c62d2fe (14/11 13:27)
+- **Versión del agente:** dba8ead (15/11 21:00)
 - **Publicaciones hoy:** 0/3
 - **Últimos 7 días:** 1 error_navegador, 6 publicada
 
@@ -13,12 +13,12 @@ _Actualizado: 15/11/2026 21:00 (America/Argentina/Tucuman). Si esta fecha tiene 
 
 | Cuándo | Publicación | Grupos |
 |---|---|---|
-| 16/11 11:21 | general-2026-11-09 | Grupo nuevo 3 (…2145) |
-| 17/11 16:05 | celulares-2026-11-10 | Alguien Sabe!!! Tafi Viejo Ventas!!! |
-| 18/11 14:12 | netbook-2026-11-11 | FERIA AMERICANA TAFI VIEJO |
-| 19/11 10:47 | windows-2026-11-12 | Grupo nuevo 2 (…4801) |
-| 20/11 15:26 | consolas-2026-11-13 | Grupo nuevo 1 (…6047) |
-| 21/11 11:38 | ssd-ram-2026-11-14 | Alguien sabe Yo se? Por un Tafi mejor |
+| 16/11 13:47 | consolas-2026-11-16 | Grupo nuevo 3 (…2145) |
+| 18/11 11:34 | limpieza-2026-11-18 | Alguien Sabe!!! Tafi Viejo Ventas!!! |
+| 19/11 16:52 | celulares-2026-11-19 | FERIA AMERICANA TAFI VIEJO |
+| 20/11 10:23 | netbook-2026-11-20 | Grupo nuevo 2 (…4801) |
+| 21/11 12:18 | virus-2026-11-21 | Grupo nuevo 1 (…6047) |
+| 22/11 17:09 | bateria-2026-11-22 | Alguien sabe Yo se? Por un Tafi mejor |
 
 ## Desde cuándo se puede publicar en cada grupo
 
