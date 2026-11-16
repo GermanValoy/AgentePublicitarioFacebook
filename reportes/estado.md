@@ -1,13 +1,13 @@
 # Estado del agente
 
-_Actualizado: 14/11/2026 13:26 (America/Argentina/Tucuman). Si esta fecha tiene más de un día, el agente probablemente no está funcionando._
+_Actualizado: 15/11/2026 21:00 (America/Argentina/Tucuman). Si esta fecha tiene más de un día, el agente probablemente no está funcionando._
 
 - **Estado:** ✅ funcionando
 - **Modo:** aprobacion
 - **Telegram:** conectado
-- **Versión del agente:** 2d405fb (14/11 13:14)
-- **Publicaciones hoy:** 1/3
-- **Últimos 7 días:** 1 error_navegador, 6 publicada, 1 vencida
+- **Versión del agente:** c62d2fe (14/11 13:27)
+- **Publicaciones hoy:** 0/3
+- **Últimos 7 días:** 1 error_navegador, 6 publicada
 
 ## Próximas programadas
 
@@ -55,9 +55,6 @@ _Regla anti-baneo: no repetir en un grupo antes de 7 días. Programá cada grupo
 
 ## Avisos y errores recientes del registro
 
-- `2026-11-12 03:37:00 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
-- `2026-11-12 04:49:59 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
-- `2026-11-12 05:57:53 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
 - `2026-11-12 06:05:05 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
 - `2026-11-13 11:13:05 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
 - `2026-11-13 11:57:46 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
@@ -65,3 +62,6 @@ _Regla anti-baneo: no repetir en un grupo antes de 7 días. Programá cada grupo
 - `2026-11-14 00:25:41 WARNING  Telegram: Sin conexión con Telegram: <urlopen error [WinError 10054] Se ha forzado la interrupción de una conexión existente por el host remoto>`
 - `2026-11-14 09:45:22 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
 - `2026-11-14 13:13:34 ERROR    Error inesperado al publicar`
+- `2026-11-14 13:45:40 WARNING  Telegram: Sin conexión con Telegram: <urlopen error [WinError 10060] Se produjo un error durante el intento de conexión ya que la parte conectada no respondió adecuadamente tras un periodo de`
+- `2026-11-14 14:57:23 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
+- `2026-11-14 16:00:45 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
