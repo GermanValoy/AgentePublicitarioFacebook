@@ -1,11 +1,11 @@
 # Estado del agente
 
-_Actualizado: 18/11/2026 03:50 (America/Argentina/Tucuman). Si esta fecha tiene más de un día, el agente probablemente no está funcionando._
+_Actualizado: 18/11/2026 12:22 (America/Argentina/Tucuman). Si esta fecha tiene más de un día, el agente probablemente no está funcionando._
 
 - **Estado:** ✅ funcionando
 - **Modo:** aprobacion
 - **Telegram:** conectado
-- **Versión del agente:** 0157b5c (18/11 03:10)
+- **Versión del agente:** 71c4fdb (18/11 03:50)
 - **Publicaciones hoy:** 0/3
 - **Últimos 7 días:** 1 error_navegador, 5 publicada
 
@@ -13,12 +13,12 @@ _Actualizado: 18/11/2026 03:50 (America/Argentina/Tucuman). Si esta fecha tiene 
 
 | Cuándo | Publicación | Grupos |
 |---|---|---|
-| 18/11 11:34 | limpieza-2026-11-18 | Alguien Sabe!!! Tafi Viejo Ventas!!! |
 | 19/11 16:52 | celulares-2026-11-19 | FERIA AMERICANA TAFI VIEJO |
 | 20/11 10:23 | netbook-2026-11-20 | Grupo nuevo 2 (…4801) |
 | 21/11 12:18 | virus-2026-11-21 | Grupo nuevo 1 (…6047) |
 | 22/11 17:09 | bateria-2026-11-22 | Alguien sabe Yo se? Por un Tafi mejor |
 | 23/11 13:47 | consolas-2026-11-16 | Grupo nuevo 3 (…2145) |
+| 25/11 11:34 | limpieza-2026-11-18 | Alguien Sabe!!! Tafi Viejo Ventas!!! |
 
 ## Desde cuándo se puede publicar en cada grupo
 
@@ -55,7 +55,6 @@ _Regla anti-baneo: no repetir en un grupo antes de 7 días. Programá cada grupo
 
 ## Avisos y errores recientes del registro
 
-- `2026-11-16 14:00:45 WARNING  Telegram: Sin conexión con Telegram: <urlopen error [Errno 11001] getaddrinfo failed>`
 - `2026-11-16 22:00:35 WARNING  Telegram: Sin conexión con Telegram: <urlopen error [WinError 10060] Se produjo un error durante el intento de conexión ya que la parte conectada no respondió adecuadamente tras un periodo de`
 - `2026-11-17 00:42:40 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
 - `2026-11-17 01:45:23 WARNING  Telegram: Sin conexión con Telegram: <urlopen error [WinError 10060] Se produjo un error durante el intento de conexión ya que la parte conectada no respondió adecuadamente tras un periodo de`
@@ -65,3 +64,4 @@ _Regla anti-baneo: no repetir en un grupo antes de 7 días. Programá cada grupo
 - `2026-11-17 10:00:27 WARNING  Telegram: Sin conexión con Telegram: <urlopen error [WinError 10060] Se produjo un error durante el intento de conexión ya que la parte conectada no respondió adecuadamente tras un periodo de`
 - `2026-11-17 17:09:48 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
 - `2026-11-17 23:47:08 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
+- `2026-11-18 03:53:32 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
