@@ -1,13 +1,13 @@
 # Estado del agente
 
-_Actualizado: 18/11/2026 12:22 (America/Argentina/Tucuman). Si esta fecha tiene más de un día, el agente probablemente no está funcionando._
+_Actualizado: 18/11/2026 13:05 (America/Argentina/Tucuman). Si esta fecha tiene más de un día, el agente probablemente no está funcionando._
 
 - **Estado:** ✅ funcionando
 - **Modo:** aprobacion
 - **Telegram:** conectado
-- **Versión del agente:** 71c4fdb (18/11 03:50)
-- **Publicaciones hoy:** 0/3
-- **Últimos 7 días:** 1 error_navegador, 5 publicada
+- **Versión del agente:** 83bc36d (18/11 12:22)
+- **Publicaciones hoy:** 1/3
+- **Últimos 7 días:** 1 error_navegador, 6 publicada
 
 ## Próximas programadas
 
@@ -27,7 +27,7 @@ _Regla anti-baneo: no repetir en un grupo antes de 7 días. Programá cada grupo
 | Grupo | Última publicación | Se puede desde | Días permitidos |
 |---|---|---|---|
 | FERIA AMERICANA TAFI VIEJO | 11/11 14:59 | 18/11 14:59 | todos |
-| Alguien Sabe!!! Tafi Viejo Ventas!!! | 10/11 20:19 | 17/11 20:19 | todos |
+| Alguien Sabe!!! Tafi Viejo Ventas!!! | 18/11 13:03 | 25/11 13:03 | todos |
 | Alguien sabe Yo se? Por un Tafi mejor | 14/11 13:26 | 21/11 13:26 | todos |
 | Grupo nuevo 1 (…6047) | 13/11 19:06 | 20/11 19:06 | todos |
 | Grupo nuevo 2 (…4801) | 12/11 10:51 | 19/11 10:51 | todos |
@@ -37,6 +37,7 @@ _Regla anti-baneo: no repetir en un grupo antes de 7 días. Programá cada grupo
 
 | Fecha | Estado | Publicación | Grupo | Detalle |
 |---|---|---|---|---|
+| 18/11 13:03 | publicada | limpieza-2026-11-18 | Alguien Sabe!!! Tafi Viejo Ventas!!! | Publicada automáticamente / captura: 20261118-130354-publicada.png |
 | 16/11 13:58 | publicada | consolas-2026-11-16 | Grupo nuevo 3 (…2145) | Publicada automáticamente / captura: 20261116-135816-publicada.png |
 | 14/11 13:26 | publicada | ssd-ram-2026-11-14 | Alguien sabe Yo se? Por un Tafi mejor | Publicada automáticamente / captura: 20261114-132559-publicada.png |
 | 14/11 13:13 | error_navegador | ssd-ram-2026-11-14 | Alguien sabe Yo se? Por un Tafi mejor | Error inesperado: no se abrió la ventana «Crear publicación» con el cuadro para escribir / captura: 20261114-131334-erro |
@@ -51,7 +52,6 @@ _Regla anti-baneo: no repetir en un grupo antes de 7 días. Programá cada grupo
 | 04/11 11:51 | publicada | consolas-2026-11-04 | FERIA AMERICANA TAFI VIEJO | Publicada automáticamente / captura: 20261104-115102-publicada.png |
 | 04/11 05:16 | vencida | windows-2026-11-03 | Grupo nuevo 3 (…2145) | Pasó el retraso máximo sin poder publicarse (se evita publicar en ráfaga) |
 | 02/11 13:25 | publicada | bateria-2026-11-02 | Grupo nuevo 2 (…4801) | Publicada automáticamente / captura: 20261102-132459-publicada.png |
-| 31/10 13:01 | publicada | windows-2026-10-31 | Alguien Sabe!!! Tafi Viejo Ventas!!! | Publicada automáticamente / captura: 20261031-130100-publicada.png |
 
 ## Avisos y errores recientes del registro
 
