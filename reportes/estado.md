@@ -1,11 +1,11 @@
 # Estado del agente
 
-_Actualizado: 19/11/2026 00:00 (America/Argentina/Tucuman). Si esta fecha tiene más de un día, el agente probablemente no está funcionando._
+_Actualizado: 19/11/2026 08:15 (America/Argentina/Tucuman). Si esta fecha tiene más de un día, el agente probablemente no está funcionando._
 
 - **Estado:** ✅ funcionando
 - **Modo:** aprobacion
 - **Telegram:** conectado
-- **Versión del agente:** e5b7fcf (18/11 23:56)
+- **Versión del agente:** 9ac0b0a (19/11 00:26)
 - **Publicaciones hoy:** 0/3
 - **Últimos 7 días:** 1 error_navegador, 5 publicada
 
@@ -55,7 +55,6 @@ _Regla anti-baneo: no repetir en un grupo antes de 7 días. Programá cada grupo
 
 ## Avisos y errores recientes del registro
 
-- `2026-11-18 14:55:20 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
 - `2026-11-18 16:18:56 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
 - `2026-11-18 17:20:25 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
 - `2026-11-18 17:23:09 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
@@ -65,3 +64,4 @@ _Regla anti-baneo: no repetir en un grupo antes de 7 días. Programá cada grupo
 - `2026-11-18 21:45:48 WARNING  Telegram: Sin conexión con Telegram: <urlopen error [WinError 10060] Se produjo un error durante el intento de conexión ya que la parte conectada no respondió adecuadamente tras un periodo de`
 - `2026-11-18 21:57:16 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
 - `2026-11-18 23:12:07 WARNING  Telegram: Sin conexión con Telegram: <urlopen error [WinError 10060] Se produjo un error durante el intento de conexión ya que la parte conectada no respondió adecuadamente tras un periodo de`
+- `2026-11-19 02:00:14 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
