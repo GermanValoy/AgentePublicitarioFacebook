@@ -1,11 +1,11 @@
 # Estado del agente
 
-_Actualizado: 20/11/2026 10:33 (America/Argentina/Tucuman). Si esta fecha tiene más de un día, el agente probablemente no está funcionando._
+_Actualizado: 20/11/2026 12:40 (America/Argentina/Tucuman). Si esta fecha tiene más de un día, el agente probablemente no está funcionando._
 
 - **Estado:** ✅ funcionando
 - **Modo:** aprobacion
 - **Telegram:** conectado
-- **Versión del agente:** bb278f4 (20/11 04:34)
+- **Versión del agente:** c598509 (20/11 10:33)
 - **Publicaciones hoy:** 1/3
 - **Últimos 7 días:** 1 error_navegador, 6 publicada
 
@@ -55,7 +55,6 @@ _Regla anti-baneo: no repetir en un grupo antes de 7 días. Programá cada grupo
 
 ## Avisos y errores recientes del registro
 
-- `2026-11-19 12:58:04 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
 - `2026-11-19 16:47:50 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
 - `2026-11-19 18:03:31 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
 - `2026-11-19 18:04:38 WARNING  Telegram: Bad Gateway`
@@ -65,3 +64,4 @@ _Regla anti-baneo: no repetir en un grupo antes de 7 días. Programá cada grupo
 - `2026-11-19 18:13:40 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
 - `2026-11-19 18:15:11 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
 - `2026-11-20 10:26:52 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
+- `2026-11-20 11:57:37 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
