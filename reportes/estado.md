@@ -1,24 +1,24 @@
 # Estado del agente
 
-_Actualizado: 20/11/2026 04:33 (America/Argentina/Tucuman). Si esta fecha tiene más de un día, el agente probablemente no está funcionando._
+_Actualizado: 20/11/2026 10:33 (America/Argentina/Tucuman). Si esta fecha tiene más de un día, el agente probablemente no está funcionando._
 
 - **Estado:** ✅ funcionando
 - **Modo:** aprobacion
 - **Telegram:** conectado
-- **Versión del agente:** 950688d (19/11 19:50)
-- **Publicaciones hoy:** 0/3
-- **Últimos 7 días:** 1 error_navegador, 5 publicada
+- **Versión del agente:** bb278f4 (20/11 04:34)
+- **Publicaciones hoy:** 1/3
+- **Últimos 7 días:** 1 error_navegador, 6 publicada
 
 ## Próximas programadas
 
 | Cuándo | Publicación | Grupos |
 |---|---|---|
-| 20/11 10:23 | netbook-2026-11-20 | Grupo nuevo 2 (…4801) |
 | 21/11 12:18 | virus-2026-11-21 | Grupo nuevo 1 (…6047) |
 | 22/11 17:09 | bateria-2026-11-22 | Alguien sabe Yo se? Por un Tafi mejor |
 | 23/11 13:47 | consolas-2026-11-16 | Grupo nuevo 3 (…2145) |
 | 25/11 11:34 | limpieza-2026-11-18 | Alguien Sabe!!! Tafi Viejo Ventas!!! |
 | 26/11 16:52 | celulares-2026-11-19 | FERIA AMERICANA TAFI VIEJO |
+| 27/11 10:23 | netbook-2026-11-20 | Grupo nuevo 2 (…4801) |
 
 ## Desde cuándo se puede publicar en cada grupo
 
@@ -30,13 +30,14 @@ _Regla anti-baneo: no repetir en un grupo antes de 7 días. Programá cada grupo
 | Alguien Sabe!!! Tafi Viejo Ventas!!! | 18/11 13:03 | 25/11 13:03 | todos |
 | Alguien sabe Yo se? Por un Tafi mejor | 14/11 13:26 | 21/11 13:26 | todos |
 | Grupo nuevo 1 (…6047) | 13/11 19:06 | 20/11 19:06 | todos |
-| Grupo nuevo 2 (…4801) | 12/11 10:51 | 19/11 10:51 | todos |
+| Grupo nuevo 2 (…4801) | 20/11 10:32 | 27/11 10:32 | todos |
 | Grupo nuevo 3 (…2145) | 16/11 13:58 | 23/11 13:58 | todos |
 
 ## Últimos movimientos
 
 | Fecha | Estado | Publicación | Grupo | Detalle |
 |---|---|---|---|---|
+| 20/11 10:32 | publicada | netbook-2026-11-20 | Grupo nuevo 2 (…4801) | Publicada automáticamente / captura: 20261120-103212-publicada.png |
 | 19/11 19:49 | publicada | celulares-2026-11-19 | FERIA AMERICANA TAFI VIEJO | Publicada automáticamente / captura: 20261119-194919-publicada.png |
 | 18/11 13:03 | publicada | limpieza-2026-11-18 | Alguien Sabe!!! Tafi Viejo Ventas!!! | Publicada automáticamente / captura: 20261118-130354-publicada.png |
 | 16/11 13:58 | publicada | consolas-2026-11-16 | Grupo nuevo 3 (…2145) | Publicada automáticamente / captura: 20261116-135816-publicada.png |
@@ -51,11 +52,9 @@ _Regla anti-baneo: no repetir en un grupo antes de 7 días. Programá cada grupo
 | 06/11 12:35 | publicada | ssd-ram-2026-11-06 | Grupo nuevo 1 (…6047) | Publicada automáticamente / captura: 20261106-123511-publicada.png |
 | 05/11 18:21 | publicada | limpieza-2026-11-05 | Alguien sabe Yo se? Por un Tafi mejor | Publicada automáticamente / captura: 20261105-182123-publicada.png |
 | 04/11 11:51 | publicada | consolas-2026-11-04 | FERIA AMERICANA TAFI VIEJO | Publicada automáticamente / captura: 20261104-115102-publicada.png |
-| 04/11 05:16 | vencida | windows-2026-11-03 | Grupo nuevo 3 (…2145) | Pasó el retraso máximo sin poder publicarse (se evita publicar en ráfaga) |
 
 ## Avisos y errores recientes del registro
 
-- `2026-11-19 02:00:14 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
 - `2026-11-19 12:58:04 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
 - `2026-11-19 16:47:50 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
 - `2026-11-19 18:03:31 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
@@ -65,3 +64,4 @@ _Regla anti-baneo: no repetir en un grupo antes de 7 días. Programá cada grupo
 - `2026-11-19 18:12:08 WARNING  Telegram: Bad Gateway`
 - `2026-11-19 18:13:40 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
 - `2026-11-19 18:15:11 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
+- `2026-11-20 10:26:52 WARNING  Telegram: Sin conexión con Telegram: The read operation timed out`
